@@ -11,7 +11,7 @@ export class mainCharacter extends Actor {
     this.isMovingLeft = false;
     this.isMovingUp = false; 
     this.isMovingDown = false; 
-    this.speed = 100;
+    this.speed = 150;
     this.rotation = 0;
   }
 
