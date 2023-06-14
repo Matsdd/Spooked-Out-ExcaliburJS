@@ -3,18 +3,6 @@ import ExploderImage from '../sprites/robots/ExploderI.png'
 import DamageExploderImage from '../sprites/robots/ExploderIDamage.png'
 
 
-import LaserBingusImage from '../sprites/cats/LaserBingus.png'
-import FortificationImage from '../sprites/cats/Fortification.png'
-
-
-import LaserImage from '../images/laser.png'
-import BackgroundImage from '../images/Background.png'
-import ExplosionImage from '../images/explosionimage.png'
-import laneImage from '../images/lane.png'
-
-import currencyCounterImage from '../images/currencyCounter.png'
-import SettingsImage from '../images/Settings.png'
-import selectionImage from '../images/selection.png'
 
 const Resources = {
     Exploder: new ImageSource(ExploderImage),
