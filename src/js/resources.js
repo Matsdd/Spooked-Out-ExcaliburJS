@@ -4,7 +4,7 @@ import mainCharacterImage from '../images/mainCharacter.png'
 
 
 const Resources = {
-    mainCharacter: new ImageSource(mainCharacterImageImage),
+    mainCharacter: new ImageSource(mainCharacterImage),
 }
 const ResourceLoader = new Loader([Resources.mainCharacter, ])
 

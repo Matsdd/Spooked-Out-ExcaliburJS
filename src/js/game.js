@@ -1,7 +1,7 @@
 import '../css/style.css'
-import * as ex from 'excalibur'
-import { Actor, Engine, Vector, Timer, TextAlign } from "excalibur"
+import { Actor, Engine, Vector, } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
+import { mainCharacter } from './mainCharacter.js'
 
 export class Game extends Engine {
 
@@ -15,6 +15,9 @@ export class Game extends Engine {
     }
 
     startGame() {        
+        let Sjaak = new mainCharacter()
+        this.add(Sjaak)
+
         console.log("Enjoy!")
     }
 }
