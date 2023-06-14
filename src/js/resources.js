@@ -3,6 +3,9 @@ import { ImageSource, Sound, Resource, Loader } from 'excalibur'
 //characters
 import mainCharacterImage from '../images/mainCharacter.png'
 import ghoulImage from '../images/ghosts/ghoul.png'
+import spiritImage from '../images/ghosts/spirit.png'
+import demonImage from '../images/ghosts/demon.png'
+import poltergeistImage from '../images/ghosts/poltergeist.png'
 import Frederik from "../images/ghosts/Frederik.png"
 
 //rooms
@@ -21,6 +24,9 @@ const Resources = {
     //characters
     mainCharacter: new ImageSource(mainCharacterImage),
     ghoul: new ImageSource(ghoulImage),
+    spirit: new ImageSource(spiritImage),
+    demon: new ImageSource(demonImage),
+    poltergeist: new ImageSource(poltergeistImage),
     Frederik: new ImageSource(Frederik),
 
     //rooms
@@ -39,7 +45,10 @@ const Resources = {
 const ResourceLoader = new Loader([
     //characters
     Resources.mainCharacter, 
-    Resources.ghoul, 
+    Resources.ghoul,
+    Resources.spirit,
+    Resources.demon,
+    Resources.poltergeist,
     Resources.Frederik,
 
     //rooms
