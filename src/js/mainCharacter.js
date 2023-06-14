@@ -34,12 +34,12 @@ export class mainCharacter extends Actor {
 
   moveUp() { 
    if (this.isMovingRight) {
-    this.vel.x = this.speed;
-    this.vel.y = -this.speed;
+    this.vel.x = this.speed/1.5;
+    this.vel.y = -this.speed/1.5;
     this.rotation = -Math.PI / 4;
   } else if (this.isMovingLeft) {
-    this.vel.x = -this.speed;
-    this.vel.y = -this.speed;
+    this.vel.x = -this.speed/1.5;
+    this.vel.y = -this.speed/1.5;
     this.rotation = -Math.PI * 3 / 4;
   } else {
     this.vel.y = -this.speed;
@@ -49,12 +49,12 @@ export class mainCharacter extends Actor {
 
   moveDown() { 
     if (this.isMovingRight) {
-        this.vel.x = this.speed;
-        this.vel.y = this.speed;
+        this.vel.x = this.speed/1.5;
+        this.vel.y = this.speed/1.5;
         this.rotation = Math.PI / 4;
       } else if (this.isMovingLeft) {
-        this.vel.x = -this.speed;
-        this.vel.y = this.speed;
+        this.vel.x = -this.speed/1.5;
+        this.vel.y = this.speed/1.5;
         this.rotation = Math.PI * 3 / 4;
       } else {
         this.vel.y = this.speed;
