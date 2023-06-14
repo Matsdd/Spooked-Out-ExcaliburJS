@@ -14,7 +14,8 @@ const Resources = {
 
 }
 
-const ResourceLoader = new Loader([Resources.mainCharacter, 
+const ResourceLoader = new Loader([
+    Resources.mainCharacter, 
     Resources.ghoul, 
     Resources.Play, 
     Resources.Lobby,
