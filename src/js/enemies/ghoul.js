@@ -6,15 +6,15 @@ export class ghoul extends Actor{
 
     constructor() {
         super({
-          width: Resources.bGround.width / 4,
-          height: Resources.bGround.height / 4,
+          width: Resources.ghoul.width / 1,
+          height: Resources.ghoul.height / 1,
         });
       } 
 
       onInitialize() {
         this.graphics.use(Resources.ghoul.toSprite());
-        this.pos = new Vector(300 , 300);
-        this.scale = new Vector(1.03 , 1.15);
+        this.pos = new Vector(200 , 200);
+        this.scale = new Vector(0.3 , 0.3);
       }
 
 }
