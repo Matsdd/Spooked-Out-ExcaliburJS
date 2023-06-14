@@ -13,7 +13,7 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false; 
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 10;
+    this.hp = 10
   }
 
   onInitialize() {
