@@ -20,7 +20,7 @@ export class lobbyRoom extends Scene {
         let Sjaak = new mainCharacter()
         this.add(Sjaak)
 
-        let Ghoul = new ghoul()
+        let Ghoul = new ghoul(Sjaak)
         this.add(Ghoul)
         console.log("jippieeee")
     }
