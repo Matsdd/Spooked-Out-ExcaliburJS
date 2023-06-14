@@ -4,20 +4,20 @@ import { Resources, ResourceLoader } from './resources.js';
 export class mainCharacter extends Actor {
   constructor() {
     super({
-      width: Resources.mainCharacter.width / 4,
-      height: Resources.mainCharacter.height / 4,
+      width: Resources.mainCharacter.width / 1,
+      height: Resources.mainCharacter.height / 1,
     });
     this.isMovingRight = false;
     this.isMovingLeft = false;
     this.isMovingUp = false; 
     this.isMovingDown = false; 
-    this.speed = 50;
+    this.speed = 100;
   }
 
   onInitialize() {
     this.graphics.use(Resources.mainCharacter.toSprite());
     this.pos = new Vector(400, 300);
-    this.scale = new Vector(0.7, 0.7);
+    this.scale = new Vector(0.2, 0.2);
     this.vel.y = 0;
   }
 
