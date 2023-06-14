@@ -1,11 +1,18 @@
-import { Actor, Engine, Vector } from "excalibur"
-import { Resources, ResourceLoader } from '../resources.js'
+import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
+import { Resources } from '../resources'
+import { Quitbutton } from "./quitButton"
 
-export class Settings extends Actor{
+export class title extends Scene {
 
-    onInitialize(Engine) {
-        this.graphics.use(Resources.Settings.toSprite());
-        this.pos = new Vector(1430, 100);
-        this.scale = new Vector(0.4, 0.4)
+    constructor() {
+        super({})
     }
-};
+    
+    onInitialize(engine) {
+        const button3 = new Quitbutton()
+        button3.on('pointerdown', (event) => {
+            engine.kill()
+        })
+        this.add(button3)
+    }
+}
