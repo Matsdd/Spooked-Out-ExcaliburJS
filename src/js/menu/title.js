@@ -1,11 +1,17 @@
-import '../css/style.css'
-import * as ex from 'excalibur'
-import { Actor, Engine, Vector, Timer, TextAlign } from "excalibur"
-import { Resources, ResourceLoader } from '../resources.js'
+import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
+import { Startbutton } from './startButton.js'
 
-export class Title extends Engine {
+export class title extends Scene {
 
-    startGame() {        
-        console.log("Enjoy!")
+    constructor() {
+        super({})
+    }
+    
+    onInitialize(engine) {
+        const button = new Startbutton()
+        button.on('pointerdown', (event) => {
+            engine.goToScene('lobbyRoom')
+        })
+        this.add(button)
     }
 }
