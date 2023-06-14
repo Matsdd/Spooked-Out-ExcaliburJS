@@ -12,6 +12,7 @@ export class mainCharacter extends Actor {
     this.isMovingUp = false; 
     this.isMovingDown = false; 
     this.speed = 100;
+    this.rotation = 0;
   }
 
   onInitialize() {
@@ -23,18 +24,22 @@ export class mainCharacter extends Actor {
 
   moveRight() {
     this.vel.x = this.speed;
+    this.rotation = 0; 
   }
 
   moveLeft() {
     this.vel.x = -this.speed;
+    this.rotation = Math.PI;
   }
 
   moveUp() { 
     this.vel.y = -this.speed;
+    this.rotation = -Math.PI / 2;
   }
 
   moveDown() { 
     this.vel.y = this.speed;
+    this.rotation = Math.PI / 2;
   }
 
   stopMovement() {
@@ -108,5 +113,6 @@ export class mainCharacter extends Actor {
     if (this.isMovingDown && engine.input.keyboard.isHeld(Input.Keys.S)) {
       this.moveDown();
     }
+
   }
 }
