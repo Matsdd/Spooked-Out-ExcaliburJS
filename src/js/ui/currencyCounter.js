@@ -1,5 +1,5 @@
 import { Actor, Engine, Vector } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
+import { Resources, ResourceLoader } from '../resources.js'
 
 export class CurrencyCounter extends Actor{
 
