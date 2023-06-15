@@ -3,8 +3,10 @@ import { Resources } from '../resources'
 import { Startbutton } from './startButton.js'
 import { Settingsbutton } from "./settingsButton"
 import { Quitbutton } from "./quitButton"
+import { Titlebutton } from "./titleButton"
+import { Continue } from "./continue"
 
-export class title extends Scene {
+export class titleMenu extends Scene {
 
     constructor() {
         super({})
@@ -25,7 +27,7 @@ export class title extends Scene {
 
         const button2 = new Settingsbutton(300, 570)
         button2.on('pointerdown', (event) => {
-            engine.goToScene('settings')
+            engine.goToScene('settingsMenu')
         })
         this.add(button2)
 

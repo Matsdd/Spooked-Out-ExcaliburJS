@@ -1,7 +1,10 @@
 import '../css/style.css'
-import { Actor, Engine, Vector, } from "excalibur"
+import {Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
-import { title } from './menu/title'
+
+import { titleMenu } from './menu/titleMenu'
+import { settingsMenu } from './menu/settingsmenu'
+
 import { lobbyRoom } from './rooms/lobbyRoom'
 import { poolRoom } from './rooms/poolRoom.js'
 import { wineCellar } from './rooms/wineCellar.js'
@@ -16,16 +19,23 @@ export class Game extends Engine {
     }
 
     startGame() {  
-        this.title = new title()
-        this.lobbyroom = new lobbyRoom()
+        this.titlemenu = new titleMenu()
+        this.settingsmenu = new settingsMenu()
 
-        this.addScene('title', this.title)  
+        this.lobbyroom = new lobbyRoom()
+        this.poolroom = new poolRoom()
+        this.winecellar = new wineCellar()
+        this.bossroom = new bossRoom()
+
+        this.addScene('titleMenu', this.titlemenu)  
+        this.addScene('settingsMenu', this.settingsmenu)
+
         this.addScene('lobbyRoom', this.lobbyroom)  
         this.addScene('poolRoon', this.poolroom)
         this.addScene('wineCellar', this.winecellar)
         this.addScene('bossRoom', this.bossroom)
 
-        this.goToScene('title')
+        this.goToScene('titleMenu')
 
         console.log("Enjoy!")
     }
