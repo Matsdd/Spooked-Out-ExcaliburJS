@@ -6,6 +6,8 @@ import { Quitbutton } from "./quitButton"
 import { Titlebutton } from "./titleButton"
 import { Continue } from "./continue"
 
+import { roomBack } from '../rooms/roomBack.js'
+
 export class titleMenu extends Scene {
 
     constructor() {
@@ -13,10 +15,7 @@ export class titleMenu extends Scene {
     }
     
     onInitialize(engine) {
-        const Titlescreen = new Actor();
-        Titlescreen.graphics.use(Resources.Titleback.toSprite());
-        Titlescreen.pos = new Vector(767, 430);
-        Titlescreen.scale = new Vector(0.8, 0.8);
+        let Titlescreen = new roomBack(Resources.Titleback);
         this.add(Titlescreen);
 
         const button = new Startbutton(300, 420)

@@ -6,6 +6,8 @@ import { Quitbutton } from "./quitButton"
 import { Titlebutton } from "./titleButton"
 import { Continue } from "./continue"
 
+import { roomBack } from '../rooms/roomBack.js'
+
 export class settingsMenu extends Scene {
 
     constructor() {
@@ -13,25 +15,22 @@ export class settingsMenu extends Scene {
     }
     
     onInitialize(engine) {
-        const Titlescreen = new Actor();
-        Titlescreen.graphics.use(Resources.Titleback.toSprite());
-        Titlescreen.pos = new Vector(767, 430);
-        Titlescreen.scale = new Vector(0.8, 0.8);
-        this.add(Titlescreen);
+        let settingsbackground = new roomBack(Resources.Settingsback);
+        this.add(settingsbackground);
 
-        const button = new Continue(300, 420)
+        const button = new Continue(800, 420)
         button.on('pointerdown', (event) => {
             engine.goToScene('lobbyRoom')
         })
         this.add(button)
 
-        const button2 = new Titlebutton(300, 570)
+        const button2 = new Titlebutton(800, 570)
         button2.on('pointerdown', (event) => {
-            engine.goToScene('title')
+            engine.goToScene('titleMenu')
         })
         this.add(button2)
 
-        const button3 = new Quitbutton(300, 720)
+        const button3 = new Quitbutton(800, 720)
         button3.on('pointerdown', (event) => {
             engine.kill()
         })

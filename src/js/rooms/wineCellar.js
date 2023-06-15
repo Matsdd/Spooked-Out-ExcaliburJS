@@ -3,6 +3,8 @@ import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
+
+import { roomBack } from './roomBack.js'
 import { room } from './room.js'
 
 export class wineCellar extends room {
