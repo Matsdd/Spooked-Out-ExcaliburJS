@@ -3,6 +3,8 @@ import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
+
+import { roomBack } from './roomBack.js'
 import { room } from './room.js'
 
 export class lobbyRoom extends room {
@@ -12,12 +14,8 @@ export class lobbyRoom extends room {
     }
     
     onInitialize(engine) {
-        const Lobby = new Actor();
-        Lobby.graphics.use(Resources.Lobby.toSprite());
-        Lobby.pos = new Vector(767, 430);
-        Lobby.scale = new Vector(0.8, 0.8);
-        this.add(Lobby);
-
+        let background = new roomBack(Resources.Lobby);
+        this.add(background);
 
         let Sjaak = new mainCharacter()
         this.add(Sjaak)

@@ -12,21 +12,7 @@ export class bossRoom extends room {
     }
     
     onInitialize(engine) {
-        const Lobby = new Actor();
-        Lobby.graphics.use(Resources.Lobby.toSprite());
-        Lobby.pos = new Vector(767, 430);
-        Lobby.scale = new Vector(0.8, 0.8);
-        this.add(Lobby);
-
-
-        let Sjaak = new mainCharacter()
-        this.add(Sjaak)
-
-        let Ghoul = new ghoul(Sjaak)
-        this.add(Ghoul)
-
-        let Spirit = new spirit(Sjaak)
-        this.add(Spirit)
-        
+        let background = new roomBack(Resources.Lobby);
+        this.add(background);
     }
 }
