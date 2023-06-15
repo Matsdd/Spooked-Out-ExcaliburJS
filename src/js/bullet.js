@@ -7,19 +7,14 @@ export class bullet extends Actor{
     constructor(x, y) {
         super({width:Resources.bullet.width, height:Resources.bullet.height})
         this.pos = new Vector(x, y)
+        this.vel = velocity;
     }
 
 onInitialize(Engine) {
     this.graphics.use(Resources.bullet.toSprite())
-    this.vel = new Vector(800,0)
+    this.vel = new Vector(100,0)
     this.scale = new Vector(1, 1);
 
-    this.on('collisionstart', (event) => {
-        if (event.other instanceof ghost) {
-            this.kill()
-            event.other.hp -= 1
-        }
-    })
     }
 
 }

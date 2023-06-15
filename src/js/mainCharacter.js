@@ -32,15 +32,23 @@ export class mainCharacter extends Actor {
       }
   })
 
-  if (this.timer > 60) {
+  this.on('pointerdown', (event) => {
+    const bulletSpeed = 10; // Adjust the bullet speed as desired
 
-    const bullet = new Bullet(this.pos.x, this.pos.y)
-    Engine.currentScene.add(bullet)
-    
-    this.timer = 0;
+    // Get the direction vector from the main character towards the mouse position
+    const mousePos = new Vector(event.clientX, event.clientY);
+    const direction = mousePos.clone().subtract(this.pos).normalize();
+
+    // Calculate the velocity vector for the bullet
+    const velocity = direction.clone().scale(bulletSpeed);
+
+    // Create a new bullet object with the initial position and velocity
+    const Bullet = new bullet(this.pos.x, this.pos.y, velocity);
+
+    // Add the bullet to the current scene
+    Engine.currentScene.add(Bullet);
+});
 }
-
-  }
 
   onPreUpdate(Engine) {
     if (this.hp <= 0) {
