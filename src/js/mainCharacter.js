@@ -19,7 +19,7 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false; 
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 2
+    this.hp = 10
   }
 
   onInitialize(Engine) {
@@ -32,9 +32,10 @@ export class mainCharacter extends Actor {
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof ghost) {
-          // event.other.kill()
           this.hp -= 1
-          console.log(this.hp)
+          if (this.hp <= 0) {
+            this.kill();
+          }
       }
   })
 
