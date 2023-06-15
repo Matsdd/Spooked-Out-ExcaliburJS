@@ -13,8 +13,16 @@ export class titleMenu extends Scene {
     constructor() {
         super({})
     }
-    
+
     onInitialize(engine) {
+        const gameMusic = Resources.gameMusic;
+        gameMusic.loop = true;
+        gameMusic.play();
+
+        window.addEventListener('unload', () => {
+            gameMusic.pause();
+        });
+
         let Titlescreen = new roomBack(Resources.Titleback);
         this.add(Titlescreen);
 
