@@ -6,8 +6,8 @@ import { ghost } from '../enemies/ghost.js'
 export class ghoul extends ghost {
   constructor(target) {
     super({
-      width: Resources.ghoul.width / 1,
-      height: Resources.ghoul.height / 1,
+      width: Resources.ghoul.width / 1.6,
+      height: Resources.ghoul.height / 1.6,
     });
     this.target = target;
     this.speed = 100;

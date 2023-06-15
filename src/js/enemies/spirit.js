@@ -6,8 +6,8 @@ import { ghost } from '../enemies/ghost.js'
 export class spirit extends ghost {
   constructor(target) {
     super({
-      width: Resources.spirit.width / 1,
-      height: Resources.spirit.height / 1,
+      width: Resources.spirit.width / 4,
+      height: Resources.spirit.height / 4,
     });
     this.target = target;
     this.speed = 140;

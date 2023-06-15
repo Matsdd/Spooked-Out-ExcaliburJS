@@ -1,11 +1,12 @@
 import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input } from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js';
+import { ghost } from './enemies/ghost.js'
 
 export class mainCharacter extends Actor {
   constructor() {
     super({
-      width: Resources.mainCharacter.width,
-      height: Resources.mainCharacter.height,
+      width: Resources.mainCharacter.width/1.6,
+      height: Resources.mainCharacter.height/1.6,
     });
     this.isMovingRight = false;
     this.isMovingLeft = false;
@@ -21,8 +22,18 @@ export class mainCharacter extends Actor {
     this.pos = new Vector(400, 300);
     this.scale = new Vector(0.2, 0.2);
     this.vel.y = 0;
+
+    this.on('collisionstart', (event) => {
+      if (event.other instanceof ghost) {
+          event.other.kill()
+          this.hp -= 1
+      }
+  })
   }
 
+
+
+  
   moveRight() {
     this.vel.x = this.speed;
     this.rotation = 0; 
