@@ -28,7 +28,7 @@ export class mainCharacter extends Actor {
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof ghost) {
-          event.other.kill()
+          // event.other.kill()
           this.hp -= 1
           console.log(this.hp)
       }

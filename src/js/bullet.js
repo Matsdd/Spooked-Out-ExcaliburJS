@@ -22,7 +22,6 @@ onInitialize(Engine) {
     this.on('collisionstart', (event) => {
         if (event.other instanceof ghost) {
             this.kill()
-            event.other.hp -= 1
             console.log(this.hp)
         }
     })
