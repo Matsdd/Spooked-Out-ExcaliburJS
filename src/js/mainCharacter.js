@@ -53,26 +53,26 @@ export class mainCharacter extends Actor {
 
   moveRight() {
     this.vel.x = this.speed;
-    this.rotation = 0; 
+     
   }
 
   moveLeft() {
     this.vel.x = -this.speed;
-    this.rotation = Math.PI;
+    
   }
 
   moveUp() { 
    if (this.isMovingRight) {
     this.vel.x = this.speed/1.5;
     this.vel.y = -this.speed/1.5;
-    this.rotation = -Math.PI / 4;
+    
   } else if (this.isMovingLeft) {
     this.vel.x = -this.speed/1.5;
     this.vel.y = -this.speed/1.5;
-    this.rotation = -Math.PI * 3 / 4;
+    
   } else {
     this.vel.y = -this.speed;
-    this.rotation = -Math.PI / 2;
+    
   }
 }
 
@@ -80,14 +80,14 @@ export class mainCharacter extends Actor {
     if (this.isMovingRight) {
         this.vel.x = this.speed/1.5;
         this.vel.y = this.speed/1.5;
-        this.rotation = Math.PI / 4;
+        
       } else if (this.isMovingLeft) {
         this.vel.x = -this.speed/1.5;
         this.vel.y = this.speed/1.5;
-        this.rotation = Math.PI * 3 / 4;
+       
       } else {
         this.vel.y = this.speed;
-        this.rotation = Math.PI / 2;
+       
       }
   }
 
@@ -163,6 +163,14 @@ export class mainCharacter extends Actor {
 
     if (this.isMovingDown && engine.input.keyboard.isHeld(Input.Keys.S)) {
       this.moveDown();
+    }
+
+    const mouseX = engine.input.pointers.primary.lastWorldPos.x;
+    const mouseY = engine.input.pointers.primary.lastWorldPos.y;
+    const direction = new Vector(mouseX, mouseY).sub(this.pos);
+
+    if (direction.distance() > 0) {
+      this.rotation = direction.toAngle() + Math.PI / 2;
     }
 
   }
