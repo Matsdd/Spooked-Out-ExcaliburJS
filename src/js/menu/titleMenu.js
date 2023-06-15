@@ -13,8 +13,9 @@ export class titleMenu extends Scene {
     constructor() {
         super({})
     }
-    
+
     onInitialize(engine) {
+        Resources.gameMusic.play(1);
         let Titlescreen = new roomBack(Resources.Titleback);
         this.add(Titlescreen);
 

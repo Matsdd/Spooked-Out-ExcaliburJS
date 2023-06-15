@@ -23,6 +23,9 @@ import settingsBack from '../images/menu/settingsMenu.png'
 //props
 import bulletImage from '../images/props/bullet.png'
 
+// music
+import backgroundMusic from '../sfx/8-bit loop background music.mp3'
+import Ghost1 from '../sfx/Ghost 1.mp3'
 
 const Resources = {
     //characters
@@ -48,11 +51,15 @@ const Resources = {
     //props
     bullet: new ImageSource(bulletImage),
 
+    // music
+    gameMusic: new Sound(backgroundMusic),
+    Ghost1: new Sound(Ghost1)
+
 }
 
 const ResourceLoader = new Loader([
     //characters
-    Resources.mainCharacter, 
+    Resources.mainCharacter,
     Resources.ghoul,
     Resources.spirit,
     Resources.demon,
@@ -64,7 +71,7 @@ const ResourceLoader = new Loader([
 
     //menu
     Resources.Titleback,
-    Resources.Play, 
+    Resources.Play,
     Resources.Continue,
     Resources.Quit,
     Resources.Settings,
@@ -73,6 +80,10 @@ const ResourceLoader = new Loader([
 
     //props
     Resources.bullet,
+
+    // music
+    Resources.gameMusic,
+    Resources.Ghost1
 
 ])
 
