@@ -7,12 +7,15 @@ export class bullet extends Actor{
     constructor(x, y) {
         super({width:Resources.bullet.width/20, height:Resources.bullet.height/20})
         this.pos = new Vector(x, y)
+        this.target = target;
+        this.speed = 500;
     }
 
 onInitialize(Engine) {
     this.graphics.use(Resources.bullet.toSprite())
-    this.vel = new Vector(100,0)
     this.scale = new Vector(0.2, 0.2);
+
+
 
 
     this.on('collisionstart', (event) => {
@@ -22,6 +25,13 @@ onInitialize(Engine) {
             console.log(this.hp)
         }
     })
+
+    this.moveTowardsTarget();
+
     }
 
+    moveTowardsTarget() {
+        const direction = this.target.pos.clone().subtract(this.pos).normalize();
+        this.vel = direction.scale(this.speed);
+    }
 }
