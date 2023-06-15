@@ -3,8 +3,9 @@ import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
+import { room } from './room.js'
 
-export class bedroom1 extends Scene {
+export class bedroom1 extends room {
 
     constructor() {
         super({})
