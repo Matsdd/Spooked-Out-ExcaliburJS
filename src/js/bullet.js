@@ -7,7 +7,7 @@ export class bullet extends Actor {
     super({ width: Resources.bullet.width / 20, height: Resources.bullet.height / 20 });
     this.pos = new Vector(x, y);
     this.target = target;
-    this.speed = 500;
+    this.speed = 700;
     this.offset = new Vector(40, 0);
   }
 
@@ -21,6 +21,9 @@ export class bullet extends Actor {
         console.log(this.hp);
       }
     });
+    this.on('collisionstart', (event) => {
+      this.kill()
+    })
 
     this.moveTowardsTarget();
   }
