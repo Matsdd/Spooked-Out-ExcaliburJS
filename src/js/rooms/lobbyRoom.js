@@ -26,5 +26,6 @@ export class lobbyRoom extends Scene {
 
         let Spirit = new spirit(Sjaak)
         this.add(Spirit)
+        
     }
 }

@@ -14,7 +14,7 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false; 
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 10
+    this.hp = 2
   }
 
   onInitialize() {
@@ -27,13 +27,18 @@ export class mainCharacter extends Actor {
       if (event.other instanceof ghost) {
           event.other.kill()
           this.hp -= 1
+          console.log(this.hp)
       }
   })
   }
 
+  onPreUpdate(Engine) {
+    if (this.hp <= 0) {
+      this.kill()
+      console.log(this.hp)
+    }
+  }
 
-
-  
   moveRight() {
     this.vel.x = this.speed;
     this.rotation = 0; 
@@ -147,4 +152,6 @@ export class mainCharacter extends Actor {
     }
 
   }
+
+
 }
