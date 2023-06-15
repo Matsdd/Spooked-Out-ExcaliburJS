@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
 import { bullet } from './bullet.js'
 import { room } from './rooms/room.js'
+
  
 export class mainCharacter extends Actor {
   constructor() {
@@ -34,18 +35,12 @@ export class mainCharacter extends Actor {
   })
 
   Engine.input.pointers.primary.on('down', (evt) => {
-
-
-
      const mouseX = evt.worldPos.x;
      const mouseY = evt.worldPos.y;
 
-    
-      let Bullet = new bullet(this.pos.x, this.pos.y);
-      Bullet.moveTowardsTarget(mouseX, mouseY);
+  
+     let Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
       Engine.currentScene.add(Bullet); 
-    
-      
     });
 }
 
