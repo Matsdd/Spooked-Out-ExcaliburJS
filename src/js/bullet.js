@@ -33,4 +33,10 @@ export class bullet extends Actor {
     this.vel = direction.scale(this.speed);
     this.rotation = direction.toAngle();
   }
+
+  onPreUpdate() {
+    if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
+      this.kill()
+    }
+  }
 }
