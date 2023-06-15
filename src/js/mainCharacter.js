@@ -4,8 +4,8 @@ import { Resources, ResourceLoader } from './resources.js';
 export class mainCharacter extends Actor {
   constructor() {
     super({
-      width: Resources.mainCharacter.width / 1,
-      height: Resources.mainCharacter.height / 1,
+      width: Resources.mainCharacter.width,
+      height: Resources.mainCharacter.height,
     });
     this.isMovingRight = false;
     this.isMovingLeft = false;

@@ -1,8 +1,9 @@
 import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input } from 'excalibur';
 import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
+import { ghost } from '../enemies/ghost.js'
 
-export class ghoul extends Actor {
+export class ghoul extends ghost {
   constructor(target) {
     super({
       width: Resources.ghoul.width / 1,
