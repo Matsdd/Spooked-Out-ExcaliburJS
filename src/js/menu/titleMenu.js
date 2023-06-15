@@ -15,7 +15,14 @@ export class titleMenu extends Scene {
     }
 
     onInitialize(engine) {
-        Resources.gameMusic.play(1);
+        const gameMusic = Resources.gameMusic;
+        gameMusic.loop = true;
+        gameMusic.play();
+
+        window.addEventListener('unload', () => {
+            gameMusic.pause();
+        });
+
         let Titlescreen = new roomBack(Resources.Titleback);
         this.add(Titlescreen);
 
