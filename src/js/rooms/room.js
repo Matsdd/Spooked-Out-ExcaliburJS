@@ -5,5 +5,4 @@ import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
 
 export class room extends Scene {
-
 }
