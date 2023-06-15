@@ -8,7 +8,7 @@ export class bullet extends Actor {
     this.pos = new Vector(x, y);
     this.target = target;
     this.speed = 500;
-    this.offset = new Vector(40, 0); // Adjust the offset as per your preference
+    this.offset = new Vector(40, 0);
   }
 
   onInitialize(engine) {
