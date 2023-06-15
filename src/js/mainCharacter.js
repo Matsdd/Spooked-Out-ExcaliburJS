@@ -33,7 +33,7 @@ export class mainCharacter extends Actor {
       }
   })
 
-  Engine.input.pointers.primary.on('down', function (evt) {
+  Engine.input.pointers.primary.on('down', (evt) => {
 
 
 
@@ -42,7 +42,7 @@ export class mainCharacter extends Actor {
 
     
       let Bullet = new bullet(this.pos.x, this.pos.y);
-      room.add(Bullet);  
+      Engine.currentScene.add(Bullet); 
     
       
     });
