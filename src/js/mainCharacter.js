@@ -1,7 +1,8 @@
-import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input } from 'excalibur';
+import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
 import { bullet } from './bullet.js'
+import { room } from './rooms/room.js'
  
 export class mainCharacter extends Actor {
   constructor() {
@@ -18,7 +19,7 @@ export class mainCharacter extends Actor {
     this.hp = 2
   }
 
-  onInitialize() {
+  onInitialize(Engine) {
     this.graphics.use(Resources.mainCharacter.toSprite());
     this.pos = new Vector(400, 300);
     this.scale = new Vector(0.2, 0.2);
@@ -32,22 +33,19 @@ export class mainCharacter extends Actor {
       }
   })
 
-  this.on('pointerdown', (event) => {
-    const bulletSpeed = 10; // Adjust the bullet speed as desired
+  Engine.input.pointers.primary.on('down', (evt) => {
 
-    // Get the direction vector from the main character towards the mouse position
-    const mousePos = new Vector(event.clientX, event.clientY);
-    const direction = mousePos.clone().subtract(this.pos).normalize();
 
-    // Calculate the velocity vector for the bullet
-    const velocity = direction.clone().scale(bulletSpeed);
 
-    // Create a new bullet object with the initial position and velocity
-    const Bullet = new bullet(this.pos.x, this.pos.y, velocity);
+    // const clickX = evt.worldPos.x;
+    // const clickY = evt.worldPos.y;
 
-    // Add the bullet to the current scene
-    Engine.currentScene.add(Bullet);
-});
+    
+      let Bullet = new bullet(this.pos.x, this.pos.y);
+      Engine.currentScene.add(Bullet); 
+    
+      
+    });
 }
 
   onPreUpdate(Engine) {
