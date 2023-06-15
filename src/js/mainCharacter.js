@@ -3,7 +3,9 @@ import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
 import { bullet } from './bullet.js'
 import { room } from './rooms/room.js'
+import { settingsMenu } from './menu/settingsmenu'
 
+import * as ex from 'excalibur'
  
 export class mainCharacter extends Actor {
   constructor() {
@@ -21,6 +23,8 @@ export class mainCharacter extends Actor {
   }
 
   onInitialize(Engine) {
+    Engine.add('SettingsMenu', new settingsMenu())
+
     this.graphics.use(Resources.mainCharacter.toSprite());
     this.pos = new Vector(400, 300);
     this.scale = new Vector(0.2, 0.2);
@@ -99,6 +103,10 @@ export class mainCharacter extends Actor {
   
 
   update(engine) {
+    if (engine.input.keyboard.wasPressed(ex.Input.Keys.Escape)) {
+      engine.goToScene('settingsMenu')
+    }
+
     if (engine.input.keyboard.wasPressed(Input.Keys.D)) {
       this.isMovingRight = true;
       this.moveRight();
