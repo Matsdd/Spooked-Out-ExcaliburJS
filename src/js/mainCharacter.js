@@ -4,6 +4,7 @@ import { ghost } from './enemies/ghost.js'
 import { bullet } from './bullet.js'
 import { room } from './rooms/room.js'
 import { settingsMenu } from './menu/settingsmenu'
+import { Barrier } from './ui/barrier.js'
 
 import * as ex from 'excalibur'
  
@@ -26,7 +27,7 @@ export class mainCharacter extends Actor {
     Engine.add('SettingsMenu', new settingsMenu())
 
     this.graphics.use(Resources.mainCharacter.toSprite());
-    this.pos = new Vector(400, 300);
+    this.pos = new Vector(800, 800);
     this.scale = new Vector(0.2, 0.2);
     this.vel.y = 0;
 
@@ -37,6 +38,11 @@ export class mainCharacter extends Actor {
             this.kill();
           }
       }
+  })
+  this.on('collisionstart', (event) => {
+    if (event.other instanceof Barrier) {
+      this.kill()
+    }
   })
 
   Engine.input.pointers.primary.on('down', (evt) => {

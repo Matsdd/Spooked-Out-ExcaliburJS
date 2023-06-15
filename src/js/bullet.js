@@ -1,6 +1,7 @@
 import { Actor, Vector } from "excalibur";
 import { Resources } from './resources.js';
 import { ghost } from './enemies/ghost.js';
+import { Barrier } from './ui/barrier.js';
 
 export class bullet extends Actor {
   constructor(x, y, target) {
@@ -22,7 +23,9 @@ export class bullet extends Actor {
       }
     });
     this.on('collisionstart', (event) => {
-      this.kill()
+      if (event.other instanceof Barrier) {
+        this.kill()
+      }
     })
 
     this.moveTowardsTarget();
