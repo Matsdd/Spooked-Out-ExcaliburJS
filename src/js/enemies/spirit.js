@@ -2,6 +2,7 @@ import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input } from 'exca
 import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js'
+import { bullet } from '../bullet.js'
 
 export class spirit extends ghost {
   constructor(target) {
@@ -13,12 +14,22 @@ export class spirit extends ghost {
     this.speed = 140;
     this.minDistance = 1;
     this.rotation = 0;
+    this.hp = 1
   }
 
   onInitialize() {
     this.graphics.use(Resources.spirit.toSprite());
     this.pos = new Vector(200, 200);
     this.scale = new Vector(0.3, 0.3);
+
+    this.on('collisionstart', (event) => {
+      if (event.other instanceof bullet) {
+        this.hp -= 1;
+        if (this.hp <= 0) {
+          this.kill();
+        }
+      }
+    });
   }
 
   moveTowardsTarget() {
