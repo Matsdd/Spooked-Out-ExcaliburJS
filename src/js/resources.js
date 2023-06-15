@@ -19,6 +19,9 @@ import quit from "../images/menu/quit.png"
 import settings from "../images/menu/Settings.png"
 import titlescreen from "../images/menu/titlescreen.png"
 
+//props
+import bulletImage from '../images/props/bullet.png'
+
 
 const Resources = {
     //characters
@@ -39,6 +42,9 @@ const Resources = {
     Quit: new ImageSource(quit),
     Settings: new ImageSource(settings),
     Titlescreen: new ImageSource(titlescreen),
+
+    //props
+    bullet: new ImageSource(bulletImage),
 
 }
 
@@ -61,6 +67,9 @@ const ResourceLoader = new Loader([
     Resources.Quit,
     Resources.Settings,
     Resources.Titlescreen,
+
+    //props
+    Resources.bullet,
 
 ])
 

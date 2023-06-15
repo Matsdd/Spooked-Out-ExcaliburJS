@@ -1,7 +1,8 @@
 import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input } from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
-
+import { bullet } from './bullet.js'
+ 
 export class mainCharacter extends Actor {
   constructor() {
     super({
@@ -30,6 +31,15 @@ export class mainCharacter extends Actor {
           console.log(this.hp)
       }
   })
+
+  if (this.timer > 60) {
+
+    const bullet = new Bullet(this.pos.x, this.pos.y)
+    Engine.currentScene.add(bullet)
+    
+    this.timer = 0;
+}
+
   }
 
   onPreUpdate(Engine) {
@@ -84,7 +94,9 @@ export class mainCharacter extends Actor {
     this.vel.y = 0; 
   }
 
-  update(engine, delta) {
+  
+
+  update(engine) {
     if (engine.input.keyboard.wasPressed(Input.Keys.D)) {
       this.isMovingRight = true;
       this.moveRight();
