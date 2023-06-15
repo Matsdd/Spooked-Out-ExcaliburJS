@@ -22,6 +22,7 @@ import settingsBack from '../images/menu/settingsMenu.png'
 
 //props
 import bulletImage from '../images/props/bullet.png'
+import barrier from '../images/props/barrier.png'
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -50,6 +51,7 @@ const Resources = {
 
     //props
     bullet: new ImageSource(bulletImage),
+    Barrier: new ImageSource(barrier),
 
     // music
     gameMusic: new Sound(backgroundMusic),
@@ -80,6 +82,7 @@ const ResourceLoader = new Loader([
 
     //props
     Resources.bullet,
+    Resources.Barrier,
 
     // music
     Resources.gameMusic,

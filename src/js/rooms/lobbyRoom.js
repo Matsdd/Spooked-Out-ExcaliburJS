@@ -3,28 +3,28 @@ import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
+import { Barrier } from '../ui/barrier.js'
+import { Tp } from '../ui/tp.js'
 
-import { roomBack } from './roomBack.js'
 import { room } from './room.js'
 
 export class lobbyRoom extends room {
-
-    constructor() {
-        super({})
-    }
-    
-    onInitialize(engine) {
-        let background = new roomBack(Resources.Lobby);
-        this.add(background);
-
-        let Sjaak = new mainCharacter()
-        this.add(Sjaak)
-
-        let Ghoul = new ghoul(Sjaak)
-        this.add(Ghoul)
-
-        let Spirit = new spirit(Sjaak)
-        this.add(Spirit)
+    roomBackground = Resources.Lobby
+    spawnBarriers() {
+        const barriertopleft = new Barrier(205,215,410,430)
+        this.add(barriertopleft)
+        const barriertop = new Barrier(980,40,1150,80)
+        this.add(barriertop)
+        const barrierbali1 = new Barrier(600,390,600,80)
+        this.add(barrierbali1)
+        const barrierbali2 = new Barrier(865,280,70,200)
+        this.add(barrierbali2)
+        const barrierfridge1 = new Barrier(20,650,40,200)
+        this.add(barrierfridge1)
+        const barrierfridge2 = new Barrier(1520,465,40,450)
+        this.add(barrierfridge2)
         
+        const teleporter = new Tp(1290,80,90,20)
+        this.add(teleporter)
     }
 }
