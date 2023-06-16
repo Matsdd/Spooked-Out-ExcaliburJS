@@ -15,13 +15,20 @@ export class titleMenu extends Scene {
     }
 
     onInitialize(engine) {
-        const gameMusic = Resources.gameMusic;
+        const gameMusic = new Audio(Resources.gameMusic.path);
         gameMusic.loop = true;
-        gameMusic.play();
 
-        window.addEventListener('unload', () => {
-            gameMusic.pause();
+        gameMusic.addEventListener('canplay', () => {
+            gameMusic.play();
         });
+
+        // engine.currentScene.on('exit', () => {
+        //     gameMusic.pause();
+        // });
+
+        // window.addEventListener('unload', () => {
+        //     gameMusic.pause();
+        // });
 
         let Titlescreen = new roomBack(Resources.Titleback);
         this.add(Titlescreen);
@@ -29,6 +36,8 @@ export class titleMenu extends Scene {
         const button = new Startbutton(300, 420)
         button.on('pointerdown', (event) => {
             engine.goToScene('lobbyRoom')
+            gameMusic.pause();
+
         })
         this.add(button)
 

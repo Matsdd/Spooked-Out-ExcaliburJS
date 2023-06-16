@@ -1,5 +1,17 @@
 body {
-    margin:0;
-    padding:0;
-    background-color:black;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.Startbutton {
+    /* ... existing styles ... */
+
+    /* Add the following styles for the transition */
+    transition: transform 0.2s ease;
+}
+
+.Startbutton:hover {
+    /* Add the scaling effect when hovering */
+    transform: scale(1.1);
 }
