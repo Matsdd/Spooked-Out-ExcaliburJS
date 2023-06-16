@@ -6,6 +6,7 @@ import { spirit } from '../enemies/spirit.js'
 import { demon } from '../enemies/demonBoss.js'
 import { Resources } from '../resources.js'
 import { roomBack } from './roomBack.js'
+import { Barrier } from '../ui/barrier.js'
 
 export class room extends Scene {
     roomBackground
@@ -17,22 +18,14 @@ export class room extends Scene {
     }
     
     onInitialize(engine) {
-        /*let playerGroup = ex.CollisionGroupManager.create('player')
-        let barrierGroup = ex.CollisionGroupManager.create('barrier')
-        let enemyGroup = ex.CollisionGroupManager.create('enemy')
-
-        let playersCanCollideWith = ex.CollisionGroup.collidesWith([
-            playerGroup, // collide with other players
-            barrierGroup, // collide with the floor
-        ])*/
 
         let background = new roomBack(this.roomBackground);
         this.add(background);
 
-        let Sjaak = new mainCharacter()
+        let Sjaak = new mainCharacter(500, 500)
         this.add(Sjaak)
 
-        let Ghoul = new ghoul(Sjaak)
+        let Ghoul = new ghoul(Sjaak, 300, 300)
         this.add(Ghoul)
 
         let Spirit = new spirit(Sjaak, 400, 200)
@@ -42,7 +35,13 @@ export class room extends Scene {
         this.add(Demon)
         this.spawnBarriers()
 
-        
-
+        const barriertop = new Barrier(960,-10,1530,20)
+        this.add(barriertop)
+        const barrierleft = new Barrier(-10,540,20,860)
+        this.add(barrierleft)
+        const barrierdown = new Barrier(960,870,1530,20)
+        this.add(barrierdown)
+        const barrierright = new Barrier(1540,540,20,860)
+        this.add(barrierright)
     }
 }
