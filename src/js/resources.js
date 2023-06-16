@@ -19,6 +19,7 @@ import pool from "../images/rooms/pool.png"
 //menu
 import titleback from "../images/menu/titleback.png"
 import settingsBack from '../images/menu/settingsMenu.png'
+import deathBack from '../images/menu/deathscreen.png'
 import play from "../images/menu/play.png"
 import Continue from "../images/menu/Continue.png"
 import quit from "../images/menu/quit.png"
@@ -56,6 +57,7 @@ const Resources = {
     //menu
     Titleback: new ImageSource(titleback),
     Settingsback: new ImageSource(settingsBack),
+    DeathBack: new ImageSource(deathBack),
     Play: new ImageSource(play),
     Continue: new ImageSource(Continue),
     Quit: new ImageSource(quit),
@@ -93,6 +95,7 @@ const ResourceLoader = new Loader([
     //menu
     Resources.Titleback,
     Resources.Settingsback,
+    Resources.DeathBack,
     Resources.Play,
     Resources.Continue,
     Resources.Quit,

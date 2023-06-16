@@ -4,4 +4,6 @@ import { Resources, ResourceLoader } from '../resources.js';
 
 export class ghost extends Actor {
 
+
+    
 }
