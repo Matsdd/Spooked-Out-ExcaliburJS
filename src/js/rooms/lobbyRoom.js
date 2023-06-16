@@ -6,6 +6,7 @@ import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
+import { Licht } from '../props/licht.js'
 
 import { room } from './room.js'
 
@@ -27,7 +28,7 @@ export class lobbyRoom extends room {
         
         const teleporter = new Tp(1290,80,90,20, this.game)
         this.add(teleporter)
-
-
+        const licht = new Licht()
+        this.add(licht)
     }
 }
