@@ -19,10 +19,6 @@ export class poolRoom extends room {
 
     }
     spawnBarriers() {
-        const barriertopleft = new Barrier(205,215,410,430)
-        this.add(barriertopleft)
-        
-        const teleporter = new Tp(1290,80,90,20, this.game)
-        this.add(teleporter)
+
     }
 }

@@ -18,14 +18,6 @@ export class room extends Scene {
     }
     
     onInitialize(engine) {
-        /*let playerGroup = ex.CollisionGroupManager.create('player')
-        let barrierGroup = ex.CollisionGroupManager.create('barrier')
-        let enemyGroup = ex.CollisionGroupManager.create('enemy')
-
-        let playersCanCollideWith = ex.CollisionGroup.collidesWith([
-            playerGroup, // collide with other players
-            barrierGroup, // collide with the floor
-        ])*/
 
         let background = new roomBack(this.roomBackground);
         this.add(background);
