@@ -13,15 +13,15 @@ export class demon extends ghost {
     this.target = target;
     this.speed = 60;
     this.minDistance = 1;
-    this.maxDistance = 500;
+    this.maxDistance = 1000;
     this.rotation = 0;
-    this.hp = 50
+    this.hp = 100
   }
 
   onInitialize() {
     this.graphics.use(Resources.demon.toSprite());
     this.pos = new Vector(200, 200);
-    this.scale = new Vector(0.3, 0.3);
+    this.scale = new Vector(1, 1);
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof bullet) {
