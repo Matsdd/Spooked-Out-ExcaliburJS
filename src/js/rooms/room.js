@@ -1,7 +1,9 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
+import * as ex from 'excalibur'
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
+import { demon } from '../enemies/demonBoss.js'
 import { Resources } from '../resources.js'
 import { roomBack } from './roomBack.js'
 
@@ -12,6 +14,15 @@ export class room extends Scene {
     }
     
     onInitialize(engine) {
+        /*let playerGroup = ex.CollisionGroupManager.create('player')
+        let barrierGroup = ex.CollisionGroupManager.create('barrier')
+        let enemyGroup = ex.CollisionGroupManager.create('enemy')
+
+        let playersCanCollideWith = ex.CollisionGroup.collidesWith([
+            playerGroup, // collide with other players
+            barrierGroup, // collide with the floor
+        ])*/
+
         let background = new roomBack(this.roomBackground);
         this.add(background);
 
@@ -23,6 +34,12 @@ export class room extends Scene {
 
         let Spirit = new spirit(Sjaak)
         this.add(Spirit)
+
+        let Demon = new demon(Sjaak)
+        this.add(Demon)
         this.spawnBarriers()
+
+        
+
     }
 }

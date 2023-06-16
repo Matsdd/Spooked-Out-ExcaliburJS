@@ -9,6 +9,7 @@ import { Barrier } from './ui/barrier.js'
 import * as ex from 'excalibur'
  
 export class mainCharacter extends Actor {
+  barrierTarget
   constructor() {
     super({
       width: Resources.mainCharacter.width/1.6,
@@ -39,20 +40,19 @@ export class mainCharacter extends Actor {
           }
       }
   })
-  this.on('collisionstart', (event) => {
-    if (event.other instanceof Barrier) {
-      this.kill()
-    }
-  })
 
-  Engine.input.pointers.primary.on('down', (evt) => {
-     const mouseX = evt.worldPos.x;
-     const mouseY = evt.worldPos.y;
+  const currentScene = Engine.currentScene;
+  const mainCharacterInScene = currentScene.actors.find(actor => actor instanceof mainCharacter);
+  if (mainCharacterInScene === this) {
+    
+    Engine.input.pointers.primary.on('down', (evt) => {
+      const mouseX = evt.worldPos.x;
+      const mouseY = evt.worldPos.y;
 
-  
-     let Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
-      Engine.currentScene.add(Bullet); 
+      const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
+      currentScene.add(Bullet);
     });
+  }
 }
 
   onPreUpdate(Engine) {
