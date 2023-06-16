@@ -16,6 +16,7 @@ export class mainCharacter extends Actor {
   ableRight
   ableLeft
   game
+  
   constructor(game) {
     super({
       width: Resources.mainCharacter.width/1.6,
