@@ -17,7 +17,7 @@ export class demon extends ghost {
     this.minDistance = 1;
     this.maxDistance = 1000;
     this.rotation = 0;
-    this.hp = 10
+    this.hp = 15
     this.pos = new Vector(posX, posY);
   }
 
