@@ -7,11 +7,13 @@ import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
+import { Donker } from '../props/donker.js'
 
 import { room } from './room.js'
 
 export class lobbyRoom extends room {
     roomBackground = Resources.Lobby
+    zwart
     spawnBarriers() {
         const barriertopleft = new Barrier(205,215,410,430)
         this.add(barriertopleft)
@@ -28,7 +30,17 @@ export class lobbyRoom extends room {
         
         const teleporter = new Tp(1290,80,90,20, this.game)
         this.add(teleporter)
-        const licht = new Licht()
+        const licht = new Licht(this)
         this.add(licht)
+    }
+
+    volgLicht(zwart) {
+        if (zwart == 'make') {
+            this.zwart = new Donker()
+            this.add(this.zwart)
+        }
+        if (zwart == 'kill') {
+            this.zwart.kill()
+        }
     }
 }
