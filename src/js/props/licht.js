@@ -2,17 +2,17 @@ import { Actor, Vector } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 import { bullet } from '../bullet.js'
-import { Donker } from './donker.js'
 
 export class Licht extends Actor {
     graphicsUsing = Resources.LichtAan
     donker = false
-    zwart = 'T'
-    constructor() {
+    game
+    constructor(game) {
         super({width:Resources.LichtUit.width*0.5, height:Resources.LichtUit.height*0.8})
         this.graphics.use(Resources.LichtUit.toSprite())
         this.pos = new Vector(1000,50)
         this.scale = new Vector(0.25,0.25)
+        this.game = game
     }
 
     onInitialize() {
@@ -30,14 +30,13 @@ export class Licht extends Actor {
     }
     onPreUpdate(Engine) {
         if (this.graphicsUsing == Resources.LichtUit && !this.donker) {
-            this.zwart = new Donker()
-            Engine.currentScene.add(this.zwart)
             this.zwartexists = true
             this.donker = true
+            this.game.volgLicht('make')
         }
         if (this.graphicsUsing == Resources.LichtAan){
             if (this.donker) {
-                this.zwart.kill()
+                this.game.volgLicht('kill')
             }
             this.donker = false
         }
