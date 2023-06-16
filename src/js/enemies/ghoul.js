@@ -21,6 +21,13 @@ export class ghoul extends ghost {
     this.scale = new Vector(0.3, 0.3);
     this.pos = new Vector(posX, posY);
     this.prox = false
+    this.path = [
+      new Vector(100, 100),
+      new Vector(200, 200),
+      new Vector(300, 100),
+      new Vector(400, 200),
+    ]
+    this.currentWaypoint = 0;
   }
 
   onInitialize() {
@@ -64,7 +71,7 @@ export class ghoul extends ghost {
     }, randomInterval);
   }
 
-  moveTowardsTarget() {
+  moveTowardsTarget(target) {
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
 
@@ -75,18 +82,37 @@ export class ghoul extends ghost {
 
       // Calculate rotation based on movement direction
       this.rotation = Math.atan2(this.vel.y, this.vel.x);
-    } else {
-      this.vel = Vector.Zero;
-      this.prox = false;
+    }else {
+      // Follow the predefined path
+      const targetWaypoint = this.path[this.currentWaypoint];
+      const direction = targetWaypoint.sub(this.pos);
+      const distance = direction.distance();
+  
+      if (distance > this.minDistance) {
+        const desiredVel = direction.normalize().scale(this.speed);
+        this.vel = desiredVel.clampMagnitude(this.speed);
+  
+        // Calculate rotation based on movement direction
+        this.rotation = Math.atan2(this.vel.y, this.vel.x);
+      } else {
+        // Reached the current waypoint, move to the next one
+        this.currentWaypoint = (this.currentWaypoint + 1) % this.path.length;
+        this.vel = Vector.Zero;
+      }
     }
   }
 
+
   update(engine, delta) {
-    if (this.prox){
-      this.moveTowardsTarget();
-    }else{
-      
+    if (this.prox) {
+      this.moveTowardsTarget(this.target.pos);
+    } else {
+      const targetWaypoint = this.path[this.currentWaypoint];
+      this.moveTowardsTarget(targetWaypoint);
     }
+  
+    // Call the base update method to apply the calculated velocity and rotation
+    super.update(engine, delta);
   }
 
   onPostKill() {
