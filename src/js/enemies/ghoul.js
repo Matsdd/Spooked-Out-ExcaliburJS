@@ -5,7 +5,7 @@ import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 
 export class ghoul extends ghost {
-  constructor(target, posX, posY) {
+  constructor(target) {
     super({
       width: Resources.ghoul.width / 1.6,
       height: Resources.ghoul.height / 1.6,
@@ -76,43 +76,24 @@ export class ghoul extends ghost {
     const distance = direction.distance();
 
     if (distance > this.minDistance && distance < this.maxDistance) {
-      this.prox = true;
       const desiredVel = direction.normalize().scale(this.speed);
       this.vel = desiredVel.clampMagnitude(this.speed);
 
       // Calculate rotation based on movement direction
       this.rotation = Math.atan2(this.vel.y, this.vel.x);
-    }else {
-      // Follow the predefined path
-      const targetWaypoint = this.path[this.currentWaypoint];
-      const direction = targetWaypoint.sub(this.pos);
-      const distance = direction.distance();
-  
-      if (distance > this.minDistance) {
-        const desiredVel = direction.normalize().scale(this.speed);
-        this.vel = desiredVel.clampMagnitude(this.speed);
-  
-        // Calculate rotation based on movement direction
-        this.rotation = Math.atan2(this.vel.y, this.vel.x);
-      } else {
-        // Reached the current waypoint, move to the next one
-        this.currentWaypoint = (this.currentWaypoint + 1) % this.path.length;
-        this.vel = Vector.Zero;
-      }
+    } else {
+      this.vel = Vector.Zero;
+      this.prox = false;
     }
   }
 
 
   update(engine, delta) {
-    if (this.prox) {
-      this.moveTowardsTarget(this.target.pos);
-    } else {
-      const targetWaypoint = this.path[this.currentWaypoint];
-      this.moveTowardsTarget(targetWaypoint);
+    if (this.prox){
+      this.moveTowardsTarget();
+    }else{
+      
     }
-  
-    // Call the base update method to apply the calculated velocity and rotation
-    super.update(engine, delta);
   }
 
   onPostKill() {

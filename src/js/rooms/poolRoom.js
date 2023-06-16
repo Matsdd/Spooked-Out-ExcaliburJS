@@ -17,8 +17,11 @@ export class poolRoom extends room {
         let background = new roomBack(Resources.Pool);
         this.add(background);
 
-        let Sjaak = new mainCharacter(200, 200)
+        let Sjaak = new mainCharacter()
         this.add(Sjaak)
+
+    }
+    spawnBarriers() {
 
     }
 }

@@ -27,5 +27,7 @@ export class lobbyRoom extends room {
         
         const teleporter = new Tp(1290,80,90,20, this.game)
         this.add(teleporter)
+
+
     }
 }

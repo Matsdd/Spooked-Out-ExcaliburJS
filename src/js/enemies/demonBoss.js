@@ -11,6 +11,8 @@ export class demon extends ghost {
       height: Resources.demon.height / 1.6,
     });
     this.target = target;
+    this.posX = posX;
+    this.posY = posY;
     this.speed = 60;
     this.minDistance = 1;
     this.maxDistance = 1000;
@@ -19,18 +21,54 @@ export class demon extends ghost {
     this.pos = new Vector(posX, posY);
   }
 
+  playSoundAtRandomInterval() {
+    const minInterval = 8000; // Minimum interval in milliseconds
+    const maxInterval = 17000; // Maximum interval in milliseconds
+
+    const randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
+
+    // Play the sound
+    const sound = new Audio(Resources.bossRoar.path);
+    sound.volume = 0.5;
+
+    // Set pitch
+    const minPlaybackRate = 0.6; // Minimum playback rate
+    const maxPlaybackRate = 1.4; // Maximum playback rate
+    const randomPlaybackRate = Math.random() * (maxPlaybackRate - minPlaybackRate) + minPlaybackRate;
+    sound.playbackRate = randomPlaybackRate;
+    sound.play();
+
+    // Schedule the next sound playback
+    this.soundInterval = setTimeout(() => {
+      this.playSoundAtRandomInterval();
+    }, randomInterval);
+  }
+
+  onPostKill() {
+    // Clear the sound interval
+    clearTimeout(this.soundInterval);
+  }
+
   onInitialize() {
     this.graphics.use(Resources.demon.toSprite());
+    this.pos = new Vector(this.posX, this.posY);
     this.scale = new Vector(1, 1);
 
     this.on('collisionstart', (event) => {
+      const hitSound = new Audio(Resources.hitSound.path);
+      const deathSound = new Audio(Resources.playerHit1.path)
+      hitSound.volume = 0.3;
       if (event.other instanceof bullet) {
         this.hp -= 1;
+        hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          deathSound.play();
         }
       }
     });
+
+    this.playSoundAtRandomInterval();
   }
 
   moveTowardsTarget() {
