@@ -31,7 +31,7 @@ game
         nextRoom(engine, game) {
     this.randomNumber
 
-            this.randomNumber = this.getRandomInt(4)
+            this.randomNumber = this.getRandomInt(2)
 
     switch (this.randomNumber) {
       case 0:
@@ -40,16 +40,6 @@ game
         break;
       case 1:
         this.game.goToScene('bossRoom')
-
-        break;
-      case 2:
-        this.game.goToScene('wineCellar')
-
-        break;
-      case 3:
-        this.game.goToScene('lobbyRoom')
-
-        break;  
         }
     }
 }

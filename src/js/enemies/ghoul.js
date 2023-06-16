@@ -15,7 +15,7 @@ export class ghoul extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 3;
+    this.hp = 10;
     this.soundInterval = null;
     this.graphics.use(Resources.ghoul.toSprite());
     this.scale = new Vector(0.3, 0.3);

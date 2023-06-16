@@ -14,7 +14,7 @@ export class poltergeist extends ghost {
     this.speed = 0;
     this.minDistance = 1;
     this.rotation = 0;
-    this.hp = 3
+    this.hp = 15
   }
 
   onInitialize() {
