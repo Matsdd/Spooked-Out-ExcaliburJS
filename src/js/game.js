@@ -4,6 +4,7 @@ import { Resources, ResourceLoader } from './resources.js'
 
 import { titleMenu } from './menu/titleMenu'
 import { settingsMenu } from './menu/settingsmenu'
+import { deathMenu } from './menu/deathMenu'
 
 import { lobbyRoom } from './rooms/lobbyRoom'
 import { poolRoom } from './rooms/poolRoom.js'
@@ -19,8 +20,9 @@ export class Game extends Engine {
     }
 
     startGame() {  
-        this.titlemenu = new titleMenu()
-        this.settingsmenu = new settingsMenu()
+        this.titlemenu = new titleMenu(this)
+        this.settingsmenu = new settingsMenu(this)
+        this.deathmenu = new deathMenu(this)
 
         this.lobbyroom = new lobbyRoom(this)
         this.poolroom = new poolRoom(this)
@@ -29,6 +31,7 @@ export class Game extends Engine {
 
         this.addScene('titleMenu', this.titlemenu)  
         this.addScene('settingsMenu', this.settingsmenu)
+        this.addScene('deathMenu', this.deathmenu)
 
         this.addScene('lobbyRoom', this.lobbyroom)  
         this.addScene('poolRoom', this.poolroom)
