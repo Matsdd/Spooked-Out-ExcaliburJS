@@ -13,6 +13,7 @@ export class spirit extends ghost {
     this.target = target;
     this.speed = 140;
     this.minDistance = 1;
+    this.maxDistance = 500;
     this.rotation = 0;
     this.hp = 1
   }
@@ -36,7 +37,7 @@ export class spirit extends ghost {
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
 
-    if (distance > this.minDistance) {
+    if (distance > this.minDistance && distance < this.maxDistance) {
       const desiredVel = direction.normalize().scale(this.speed);
       this.vel = desiredVel.clampMagnitude(this.speed);
 
