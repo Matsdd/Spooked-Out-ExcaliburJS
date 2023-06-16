@@ -22,16 +22,16 @@ export class Game extends Engine {
         this.titlemenu = new titleMenu()
         this.settingsmenu = new settingsMenu()
 
-        this.lobbyroom = new lobbyRoom()
-        this.poolroom = new poolRoom()
-        this.winecellar = new wineCellar()
-        this.bossroom = new bossRoom()
+        this.lobbyroom = new lobbyRoom(this)
+        this.poolroom = new poolRoom(this)
+        this.winecellar = new wineCellar(this)
+        this.bossroom = new bossRoom(this)
 
         this.addScene('titleMenu', this.titlemenu)  
         this.addScene('settingsMenu', this.settingsmenu)
 
         this.addScene('lobbyRoom', this.lobbyroom)  
-        this.addScene('poolRoon', this.poolroom)
+        this.addScene('poolRoom', this.poolroom)
         this.addScene('wineCellar', this.winecellar)
         this.addScene('bossRoom', this.bossroom)
 
