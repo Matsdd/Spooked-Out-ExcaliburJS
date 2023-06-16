@@ -15,7 +15,9 @@ export class mainCharacter extends Actor {
   ableDown
   ableRight
   ableLeft
-  constructor(posX, posY) {
+  game
+  
+  constructor(game) {
     super({
       width: Resources.mainCharacter.width/1.6,
       height: Resources.mainCharacter.height/1.6,
@@ -26,22 +28,24 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false; 
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 10
-    this.pos = new Vector(posX, posY);
+    this.hp = 2
+    this.game = game
   }
 
   onInitialize(Engine) {
     Engine.add('SettingsMenu', new settingsMenu())
 
     this.graphics.use(Resources.mainCharacter.toSprite());
+    this.pos = new Vector(800, 800);
     this.scale = new Vector(0.2, 0.2);
     this.vel.y = 0;
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof ghost) {
           this.hp -= 1
+          console.log(this.hp)
           if (this.hp <= 0) {
-            this.kill();
+            this.game.goToScene('deathMenu')
           }
       }
   })
@@ -90,6 +94,10 @@ export class mainCharacter extends Actor {
   })
   Engine.currentScene.add(areaCheckerLeft)
 }
+
+goToDeath(game) {
+      this.game.goToScene('deathMenu')
+  }
 
   onPreUpdate(Engine) {
     if (this.hp <= 0) {

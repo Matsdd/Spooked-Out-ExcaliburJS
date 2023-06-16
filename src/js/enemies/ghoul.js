@@ -5,7 +5,7 @@ import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 
 export class ghoul extends ghost {
-  constructor(target, posX, posY) {
+  constructor(target) {
     super({
       width: Resources.ghoul.width / 1.6,
       height: Resources.ghoul.height / 1.6,
@@ -19,8 +19,7 @@ export class ghoul extends ghost {
     this.soundInterval = null;
     this.graphics.use(Resources.ghoul.toSprite());
     this.scale = new Vector(0.3, 0.3);
-    this.pos = new Vector(posX, posY);
-    this.prox = false
+    this.pos = new Vector(200, 200);
   }
 
   onInitialize() {
@@ -69,7 +68,6 @@ export class ghoul extends ghost {
     const distance = direction.distance();
 
     if (distance > this.minDistance && distance < this.maxDistance) {
-      this.prox = true;
       const desiredVel = direction.normalize().scale(this.speed);
       this.vel = desiredVel.clampMagnitude(this.speed);
 
@@ -77,16 +75,11 @@ export class ghoul extends ghost {
       this.rotation = Math.atan2(this.vel.y, this.vel.x);
     } else {
       this.vel = Vector.Zero;
-      this.prox = false;
     }
   }
 
   update(engine, delta) {
-    if (this.prox){
-      this.moveTowardsTarget();
-    }else{
-      
-    }
+    this.moveTowardsTarget();
   }
 
   onPostKill() {
