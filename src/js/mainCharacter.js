@@ -41,7 +41,7 @@ export class mainCharacter extends Actor {
   })
   this.on('collisionstart', (event) => {
     if (event.other instanceof Barrier) {
-      this.kill()
+      console.log('kaas');
     }
   })
 
