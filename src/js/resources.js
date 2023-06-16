@@ -33,7 +33,9 @@ import barrier from '../images/props/barrier.png'
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
 import Ghost1 from '../sfx/Ghost 1.mp3'
+import Ghost2 from '../sfx/Ghost 2.mp3'
 import hitSound from '../sfx/hitsound.wav'
+import bossRoar from '../sfx/BossRoar.mp3'
 
 
 
@@ -71,6 +73,8 @@ const Resources = {
     // music
     gameMusic: new Sound(backgroundMusic),
     Ghost1: new Sound(Ghost1),
+    Ghost2: new Sound(Ghost2),
+    bossRoar: new Sound(bossRoar),
     hitSound: new Sound(hitSound)
 
 }
@@ -109,6 +113,8 @@ const ResourceLoader = new Loader([
     // music
     Resources.gameMusic,
     Resources.Ghost1,
+    Resources.Ghost2,
+    Resources.bossRoar,
     Resources.hitSound
 
 ])

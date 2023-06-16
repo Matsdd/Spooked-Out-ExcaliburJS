@@ -19,5 +19,9 @@ export class poolRoom extends room {
 
         let Sjaak = new mainCharacter()
         this.add(Sjaak)
+
+    }
+    spawnBarriers() {
+
     }
 }
