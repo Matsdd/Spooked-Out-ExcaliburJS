@@ -5,7 +5,7 @@ import { ghost } from '../enemies/ghost.js'
 import { bullet } from '../bullet.js'
 
 export class poltergeist extends ghost {
-  constructor(target) {
+  constructor(target, posX, posY) {
     super({
       width: Resources.poltergeist.width / 1.6,
       height: Resources.poltergeist.height / 1.6,
@@ -15,11 +15,11 @@ export class poltergeist extends ghost {
     this.minDistance = 1;
     this.rotation = 0;
     this.hp = 3
+    this.pos = new Vector(posX, posY);
   }
 
   onInitialize() {
     this.graphics.use(Resources.poltergeist.toSprite());
-    this.pos = new Vector(200, 200);
     this.scale = new Vector(0.3, 0.3);
 
     this.on('collisionstart', (event) => {

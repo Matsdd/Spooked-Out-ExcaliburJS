@@ -29,10 +29,10 @@ export class room extends Scene {
         let background = new roomBack(this.roomBackground);
         this.add(background);
 
-        let Sjaak = new mainCharacter()
+        let Sjaak = new mainCharacter(500, 500)
         this.add(Sjaak)
 
-        let Ghoul = new ghoul(Sjaak)
+        let Ghoul = new ghoul(Sjaak, 300, 300)
         this.add(Ghoul)
 
         let Spirit = new spirit(Sjaak, 400, 200)
