@@ -41,14 +41,18 @@ export class mainCharacter extends Actor {
       }
   })
 
-  Engine.input.pointers.primary.on('down', (evt) => {
-     const mouseX = evt.worldPos.x;
-     const mouseY = evt.worldPos.y;
+  const currentScene = Engine.currentScene;
+  const mainCharacterInScene = currentScene.actors.find(actor => actor instanceof mainCharacter);
+  if (mainCharacterInScene === this) {
+    
+    Engine.input.pointers.primary.on('down', (evt) => {
+      const mouseX = evt.worldPos.x;
+      const mouseY = evt.worldPos.y;
 
-  
-     let Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
-      Engine.currentScene.add(Bullet); 
+      const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
+      currentScene.add(Bullet);
     });
+  }
 }
 
   onPreUpdate(Engine) {
