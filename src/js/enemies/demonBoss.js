@@ -11,8 +11,6 @@ export class demon extends ghost {
       height: Resources.demon.height / 1.6,
     });
     this.target = target;
-    this.posX = posX;
-    this.posY = posY;
     this.speed = 60;
     this.minDistance = 1;
     this.maxDistance = 1000;

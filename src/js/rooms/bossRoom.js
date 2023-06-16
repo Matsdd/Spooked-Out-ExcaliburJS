@@ -2,6 +2,7 @@ import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
+import { demon } from '../enemies/demonBoss.js'
 import { Resources } from '../resources.js'
 
 import { roomBack } from './roomBack.js'
@@ -17,7 +18,10 @@ export class bossRoom extends room {
         let background = new roomBack(Resources.Boss);
         this.add(background);
 
-        let Sjaak = new mainCharacter()
+        let Sjaak = new mainCharacter(500, 700)
         this.add(Sjaak)
+
+        let Demon = new demon(500, 200)
+        this.add(Demon)
     }
 }
