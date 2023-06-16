@@ -9,7 +9,7 @@ export class Barrier extends Actor {
         this.graphics.use(Resources.Barrier.toSprite())
         this.pos = new Vector(x,y)
         this.scale = new Vector(width/512, height/512)
-        this.graphics.opacity = 0
+        this.graphics.opacity = 1
     }
 
     onInitialize() {

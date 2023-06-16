@@ -3,21 +3,22 @@ import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
-
-import { roomBack } from './roomBack.js'
+import { Barrier } from '../ui/barrier.js'
+import { Tp } from '../ui/tp.js'
 import { room } from './room.js'
 
 export class poolRoom extends room {
-
+    roomBackground = Resources.Pool
     constructor() {
         super({})
     }
     
     onInitialize(engine) {
-        let background = new roomBack(Resources.Pool);
-        this.add(background);
-
-        let Sjaak = new mainCharacter()
+        let Sjaak = new mainCharacter(200, 200)
         this.add(Sjaak)
+
+    }
+    spawnBarriers() {
+
     }
 }
