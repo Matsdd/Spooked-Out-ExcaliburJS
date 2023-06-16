@@ -1,8 +1,8 @@
 import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input } from 'excalibur';
 import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
-import { ghost } from '../enemies/ghost.js'
-import { bullet } from '../bullet.js'
+import { ghost } from '../enemies/ghost.js';
+import { bullet } from '../bullet.js';
 
 export class ghoul extends ghost {
   constructor(target) {
@@ -15,7 +15,8 @@ export class ghoul extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 3
+    this.hp = 3;
+    this.soundInterval = null;
   }
 
   onInitialize() {
@@ -31,6 +32,32 @@ export class ghoul extends ghost {
         }
       }
     });
+
+    // Start playing sounds at random intervals
+    this.playSoundAtRandomInterval();
+  }
+
+  playSoundAtRandomInterval() {
+    const minInterval = 8000; // Minimum interval in milliseconds
+    const maxInterval = 17000; // Maximum interval in milliseconds
+
+    const randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
+
+    // Play the sound
+    const sound = new Audio(Resources.Ghost1.path);
+    sound.volume = 0.2;
+
+    // Set pitch
+    const minPlaybackRate = 1; // Minimum playback rate
+    const maxPlaybackRate = 4; // Maximum playback rate
+    const randomPlaybackRate = Math.random() * (maxPlaybackRate - minPlaybackRate) + minPlaybackRate;
+    sound.playbackRate = randomPlaybackRate;
+    sound.play();
+
+    // Schedule the next sound playback
+    this.soundInterval = setTimeout(() => {
+      this.playSoundAtRandomInterval();
+    }, randomInterval);
   }
 
   moveTowardsTarget() {
@@ -50,5 +77,10 @@ export class ghoul extends ghost {
 
   update(engine, delta) {
     this.moveTowardsTarget();
+  }
+
+  onPostKill() {
+    // Clear the sound interval
+    clearTimeout(this.soundInterval);
   }
 }
