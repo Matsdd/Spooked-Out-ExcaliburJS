@@ -15,7 +15,7 @@ export class demon extends ghost {
     this.minDistance = 1;
     this.maxDistance = 1000;
     this.rotation = 0;
-    this.hp = 100
+    this.hp = 15
     this.pos = new Vector(posX, posY);
   }
 
@@ -53,12 +53,14 @@ export class demon extends ghost {
 
     this.on('collisionstart', (event) => {
       const hitSound = new Audio(Resources.hitSound.path);
+      const deathSound = new Audio(Resources.playerHit1.path)
       hitSound.volume = 0.3;
       if (event.other instanceof bullet) {
         this.hp -= 1;
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          deathSound.play();
         }
       }
     });
