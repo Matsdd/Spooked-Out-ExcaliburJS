@@ -3,6 +3,7 @@ import * as ex from 'excalibur'
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
+import { demon } from '../enemies/demonBoss.js'
 import { Resources } from '../resources.js'
 import { roomBack } from './roomBack.js'
 
@@ -34,8 +35,11 @@ export class room extends Scene {
         let Ghoul = new ghoul(Sjaak)
         this.add(Ghoul)
 
-        let Spirit = new spirit(Sjaak)
+        let Spirit = new spirit(Sjaak, 400, 200)
         this.add(Spirit)
+
+        let Demon = new demon(Sjaak, 1200, 200)
+        this.add(Demon)
         this.spawnBarriers()
 
         

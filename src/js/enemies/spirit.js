@@ -5,12 +5,14 @@ import { ghost } from '../enemies/ghost.js'
 import { bullet } from '../bullet.js'
 
 export class spirit extends ghost {
-  constructor(target) {
+  constructor(target,posX , posY) {
     super({
       width: Resources.spirit.width / 4,
       height: Resources.spirit.height / 4,
     });
     this.target = target;
+    this.posX = posX;
+    this.posY = posY;
     this.speed = 140;
     this.minDistance = 1;
     this.maxDistance = 500;
@@ -20,7 +22,7 @@ export class spirit extends ghost {
 
   onInitialize() {
     this.graphics.use(Resources.spirit.toSprite());
-    this.pos = new Vector(200, 200);
+    this.pos = new Vector(this.posX, this.posY);
     this.scale = new Vector(0.3, 0.3);
 
     this.on('collisionstart', (event) => {
