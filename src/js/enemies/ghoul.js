@@ -5,7 +5,7 @@ import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 
 export class ghoul extends ghost {
-  constructor(target) {
+  constructor(target, posX, posY) {
     super({
       width: Resources.ghoul.width / 1.6,
       height: Resources.ghoul.height / 1.6,
