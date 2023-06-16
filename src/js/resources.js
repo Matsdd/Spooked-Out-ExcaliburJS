@@ -9,6 +9,8 @@ import poltergeistImage from '../images/ghosts/poltergeist.png'
 import Frederik from "../images/ghosts/Frederik.png"
 import guardianImage from "../images/ghosts/guardian.png"
 import wraithImage from "../images/ghosts/wraith.png"
+import arachImage from "../images/ghosts/arach.png"
+import phantomImage from "../images/ghosts/phantom.png"
 
 //rooms
 import lobby from "../images/rooms/lobby.png"
@@ -29,6 +31,9 @@ import titlescreen from "../images/menu/titlescreen.png"
 //props
 import bulletImage from '../images/props/bullet.png'
 import barrier from '../images/props/barrier.png'
+import lichtAan from "../images/ghosts/lichtAan.png"
+import lichtUit from "../images/ghosts/lichtUit.png"
+import donker from "../images/ghosts/donker.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -50,6 +55,8 @@ const Resources = {
     Frederik: new ImageSource(Frederik),
     Guardian: new ImageSource(guardianImage),
     Wraith: new ImageSource(wraithImage),
+    Arach: new ImageSource(arachImage),
+    Phantom: new ImageSource(phantomImage),
 
     //rooms
     Lobby: new ImageSource(lobby),
@@ -70,6 +77,9 @@ const Resources = {
     //props
     bullet: new ImageSource(bulletImage),
     Barrier: new ImageSource(barrier),
+    LichtAan: new ImageSource(lichtAan),
+    LichtUit: new ImageSource(lichtUit),
+    Donker: new ImageSource(donker),
 
     // music
     gameMusic: new Sound(backgroundMusic),
@@ -91,6 +101,8 @@ const ResourceLoader = new Loader([
     Resources.Frederik,
     Resources.Guardian,
     Resources.Wraith,
+    Resources.Arach,
+    Resources.Phantom,
 
     //rooms
     Resources.Lobby,
@@ -111,6 +123,9 @@ const ResourceLoader = new Loader([
     //props
     Resources.bullet,
     Resources.Barrier,
+    Resources.LichtUit,
+    Resources.LichtAan,
+    Resources.Donker,
 
     // music
     Resources.gameMusic,
