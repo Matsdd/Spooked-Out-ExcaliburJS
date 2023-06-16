@@ -35,11 +35,11 @@ export class room extends Scene {
         this.add(Demon)
         this.spawnBarriers()
 
-        const barriertop = new Barrier(960,-10,1530,20)
+        const barriertop = new Barrier(765,-10,1530,20)
         this.add(barriertop)
         const barrierleft = new Barrier(-10,540,20,860)
         this.add(barrierleft)
-        const barrierdown = new Barrier(960,870,1530,20)
+        const barrierdown = new Barrier(765,870,1530,20)
         this.add(barrierdown)
         const barrierright = new Barrier(1540,540,20,860)
         this.add(barrierright)
