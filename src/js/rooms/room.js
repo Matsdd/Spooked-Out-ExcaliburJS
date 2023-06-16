@@ -31,8 +31,6 @@ export class room extends Scene {
         let Spirit = new spirit(Sjaak, 400, 200)
         this.add(Spirit)
 
-        let Demon = new demon(Sjaak, 1200, 200)
-        this.add(Demon)
         this.spawnBarriers()
 
         const barriertop = new Barrier(765,-10,1530,20)

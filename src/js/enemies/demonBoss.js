@@ -15,7 +15,7 @@ export class demon extends ghost {
     this.minDistance = 1;
     this.maxDistance = 1000;
     this.rotation = 0;
-    this.hp = 15
+    this.hp = 100
     this.pos = new Vector(posX, posY);
   }
 
@@ -49,7 +49,6 @@ export class demon extends ghost {
 
   onInitialize() {
     this.graphics.use(Resources.demon.toSprite());
-    this.pos = new Vector(this.posX, this.posY);
     this.scale = new Vector(1, 1);
 
     this.on('collisionstart', (event) => {

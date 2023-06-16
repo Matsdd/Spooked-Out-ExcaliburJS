@@ -18,10 +18,10 @@ export class bossRoom extends room {
         let background = new roomBack(Resources.Boss);
         this.add(background);
 
-        let Sjaak = new mainCharacter(500, 700)
+        let Sjaak = new mainCharacter(800, 650)
         this.add(Sjaak)
 
-        let Demon = new demon(Sjaak, 500, 200)
+        let Demon = new demon(Sjaak, 800, 200)
         this.add(Demon)
     }
 }
