@@ -25,8 +25,11 @@ export class ghoul extends ghost {
     this.scale = new Vector(0.3, 0.3);
 
     this.on('collisionstart', (event) => {
+      const hitSound = new Audio(Resources.hitSound.path);
+      hitSound.volume = 0.3;
       if (event.other instanceof bullet) {
         this.hp -= 1;
+        hitSound.play();
         if (this.hp <= 0) {
           this.kill();
         }
