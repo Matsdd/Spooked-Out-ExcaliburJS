@@ -14,7 +14,10 @@ export class bossRoom extends room {
     }
     
     onInitialize(engine) {
-        let background = new roomBack(Resources.Lobby);
+        let background = new roomBack(Resources.Boss);
         this.add(background);
+
+        let Sjaak = new mainCharacter()
+        this.add(Sjaak)
     }
 }

@@ -8,8 +8,11 @@ import { roomBack } from './roomBack.js'
 
 export class room extends Scene {
     roomBackground
-    constructor() {
+    game
+    constructor(game) {
         super({})
+        this.game = game
+
     }
     
     onInitialize(engine) {

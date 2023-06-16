@@ -14,7 +14,10 @@ export class poolRoom extends room {
     }
     
     onInitialize(engine) {
-        let background = new roomBack(Resources.Lobby);
+        let background = new roomBack(Resources.Pool);
         this.add(background);
+
+        let Sjaak = new mainCharacter()
+        this.add(Sjaak)
     }
 }
