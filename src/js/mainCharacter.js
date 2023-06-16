@@ -45,7 +45,7 @@ export class mainCharacter extends Actor {
           this.hp -= 1
           console.log(this.hp)
           if (this.hp <= 0) {
-            this.game.goToScene('deathMenu')
+            Engine.goToScene('deathMenu')
           }
       }
   })
