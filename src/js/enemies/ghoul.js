@@ -5,7 +5,7 @@ import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 
 export class ghoul extends ghost {
-  constructor(target) {
+  constructor(target, posX, posY) {
     super({
       width: Resources.ghoul.width / 1.6,
       height: Resources.ghoul.height / 1.6,
@@ -19,7 +19,7 @@ export class ghoul extends ghost {
     this.soundInterval = null;
     this.graphics.use(Resources.ghoul.toSprite());
     this.scale = new Vector(0.3, 0.3);
-    this.pos = new Vector(200, 200);
+    this.pos = new Vector(posX, posY);
   }
 
   onInitialize() {
