@@ -20,6 +20,7 @@ export class ghoul extends ghost {
     this.graphics.use(Resources.ghoul.toSprite());
     this.scale = new Vector(0.3, 0.3);
     this.pos = new Vector(posX, posY);
+    this.prox = false
   }
 
   onInitialize() {
@@ -68,6 +69,7 @@ export class ghoul extends ghost {
     const distance = direction.distance();
 
     if (distance > this.minDistance && distance < this.maxDistance) {
+      this.prox = true;
       const desiredVel = direction.normalize().scale(this.speed);
       this.vel = desiredVel.clampMagnitude(this.speed);
 
@@ -75,11 +77,16 @@ export class ghoul extends ghost {
       this.rotation = Math.atan2(this.vel.y, this.vel.x);
     } else {
       this.vel = Vector.Zero;
+      this.prox = false;
     }
   }
 
   update(engine, delta) {
-    this.moveTowardsTarget();
+    if (this.prox){
+      this.moveTowardsTarget();
+    }else{
+      
+    }
   }
 
   onPostKill() {
