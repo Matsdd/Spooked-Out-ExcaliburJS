@@ -9,6 +9,7 @@ import { Barrier } from './ui/barrier.js'
 import * as ex from 'excalibur'
  
 export class mainCharacter extends Actor {
+  barrierTarget
   constructor() {
     super({
       width: Resources.mainCharacter.width/1.6,
@@ -38,11 +39,6 @@ export class mainCharacter extends Actor {
             this.kill();
           }
       }
-  })
-  this.on('collisionstart', (event) => {
-    if (event.other instanceof Barrier) {
-      console.log('kaas');
-    }
   })
 
   Engine.input.pointers.primary.on('down', (evt) => {
