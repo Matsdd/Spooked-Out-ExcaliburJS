@@ -21,7 +21,7 @@ export class bossRoom extends room {
         let Sjaak = new mainCharacter(500, 700)
         this.add(Sjaak)
 
-        let Demon = new demon(500, 200)
+        let Demon = new demon(Sjaak, 500, 200)
         this.add(Demon)
     }
 }
