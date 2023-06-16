@@ -17,12 +17,12 @@ export class ghoul extends ghost {
     this.rotation = 0;
     this.hp = 3;
     this.soundInterval = null;
+    this.graphics.use(Resources.ghoul.toSprite());
+    this.scale = new Vector(0.3, 0.3);
+    this.pos = new Vector(200, 200);
   }
 
   onInitialize() {
-    this.graphics.use(Resources.ghoul.toSprite());
-    this.pos = new Vector(200, 200);
-    this.scale = new Vector(0.3, 0.3);
 
     this.on('collisionstart', (event) => {
       const hitSound = new Audio(Resources.hitSound.path);
