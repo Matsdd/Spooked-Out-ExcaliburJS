@@ -31,7 +31,7 @@ game
         nextRoom(engine, game) {
     this.randomNumber
 
-            this.randomNumber = 1
+            this.randomNumber = this.getRandomInt(2)
 
     switch (this.randomNumber) {
       case 0:
