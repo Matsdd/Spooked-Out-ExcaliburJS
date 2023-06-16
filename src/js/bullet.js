@@ -19,7 +19,7 @@ export class bullet extends Actor {
     this.on('collisionstart', (event) => {
       if (event.other instanceof ghost) {
         this.kill();
-        console.log(this.hp);
+        console.log(event.other.hp);
       }
     });
     this.on('collisionstart', (event) => {

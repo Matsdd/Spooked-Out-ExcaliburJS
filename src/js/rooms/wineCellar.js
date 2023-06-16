@@ -17,7 +17,10 @@ export class wineCellar extends room {
         let background = new roomBack(Resources.Cellar);
         this.add(background);
 
-        let Sjaak = new mainCharacter()
+        let Sjaak = new mainCharacter(200, 200)
         this.add(Sjaak)
+
+        let Ghoul = new ghoul(Sjaak, 1300, 200)
+        this.add(Ghoul)
     }
 }
