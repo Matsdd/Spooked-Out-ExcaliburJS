@@ -17,7 +17,7 @@ export class mainCharacter extends Actor {
   ableLeft
   game
   
-  constructor(game) {
+  constructor(posX, posY, game) {
     super({
       width: Resources.mainCharacter.width/1.6,
       height: Resources.mainCharacter.height/1.6,
@@ -29,14 +29,15 @@ export class mainCharacter extends Actor {
     this.speed = 150;
     this.rotation = 0;
     this.hp = 2
+    this.pos = new Vector(posX, posY);
     this.game = game
+
   }
 
   onInitialize(Engine) {
     Engine.add('SettingsMenu', new settingsMenu())
 
     this.graphics.use(Resources.mainCharacter.toSprite());
-    this.pos = new Vector(800, 800);
     this.scale = new Vector(0.2, 0.2);
     this.vel.y = 0;
 

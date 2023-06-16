@@ -22,7 +22,7 @@ export class room extends Scene {
         let background = new roomBack(this.roomBackground);
         this.add(background);
 
-        let Sjaak = new mainCharacter(500, 500)
+        let Sjaak = new mainCharacter(500, 200)
         this.add(Sjaak)
 
         let Ghoul = new ghoul(Sjaak, 300, 300)
@@ -31,8 +31,6 @@ export class room extends Scene {
         let Spirit = new spirit(Sjaak, 400, 200)
         this.add(Spirit)
 
-        let Demon = new demon(Sjaak, 1200, 200)
-        this.add(Demon)
         this.spawnBarriers()
 
         const barriertop = new Barrier(765,-10,1530,20)
