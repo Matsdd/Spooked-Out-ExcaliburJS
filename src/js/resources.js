@@ -7,18 +7,23 @@ import spiritImage from '../images/ghosts/spirit.png'
 import demonImage from '../images/ghosts/demon.png'
 import poltergeistImage from '../images/ghosts/poltergeist.png'
 import Frederik from "../images/ghosts/Frederik.png"
+import guardianImage from "../images/ghosts/guardian.png"
+import wraithImage from "../images/ghosts/wraith.png"
 
 //rooms
 import lobby from "../images/rooms/lobby.png"
+import boss from "../images/rooms/boss.png"
+import cellar from "../images/rooms/cellar.png"
+import pool from "../images/rooms/pool.png"
 
 //menu
 import titleback from "../images/menu/titleback.png"
+import settingsBack from '../images/menu/settingsMenu.png'
 import play from "../images/menu/play.png"
 import Continue from "../images/menu/Continue.png"
 import quit from "../images/menu/quit.png"
 import settings from "../images/menu/Settings.png"
 import titlescreen from "../images/menu/titlescreen.png"
-import settingsBack from '../images/menu/settingsMenu.png'
 
 //props
 import bulletImage from '../images/props/bullet.png'
@@ -28,6 +33,8 @@ import barrier from '../images/props/barrier.png'
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
 import Ghost1 from '../sfx/Ghost 1.mp3'
 
+
+
 const Resources = {
     //characters
     mainCharacter: new ImageSource(mainCharacterImage),
@@ -36,18 +43,23 @@ const Resources = {
     demon: new ImageSource(demonImage),
     poltergeist: new ImageSource(poltergeistImage),
     Frederik: new ImageSource(Frederik),
+    Guardian: new ImageSource(guardianImage),
+    Wraith: new ImageSource(wraithImage),
 
     //rooms
     Lobby: new ImageSource(lobby),
+    Boss: new ImageSource(boss),
+    Cellar: new ImageSource(cellar),
+    Pool: new ImageSource(pool),
 
     //menu
     Titleback: new ImageSource(titleback),
+    Settingsback: new ImageSource(settingsBack),
     Play: new ImageSource(play),
     Continue: new ImageSource(Continue),
     Quit: new ImageSource(quit),
     Settings: new ImageSource(settings),
     Titlescreen: new ImageSource(titlescreen),
-    Settingsback: new ImageSource(settingsBack),
 
     //props
     bullet: new ImageSource(bulletImage),
@@ -67,18 +79,23 @@ const ResourceLoader = new Loader([
     Resources.demon,
     Resources.poltergeist,
     Resources.Frederik,
+    Resources.Guardian,
+    Resources.Wraith,
 
     //rooms
     Resources.Lobby,
+    Resources.Boss,
+    Resources.Cellar,
+    Resources.Pool,
 
     //menu
     Resources.Titleback,
+    Resources.Settingsback,
     Resources.Play,
     Resources.Continue,
     Resources.Quit,
     Resources.Settings,
     Resources.Titlescreen,
-    Resources.Settingsback,
 
     //props
     Resources.bullet,
