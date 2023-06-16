@@ -5,12 +5,14 @@ import { ghost } from '../enemies/ghost.js'
 import { bullet } from '../bullet.js'
 
 export class demon extends ghost {
-  constructor(target) {
+  constructor(target, posX, posY) {
     super({
       width: Resources.demon.width / 1.6,
       height: Resources.demon.height / 1.6,
     });
     this.target = target;
+    this.posX = posX;
+    this.posY = posY;
     this.speed = 60;
     this.minDistance = 1;
     this.maxDistance = 1000;
@@ -20,7 +22,7 @@ export class demon extends ghost {
 
   onInitialize() {
     this.graphics.use(Resources.demon.toSprite());
-    this.pos = new Vector(200, 200);
+    this.pos = new Vector(this.posX, this.posY);
     this.scale = new Vector(1, 1);
 
     this.on('collisionstart', (event) => {
