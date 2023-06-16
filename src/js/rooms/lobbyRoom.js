@@ -36,8 +36,20 @@ export class lobbyRoom extends room {
         const barriertop = new Barrier(765,48,1000,96)
         this.add(barriertop)
 
-        const barrierpoolleft1 = new Barrier(550,360,20,120)
+        const barrierpoolleft1 = new Barrier(550,350,20,180)
         this.add(barrierpoolleft1)
+        const barrierpoolleft2 = new Barrier(550,660,20,180)
+        this.add(barrierpoolleft2)
+        const barrierpoolright1 = new Barrier(1020,350,20,180)
+        this.add(barrierpoolright1)
+        const barrierpoolright2 = new Barrier(1020,660,20,180)
+        this.add(barrierpoolright2)
+
+        
+        const barrierpooltop1 = new Barrier(400,800,180,20)
+        this.add(barrierpooltop1)
+        const barrierpoolbottom2 = new Barrier(1020,660,20,180)
+        this.add(barrierpoolbottom2)
         
         const teleporter = new Tp(770,90,90,20, this.game)
         this.add(teleporter)
