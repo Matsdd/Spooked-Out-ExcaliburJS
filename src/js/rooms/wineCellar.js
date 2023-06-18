@@ -8,7 +8,7 @@ import { roomBack } from './roomBack.js'
 import { room } from './room.js'
 
 export class wineCellar extends room {
-
+    Sjaak
     constructor() {
         super({})
     }
@@ -17,10 +17,10 @@ export class wineCellar extends room {
         let background = new roomBack(Resources.Cellar);
         this.add(background);
 
-        let Sjaak = new mainCharacter(200, 200)
-        this.add(Sjaak)
+        this.Sjaak = new mainCharacter(200, 200)
+        this.add(this.Sjaak)
 
-        let Ghoul = new ghoul(Sjaak, 1300, 200)
+        let Ghoul = new ghoul(this.Sjaak, 1300, 200)
         this.add(Ghoul)
     }
 }

@@ -8,7 +8,7 @@ import { roomBack } from './roomBack.js'
 import { room } from './room.js'
 
 export class poolRoom extends room {
-
+    Sjaak
     constructor() {
         super({})
     }
@@ -17,8 +17,8 @@ export class poolRoom extends room {
         let background = new roomBack(Resources.Pool);
         this.add(background);
 
-        let Sjaak = new mainCharacter(800, 800)
-        this.add(Sjaak)
+        this.Sjaak = new mainCharacter(800, 800)
+        this.add(this.Sjaak)
 
     }
     spawnBarriers() {
