@@ -7,10 +7,12 @@ import { demon } from '../enemies/demonBoss.js'
 import { Resources } from '../resources.js'
 import { roomBack } from './roomBack.js'
 import { Barrier } from '../ui/barrier.js'
+import { Donker } from '../props/donker.js'
 
 export class room extends Scene {
     roomBackground
     game
+    Sjaak
     constructor(game) {
         super({})
         this.game = game
@@ -22,13 +24,13 @@ export class room extends Scene {
         let background = new roomBack(this.roomBackground);
         this.add(background);
 
-        let Sjaak = new mainCharacter(500, 200)
-        this.add(Sjaak)
+        this.Sjaak = new mainCharacter(500, 200)
+        this.add(this.Sjaak)
 
-        let Ghoul = new ghoul(Sjaak, 300, 300)
+        let Ghoul = new ghoul(this.Sjaak, 300, 300)
         this.add(Ghoul)
 
-        let Spirit = new spirit(Sjaak, 400, 200)
+        let Spirit = new spirit(this.Sjaak, 400, 200)
         this.add(Spirit)
 
         this.spawnBarriers()
@@ -41,5 +43,17 @@ export class room extends Scene {
         this.add(barrierdown)
         const barrierright = new Barrier(1540,540,20,860)
         this.add(barrierright)
+    }
+
+    
+
+    volgLicht(zwart) {
+        if (zwart == 'make') {
+            this.zwart = new Donker(this.Sjaak)
+            this.add(this.zwart)
+        }
+        if (zwart == 'kill') {
+            this.zwart.kill()
+        }
     }
 }

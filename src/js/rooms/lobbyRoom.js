@@ -7,7 +7,6 @@ import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
-import { Donker } from '../props/donker.js'
 
 import { room } from './room.js'
 
@@ -32,15 +31,5 @@ export class lobbyRoom extends room {
         this.add(teleporter)
         const licht = new Licht(this)
         this.add(licht)
-    }
-
-    volgLicht(zwart) {
-        if (zwart == 'make') {
-            this.zwart = new Donker()
-            this.add(this.zwart)
-        }
-        if (zwart == 'kill') {
-            this.zwart.kill()
-        }
     }
 }
