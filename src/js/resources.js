@@ -46,7 +46,7 @@ import bossRoar from '../sfx/BossRoar.mp3'
 import playerHit1 from '../sfx/playerHit.mp3'
 import playerHit2 from '../sfx/playerHit2.mp3'
 import deathScream from '../sfx/deathScream.mp3'
-import dungeonAmbience from '../sfx/dungeonsound.mp3'
+// import dungeonAmbience from '../sfx/dungeonsound.mp3'
 import bossMusic from '../sfx/8-bit loop boss music.mp3'
 import gunShot from '../sfx/gunshot.mp3'
 import gunLoad from '../sfx/gunload.mp3'
@@ -99,7 +99,7 @@ const Resources = {
     playerHit1: new Sound(playerHit1),
     playerHit2: new Sound(playerHit2),
     deathScream: new Sound(deathScream),
-    dungeonAmbience: new Sound(dungeonAmbience),
+    // dungeonAmbience: new Sound(dungeonAmbience),
     bossMusic: new Sound(bossMusic),
     gunShot: new Sound(gunShot),
     gunLoad: new Sound(gunLoad),
@@ -153,7 +153,7 @@ const ResourceLoader = new Loader([
     Resources.playerHit1,
     Resources.playerHit2,
     Resources.deathScream,
-    Resources.dungeonAmbience,
+    // Resources.dungeonAmbience,
     Resources.bossMusic,
     Resources.gunShot,
     Resources.gunLoad,
