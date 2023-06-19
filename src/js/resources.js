@@ -17,6 +17,7 @@ import lobby from "../images/rooms/lobby.png"
 import boss from "../images/rooms/boss.png"
 import cellar from "../images/rooms/cellar.png"
 import pool from "../images/rooms/pool.png"
+import storage from "../images/rooms/storage.png"
 
 //menu
 import titleback from "../images/menu/titleback.png"
@@ -45,6 +46,7 @@ import bossRoar from '../sfx/BossRoar.mp3'
 import playerHit1 from '../sfx/playerHit.mp3'
 import playerHit2 from '../sfx/playerHit2.mp3'
 import deathScream from '../sfx/deathScream.mp3'
+import dungeonAmbience from '../sfx/dungeonambience.mp3'
 
 
 
@@ -66,6 +68,7 @@ const Resources = {
     Boss: new ImageSource(boss),
     Cellar: new ImageSource(cellar),
     Pool: new ImageSource(pool),
+    Storage: new ImageSource(storage),
 
     //menu
     Titleback: new ImageSource(titleback),
@@ -93,6 +96,7 @@ const Resources = {
     playerHit1: new Sound(playerHit1),
     playerHit2: new Sound(playerHit2),
     deathScream: new Sound(deathScream),
+    dungeonAmbience: new Sound(dungeonAmbience),
     hitSound: new Sound(hitSound)
 
 }
@@ -115,6 +119,7 @@ const ResourceLoader = new Loader([
     Resources.Boss,
     Resources.Cellar,
     Resources.Pool,
+    Resources.Storage,
 
     //menu
     Resources.Titleback,
@@ -142,6 +147,7 @@ const ResourceLoader = new Loader([
     Resources.playerHit1,
     Resources.playerHit2,
     Resources.deathScream,
+    Resources.dungeonAmbience,
     Resources.hitSound
 
 ])

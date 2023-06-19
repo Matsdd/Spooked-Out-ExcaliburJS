@@ -4,7 +4,7 @@ import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { demon } from '../enemies/demonBoss.js'
-import { poltergeist} from '../enemies/poltergeist.js'
+import { poltergeist } from '../enemies/poltergeist.js'
 import { Resources } from '../resources.js'
 import { roomBack } from './roomBack.js'
 import { Barrier } from '../ui/barrier.js'
@@ -19,8 +19,9 @@ export class room extends Scene {
         this.game = game
 
     }
-    
+
     onInitialize(engine) {
+        const ambience = new Audio(Resources.dungeonAmbience.path);
 
         let background = new roomBack(this.roomBackground);
         this.add(background);
@@ -39,17 +40,23 @@ export class room extends Scene {
 
         this.spawnBarriers()
 
-        const barriertop = new Barrier(765,-10,1530,20)
+        const barriertop = new Barrier(765, -10, 1530, 20)
         this.add(barriertop)
-        const barrierleft = new Barrier(-10,540,20,860)
+        const barrierleft = new Barrier(-10, 540, 20, 860)
         this.add(barrierleft)
-        const barrierdown = new Barrier(765,870,1530,20)
+        const barrierdown = new Barrier(765, 870, 1530, 20)
         this.add(barrierdown)
-        const barrierright = new Barrier(1540,540,20,860)
+        const barrierright = new Barrier(1540, 540, 20, 860)
         this.add(barrierright)
+
+        ambience.loop = true;
+
+        ambience.addEventListener('canplay', () => {
+            ambience.play();
+        });
     }
 
-    
+
 
     volgLicht(zwart) {
         if (zwart == 'make') {
