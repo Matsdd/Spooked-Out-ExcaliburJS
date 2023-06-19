@@ -8,7 +8,7 @@ import { Barrier } from './ui/barrier.js'
 import { BarrierChecker } from './ui/playerBarrierChecker.js'
 
 import * as ex from 'excalibur'
- 
+
 export class mainCharacter extends Actor {
   barrierTarget
   ableUp
@@ -16,16 +16,16 @@ export class mainCharacter extends Actor {
   ableRight
   ableLeft
   game
-  
+
   constructor(posX, posY, game) {
     super({
-      width: Resources.mainCharacter.width/1.6,
-      height: Resources.mainCharacter.height/1.6,
+      width: Resources.mainCharacter.width / 1.6,
+      height: Resources.mainCharacter.height / 1.6,
     });
     this.isMovingRight = false;
     this.isMovingLeft = false;
-    this.isMovingUp = false; 
-    this.isMovingDown = false; 
+    this.isMovingUp = false;
+    this.isMovingDown = false;
     this.speed = 150;
     this.rotation = 0;
     this.hp = 3
@@ -42,62 +42,64 @@ export class mainCharacter extends Actor {
     this.vel.y = 0;
 
     this.on('collisionstart', (event) => {
+      const playerHit = new Audio(Resources.playerHit2.path);
       if (event.other instanceof ghost) {
-          this.hp -= 1
-          console.log(this.hp)
-          if (this.hp <= 0) {
-            Engine.goToScene('deathMenu')
-          }
+        this.hp -= 1
+        playerHit.play(1);
+        console.log(this.hp)
+        if (this.hp <= 0) {
+          Engine.goToScene('deathMenu')
+        }
       }
-  })
+    })
 
-  const currentScene = Engine.currentScene;
-  const mainCharacterInScene = currentScene.actors.find(actor => actor instanceof mainCharacter);
-  if (mainCharacterInScene === this) {
-    
-    Engine.input.pointers.primary.on('down', (evt) => {
-      const mouseX = evt.worldPos.x;
-      const mouseY = evt.worldPos.y;
+    const currentScene = Engine.currentScene;
+    const mainCharacterInScene = currentScene.actors.find(actor => actor instanceof mainCharacter);
+    if (mainCharacterInScene === this) {
 
-      const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
-      currentScene.add(Bullet);
-    });
+      Engine.input.pointers.primary.on('down', (evt) => {
+        const mouseX = evt.worldPos.x;
+        const mouseY = evt.worldPos.y;
+
+        const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
+        currentScene.add(Bullet);
+      });
+    }
+
+    const areaCheckerUp = new BarrierChecker(10, 10, 55, 10, this, 'up')
+    areaCheckerUp.on('precollision', (event) => {
+      if (event.other instanceof Barrier) {
+        this.ableUp = 0
+      }
+    })
+    Engine.currentScene.add(areaCheckerUp)
+    const areaCheckerDown = new BarrierChecker(10, 10, 55, 10, this, 'down')
+    areaCheckerDown.on('precollision', (event) => {
+      if (event.other instanceof Barrier) {
+        this.ableDown = 0
+      }
+    })
+    Engine.currentScene.add(areaCheckerDown)
+    Engine.currentScene.add(areaCheckerUp)
+    const areaCheckerRight = new BarrierChecker(10, 10, 10, 55, this, 'right')
+    areaCheckerRight.on('precollision', (event) => {
+      if (event.other instanceof Barrier) {
+        this.ableRight = 0
+      }
+    })
+    Engine.currentScene.add(areaCheckerRight)
+    Engine.currentScene.add(areaCheckerUp)
+    const areaCheckerLeft = new BarrierChecker(10, 10, 10, 55, this, 'left')
+    areaCheckerLeft.on('precollision', (event) => {
+      if (event.other instanceof Barrier) {
+        this.ableLeft = 0
+      }
+    })
+    Engine.currentScene.add(areaCheckerLeft)
   }
 
-  const areaCheckerUp = new BarrierChecker(10,10,55,10,this,'up')
-  areaCheckerUp.on('precollision', (event) => {
-    if (event.other instanceof Barrier) {
-      this.ableUp = 0
-    }
-  })
-  Engine.currentScene.add(areaCheckerUp)
-  const areaCheckerDown = new BarrierChecker(10,10,55,10,this,'down')
-  areaCheckerDown.on('precollision', (event) => {
-    if (event.other instanceof Barrier) {
-      this.ableDown = 0
-    }
-  })
-  Engine.currentScene.add(areaCheckerDown)
-  Engine.currentScene.add(areaCheckerUp)
-  const areaCheckerRight = new BarrierChecker(10,10,10,55,this,'right')
-  areaCheckerRight.on('precollision', (event) => {
-    if (event.other instanceof Barrier) {
-      this.ableRight = 0
-    }
-  })
-  Engine.currentScene.add(areaCheckerRight)
-  Engine.currentScene.add(areaCheckerUp)
-  const areaCheckerLeft = new BarrierChecker(10,10,10,55,this,'left')
-  areaCheckerLeft.on('precollision', (event) => {
-    if (event.other instanceof Barrier) {
-      this.ableLeft = 0
-    }
-  })
-  Engine.currentScene.add(areaCheckerLeft)
-}
-
-goToDeath(game) {
-      this.game.goToScene('deathMenu')
+  goToDeath(game) {
+    this.game.goToScene('deathMenu')
   }
 
   onPreUpdate(Engine) {
@@ -107,7 +109,7 @@ goToDeath(game) {
     }
   }
 
-  goPosition(barrier,type) {
+  goPosition(barrier, type) {
     //voor barriercollision(:
     if (type == 'up') {
       barrier.pos.x = this.pos.x
@@ -129,50 +131,50 @@ goToDeath(game) {
 
   moveRight() {
     this.vel.x = this.speed * this.ableRight;
-     
+
   }
 
   moveLeft() {
     this.vel.x = -this.speed * this.ableLeft;
-    
+
   }
 
-  moveUp() { 
+  moveUp() {
     if (this.isMovingRight) {
-      this.vel.x = this.speed/1.5 * this.ableRight;
-      this.vel.y = -this.speed/1.5 * this.ableUp;
-      
+      this.vel.x = this.speed / 1.5 * this.ableRight;
+      this.vel.y = -this.speed / 1.5 * this.ableUp;
+
     } else if (this.isMovingLeft) {
-      this.vel.x = -this.speed/1.5 * this.ableLeft;
-      this.vel.y = -this.speed/1.5 * this.ableUp;
-      
+      this.vel.x = -this.speed / 1.5 * this.ableLeft;
+      this.vel.y = -this.speed / 1.5 * this.ableUp;
+
     } else {
       this.vel.y = -this.speed * this.ableUp;
-      
-    }
-}
 
-  moveDown() { 
+    }
+  }
+
+  moveDown() {
     if (this.isMovingRight) {
-        this.vel.x = this.speed/1.5 * this.ableRight;
-        this.vel.y = this.speed/1.5 * this.ableDown;
-        
-      } else if (this.isMovingLeft) {
-        this.vel.x = -this.speed/1.5 * this.ableLeft;
-        this.vel.y = this.speed/1.5 * this.ableDown;
-       
-      } else {
-        this.vel.y = this.speed * this.ableDown;
-       
-      }
+      this.vel.x = this.speed / 1.5 * this.ableRight;
+      this.vel.y = this.speed / 1.5 * this.ableDown;
+
+    } else if (this.isMovingLeft) {
+      this.vel.x = -this.speed / 1.5 * this.ableLeft;
+      this.vel.y = this.speed / 1.5 * this.ableDown;
+
+    } else {
+      this.vel.y = this.speed * this.ableDown;
+
+    }
   }
 
   stopMovement() {
     this.vel.x = 0;
-    this.vel.y = 0; 
+    this.vel.y = 0;
   }
 
-  
+
 
   update(engine) {
     if (engine.input.keyboard.wasPressed(ex.Input.Keys.Escape)) {
@@ -203,7 +205,7 @@ goToDeath(game) {
       }
     }
 
-    
+
     if (engine.input.keyboard.wasPressed(Input.Keys.W)) {
       this.isMovingUp = true;
       this.moveUp();
@@ -236,7 +238,7 @@ goToDeath(game) {
       this.moveLeft();
     }
 
-    
+
     if (this.isMovingUp && engine.input.keyboard.isHeld(Input.Keys.W)) {
       this.moveUp();
     }

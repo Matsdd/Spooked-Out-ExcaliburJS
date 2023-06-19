@@ -43,6 +43,7 @@ import Ghost2 from '../sfx/Ghost 2.mp3'
 import hitSound from '../sfx/hitsound.wav'
 import bossRoar from '../sfx/BossRoar.mp3'
 import playerHit1 from '../sfx/playerHit.mp3'
+import playerHit2 from '../sfx/playerHit2.mp3'
 
 
 
@@ -89,6 +90,7 @@ const Resources = {
     Ghost2: new Sound(Ghost2),
     bossRoar: new Sound(bossRoar),
     playerHit1: new Sound(playerHit1),
+    playerHit2: new Sound(playerHit2),
     hitSound: new Sound(hitSound)
 
 }
@@ -136,6 +138,7 @@ const ResourceLoader = new Loader([
     Resources.Ghost2,
     Resources.bossRoar,
     Resources.playerHit1,
+    Resources.playerHit2,
     Resources.hitSound
 
 ])
