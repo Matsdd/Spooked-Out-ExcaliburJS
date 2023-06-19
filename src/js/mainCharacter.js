@@ -68,9 +68,13 @@ export class mainCharacter extends Actor {
 
     const currentScene = Engine.currentScene;
     const mainCharacterInScene = currentScene.actors.find(actor => actor instanceof mainCharacter);
+    const gunShot = new Audio(Resources.gunShot.path);
+    gunShot.playbackRate = 2;
 
-      Engine.input.pointers.primary.on('down', (evt) => {
-        if (mainCharacterInScene === this && this.reloadtimer <= 0 && this.bullets > 0) {
+
+    Engine.input.pointers.primary.on('down', (evt) => {
+      if (mainCharacterInScene === this && this.reloadtimer <= 0 && this.bullets > 0) {
+        gunShot.play();
         const mouseX = evt.worldPos.x;
         const mouseY = evt.worldPos.y;
 
@@ -272,8 +276,10 @@ export class mainCharacter extends Actor {
       this.moveDown();
     }
 
+    const gunReload = new Audio(Resources.gunLoad.path);
     if (this.reloadtimer <= 0 && engine.input.keyboard.wasPressed(Input.Keys.R)) {
       this.reload();
+      gunReload.play();
     }
 
     this.ableUp = 1
