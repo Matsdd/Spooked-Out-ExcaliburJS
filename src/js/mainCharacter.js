@@ -28,7 +28,7 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false; 
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 3
+    this.hp = 30
     this.pos = new Vector(posX, posY);
     this.game = game
 
