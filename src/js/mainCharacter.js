@@ -29,9 +29,11 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false;
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 30
+    this.hp = 30;
     this.pos = new Vector(posX, posY);
-    this.game = game
+    this.game = game;
+    this.bullets = 10;
+    this.reloadtimer = 0;
 
   }
 
@@ -66,16 +68,17 @@ export class mainCharacter extends Actor {
 
     const currentScene = Engine.currentScene;
     const mainCharacterInScene = currentScene.actors.find(actor => actor instanceof mainCharacter);
-    if (mainCharacterInScene === this) {
 
       Engine.input.pointers.primary.on('down', (evt) => {
+        if (mainCharacterInScene === this && this.reloadtimer <= 0 && this.bullets > 0) {
         const mouseX = evt.worldPos.x;
         const mouseY = evt.worldPos.y;
 
         const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
         currentScene.add(Bullet);
-      });
-    }
+        this.bullets--
+      }
+    });
 
     const areaCheckerUp = new BarrierChecker(10, 10, 55, 10, this, 'up')
     areaCheckerUp.on('precollision', (event) => {
@@ -185,9 +188,20 @@ export class mainCharacter extends Actor {
     this.vel.y = 0;
   }
 
+  reload() {
+    //reload sound here
+    this.bullets = 10;
+    this.reloadtimer = 10;
+  }
+
 
 
   update(engine) {
+
+    if (this.reloadtimer > 0) {
+      this.reloadtimer--
+    }
+
     if (engine.input.keyboard.wasPressed(ex.Input.Keys.Escape)) {
       engine.goToScene('settingsMenu')
     }
@@ -256,6 +270,10 @@ export class mainCharacter extends Actor {
 
     if (this.isMovingDown && engine.input.keyboard.isHeld(Input.Keys.S)) {
       this.moveDown();
+    }
+
+    if (this.reloadtimer <= 0 && engine.input.keyboard.wasPressed(Input.Keys.R)) {
+      this.reload();
     }
 
     this.ableUp = 1
