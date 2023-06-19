@@ -8,13 +8,11 @@ import { roomBack } from './roomBack.js'
 import { room } from './room.js'
 
 export class storageRoom extends room {
-
+    roomBackground = Resources.Storage
     constructor() {
         super({})
     }
-    
-    onInitialize(engine) {
-        let background = new roomBack(Resources.Lobby);
-        this.add(background);
+    spawnBarriers() {
+        
     }
 }
