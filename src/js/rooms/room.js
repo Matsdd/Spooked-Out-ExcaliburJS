@@ -21,22 +21,9 @@ export class room extends Scene {
     }
 
     onInitialize(engine) {
-        const ambience = new Audio(Resources.dungeonAmbience.path);
 
         let background = new roomBack(this.roomBackground);
         this.add(background);
-
-        this.Sjaak = new mainCharacter(400, 700)
-        this.add(this.Sjaak)
-
-        let Ghoul = new ghoul(this.Sjaak, 300, 300)
-        this.add(Ghoul)
-
-        let Spirit = new spirit(this.Sjaak, 400, 200)
-        this.add(Spirit)
-
-        let Poltergeist = new poltergeist(this.Sjaak, 600, 200)
-        this.add(Poltergeist)
 
         this.spawnBarriers()
 
@@ -46,15 +33,10 @@ export class room extends Scene {
         this.add(barrierleft)
         const barrierdown = new Barrier(765, 870, 1530, 20)
         this.add(barrierdown)
-        const barrierright = new Barrier(1540, 540, 20, 860)
+        const barrierright = new Barrier(1540, 540, 20, 1080)
         this.add(barrierright)
-
-        ambience.loop = true;
-
-        ambience.addEventListener('canplay', () => {
-            ambience.play();
-        });
-    }
+        }
+    
 
 
 

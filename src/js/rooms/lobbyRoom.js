@@ -32,4 +32,13 @@ export class lobbyRoom extends room {
         const licht = new Licht(this)
         this.add(licht)
     }
+
+    onDeactivate() {
+        this.Sjaak.kill()
+    }
+
+    onActivate() {
+        this.Sjaak = new mainCharacter(400, 700)
+        this.add(this.Sjaak)
+    }
 }
