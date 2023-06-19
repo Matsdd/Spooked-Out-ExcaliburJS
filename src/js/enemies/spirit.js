@@ -15,7 +15,7 @@ export class spirit extends ghost {
     this.posY = posY;
     this.speed = 140;
     this.minDistance = 1;
-    this.maxDistance = 500;
+    this.maxDistance = 5000;
     this.rotation = 0;
     this.hp = 2
     this.pos = new Vector(posX, posY);
