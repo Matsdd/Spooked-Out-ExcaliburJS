@@ -34,6 +34,7 @@ import barrier from '../images/props/barrier.png'
 import lichtAan from "../images/props/lichtAan.png"
 import lichtUit from "../images/props/lichtUit.png"
 import donker from "../images/props/donker.png"
+import vaas from "../images/props/vaas.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -126,6 +127,7 @@ const ResourceLoader = new Loader([
     Resources.LichtUit,
     Resources.LichtAan,
     Resources.Donker,
+    Resources.vaas,
 
     // music
     Resources.gameMusic,
