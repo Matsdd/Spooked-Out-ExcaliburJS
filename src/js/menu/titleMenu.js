@@ -17,7 +17,7 @@ export class titleMenu extends Scene {
     onInitialize(engine) {
         const gameMusic = new Audio(Resources.gameMusic.path);
         gameMusic.loop = true;
-
+        gameMusic.volume = 0.3;
         gameMusic.addEventListener('canplay', () => {
             gameMusic.play();
         });
