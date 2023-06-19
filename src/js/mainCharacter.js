@@ -2,6 +2,7 @@ import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } fr
 import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
 import { bullet } from './bullet.js'
+import { vaas } from './props/vaas.js'
 import { room } from './rooms/room.js'
 import { settingsMenu } from './menu/settingsmenu'
 import { Barrier } from './ui/barrier.js'
@@ -48,6 +49,14 @@ export class mainCharacter extends Actor {
         this.hp -= 1
         playerHit.play(1);
         console.log(this.hp)
+        if (this.hp <= 0) {
+          deathScream.play();
+          Engine.goToScene('deathMenu')
+        }
+      }
+      if (event.other instanceof vaas) {
+        this.hp -= 1;
+        playerHit.play();
         if (this.hp <= 0) {
           deathScream.play();
           Engine.goToScene('deathMenu')
