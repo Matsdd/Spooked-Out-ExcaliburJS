@@ -51,6 +51,13 @@ import bossMusic from '../sfx/8-bit loop boss music.mp3'
 import gunShot from '../sfx/gunshot.mp3'
 import gunLoad from '../sfx/gunload.mp3'
 
+//UI
+import hp0 from '../images/ui/hp0.png'
+import hp1 from "../images/ui/hp1.png"
+import hp2 from "../images/ui/hp2.png"
+import hp3 from "../images/ui/hp3.png"
+
+
 
 
 const Resources = {
@@ -103,7 +110,14 @@ const Resources = {
     bossMusic: new Sound(bossMusic),
     gunShot: new Sound(gunShot),
     gunLoad: new Sound(gunLoad),
-    hitSound: new Sound(hitSound)
+    hitSound: new Sound(hitSound),
+
+    //ui
+    Hp0: new ImageSource(hp0),
+    Hp1: new ImageSource(hp1),
+    Hp2: new ImageSource(hp2),
+    Hp3: new ImageSource(hp3),
+
 
 }
 
@@ -157,7 +171,13 @@ const ResourceLoader = new Loader([
     Resources.bossMusic,
     Resources.gunShot,
     Resources.gunLoad,
-    Resources.hitSound
+    Resources.hitSound,
+
+    //ui
+    Resources.Hp0,
+    Resources.Hp1,
+    Resources.Hp2,
+    Resources.Hp3,
 
 ])
 
