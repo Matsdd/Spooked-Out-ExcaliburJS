@@ -20,7 +20,13 @@ export class wineCellar extends room {
         this.Sjaak = new mainCharacter(200, 200)
         this.add(this.Sjaak)
 
-        let Ghoul = new ghoul(this.Sjaak, 1300, 200)
+        let Ghoul = new ghoul(this.Sjaak, 1000, 400)
         this.add(Ghoul)
+
+        let Spirit = new spirit(this.Sjaak, 1000, 500)
+        this.add(Spirit)
+
+        let Poltergeist = new poltergeist(this.Sjaak, 1000, 600)
+        this.add(Poltergeist)
     }
 }
