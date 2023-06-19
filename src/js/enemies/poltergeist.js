@@ -35,6 +35,16 @@ export class poltergeist extends ghost {
       }
     });
 
+
+  }
+
+
+  update(Engine) {
+
+    this.timer++
+    const direction = this.target.pos.sub(this.pos);
+    const distance = direction.distance();
+
     const currentScene = Engine.currentScene;
     const poltergeistInScene = currentScene.actors.find(actor => actor instanceof poltergeist);
     if (poltergeistInScene === this) {
@@ -42,20 +52,13 @@ export class poltergeist extends ghost {
       if (this.timer > this.cooldown && distance > this.minDistance && distance < this.maxDistance) {
   
         const Vaas = new vaas(this.pos.x, this.pos.y, this.target);
+        Vaas.rotation = this.rotation;
         currentScene.add(Vaas);
+
+        this.timer = 0
       };
     }
-  }
 
-  _preupdate() {
-  }
-  onPreUpdate(Engine) {
-  }
-
-  update(Engine) {
-    this.timer++
-    console.log(this.timer)
-    const direction = this.target.pos.sub(this.pos);
 
     if (direction.distance() > 0) {
       this.rotation = direction.toAngle() + Math.PI / 2;
