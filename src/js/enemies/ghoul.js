@@ -5,6 +5,7 @@ import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 
 export class ghoul extends ghost {
+  bounceTimer = 0
   constructor(target, posX, posY) {
     super({
       width: Resources.ghoul.width / 1.6,
@@ -42,7 +43,15 @@ export class ghoul extends ghost {
           this.kill();
         }
       }
+      if (event.other instanceof mainCharacter) {
+        this.vel = new Vector(
+          Math.cos(this.rotation) * -10 * this.speed,
+          Math.sin(this.rotation) * -10 * this.speed
+        )
+        this.bounceTimer = 10
+      }
     });
+
 
     // Start playing sounds at random intervals
     this.playSoundAtRandomInterval();
@@ -75,7 +84,7 @@ export class ghoul extends ghost {
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
 
-    if (distance > this.minDistance && distance < this.maxDistance) {
+    if (this.bounceTimer < 0) {    if (distance > this.minDistance && distance < this.maxDistance) {
       const desiredVel = direction.normalize().scale(this.speed);
       this.vel = desiredVel.clampMagnitude(this.speed);
 
@@ -99,9 +108,12 @@ export class ghoul extends ghost {
       this.vel = Vector.Zero;
     }
   }
+    }
+
 }
 
   update(engine, delta) {
+    this.bounceTimer -= 1
     if (this.prox) {
       this.moveTowardsTarget(this.target.pos);
     } else {
