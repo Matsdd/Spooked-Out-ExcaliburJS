@@ -42,7 +42,7 @@ export class room extends Scene {
 
         const barriertop = new Barrier(765, -10, 1530, 20)
         this.add(barriertop)
-        const barrierleft = new Barrier(-10, 540, 20, 860)
+        const barrierleft = new Barrier(-10, 540, 20, 1080)
         this.add(barrierleft)
         const barrierdown = new Barrier(765, 870, 1530, 20)
         this.add(barrierdown)

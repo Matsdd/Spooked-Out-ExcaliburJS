@@ -43,6 +43,7 @@ game
         break;
       case 2:
         this.game.goToScene('storageRoom')
+        break;
         }
     }
 }

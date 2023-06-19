@@ -12,7 +12,7 @@ export class storageRoom extends room {
     constructor() {
         super({})
     }
-    
-    onInitialize(engine) {
+    spawnBarriers() {
+        
     }
 }
