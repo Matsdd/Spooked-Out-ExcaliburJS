@@ -60,8 +60,10 @@ export class poltergeist extends ghost {
     }
 
 
-    if (direction.distance() > 0) {
+    if (direction.distance() > 0 && distance < this.maxDistance) {
       this.rotation = direction.toAngle() + Math.PI / 2;
+    }else {
+      this.timer = 0
     }
   }
 }
