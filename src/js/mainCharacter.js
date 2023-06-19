@@ -43,11 +43,13 @@ export class mainCharacter extends Actor {
 
     this.on('collisionstart', (event) => {
       const playerHit = new Audio(Resources.playerHit2.path);
+      const deathScream = new Audio(Resources.deathScream.path);
       if (event.other instanceof ghost) {
         this.hp -= 1
         playerHit.play(1);
         console.log(this.hp)
         if (this.hp <= 0) {
+          deathScream.play();
           Engine.goToScene('deathMenu')
         }
       }
