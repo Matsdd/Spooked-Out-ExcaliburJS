@@ -17,6 +17,7 @@ import lobby from "../images/rooms/lobby.png"
 import boss from "../images/rooms/boss.png"
 import cellar from "../images/rooms/cellar.png"
 import pool from "../images/rooms/pool.png"
+import storage from "../images/rooms/storage.png"
 
 //menu
 import titleback from "../images/menu/titleback.png"
@@ -67,6 +68,7 @@ const Resources = {
     Boss: new ImageSource(boss),
     Cellar: new ImageSource(cellar),
     Pool: new ImageSource(pool),
+    Storage: new ImageSource(storage),
 
     //menu
     Titleback: new ImageSource(titleback),
@@ -117,6 +119,7 @@ const ResourceLoader = new Loader([
     Resources.Boss,
     Resources.Cellar,
     Resources.Pool,
+    Resources.Storage,
 
     //menu
     Resources.Titleback,
