@@ -81,6 +81,7 @@ const Resources = {
     LichtAan: new ImageSource(lichtAan),
     LichtUit: new ImageSource(lichtUit),
     Donker: new ImageSource(donker),
+    Vaas: new ImageSource(vaas),
 
     // music
     gameMusic: new Sound(backgroundMusic),
@@ -127,7 +128,7 @@ const ResourceLoader = new Loader([
     Resources.LichtUit,
     Resources.LichtAan,
     Resources.Donker,
-    Resources.vaas,
+    Resources.Vaas,
 
     // music
     Resources.gameMusic,
