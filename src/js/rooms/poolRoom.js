@@ -14,21 +14,27 @@ export class poolRoom extends room {
     roomBackground = Resources.Pool
     zwart
     spawnBarriers() {
-        const zwembadlinks = new Barrier(550,510,10,480)
+        const zwembadlinks = new Barrier(510,510,10,480)
         this.add(zwembadlinks)
         const zwembadrechts = new Barrier(1025,510,10,480)
         this.add(zwembadrechts)
-        const zwembadonder1 = new Barrier(630,750,150,10)
+        const zwembadonder1 = new Barrier(610,750,200,10)
         this.add(zwembadonder1)
-        const zwembadonder2 = new Barrier(1025,510,10,480)
+        const zwembadonder2 = new Barrier(925,750,200,10)
         this.add(zwembadonder2)
-        const zwembadboven1 = new Barrier(550,510,10,480)
+        const zwembadboven1 = new Barrier(610,270,200,10)
         this.add(zwembadboven1)
-        const zwembadboven2 = new Barrier(1025,510,10,480)
+        const zwembadboven2 = new Barrier(925,270,200,10)
         this.add(zwembadboven2)
 
+        const up = new Barrier(767,80,950,10)
+        this.add(up)
+        const left = new Barrier(300,510,10,860)
+        this.add(left)
+        const right = new Barrier(1234,510,10,860)
+        this.add(right)
 
-        const licht = new Licht(this)
-        this.add(licht)
+        const teleporter = new Tp(767,80,90,20, this.game)
+        this.add(teleporter)
     }
 }
