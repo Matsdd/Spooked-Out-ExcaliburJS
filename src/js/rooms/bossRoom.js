@@ -21,7 +21,7 @@ export class bossRoom extends room {
         bossMusic.volume = 0.3
 
         bossMusic.addEventListener('canplay', () => {
-            bossMusic.play(0.3);
+            bossMusic.play();
         });
 
         let background = new roomBack(Resources.Boss);
