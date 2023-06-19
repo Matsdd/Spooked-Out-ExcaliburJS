@@ -37,4 +37,12 @@ export class poolRoom extends room {
         const teleporter = new Tp(767,80,90,20, this.game)
         this.add(teleporter)
     }
+    onDeactivate() {
+        this.Sjaak.kill()
+    }
+
+    onActivate() {
+        this.Sjaak = new mainCharacter(767, 800)
+        this.add(this.Sjaak)
+    }
 }
