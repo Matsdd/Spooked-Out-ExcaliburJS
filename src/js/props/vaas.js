@@ -1,11 +1,11 @@
 import { Actor, Vector } from "excalibur";
-import { Resources } from './resources.js';
-import { ghost } from './enemies/ghost.js';
-import { Barrier } from './ui/barrier.js';
+import { Resources } from '../resources.js';
+import { mainCharacter } from '../mainCharacter.js'
+import { Barrier } from '../ui/barrier.js';
 
 export class vaas extends Actor {
   constructor(x, y, target) {
-    super({ width: Resources.vaas.width / 20, height: Resources.vaas.height / 20 });
+    super({ width: Resources.Vaas.width / 20, height: Resources.Vaas.height / 20 });
     this.pos = new Vector(x, y);
     this.target = target;
     this.speed = 700;
@@ -13,11 +13,11 @@ export class vaas extends Actor {
   }
 
   onInitialize(engine) {
-    this.graphics.use(Resources.vaas.toSprite());
+    this.graphics.use(Resources.Vaas.toSprite());
     this.scale = new Vector(0.2, 0.2);
 
     this.on('collisionstart', (event) => {
-      if (event.other instanceof ghost) {
+      if (event.other instanceof mainCharacter) {
         this.kill();
         console.log(event.other.hp);
       }

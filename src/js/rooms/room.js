@@ -4,6 +4,7 @@ import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { demon } from '../enemies/demonBoss.js'
+import { poltergeist} from '../enemies/poltergeist.js'
 import { Resources } from '../resources.js'
 import { roomBack } from './roomBack.js'
 import { Barrier } from '../ui/barrier.js'
@@ -32,6 +33,9 @@ export class room extends Scene {
 
         let Spirit = new spirit(this.Sjaak, 400, 200)
         this.add(Spirit)
+
+        let Poltergeist = new poltergeist(this.Sjaak, 600, 200)
+        this.add(Poltergeist)
 
         this.spawnBarriers()
 

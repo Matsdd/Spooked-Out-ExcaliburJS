@@ -2,10 +2,11 @@ import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } fr
 import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js'
+import { vaas } from '../props/vaas.js'
 import { bullet } from '../bullet.js'
 
 export class poltergeist extends ghost {
-  constructor(target) {
+  constructor(target, posX, posY) {
     super({
       width: Resources.poltergeist.width / 1.6,
       height: Resources.poltergeist.height / 1.6,
@@ -13,13 +14,16 @@ export class poltergeist extends ghost {
     this.target = target;
     this.speed = 0;
     this.minDistance = 1;
+    this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 15
+    this.hp = 15;
+    this.timer = 0;
+    this.cooldown = 100;
+    this.pos = new Vector(posX, posY);
   }
 
-  onInitialize() {
+  onInitialize(Engine) {
     this.graphics.use(Resources.poltergeist.toSprite());
-    this.pos = new Vector(200, 200);
     this.scale = new Vector(0.3, 0.3);
 
     this.on('collisionstart', (event) => {
@@ -30,6 +34,22 @@ export class poltergeist extends ghost {
         }
       }
     });
+
+    const currentScene = Engine.currentScene;
+    const poltergeistInScene = currentScene.actors.find(actor => actor instanceof poltergeist);
+    if (poltergeistInScene === this) {
+      
+      if (this.timer > this.cooldown && distance > this.minDistance && distance < this.maxDistance) {
+  
+        const Vaas = new vaas(this.pos.x, this.pos.y, this.target);
+        currentScene.add(Vaas);
+      };
+    }
+  }
+
+  onPreUpdate(Engine) {
+    this.timer++
+    console.log(this.timer)
   }
 
   update(Engine) {
