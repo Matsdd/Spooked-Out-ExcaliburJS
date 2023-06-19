@@ -28,11 +28,11 @@ export class vaas extends Actor {
       }
     })
 
-    this.moveTsowardsTarget();
+    this.moveTowardsTarget();
   }
 
   moveTowardsTarget() {
-    const direction = new Vector(this.target.x, this.target.y).sub(this.pos).normalize();
+    const direction = this.target.pos.sub(this.pos).normalize();
     const offsetDirection = direction.clone().normalize().scale(this.offset.x, this.offset.y);
     const offsetPosition = this.pos.add(offsetDirection);
     this.pos = offsetPosition;
