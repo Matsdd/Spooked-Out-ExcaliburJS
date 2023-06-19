@@ -3,7 +3,7 @@ import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 import { mainCharacter } from "../mainCharacter.js"
 
-export class Tp extends Actor {
+export class cellarTp extends Actor {
 
 game
 
@@ -16,33 +16,12 @@ game
         this.game = game
     }
 
-    onInitialize(engine) {
+    onInitialize(engine,) {
         this.on('collisionstart', (event) => {
             if (event.other instanceof mainCharacter) {
-                    this.nextRoom(this.game)
+                this.game.goToScene('wineCellar')
                 }
             })
         }
 
-        getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-          }
-
-        nextRoom(engine, game) {
-    this.randomNumber
-
-            this.randomNumber = this.getRandomInt(3)
-
-    switch (this.randomNumber) {
-      case 0:
-        this.game.goToScene('poolRoom')
-        break;
-      case 1:
-        this.game.goToScene('bossRoom')
-        break;
-      case 2:
-        this.game.goToScene('storageRoom')
-        break;
-        }
-    }
 }
