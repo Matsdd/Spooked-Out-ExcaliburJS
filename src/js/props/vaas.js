@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js'
 
 export class vaas extends Actor {
   constructor(x, y, target) {
-    super({ width: Resources.Vaas.width / 20, height: Resources.Vaas.height / 20 });
+    super({ width: Resources.Vaas.width / 5, height: Resources.Vaas.height / 5 });
     this.pos = new Vector(x, y);
     this.target = target;
     this.speed = 700;

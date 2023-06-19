@@ -46,7 +46,7 @@ import bossRoar from '../sfx/BossRoar.mp3'
 import playerHit1 from '../sfx/playerHit.mp3'
 import playerHit2 from '../sfx/playerHit2.mp3'
 import deathScream from '../sfx/deathScream.mp3'
-import dungeonAmbience from '../sfx/dungeonambience.mp3'
+import dungeonAmbience from '../sfx/dungeonsound.mp3'
 import bossMusic from '../sfx/8-bit loop boss music.mp3'
 
 
