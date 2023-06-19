@@ -4,7 +4,6 @@ import { Resources } from '../resources.js'
 export class roomBack extends Actor {
 
 background = ''
-
     constructor(back) {
         super({})
         this.background = back
