@@ -47,12 +47,14 @@ export class poltergeist extends ghost {
     }
   }
 
+  _preupdate() {
+  }
   onPreUpdate(Engine) {
-    this.timer++
-    console.log(this.timer)
   }
 
   update(Engine) {
+    this.timer++
+    console.log(this.timer)
     const direction = this.target.pos.sub(this.pos);
 
     if (direction.distance() > 0) {
