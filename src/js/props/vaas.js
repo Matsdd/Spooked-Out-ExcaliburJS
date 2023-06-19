@@ -2,6 +2,7 @@ import { Actor, Vector } from "excalibur";
 import { Resources } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js'
 import { Barrier } from '../ui/barrier.js';
+import { bullet } from '../bullet.js'
 
 export class vaas extends Actor {
   constructor(x, y, target) {
@@ -27,6 +28,11 @@ export class vaas extends Actor {
         this.kill()
       }
     })
+    this.on('collisionstart', (event) => {
+        if (event.other instanceof bullet) {
+          this.kill()
+        }
+      })
 
     this.moveTowardsTarget();
   }
