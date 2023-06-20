@@ -61,6 +61,39 @@ import hp1 from "../images/ui/hp1.png"
 import hp2 from "../images/ui/hp2.png"
 import hp3 from "../images/ui/hp3.png"
 
+// ammo
+import ammo0 from '../images/ui/ammo/ammo0.png'
+import ammo1 from '../images/ui/ammo/ammo1.png'
+import ammo2 from '../images/ui/ammo/ammo2.png'
+import ammo3 from '../images/ui/ammo/ammo3.png'
+import ammo4 from '../images/ui/ammo/ammo4.png'
+import ammo5 from '../images/ui/ammo/ammo5.png'
+import ammo6 from '../images/ui/ammo/ammo6.png'
+import ammo7 from '../images/ui/ammo/ammo7.png'
+import ammo8 from '../images/ui/ammo/ammo8.png'
+import ammo9 from '../images/ui/ammo/ammo9.png'
+import ammo10 from '../images/ui/ammo/ammo10.png'
+import ammo11 from '../images/ui/ammo/ammo11.png'
+import ammo12 from '../images/ui/ammo/ammo12.png'
+import ammo13 from '../images/ui/ammo/ammo13.png'
+import ammo14 from '../images/ui/ammo/ammo14.png'
+import ammo15 from '../images/ui/ammo/ammo15.png'
+import ammo16 from '../images/ui/ammo/ammo16.png'
+import ammo17 from '../images/ui/ammo/ammo17.png'
+import ammo18 from '../images/ui/ammo/ammo18.png'
+import ammo19 from '../images/ui/ammo/ammo19.png'
+import ammo20 from '../images/ui/ammo/ammo20.png'
+import ammo21 from '../images/ui/ammo/ammo21.png'
+import ammo22 from '../images/ui/ammo/ammo22.png'
+import ammo23 from '../images/ui/ammo/ammo23.png'
+import ammo24 from '../images/ui/ammo/ammo24.png'
+import ammo25 from '../images/ui/ammo/ammo25.png'
+import ammo26 from '../images/ui/ammo/ammo26.png'
+import ammo27 from '../images/ui/ammo/ammo27.png'
+import ammo28 from '../images/ui/ammo/ammo28.png'
+import ammo29 from '../images/ui/ammo/ammo29.png'
+import ammo30 from '../images/ui/ammo/ammo30.png'
+
 
 
 
@@ -126,70 +159,108 @@ const Resources = {
     Hp2: new ImageSource(hp2),
     Hp3: new ImageSource(hp3),
 
+    // ammo
+    Ammo0: new ImageSource(ammo0),
+    Ammo1: new ImageSource(ammo1),
+    Ammo2: new ImageSource(ammo2),
+    Ammo3: new ImageSource(ammo3),
+    Ammo4: new ImageSource(ammo4),
+    Ammo5: new ImageSource(ammo5),
+    Ammo6: new ImageSource(ammo6),
+    Ammo7: new ImageSource(ammo7),
+    Ammo8: new ImageSource(ammo8),
+    Ammo9: new ImageSource(ammo9),
+    Ammo10: new ImageSource(ammo10),
+    Ammo11: new ImageSource(ammo11),
+    Ammo12: new ImageSource(ammo12),
+    Ammo13: new ImageSource(ammo13),
+    Ammo14: new ImageSource(ammo14),
+    Ammo15: new ImageSource(ammo15),
+    Ammo16: new ImageSource(ammo16),
+    Ammo17: new ImageSource(ammo17),
+    Ammo18: new ImageSource(ammo18),
+    Ammo19: new ImageSource(ammo19),
+    Ammo20: new ImageSource(ammo20),
+    Ammo21: new ImageSource(ammo21),
+    Ammo22: new ImageSource(ammo22),
+    Ammo23: new ImageSource(ammo23),
+    Ammo24: new ImageSource(ammo24),
+    Ammo25: new ImageSource(ammo25),
+    Ammo26: new ImageSource(ammo26),
+    Ammo27: new ImageSource(ammo27),
+    Ammo28: new ImageSource(ammo28),
+    Ammo29: new ImageSource(ammo29),
+    Ammo30: new ImageSource(ammo30),
+
 
 }
 
-const ResourceLoader = new Loader([
-    //characters
-    Resources.mainCharacter,
-    Resources.ghoul,
-    Resources.spirit,
-    Resources.demon,
-    Resources.poltergeist,
-    Resources.Frederik,
-    Resources.Guardian,
-    Resources.Wraith,
-    Resources.Arach,
-    Resources.Phantom,
+// const ResourceLoader = new Loader([
+//     //characters
+//     Resources.mainCharacter,
+//     Resources.ghoul,
+//     Resources.spirit,
+//     Resources.demon,
+//     Resources.poltergeist,
+//     Resources.Frederik,
+//     Resources.Guardian,
+//     Resources.Wraith,
+//     Resources.Arach,
+//     Resources.Phantom,
 
-    //rooms
-    Resources.Lobby,
-    Resources.Boss,
-    Resources.Cellar,
-    Resources.Pool,
-    Resources.Storage,
-    Resources.Bedroom1,
-    Resources.Office1,
-    Resources.Office2,
+//     //rooms
+//     Resources.Lobby,
+//     Resources.Boss,
+//     Resources.Cellar,
+//     Resources.Pool,
+//     Resources.Storage,
+//     Resources.Bedroom1,
+//     Resources.Office1,
+//     Resources.Office2,
 
-    //menu
-    Resources.Titleback,
-    Resources.Settingsback,
-    Resources.DeathBack,
-    Resources.Play,
-    Resources.Continue,
-    Resources.Quit,
-    Resources.Settings,
-    Resources.Titlescreen,
+//     //menu
+//     Resources.Titleback,
+//     Resources.Settingsback,
+//     Resources.DeathBack,
+//     Resources.Play,
+//     Resources.Continue,
+//     Resources.Quit,
+//     Resources.Settings,
+//     Resources.Titlescreen,
 
-    //props
-    Resources.bullet,
-    Resources.Barrier,
-    Resources.LichtUit,
-    Resources.LichtAan,
-    Resources.Donker,
-    Resources.Vaas,
+//     //props
+//     Resources.bullet,
+//     Resources.Barrier,
+//     Resources.LichtUit,
+//     Resources.LichtAan,
+//     Resources.Donker,
+//     Resources.Vaas,
 
-    // music
-    Resources.gameMusic,
-    Resources.Ghost1,
-    Resources.Ghost2,
-    Resources.bossRoar,
-    Resources.playerHit1,
-    Resources.playerHit2,
-    Resources.deathScream,
-    // Resources.dungeonAmbience,
-    Resources.bossMusic,
-    Resources.gunShot,
-    Resources.gunLoad,
-    Resources.hitSound,
+//     // music
+//     Resources.gameMusic,
+//     Resources.Ghost1,
+//     Resources.Ghost2,
+//     Resources.bossRoar,
+//     Resources.playerHit1,
+//     Resources.playerHit2,
+//     Resources.deathScream,
+//     // Resources.dungeonAmbience,
+//     Resources.bossMusic,
+//     Resources.gunShot,
+//     Resources.gunLoad,
+//     Resources.hitSound,
 
-    //ui
-    Resources.Hp0,
-    Resources.Hp1,
-    Resources.Hp2,
-    Resources.Hp3,
+//     //ui
+//     Resources.Hp0,
+//     Resources.Hp1,
+//     Resources.Hp2,
+//     Resources.Hp3,
 
-])
+// ])
+const resourceArray = []
+for (const key in Resources) {
+    resourceArray.push(Resources[key])
+}
 
+const ResourceLoader = new Loader(resourceArray)
 export { Resources, ResourceLoader }
