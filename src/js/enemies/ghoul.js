@@ -73,9 +73,11 @@ export class ghoul extends ghost {
     const sound = new Audio(Resources.Ghost1.path);
     const sound2 = new Audio(Resources.Ghost2.path);
     const sound3 = new Audio(Resources.Ghost3.path);
+    const sound4 = new Audio(Resources.Ghost4.path);
     sound.volume = 0.2;
     sound2.volume = 0.2;
     sound3.volume = 0.2;
+    sound4.volume = 0.2;
 
     // Set pitch
     const minPlaybackRate = 1; // Minimum playback rate
@@ -85,7 +87,7 @@ export class ghoul extends ghost {
 
 
     this.randomNumber
-    this.randomNumber = this.getRandomInt(3);
+    this.randomNumber = this.getRandomInt(4);
 
     switch (this.randomNumber) {
       case 0:
@@ -96,6 +98,9 @@ export class ghoul extends ghost {
         break;
       case 2:
         sound3.play();
+        break;
+      case 3:
+        sound4.play();
         break;
     }
 
