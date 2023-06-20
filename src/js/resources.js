@@ -56,10 +56,16 @@ import gunShot from '../sfx/gunshot.mp3'
 import gunLoad from '../sfx/gunload.mp3'
 
 //UI
-import hp0 from '../images/ui/hp0.png'
-import hp1 from "../images/ui/hp1.png"
-import hp2 from "../images/ui/hp2.png"
-import hp3 from "../images/ui/hp3.png"
+import hp0 from '../images/ui/ammo/hp0.png'
+import hp1 from '../images/ui/ammo/hp1.png'
+import hp2 from '../images/ui/ammo/hp2.png'
+import hp3 from '../images/ui/ammo/hp3.png'
+import hp4 from '../images/ui/ammo/hp4.png'
+import hp5 from '../images/ui/ammo/hp5.png'
+import hp6 from '../images/ui/ammo/hp6.png'
+import hp7 from '../images/ui/ammo/hp7.png'
+import hp8 from '../images/ui/ammo/hp8.png'
+import hp9 from '../images/ui/ammo/hp9.png'
 
 // ammo
 import ammo0 from '../images/ui/ammo/ammo0.png'
@@ -158,6 +164,12 @@ const Resources = {
     Hp1: new ImageSource(hp1),
     Hp2: new ImageSource(hp2),
     Hp3: new ImageSource(hp3),
+    Hp4: new ImageSource(hp4),
+    Hp5: new ImageSource(hp5),
+    Hp6: new ImageSource(hp6),
+    Hp7: new ImageSource(hp7),
+    Hp8: new ImageSource(hp8),
+    Hp9: new ImageSource(hp9),
 
     // ammo
     Ammo0: new ImageSource(ammo0),
