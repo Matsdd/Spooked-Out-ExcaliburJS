@@ -60,6 +60,7 @@ import hp0 from '../images/ui/hp0.png'
 import hp1 from "../images/ui/hp1.png"
 import hp2 from "../images/ui/hp2.png"
 import hp3 from "../images/ui/hp3.png"
+import ui from "../images/ui/score.png"
 
 
 
@@ -124,6 +125,7 @@ const Resources = {
     Hp1: new ImageSource(hp1),
     Hp2: new ImageSource(hp2),
     Hp3: new ImageSource(hp3),
+    score : new ImageSource(score),
 
 
 }
