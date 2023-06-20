@@ -48,7 +48,7 @@ export class Game extends Engine {
         this.addScene('wineCellar', this.winecellar)
         this.addScene('bossRoom', this.bossroom)
         this.addScene('storageRoom', this.storageroom)
-        this.addScene('bedRoom1', this.Bedroom1)
+        this.addScene('Bedroom1', this.Bedroom1)
         this.addScene('officeRoom1', this.officeroom1)
         this.addScene('officeRoom2', this.officeroom2)
 
