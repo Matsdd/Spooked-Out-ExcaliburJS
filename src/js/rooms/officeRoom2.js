@@ -74,14 +74,53 @@ export class officeRoom2 extends room {
         this.add(wall12)
         const wall13 = new Barrier(600,740,10,240)
         this.add(wall13)
+        
+        const desk4 = new Barrier(30,650,160,160)
+        this.add(desk4)
+        const desk5 = new Barrier(400,850,60,60)
+        this.add(desk5)
+        
+        const shelf1 = new Barrier(285,630,50,50)
+        this.add(shelf1)
+        const shelf2 = new Barrier(560,670,50,90)
+        this.add(shelf2)
 
+        const chair6 = new Barrier(420,720,40,40)
+        this.add(chair6)
+
+        //kamer4
+        const wall14 = new Barrier(840,580,150,80)
+        this.add(wall14)
+        const wall15 = new Barrier(1160,580,300,80)
+        this.add(wall15)
+        const wall16 = new Barrier(1460,580,110,80)
+        this.add(wall16)
+        const wall17 = new Barrier(810,740,90,240)
+        this.add(wall17)
+        const wall18 = new Barrier(1190,740,10,240)
+        this.add(wall18)
+        
+        const desk6 = new Barrier(960,840,220,60)
+        this.add(desk6)
+        const desk7 = new Barrier(1470,760,60,280)
+        this.add(desk7)
+        
+        const shelf3 = new Barrier(1160,820,60,130)
+        this.add(shelf3)
+
+        const chair7 = new Barrier(890,710,40,40)
+        this.add(chair7)
+        const chair8 = new Barrier(1000,760,40,40)
+        this.add(chair8)
+        const chair9 = new Barrier(1340,740,40,40)
+        this.add(chair9)
     }
     onDeactivate() {
         this.Sjaak.kill()
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(767, 800)
+        this.Sjaak = new mainCharacter(700, 800)
         this.add(this.Sjaak)
     }
 }
