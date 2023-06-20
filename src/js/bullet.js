@@ -20,7 +20,7 @@ export class bullet extends Actor {
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof phantom) {
-        if (event.other.invTimer <= 0) {
+        if (event.other.graphics.opacity == 1) {
           this.kill();
           console.log(event.other.hp);
         }
