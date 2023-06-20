@@ -1,15 +1,47 @@
-import { Actor, Engine, Vector, Timer } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
+import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } from 'excalibur';
+import { Resources, ResourceLoader } from './resources.js';
+import { mainCharacter } from './mainCharacter.js';
+import { ghost } from './enemies/ghost.js'
+import { bullet } from './bullet.js'
 
-export class Enemy extends Actor{
-    constructor() {
-        super({
-            width: Resources.mainCharacter.width/2,
-            height: Resources.mainCharacter.height/2,
-        })
+export class frederik extends ghost {
+  constructor(target, posX, posY) {
+    super({
+      width: Resources.Frederik.width / 1.6,
+      height: Resources.Frederik.height / 1.6,
+    });
+    this.target = target;
+    this.speed = 0;
+    this.minDistance = 1;
+    this.maxDistance = 500;
+    this.rotation = 0;
+    this.cooldown = 100;
+    this.pos = new Vector(posX, posY);
+  }
+
+  onInitialize(Engine) {
+    this.graphics.use(Resources.Frederik.toSprite());
+    this.scale = new Vector(0.3, 0.3);
+  }
+
+
+  update(Engine) {
+
+    const direction = this.target.pos.sub(this.pos);
+    const distance = direction.distance();
+
+    const currentScene = Engine.currentScene;
+    const frederikInScene = currentScene.actors.find(actor => actor instanceof frederik);
+    if (frederikInScene === this) {
+      
+ 
     }
 
-    onInitialize() {
-        this.graphics.use(Resources.Frederik.toSprite())
-    }
+
+
+      this.rotation = direction.toAngle() + Math.PI / 2;
+
+
+  }
 }
+

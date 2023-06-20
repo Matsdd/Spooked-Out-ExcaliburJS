@@ -17,7 +17,7 @@ import { officeRoom2 } from './rooms/officeRoom2'
 
 
 export class Game extends Engine {
-
+    score = 0
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
@@ -53,9 +53,14 @@ export class Game extends Engine {
         this.addScene('officeRoom2', this.officeroom2)
 
 
-        this.goToScene('wineCellar')
+        this.goToScene('officeRoom2')
 
         console.log("Enjoy!")
+    }
+
+    addScore() {
+        this.score++
+        console.log(this.score);
     }
 }
 

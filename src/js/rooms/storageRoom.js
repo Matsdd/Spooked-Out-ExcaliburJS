@@ -15,6 +15,8 @@ import { poltergeist } from "../enemies/poltergeist.js"
 export class storageRoom extends room {
     roomBackground = Resources.Storage
     zwart
+    tpx = 790
+    tpy = 80
     spawnBarriers() {
 
         const up = new Barrier(767,80,950,10)
@@ -33,8 +35,6 @@ export class storageRoom extends room {
 
         const cellarteleporter = new cellarTp(430,745,140,120, this.game)
         this.add(cellarteleporter)
-        const teleporter = new Tp(790,80,90,20, this.game)
-        this.add(teleporter)
     }
     onDeactivate() {
         this.Sjaak.kill()

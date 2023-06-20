@@ -1,11 +1,9 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import * as ex from 'excalibur'
 import { mainCharacter } from '../mainCharacter.js'
-import { ghoul } from '../enemies/ghoul.js'
-import { spirit } from '../enemies/spirit.js'
+import { frederik } from '../Frederik.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
-import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
 
 import { room } from './room.js'
@@ -13,6 +11,8 @@ import { room } from './room.js'
 export class lobbyRoom extends room {
     roomBackground = Resources.Lobby
     zwart
+    tpx = 1290
+    tpy = 80
     spawnBarriers() {
         const barriertopleft = new Barrier(205,215,410,430)
         this.add(barriertopleft)
@@ -27,8 +27,6 @@ export class lobbyRoom extends room {
         const barrierfridge2 = new Barrier(1520,465,40,450)
         this.add(barrierfridge2)
         
-        const teleporter = new Tp(1290,80,90,20, this.game)
-        this.add(teleporter)
         const licht = new Licht(this)
         this.add(licht)
     }
@@ -40,5 +38,8 @@ export class lobbyRoom extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(400, 700)
         this.add(this.Sjaak)
+
+        this.Frederik = new frederik(this.Sjaak, 495, 315)
+        this.add(this.Frederik)
     }
 }
