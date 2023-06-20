@@ -130,3 +130,5 @@ export class wraith extends ghost {
     clearTimeout(this.soundInterval);
   }
 }
+
+hoi
