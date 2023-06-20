@@ -36,7 +36,7 @@ export class poolRoom extends room {
         this.add(left)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
-        const water = new Healwater(800,800,500,500)
+        const water = new Healwater(760,520,400,400)
         this.add(water)
     }
     onDeactivate() {
