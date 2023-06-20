@@ -11,6 +11,10 @@ import { poolRoom } from './rooms/poolRoom.js'
 import { wineCellar } from './rooms/wineCellar.js'
 import { bossRoom } from './rooms/bossRoom.js'
 import { storageRoom } from './rooms/storageRoom.js'
+import { Bedroom1 } from './rooms/bedroom1'
+import { officeRoom1 } from './rooms/officeRoom1'
+import { officeRoom2 } from './rooms/officeRoom2'
+
 
 export class Game extends Engine {
 
@@ -30,6 +34,10 @@ export class Game extends Engine {
         this.winecellar = new wineCellar(this)
         this.bossroom = new bossRoom(this)
         this.storageroom = new storageRoom(this)
+        this.Bedroom1 = new Bedroom1(this)
+        this.officeroom1 = new officeRoom1(this)
+        this.officeroom2 = new officeRoom2(this)
+
 
         this.addScene('titleMenu', this.titlemenu)  
         this.addScene('settingsMenu', this.settingsmenu)
@@ -40,8 +48,12 @@ export class Game extends Engine {
         this.addScene('wineCellar', this.winecellar)
         this.addScene('bossRoom', this.bossroom)
         this.addScene('storageRoom', this.storageroom)
+        this.addScene('bedRoom1', this.Bedroom1)
+        this.addScene('officeRoom1', this.officeroom1)
+        this.addScene('officeRoom2', this.officeroom2)
 
-        this.goToScene('storageRoom')
+
+        this.goToScene('wineCellar')
 
         console.log("Enjoy!")
     }
