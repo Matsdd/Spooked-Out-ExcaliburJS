@@ -131,4 +131,3 @@ export class wraith extends ghost {
   }
 }
 
-hoi
