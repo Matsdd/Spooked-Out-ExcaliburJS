@@ -2,6 +2,7 @@ import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } fr
 import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
 import { wraith } from './enemies/wraith.js'
+import { arach } from './enemies/arach.js'
 import { bullet } from './bullet.js'
 import { vaas } from './props/vaas.js'
 import { room } from './rooms/room.js'
@@ -30,11 +31,12 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false;
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 30;
+    this.hp = 3;
     this.pos = new Vector(posX, posY);
     this.game = game;
     this.bullets = 10;
     this.reloadtimer = 0;
+    this.slowtimer = 0;
 
   }
 
@@ -48,6 +50,17 @@ export class mainCharacter extends Actor {
     this.on('collisionstart', (event) => {
       const playerHit = new Audio(Resources.playerHit2.path);
       const deathScream = new Audio(Resources.deathScream.path);
+      if (event.other instanceof arach) {
+        this.hp -= 1;
+        this.speed -= 10;
+        this.slowtimer = 500;
+        playerHit.play(1);
+        console.log(this.hp)
+        if (this.hp <= 0) {
+          deathScream.play();
+          Engine.goToScene('deathMenu')
+        }
+      } else {
       if (event.other instanceof wraith) {
         this.hp -= 2
         playerHit.play(1);
@@ -75,6 +88,7 @@ export class mainCharacter extends Actor {
           Engine.goToScene('deathMenu')
         }
       }
+    }
     })
 
     const currentScene = Engine.currentScene;
@@ -212,7 +226,14 @@ export class mainCharacter extends Actor {
 
 
   update(engine) {
+    if (this.slowtimer > 0) {
+      this.slowtimer--
+    }
 
+    if (this.slowtimer <= 0) {
+      this.speed = 150;
+    }
+    
     if (this.reloadtimer > 0) {
       this.reloadtimer--
     }
