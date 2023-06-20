@@ -17,7 +17,7 @@ import { officeRoom2 } from './rooms/officeRoom2'
 
 
 export class Game extends Engine {
-
+    score = 0
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
