@@ -13,16 +13,30 @@ import { room } from './room.js'
 export class officeRoom1 extends room {
     roomBackground = Resources.Office1
     zwart
+    tpx = 800
+    tpy = 60
     spawnBarriers() {
-        const up = new Barrier(767,80,950,10)
+        const up = new Barrier(767,60,950,10)
         this.add(up)
         const left = new Barrier(300,510,10,860)
         this.add(left)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
+        const topleftcounter = new Barrier(767,60,950,10)
+        this.add(topleftcounter)
+        const topleftchair = new Barrier(300,510,10,860)
+        this.add(topleftchair)
+        const toprightcounter = new Barrier(1234,510,10,860)
+        this.add(toprightcounter)
+        const toprightchair = new Barrier(767,60,950,10)
+        this.add(toprightchair)
+        const bottomleftcounter = new Barrier(300,510,10,860)
+        this.add(bottomleftcounter)
+        const bottomleftchair = new Barrier(1234,510,10,860)
+        this.add(bottomleftchair)
 
-        const teleporter = new Tp(767,80,90,20, this.game)
-        this.add(teleporter)
+
+
     }
     onDeactivate() {
         this.Sjaak.kill()
