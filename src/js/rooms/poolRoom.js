@@ -6,6 +6,7 @@ import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
+import { Healwater } from '../props/healwater.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
