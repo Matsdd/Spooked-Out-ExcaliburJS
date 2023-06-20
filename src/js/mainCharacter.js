@@ -92,7 +92,6 @@ export class mainCharacter extends Actor {
       if (event.other instanceof Healwater) {
         if (event.other.healed == false) {
           this.hp += 3
-          console.log(this.hp);
           event.other.healed = true
         }
       }
