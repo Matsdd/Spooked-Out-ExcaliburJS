@@ -31,7 +31,7 @@ room
     }
 
     nextRoom(engine, game) {
-      this.room.addScore()
+      this.room.game.addScore()
       this.randomNumber
 
       this.randomNumber = this.getRandomInt(6)
