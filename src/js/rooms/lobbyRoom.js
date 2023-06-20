@@ -39,7 +39,7 @@ export class lobbyRoom extends room {
         this.Sjaak = new mainCharacter(400, 700)
         this.add(this.Sjaak)
 
-        this.Wraith = new wraith(400, 200)
+        this.Wraith = new wraith(this.Sjaak, 400, 200)
         this.add(this.Wraith)
     }
 }

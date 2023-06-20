@@ -19,7 +19,7 @@ export class wraith extends ghost {
     this.hp = 10;
     this.soundInterval = null;
     this.graphics.use(Resources.Wraith.toSprite());
-    this.scale = new Vector(0.3, 0.3);
+    this.scale = new Vector(0.5, 0.5);
     this.pos = new Vector(posX, posY);
     this.prox = false
     this.path = [
