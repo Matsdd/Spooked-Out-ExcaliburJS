@@ -10,6 +10,7 @@ import { roomBack } from './roomBack.js'
 import { Barrier } from '../ui/barrier.js'
 import { Donker } from '../props/donker.js'
 import { ui } from '../ui/ui.js'
+import { Tp } from '../ui/tp.js'
 
 export class room extends Scene {
     roomBackground
@@ -17,6 +18,7 @@ export class room extends Scene {
     Sjaak
     tpx
     tpy
+    score = 0
     constructor(game,tpx,tpy) {
         super({})
         this.game = game
@@ -31,8 +33,8 @@ export class room extends Scene {
 
         this.spawnBarriers()
 
-        const Ui = new ui()
-        this.add(Ui)
+        //const Ui = new ui()
+        //this.add(Ui)
 
         const barriertop = new Barrier(765, -10, 1530, 20)
         this.add(barriertop)
@@ -43,7 +45,7 @@ export class room extends Scene {
         const barrierright = new Barrier(1540, 540, 20, 1080)
         this.add(barrierright)
 
-        const teleporter = new Tp(this.tpx,this.tpy,90,20, this.game)
+        const teleporter = new Tp(this.tpx,this.tpy,90,20, this.game,this)
         this.add(teleporter)
         }
     
@@ -58,5 +60,10 @@ export class room extends Scene {
         if (zwart == 'kill') {
             this.zwart.kill()
         }
+    }
+
+    addScore() {
+        this.score++
+        console.log(this.score);
     }
 }

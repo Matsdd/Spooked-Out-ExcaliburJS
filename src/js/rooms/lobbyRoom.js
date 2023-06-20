@@ -5,7 +5,6 @@ import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
-import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
 
 import { room } from './room.js'
