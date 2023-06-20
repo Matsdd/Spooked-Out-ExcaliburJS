@@ -49,7 +49,7 @@ export class poltergeist extends ghost {
     const poltergeistInScene = currentScene.actors.find(actor => actor instanceof poltergeist);
     if (poltergeistInScene === this) {
       
-      if (this.timer > this.cooldown && distance > this.minDistance && distance < this.maxDistance) {
+      if (this.timer > this.cooldown && distance > this.minDistance) {
   
         const Vaas = new vaas(this.pos.x, this.pos.y, this.target);
         Vaas.rotation = this.rotation;
@@ -60,7 +60,7 @@ export class poltergeist extends ghost {
     }
 
 
-    if (direction.distance() > 0 && distance < this.maxDistance) {
+    if (direction.distance() > 0) {
       this.rotation = direction.toAngle() + Math.PI / 2;
     }else {
       this.timer = 0
