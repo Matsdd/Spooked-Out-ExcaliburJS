@@ -44,7 +44,7 @@ export class room extends Scene {
         const barrierright = new Barrier(1540, 540, 20, 1080)
         this.add(barrierright)
 
-        const teleporter = new Tp(this.tpx,this.tpy,90,20, this.game,this)
+        const teleporter = new Tp(this.tpx,this.tpy,90,30, this.game,this)
         this.add(teleporter)
         }
     

@@ -13,6 +13,8 @@ import { room } from './room.js'
 export class Bedroom1 extends room {
     roomBackground = Resources.Bedroom1
     zwart
+    tpx = 785
+    tpy = 80
     spawnBarriers() {
         const bed = new Barrier(450,580,300,300)
         this.add(bed)
@@ -33,9 +35,6 @@ export class Bedroom1 extends room {
         this.add(left)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
-
-        const teleporter = new Tp(785,80,80,30, this.game)
-        this.add(teleporter)
     }
     onDeactivate() {
         this.Sjaak.kill()

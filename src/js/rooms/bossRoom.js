@@ -15,6 +15,8 @@ import { room } from './room.js'
 export class bossRoom extends room {
         roomBackground = Resources.Boss
         Sjaak
+        tpx = 767
+        tpy = 50
         Demon
         spawnBarriers() {
         const bossMusic = new Audio(Resources.bossMusic.path)
@@ -36,8 +38,6 @@ export class bossRoom extends room {
 
         const up = new Barrier(767,50,950,10)
         this.add(up)
-        const teleporter = new Tp(767,50,90,20, this.game)
-        this.add(teleporter)
     }
 
     onDeactivate() {
