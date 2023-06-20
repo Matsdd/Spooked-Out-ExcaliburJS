@@ -23,10 +23,10 @@ export class ghoul extends ghost {
     this.pos = new Vector(posX, posY);
     this.prox = false
     this.path = [
-      new Vector(100, 100),
-      new Vector(200, 200),
-      new Vector(300, 100),
-      new Vector(400, 200),
+      new Vector(765, 430),
+      new Vector(650, 330),
+      new Vector(900, 280),
+      new Vector(800, 350),
     ]
     this.currentWaypoint = 0;
   }
