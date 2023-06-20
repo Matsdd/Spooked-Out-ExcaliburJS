@@ -1,6 +1,7 @@
 import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
+import { wraith } from './enemies/wraith.js'
 import { bullet } from './bullet.js'
 import { vaas } from './props/vaas.js'
 import { room } from './rooms/room.js'
@@ -47,6 +48,15 @@ export class mainCharacter extends Actor {
     this.on('collisionstart', (event) => {
       const playerHit = new Audio(Resources.playerHit2.path);
       const deathScream = new Audio(Resources.deathScream.path);
+      if (event.other instanceof wraith) {
+        this.hp -= 2
+        playerHit.play(1);
+        console.log(this.hp)
+        if (this.hp <= 0) {
+          deathScream.play();
+          Engine.goToScene('deathMenu')
+        }
+      } else {
       if (event.other instanceof ghost) {
         this.hp -= 1
         playerHit.play(1);
@@ -56,6 +66,7 @@ export class mainCharacter extends Actor {
           Engine.goToScene('deathMenu')
         }
       }
+    }
       if (event.other instanceof vaas) {
         this.hp -= 1;
         playerHit.play();
