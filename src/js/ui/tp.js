@@ -6,32 +6,35 @@ import { mainCharacter } from "../mainCharacter.js"
 export class Tp extends Actor {
 
 game
+room
 
-    constructor(x,y,width,height, game) {
+    constructor(x,y,width,height, game, room) {
         super({width:Resources.Barrier.width, height:Resources.Barrier.height})
         this.graphics.use(Resources.Barrier.toSprite())
         this.pos = new Vector(x,y)
         this.scale = new Vector(width/512, height/512)
         this.graphics.opacity = 0
         this.game = game
+        this.room = room
     }
 
     onInitialize(engine) {
         this.on('collisionstart', (event) => {
-            if (event.other instanceof mainCharacter) {
-                    this.nextRoom(this.game)
-                }
-            })
-        }
-
-        getRandomInt(max) {
-            return Math.floor(Math.random() * max);
+          if (event.other instanceof mainCharacter) {
+            this.nextRoom(this.game)
           }
+        })
+      }
 
-        nextRoom(engine, game) {
-    this.randomNumber
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
 
-            this.randomNumber = this.getRandomInt(6)
+    nextRoom(engine, game) {
+      this.room.addScore()
+      this.randomNumber
+
+      this.randomNumber = this.getRandomInt(6)
 
     switch (this.randomNumber) {
       case 0:
