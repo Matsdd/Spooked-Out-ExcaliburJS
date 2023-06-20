@@ -6,6 +6,7 @@ import { spirit } from '../enemies/spirit.js'
 import { bullet } from '../bullet.js'
 
 export class guardian extends ghost {
+  bouncing = true
   constructor(target, posX, posY) {
     super({
       width: Resources.Guardian.width / 1.6,

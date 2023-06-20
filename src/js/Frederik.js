@@ -5,6 +5,7 @@ import { ghost } from './enemies/ghost.js'
 import { bullet } from './bullet.js'
 
 export class frederik extends ghost {
+  bouncing = true
   constructor(target, posX, posY) {
     super({
       width: Resources.Frederik.width / 1.6,

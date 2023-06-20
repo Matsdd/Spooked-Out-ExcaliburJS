@@ -16,7 +16,7 @@ export class wraith extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 10;
+    this.hp = 20;
     this.soundInterval = null;
     this.graphics.use(Resources.Wraith.toSprite());
     this.scale = new Vector(0.5, 0.5);
