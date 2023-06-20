@@ -1,6 +1,7 @@
 import { Actor, Vector } from "excalibur";
 import { Resources } from './resources.js';
 import { ghost } from './enemies/ghost.js';
+import { phantom } from './enemies/phantom.js'
 import { Barrier } from './ui/barrier.js';
 import { vaas } from './props/vaas.js'
 
@@ -18,11 +19,19 @@ export class bullet extends Actor {
     this.scale = new Vector(0.2, 0.2);
 
     this.on('collisionstart', (event) => {
+      if (event.other instanceof phantom) {
+        if (event.other.invTimer <= 0) {
+          this.kill();
+          console.log(event.other.hp);
+        }
+      } else {
       if (event.other instanceof ghost) {
         this.kill();
         console.log(event.other.hp);
       }
+    }
     });
+
     this.on('collisionstart', (event) => {
       if (event.other instanceof Barrier) {
         this.kill()
