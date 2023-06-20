@@ -15,10 +15,13 @@ export class room extends Scene {
     roomBackground
     game
     Sjaak
-    constructor(game) {
+    tpx
+    tpy
+    constructor(game,tpx,tpy) {
         super({})
         this.game = game
-
+        this.tpx = tpx
+        this.tpy = tpy
     }
 
     onInitialize(engine) {
@@ -39,6 +42,9 @@ export class room extends Scene {
         this.add(barrierdown)
         const barrierright = new Barrier(1540, 540, 20, 1080)
         this.add(barrierright)
+
+        const teleporter = new Tp(this.tpx,this.tpy,90,20, this.game)
+        this.add(teleporter)
         }
     
 

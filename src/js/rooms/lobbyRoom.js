@@ -13,6 +13,8 @@ import { room } from './room.js'
 export class lobbyRoom extends room {
     roomBackground = Resources.Lobby
     zwart
+    tpx = 1290
+    tpy = 80
     spawnBarriers() {
         const barriertopleft = new Barrier(205,215,410,430)
         this.add(barriertopleft)
@@ -27,8 +29,6 @@ export class lobbyRoom extends room {
         const barrierfridge2 = new Barrier(1520,465,40,450)
         this.add(barrierfridge2)
         
-        const teleporter = new Tp(1290,80,90,20, this.game)
-        this.add(teleporter)
         const licht = new Licht(this)
         this.add(licht)
     }

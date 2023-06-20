@@ -13,6 +13,8 @@ import { room } from './room.js'
 export class poolRoom extends room {
     roomBackground = Resources.Pool
     zwart
+    tpx = 767
+    tpy = 80
     spawnBarriers() {
         const zwembadlinks = new Barrier(510,510,10,480)
         this.add(zwembadlinks)
@@ -33,9 +35,6 @@ export class poolRoom extends room {
         this.add(left)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
-
-        const teleporter = new Tp(767,80,90,20, this.game)
-        this.add(teleporter)
     }
     onDeactivate() {
         this.Sjaak.kill()
