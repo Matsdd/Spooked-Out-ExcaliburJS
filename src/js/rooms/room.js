@@ -18,7 +18,6 @@ export class room extends Scene {
     Sjaak
     tpx
     tpy
-    score = 0
     constructor(game,tpx,tpy) {
         super({})
         this.game = game
