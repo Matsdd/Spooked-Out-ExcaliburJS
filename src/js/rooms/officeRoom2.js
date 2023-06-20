@@ -66,13 +66,13 @@ export class officeRoom2 extends room {
         //kamer3
         const wall9 = new Barrier(30,580,200,80)
         this.add(wall9)
-        const wall10 = new Barrier(200,580,200,80)
+        const wall10 = new Barrier(320,580,200,80)
         this.add(wall10)
-        const wall11 = new Barrier(300,580,200,80)
+        const wall11 = new Barrier(550,580,110,80)
         this.add(wall11)
-        const wall12 = new Barrier(430,200,100,240)
+        const wall12 = new Barrier(340,740,60,240)
         this.add(wall12)
-        const wall13 = new Barrier(815,200,10,240)
+        const wall13 = new Barrier(600,740,10,240)
         this.add(wall13)
 
     }
