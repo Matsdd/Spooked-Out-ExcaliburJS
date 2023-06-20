@@ -269,6 +269,7 @@ const Resources = {
 //     Resources.Hp3,
 
 // ])
+
 const resourceArray = []
 for (const key in Resources) {
     resourceArray.push(Resources[key])
