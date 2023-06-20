@@ -3,7 +3,7 @@ import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 
 export class Healwater extends Actor {
-
+    healed = false
     constructor(x,y,width,height) {
         super({width:Resources.Barrier.width, height:Resources.Barrier.height})
         this.graphics.use(Resources.Barrier.toSprite())

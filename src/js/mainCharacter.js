@@ -9,6 +9,7 @@ import { room } from './rooms/room.js'
 import { settingsMenu } from './menu/settingsmenu'
 import { Barrier } from './ui/barrier.js'
 import { BarrierChecker } from './ui/playerBarrierChecker.js'
+import { Healwater } from './props/healwater.js'
 
 import * as ex from 'excalibur'
 
@@ -88,6 +89,13 @@ export class mainCharacter extends Actor {
           Engine.goToScene('deathMenu')
         }
       }
+      if (event.other instanceof Healwater) {
+        if (event.other.healed == false) {
+          this.hp += 3
+          console.log(this.hp);
+          event.other.healed = true
+        }
+      }
     }
     })
 
@@ -95,7 +103,6 @@ export class mainCharacter extends Actor {
     const mainCharacterInScene = currentScene.actors.find(actor => actor instanceof mainCharacter);
     const gunShot = new Audio(Resources.gunShot.path);
     gunShot.playbackRate = 2;
-
 
     Engine.input.pointers.primary.on('down', (evt) => {
       if (mainCharacterInScene === this && this.reloadtimer <= 0 && this.bullets > 0) {
