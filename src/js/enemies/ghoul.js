@@ -57,6 +57,10 @@ export class ghoul extends ghost {
     this.playSoundAtRandomInterval();
   }
 
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
   playSoundAtRandomInterval() {
     const minInterval = 8000; // Minimum interval in milliseconds
     const maxInterval = 17000; // Maximum interval in milliseconds
@@ -65,14 +69,30 @@ export class ghoul extends ghost {
 
     // Play the sound
     const sound = new Audio(Resources.Ghost1.path);
+    const sound2 = new Audio(Resources.Ghost2.path);
     sound.volume = 0.2;
+    sound2.volume = 0.2;
 
     // Set pitch
     const minPlaybackRate = 1; // Minimum playback rate
     const maxPlaybackRate = 4; // Maximum playback rate
     const randomPlaybackRate = Math.random() * (maxPlaybackRate - minPlaybackRate) + minPlaybackRate;
     sound.playbackRate = randomPlaybackRate;
-    sound.play();
+
+
+    this.randomNumber
+    this.randomNumber = this.getRandomInt(2);
+
+    switch (this.randomNumber) {
+      case 0:
+        sound.play();
+        break;
+      case 1:
+        sound2.play();
+        break;
+    }
+
+
 
     // Schedule the next sound playback
     this.soundInterval = setTimeout(() => {
@@ -84,33 +104,34 @@ export class ghoul extends ghost {
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
 
-    if (this.bounceTimer < 0) {    if (distance > this.minDistance && distance < this.maxDistance) {
-      const desiredVel = direction.normalize().scale(this.speed);
-      this.vel = desiredVel.clampMagnitude(this.speed);
+    if (this.bounceTimer < 0) {
+      if (distance > this.minDistance && distance < this.maxDistance) {
+        const desiredVel = direction.normalize().scale(this.speed);
+        this.vel = desiredVel.clampMagnitude(this.speed);
 
-      // Calculate rotation based on movement direction
-      this.rotation = Math.atan2(this.vel.y, this.vel.x);
-    } else {
-    // Follow the predefined path
-    const targetWaypoint = this.path[this.currentWaypoint];
-    const direction = targetWaypoint.sub(this.pos);
-    const distance = direction.distance();
+        // Calculate rotation based on movement direction
+        this.rotation = Math.atan2(this.vel.y, this.vel.x);
+      } else {
+        // Follow the predefined path
+        const targetWaypoint = this.path[this.currentWaypoint];
+        const direction = targetWaypoint.sub(this.pos);
+        const distance = direction.distance();
 
-    if (distance > this.minDistance) {
-      const desiredVel = direction.normalize().scale(this.speed);
-      this.vel = desiredVel.clampMagnitude(this.speed);
+        if (distance > this.minDistance) {
+          const desiredVel = direction.normalize().scale(this.speed);
+          this.vel = desiredVel.clampMagnitude(this.speed);
 
-      // Calculate rotation based on movement direction
-      this.rotation = Math.atan2(this.vel.y, this.vel.x);
-    } else {
-      // Reached the current waypoint, move to the next one
-      this.currentWaypoint = (this.currentWaypoint + 1) % this.path.length;
-      this.vel = Vector.Zero;
+          // Calculate rotation based on movement direction
+          this.rotation = Math.atan2(this.vel.y, this.vel.x);
+        } else {
+          // Reached the current waypoint, move to the next one
+          this.currentWaypoint = (this.currentWaypoint + 1) % this.path.length;
+          this.vel = Vector.Zero;
+        }
+      }
     }
+
   }
-    }
-
-}
 
   update(engine, delta) {
     this.bounceTimer -= 1
@@ -120,7 +141,7 @@ export class ghoul extends ghost {
       const targetWaypoint = this.path[this.currentWaypoint];
       this.moveTowardsTarget(targetWaypoint);
     }
-  
+
     // Call the base update method to apply the calculated velocity and rotation
     super.update(engine, delta);
   }
