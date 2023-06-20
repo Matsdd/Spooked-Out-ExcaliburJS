@@ -9,6 +9,7 @@ import { Resources } from '../resources.js'
 import { roomBack } from './roomBack.js'
 import { Barrier } from '../ui/barrier.js'
 import { Donker } from '../props/donker.js'
+import { ui } from '../ui/ui.js'
 
 export class room extends Scene {
     roomBackground
@@ -26,6 +27,9 @@ export class room extends Scene {
         this.add(background);
 
         this.spawnBarriers()
+
+        const Ui = new ui()
+        this.add(Ui)
 
         const barriertop = new Barrier(765, -10, 1530, 20)
         this.add(barriertop)
