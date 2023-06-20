@@ -18,9 +18,6 @@ import boss from "../images/rooms/boss.png"
 import cellar from "../images/rooms/cellar.png"
 import pool from "../images/rooms/pool.png"
 import storage from "../images/rooms/storage.png"
-import bedroom1 from "../images/rooms/bedroom1.png"
-import office1 from "../images/rooms/office1.png"
-import office2 from "../images/rooms/office2.png"
 
 //menu
 import titleback from "../images/menu/titleback.png"
@@ -49,7 +46,6 @@ import bossRoar from '../sfx/BossRoar.mp3'
 import playerHit1 from '../sfx/playerHit.mp3'
 import playerHit2 from '../sfx/playerHit2.mp3'
 import deathScream from '../sfx/deathScream.mp3'
-
 // import dungeonAmbience from '../sfx/dungeonsound.mp3'
 import bossMusic from '../sfx/8-bit loop boss music.mp3'
 import gunShot from '../sfx/gunshot.mp3'
@@ -60,7 +56,6 @@ import hp0 from '../images/ui/hp0.png'
 import hp1 from "../images/ui/hp1.png"
 import hp2 from "../images/ui/hp2.png"
 import hp3 from "../images/ui/hp3.png"
-import score from "../images/ui/score.png"
 
 
 
@@ -84,9 +79,6 @@ const Resources = {
     Cellar: new ImageSource(cellar),
     Pool: new ImageSource(pool),
     Storage: new ImageSource(storage),
-    Bedroom1: new ImageSource(bedroom1),
-    Office1: new ImageSource(office1),
-    Office2: new ImageSource(office2),
 
     //menu
     Titleback: new ImageSource(titleback),
@@ -125,7 +117,6 @@ const Resources = {
     Hp1: new ImageSource(hp1),
     Hp2: new ImageSource(hp2),
     Hp3: new ImageSource(hp3),
-    score : new ImageSource(score),
 
 
 }
@@ -149,9 +140,6 @@ const ResourceLoader = new Loader([
     Resources.Cellar,
     Resources.Pool,
     Resources.Storage,
-    Resources.Bedroom1,
-    Resources.Office1,
-    Resources.Office2,
 
     //menu
     Resources.Titleback,
@@ -190,8 +178,6 @@ const ResourceLoader = new Loader([
     Resources.Hp1,
     Resources.Hp2,
     Resources.Hp3,
-    Resources.score,
-
 
 ])
 
