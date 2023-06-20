@@ -2,7 +2,6 @@ import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import * as ex from 'excalibur'
 import { mainCharacter } from '../mainCharacter.js'
 import { frederik } from '../Frederik.js'
-import { phantom } from '../enemies/phantom.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Licht } from '../props/licht.js'
@@ -42,8 +41,5 @@ export class lobbyRoom extends room {
 
         this.Frederik = new frederik(this.Sjaak, 495, 315)
         this.add(this.Frederik)
-
-        this.Phantom = new phantom(this.Sjaak, 500, 200)
-        this.add(this.Phantom)
     }
 }
