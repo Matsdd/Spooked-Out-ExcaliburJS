@@ -9,7 +9,7 @@ export class wraith extends ghost {
   constructor(target, posX, posY) {
     super({
       width: Resources.Wraith.width / 1.6,
-      height: Resources.Wraith.height / 1.6,
+      height: Resources.Wraith.height / 1.75,
     });
     this.target = target;
     this.speed = 70;
