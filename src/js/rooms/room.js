@@ -60,9 +60,4 @@ export class room extends Scene {
             this.zwart.kill()
         }
     }
-
-    addScore() {
-        this.score++
-        console.log(this.score);
-    }
 }

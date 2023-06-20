@@ -57,6 +57,11 @@ export class Game extends Engine {
 
         console.log("Enjoy!")
     }
+    
+    addScore() {
+        this.score++
+        console.log(this.score);
+    }
 }
 
 
