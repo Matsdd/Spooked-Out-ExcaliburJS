@@ -60,7 +60,7 @@ import hp0 from '../images/ui/hp0.png'
 import hp1 from "../images/ui/hp1.png"
 import hp2 from "../images/ui/hp2.png"
 import hp3 from "../images/ui/hp3.png"
-import ui from "../images/ui/score.png"
+import score from "../images/ui/score.png"
 
 
 
@@ -190,6 +190,8 @@ const ResourceLoader = new Loader([
     Resources.Hp1,
     Resources.Hp2,
     Resources.Hp3,
+    Resources.score,
+
 
 ])
 
