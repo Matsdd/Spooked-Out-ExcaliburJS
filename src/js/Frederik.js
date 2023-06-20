@@ -1,8 +1,8 @@
 import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } from 'excalibur';
-import { Resources, ResourceLoader } from '../resources.js';
-import { mainCharacter } from '../mainCharacter.js';
-import { ghost } from '../enemies/ghost.js'
-import { bullet } from '../bullet.js'
+import { Resources, ResourceLoader } from './resources.js';
+import { mainCharacter } from './mainCharacter.js';
+import { ghost } from './enemies/ghost.js'
+import { bullet } from './bullet.js'
 
 export class frederik extends ghost {
   constructor(target, posX, posY) {
