@@ -26,7 +26,13 @@ export class bullet extends Actor {
         }
       } else {
       if (event.other instanceof ghost) {
-        this.kill();
+        if (event.other.bouncing) {
+          const direction = new Vector(this.target.x, this.target.y).sub(this.pos).normalize();
+          this.vel = direction.scale(-this.speed);
+          this.rotation += Math.PI
+        }else{
+          this.kill();
+        }
         console.log(event.other.hp);
       }
     }
