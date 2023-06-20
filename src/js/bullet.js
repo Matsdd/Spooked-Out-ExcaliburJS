@@ -17,6 +17,9 @@ export class bullet extends Actor {
   onInitialize(engine) {
     this.graphics.use(Resources.bullet.toSprite());
     this.scale = new Vector(0.2, 0.2);
+    const gunShot = new Audio(Resources.gunShot.path);
+    gunShot.playbackRate = 2;
+    gunShot.play();
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof phantom) {
