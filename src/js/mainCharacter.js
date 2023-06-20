@@ -106,6 +106,7 @@ export class mainCharacter extends Actor {
 
     Engine.input.pointers.primary.on('down', (evt) => {
       if (mainCharacterInScene === this && this.reloadtimer <= 0 && this.bullets > 0) {
+        const gunShot = new Audio(Resources.gunShot.path);
         gunShot.play();
         const mouseX = evt.worldPos.x;
         const mouseY = evt.worldPos.y;
