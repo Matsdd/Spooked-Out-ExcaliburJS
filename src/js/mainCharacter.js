@@ -50,49 +50,35 @@ export class mainCharacter extends Actor {
 
     this.on('collisionstart', (event) => {
       const playerHit = new Audio(Resources.playerHit2.path);
-      const deathScream = new Audio(Resources.deathScream.path);
       if (event.other instanceof arach) {
         this.hp -= 1;
         this.speed -= 10;
         this.slowtimer = 500;
         playerHit.play(1);
         console.log(this.hp)
-        if (this.hp <= 0) {
-          deathScream.play();
-          Engine.goToScene('deathMenu')
-        }
+        this.die(Engine)
       } else {
       if (event.other instanceof wraith) {
         this.hp -= 2
         playerHit.play(1);
         console.log(this.hp)
-        if (this.hp <= 0) {
-          deathScream.play();
-          Engine.goToScene('deathMenu')
-        }
+        this.die(Engine)
       } else {
       if (event.other instanceof ghost) {
         this.hp -= 1
         playerHit.play(1);
         console.log(this.hp)
-        if (this.hp <= 0) {
-          deathScream.play();
-          Engine.goToScene('deathMenu')
-        }
+        this.die(Engine)
       }
     }
       if (event.other instanceof vaas) {
         this.hp -= 1;
         playerHit.play();
-        if (this.hp <= 0) {
-          deathScream.play();
-          Engine.goToScene('deathMenu')
-        }
+        this.die(Engine)
       }
       if (event.other instanceof Healwater) {
         if (event.other.healed == false) {
           this.hp += 3
-          console.log(this.hp);
           event.other.healed = true
         }
       }
@@ -229,7 +215,13 @@ export class mainCharacter extends Actor {
     this.reloadtimer = 10;
   }
 
-
+  die(Engine) {
+    const deathScream = new Audio(Resources.deathScream.path);
+    if (this.hp <= 0) {
+      deathScream.play();
+      Engine.goToScene('deathMenu')
+    }
+  }
 
   update(engine) {
     if (this.slowtimer > 0) {
