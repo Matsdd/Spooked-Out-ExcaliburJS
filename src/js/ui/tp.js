@@ -71,7 +71,7 @@ room
         this.game.goToScene('kitchen2')
         break;
       case 11:
-        this.game.goToScene('engineRoom')
+        this.game.goToScene('engine')
         break;
         }
     }
