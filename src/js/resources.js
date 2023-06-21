@@ -104,6 +104,9 @@ import ammo28 from '../images/ui/ammo/ammo28.png'
 import ammo29 from '../images/ui/ammo/ammo29.png'
 import ammo30 from '../images/ui/ammo/ammo30.png'
 
+//score
+import score from '../images/ui/ammo/score.png'
+
 
 
 
@@ -211,6 +214,9 @@ const Resources = {
     Ammo28: new ImageSource(ammo28),
     Ammo29: new ImageSource(ammo29),
     Ammo30: new ImageSource(ammo30),
+
+    // score
+    Score: new ImageSource(score)
 
 
 }
