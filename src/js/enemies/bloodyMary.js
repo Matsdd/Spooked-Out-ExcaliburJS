@@ -4,6 +4,7 @@ import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 import { wisp } from './wisp.js';
+import { fireBall } from '../props/fireball.js';
 
 export class bloodyMary extends ghost {
   bounceTimer = 0
@@ -19,8 +20,11 @@ export class bloodyMary extends ghost {
     this.rotation = 0;
     this.hp = 50;
     this.timer = 0
+    this.secondaryTimer = 0
     this.cooldown = 300
+    this.secondaryCooldown = 500
     this.soundInterval = null;
+    this.fireKind = 0
     this.graphics.use(Resources.BloodyMary.toSprite());
     this.scale = new Vector(0.6, 0.6);
     this.pos = new Vector(posX, posY);
@@ -175,6 +179,7 @@ export class bloodyMary extends ghost {
 
   update(engine, delta) {
     this.timer++
+    this.secondaryTimer++
     this.bounceTimer -= 1
     if (this.prox) {
       this.moveTowardsTarget(this.target.pos);
@@ -197,8 +202,46 @@ export class bloodyMary extends ghost {
         Wisp.rotation = this.rotation;
         currentScene.add(Wisp);
         this.timer = 0
+      }
+
+      if (this.secondaryTimer > this.secondaryCooldown && distance > this.minDistance) {
+        if (this.fireKind == 0) {
+          const fireball1 = new fireBall(this.pos.x, this.pos.y, this.target,50,0);
+          currentScene.add(fireball1);
+          this.secondaryTimer = 0
+  
+          const fireball2 = new fireBall(this.pos.x, this.pos.y, this.target,-50,0);
+          currentScene.add(fireball2);
+          this.secondaryTimer = 0
+  
+          const fireball3 = new fireBall(this.pos.x, this.pos.y, this.target,0,50);
+          currentScene.add(fireball3);
+          this.secondaryTimer = 0
+  
+          const fireball4 = new fireBall(this.pos.x, this.pos.y, this.target,0,-50);
+          currentScene.add(fireball4);
+          this.secondaryTimer = 0
+          this.fireKind++
+        }else{
+          const fireball1 = new fireBall(this.pos.x, this.pos.y, this.target,33,33);
+          currentScene.add(fireball1);
+          this.secondaryTimer = 0
+  
+          const fireball2 = new fireBall(this.pos.x, this.pos.y, this.target,-33,33);
+          currentScene.add(fireball2);
+          this.secondaryTimer = 0
+  
+          const fireball3 = new fireBall(this.pos.x, this.pos.y, this.target,-33,-33);
+          currentScene.add(fireball3);
+          this.secondaryTimer = 0
+  
+          const fireball4 = new fireBall(this.pos.x, this.pos.y, this.target,33,-33);
+          currentScene.add(fireball4);
+          this.secondaryTimer = 0
+          this.fireKind = 0
         }
-      };
+      }
+    };
   }
 
   onPostKill() {
