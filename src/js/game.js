@@ -44,13 +44,19 @@ export class Game extends Engine {
         this.officeroom2 = new officeRoom2(this)
         this.Mirrorroom = new mirrorroom(this)
         this.playroom = new playroom(this)
+<<<<<<< HEAD
+        this.engine = new engineRoom(this)
+
+=======
         this.Bathroom = new bathroom(this)
+>>>>>>> 4e3d67ee8bca099cce538c704261f4f06af59b56
 
         this.addScene('titleMenu', this.titlemenu)  
         this.addScene('settingsMenu', this.settingsmenu)
         this.addScene('deathMenu', this.deathmenu)
 
         this.addScene('lobbyRoom', this.lobbyroom)  
+
         this.addScene('poolRoom', this.poolroom)
         this.addScene('wineCellar', this.winecellar)
         this.addScene('bossRoom', this.bossroom)

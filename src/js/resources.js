@@ -127,6 +127,8 @@ import artifactSlot from '../images/ui/artifact/artifactslot.png'
 import artifactRing from '../images/ui/artifact/artifactRing.png'
 import artifactMag from '../images/ui/artifact/artifactMag.png'
 import artifactMilk from '../images/ui/artifact/artifactMilk.png'
+import artifactFeather from '../images/ui/artifact/artifactFeather.png'
+import artifactPiercing from '../images/ui/artifact/artifactPiercing.png'
 
 //bosshp
 import bosshp1 from '../images/ui/HP/bosshp1.png'
@@ -170,7 +172,7 @@ const Resources = {
     Engine: new ImageSource(engine),
 
 
-    
+
     Pool: new ImageSource(pool),
     Boss: new ImageSource(boss),
     Storage: new ImageSource(storage),
@@ -276,6 +278,8 @@ const Resources = {
     artifactSlot: new ImageSource(artifactSlot),
     artifactRing: new ImageSource(artifactRing),
     artifactMag: new ImageSource(artifactMag),
+    artifactFeather: new ImageSource(artifactFeather),
+    artifactPiercing: new ImageSource(artifactPiercing),
     artifactMilk: new ImageSource(artifactMilk)
 
 
