@@ -12,8 +12,12 @@ import { wineCellar } from './rooms/wineCellar.js'
 import { bossRoom } from './rooms/bossRoom.js'
 import { storageRoom } from './rooms/storageRoom.js'
 import { Bedroom1 } from './rooms/bedroom1'
+import { bedroom2 } from './rooms/bedroom2'
 import { officeRoom1 } from './rooms/officeRoom1'
 import { officeRoom2 } from './rooms/officeRoom2'
+import { mirrorroom } from './rooms/mirrorRoom'
+import { playroom } from './rooms/playRoom'
+import { bathroom } from './rooms/bathroom'
 
 
 export class Game extends Engine {
@@ -35,9 +39,12 @@ export class Game extends Engine {
         this.bossroom = new bossRoom(this)
         this.storageroom = new storageRoom(this)
         this.Bedroom1 = new Bedroom1(this)
+        this.Bedroom2 = new bedroom2(this)
         this.officeroom1 = new officeRoom1(this)
         this.officeroom2 = new officeRoom2(this)
-
+        this.Mirrorroom = new mirrorroom(this)
+        this.playroom = new playroom(this)
+        this.Bathroom = new bathroom(this)
 
         this.addScene('titleMenu', this.titlemenu)  
         this.addScene('settingsMenu', this.settingsmenu)
@@ -49,11 +56,14 @@ export class Game extends Engine {
         this.addScene('bossRoom', this.bossroom)
         this.addScene('storageRoom', this.storageroom)
         this.addScene('Bedroom1', this.Bedroom1)
+        this.addScene('Bedroom2', this.Bedroom2)
         this.addScene('officeRoom1', this.officeroom1)
         this.addScene('officeRoom2', this.officeroom2)
+        this.addScene('mirrorroom', this.Mirrorroom)
+        this.addScene('playroom', this.Playroom)
+        this.addScene('bathroom', this.Bathroom)
 
-
-        this.goToScene('officeRoom1')
+        this.goToScene('bathroom')
 
         console.log("Enjoy!")
     }

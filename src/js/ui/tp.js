@@ -34,7 +34,7 @@ room
       this.room.game.addScore()
       this.randomNumber
 
-      this.randomNumber = this.getRandomInt(6)
+      this.randomNumber = this.getRandomInt(9)
 
     switch (this.randomNumber) {
       case 0:
@@ -50,12 +50,20 @@ room
         this.game.goToScene('Bedroom1')
         break;
       case 4:
-        this.game.goToScene('officeRoom1')
+        this.game.goToScene('Bedroom2')
         break;
       case 5:
+        this.game.goToScene('officeRoom1')
+        break;
+      case 6:
         this.game.goToScene('officeRoom2')
         break;
-
+      case 7:
+        this.game.goToScene('bathroom')
+        break;
+      case 8:
+        this.game.goToScene('playroom')
+        break;
         }
     }
 }

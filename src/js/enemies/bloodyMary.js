@@ -9,16 +9,16 @@ export class bloodyMary extends ghost {
   constructor(target, posX, posY, chosenPath) {
     super({
       width: Resources.BloodyMary.width / 1.6,
-      height: Resources.ghoul.height / 1.6,
+      height: Resources.BloodyMary.height / 1.6,
     });
     this.target = target;
-    this.speed = 100;
+    this.speed = 70;
     this.minDistance = 1;
     this.maxDistance = 450;
     this.rotation = 0;
     this.hp = 10;
     this.soundInterval = null;
-    this.graphics.use(Resources.ghoul.toSprite());
+    this.graphics.use(Resources.BloodyMary.toSprite());
     this.scale = new Vector(0.3, 0.3);
     this.pos = new Vector(posX, posY);
     this.prox = false
