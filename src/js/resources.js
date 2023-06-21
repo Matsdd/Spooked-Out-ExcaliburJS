@@ -11,6 +11,11 @@ import guardianImage from "../images/ghosts/guardian.png"
 import wraithImage from "../images/ghosts/wraith.png"
 import arachImage from "../images/ghosts/arach.png"
 import phantomImage from "../images/ghosts/phantom.png"
+import wispImage from "../images/ghosts/wisp.png"
+import bloodymaryImage from "../images/ghosts/bloodymary.png"
+import mareImage from "../images/ghosts/mare.png"
+import shadeImage from "../images/ghosts/shade.png"
+import mimicImage from "../images/ghosts/mimic.png"
 
 //rooms
 import lobby from "../images/rooms/lobby.png"
@@ -141,6 +146,11 @@ const Resources = {
     Wraith: new ImageSource(wraithImage),
     Arach: new ImageSource(arachImage),
     Phantom: new ImageSource(phantomImage),
+    Wisp: new ImageSource(wispImage),
+    BloodyMary: new ImageSource(bloodymaryImage),
+    Mare: new ImageSource(mareImage),
+    Shade: new ImageSource(shadeImage),
+    Mimic: new ImageSource(mimicImage),
 
     //rooms
     Lobby: new ImageSource(lobby),
