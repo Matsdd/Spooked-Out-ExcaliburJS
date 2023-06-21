@@ -11,8 +11,8 @@ import { Healwater } from '../props/healwater.js'
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
 
-export class playroom extends room {
-    roomBackground = Resources.Playroom
+export class mirrorroom extends room {
+    roomBackground = Resources.Mirrorroom
     zwart
     tpx = 767
     tpy = 80
