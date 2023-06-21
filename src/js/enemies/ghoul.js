@@ -31,16 +31,36 @@ export class ghoul extends ghost {
     this.currentWaypoint = 0;
   }
 
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
   onInitialize() {
 
     this.on('collisionstart', (event) => {
       const hitSound = new Audio(Resources.hitSound.path);
+      const ghostDeath1 = new Audio(Resources.ghostDeath1.path);
+      const ghostDeath2 = new Audio(Resources.ghostDeath2.path);
+      ghostDeath1.volume = 0.2
+      ghostDeath2.volume = 0.2
       hitSound.volume = 0.3;
       if (event.other instanceof bullet) {
         this.hp -= 1;
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          this.randomNumber
+          this.randomNumber = this.getRandomInt(2);
+
+          switch (this.randomNumber) {
+            case 0:
+              ghostDeath1.play();
+              break;
+            case 1:
+              ghostDeath2.play();
+              break;
+          }
+
         }
       }
       if (event.other instanceof mainCharacter) {
@@ -55,10 +75,6 @@ export class ghoul extends ghost {
 
     // Start playing sounds at random intervals
     this.playSoundAtRandomInterval();
-  }
-
-  getRandomInt(max) {
-    return Math.floor(Math.random() * max);
   }
 
   playSoundAtRandomInterval() {
