@@ -9,7 +9,7 @@ export class bloodyMary extends ghost {
   constructor(target, posX, posY, chosenPath) {
     super({
       width: Resources.BloodyMary.width / 1.6,
-      height: Resources.ghoul.height / 1.6,
+      height: Resources.BloodyMary.height / 1.6,
     });
     this.target = target;
     this.speed = 100;
