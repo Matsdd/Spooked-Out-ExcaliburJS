@@ -1,0 +1,46 @@
+import { Actor, Vector } from "excalibur";
+import { Resources } from '../resources.js';
+import { mainCharacter } from '../mainCharacter.js'
+import { Barrier } from '../ui/barrier.js';
+import { bullet } from '../bullet.js'
+
+export class shelf extends Actor {
+  constructor(posX, posY) {
+    super({ width: Resources.shelf.width / 2, height: Resources.shelf.height / 2 });
+    this.speed = 700;
+    this.pos = new Vector(posX, posY);
+    this.vel = new Vector(this.speed, 0);
+  }
+
+  onInitialize(engine) {
+    this.graphics.use(Resources.shelf.toSprite());
+    this.scale = new Vector(0.2, 0.2);
+
+    this.on('collisionstart', (event) => {
+      if (event.other instanceof mainCharacter) {
+        this.kill();
+        console.log(event.other.hp);
+      }
+    });
+    this.on('collisionstart', (event) => {
+      if (event.other instanceof Barrier) {
+        this.kill()
+      }
+    })
+
+
+  }
+
+
+
+  onPreUpdate() {
+    if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
+      this.kill()
+    }
+  }
+
+update(engine, delta) {
+    
+  }
+
+}
