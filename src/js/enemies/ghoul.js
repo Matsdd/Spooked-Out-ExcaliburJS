@@ -42,8 +42,8 @@ export class ghoul extends ghost {
       const hitSound = new Audio(Resources.hitSound.path);
       const ghostDeath1 = new Audio(Resources.ghostDeath1.path);
       const ghostDeath2 = new Audio(Resources.ghostDeath2.path);
-      ghostDeath1.volume = 0.2
-      ghostDeath2.volume = 0.2
+      ghostDeath1.volume = 0.5
+      ghostDeath2.volume = 0.5
       hitSound.volume = 0.3;
       if (event.other instanceof bullet) {
         this.hp -= 1;
