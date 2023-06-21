@@ -9,7 +9,7 @@ export class shelf extends Actor {
     super({ width: Resources.shelf.width / 2, height: Resources.shelf.height / 2 });
     this.speed = 700;
     this.pos = new Vector(posX, posY);
-    this.vel = new Vector(this.speed, 0);
+    this.vel = new Vector(0 , 0);
   }
 
   onInitialize(engine) {
@@ -28,7 +28,11 @@ export class shelf extends Actor {
       }
     })
 
-
+    if (this.pos.x > 500) {
+      this.vel = new Vector(-this.speed , 0);
+    } else {
+      this.vel = new Vector(this.speed , 0);
+    }
   }
 
 

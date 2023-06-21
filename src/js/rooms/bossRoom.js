@@ -7,6 +7,7 @@ import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
+import { shelf } from '../props/shelf.js'
 
 
 import { roomBack } from './roomBack.js'
@@ -18,6 +19,7 @@ export class bossRoom extends room {
         tpx = 767
         tpy = 50
         Demon
+        Shelf
         shelfTimer = 300
         spawnBarriers() {
         const bossMusic = new Audio(Resources.bossMusic.path)
@@ -54,10 +56,41 @@ export class bossRoom extends room {
         this.add(this.Demon)
     }
 
-    update(Engine){
-        if (shelfTimer <= 0 ) {
-            
-        }
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
 
+    onPreUpdate() {
+            this.randomNumber
+
+        if (this.shelfTimer <= 0 ) {
+            this.randomNumber = this.getRandomInt(4);
+            switch (this.randomNumber) {
+                case 0:
+                    this.Shelf = new shelf(50, 410)
+                    this.add(this.Shelf)
+                    this.shelfTimer = 300;
+                break;
+                case 1:
+                    this.Shelf = new shelf(1490, 410)
+                    this.add(this.Shelf)
+                    this.shelfTimer = 300;
+                break;
+                case 2:
+                    this.Shelf = new shelf(1490, 410)
+                    this.add(this.Shelf)
+                    this.shelfTimer = 300;
+                break;
+                case 3:
+                    this.Shelf = new shelf(1490, 410)
+                    this.add(this.Shelf)
+                    this.shelfTimer = 300;
+                break;
+        }
     }
-}
+
+        if (this.shelfTimer > 0){
+            this.shelfTimer--
+        }
+    }      
+}   
