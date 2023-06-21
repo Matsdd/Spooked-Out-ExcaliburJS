@@ -77,10 +77,23 @@ export class officeRoom1 extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Spirit.kill()
+        this.Spirit2.kill()
+        this.Spirit3.kill()
+        this.Spirit4.kill()
     }
 
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800)
         this.add(this.Sjaak)
+        this.Spirit = new spirit(this.Sjaak,400,200)
+        this.add(this.Spirit)
+        this.Spirit2 = new spirit(this.Sjaak,430,180)
+        this.add(this.Spirit2)
+
+        this.Spirit3 = new spirit(this.Sjaak,400,600)
+        this.add(this.Spirit3)
+        this.Spirit4 = new spirit(this.Sjaak,430,580)
+        this.add(this.Spirit4)
     }
 }
