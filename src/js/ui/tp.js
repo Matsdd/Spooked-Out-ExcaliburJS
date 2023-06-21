@@ -1,14 +1,15 @@
-import { Actor, Vector, Engine, Scene } from "excalibur"
+import { Actor, Vector, Engine, Scene, Input } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 import { mainCharacter } from "../mainCharacter.js"
 
 export class Tp extends Actor {
-
 game
 room
+tpActive = true
+bloedCounter = 0
 
-    constructor(x,y,width,height, game, room) {
+    constructor(x,y,width,height, game, room,tpAcitve) {
         super({width:Resources.Barrier.width, height:Resources.Barrier.height})
         this.graphics.use(Resources.Barrier.toSprite())
         this.pos = new Vector(x,y)
@@ -16,11 +17,14 @@ room
         this.graphics.opacity = 0
         this.game = game
         this.room = room
+        if (tpAcitve) {
+          this.tpActive = false
+        }
     }
 
     onInitialize(engine) {
         this.on('collisionstart', (event) => {
-          if (event.other instanceof mainCharacter) {
+          if (event.other instanceof mainCharacter && (this.tpActive && this.bloedCounter <= 4)) {
             this.nextRoom(this.game)
           }
         })
@@ -74,5 +78,11 @@ room
         this.game.goToScene('engine')
         break;
         }
+    }
+
+    update(engine) {
+      if (engine.input.keyboard.wasPressed(Input.Keys.B)) {
+        this.bloedCounter++
+      }
     }
 }
