@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
 import { wraith } from './enemies/wraith.js'
 import { arach } from './enemies/arach.js'
+import { demon } from './enemies/demonBoss.js'
 import { bullet } from './bullet.js'
 import { vaas } from './props/vaas.js'
 import { shelf } from './props/shelf.js'
@@ -21,6 +22,7 @@ export class mainCharacter extends Actor {
   ableRight
   ableLeft
   game
+  bounceTimer = 0
 
   constructor(posX, posY, game) {
     super({
@@ -33,7 +35,7 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false;
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 3;
+    this.hp = 30;
     this.pos = new Vector(posX, posY);
     this.game = game;
     this.bullets = 10;
@@ -87,6 +89,15 @@ export class mainCharacter extends Actor {
           this.hp += 3
           event.other.healed = true
         }
+      }
+      if (event.other instanceof demon) {
+        const pushAngle = Math.PI / 2;
+        const pushMagnitude = 7 * this.speed;
+        this.vel = new Vector(
+          Math.cos(pushAngle) * pushMagnitude,
+          Math.sin(pushAngle) * pushMagnitude
+        )
+        this.bounceTimer = 10
       }
     }
     })
@@ -230,6 +241,8 @@ export class mainCharacter extends Actor {
   }
 
   update(engine) {
+    this.bounceTimer -= 1
+
     if (this.slowtimer > 0) {
       this.slowtimer--
     }
@@ -245,77 +258,79 @@ export class mainCharacter extends Actor {
     if (engine.input.keyboard.wasPressed(ex.Input.Keys.Escape)) {
       engine.goToScene('settingsMenu')
     }
-
-    if (engine.input.keyboard.wasPressed(Input.Keys.D)) {
-      this.isMovingRight = true;
-      this.moveRight();
-    }
-
-    if (engine.input.keyboard.wasReleased(Input.Keys.D)) {
-      this.isMovingRight = false;
-      if (!this.isMovingLeft) {
-        this.stopMovement();
+    if (this.bounceTimer < 0) {
+      this.vel = new Vector(0, 0)
+      if (engine.input.keyboard.wasPressed(Input.Keys.D)) {
+        this.isMovingRight = true;
+        this.moveRight();
       }
-    }
 
-    if (engine.input.keyboard.wasPressed(Input.Keys.A)) {
-      this.isMovingLeft = true;
-      this.moveLeft();
-    }
-
-    if (engine.input.keyboard.wasReleased(Input.Keys.A)) {
-      this.isMovingLeft = false;
-      if (!this.isMovingRight) {
-        this.stopMovement();
+      if (engine.input.keyboard.wasReleased(Input.Keys.D)) {
+        this.isMovingRight = false;
+        if (!this.isMovingLeft) {
+          this.stopMovement();
+        }
       }
-    }
 
-
-    if (engine.input.keyboard.wasPressed(Input.Keys.W)) {
-      this.isMovingUp = true;
-      this.moveUp();
-    }
-
-    if (engine.input.keyboard.wasReleased(Input.Keys.W)) {
-      this.isMovingUp = false;
-      if (!this.isMovingDown) {
-        this.stopMovement();
+      if (engine.input.keyboard.wasPressed(Input.Keys.A)) {
+        this.isMovingLeft = true;
+        this.moveLeft();
       }
-    }
 
-    if (engine.input.keyboard.wasPressed(Input.Keys.S)) {
-      this.isMovingDown = true;
-      this.moveDown();
-    }
-
-    if (engine.input.keyboard.wasReleased(Input.Keys.S)) {
-      this.isMovingDown = false;
-      if (!this.isMovingUp) {
-        this.stopMovement();
+      if (engine.input.keyboard.wasReleased(Input.Keys.A)) {
+        this.isMovingLeft = false;
+        if (!this.isMovingRight) {
+          this.stopMovement();
+        }
       }
-    }
-
-    if (this.isMovingRight && engine.input.keyboard.isHeld(Input.Keys.D)) {
-      this.moveRight();
-    }
-
-    if (this.isMovingLeft && engine.input.keyboard.isHeld(Input.Keys.A)) {
-      this.moveLeft();
-    }
 
 
-    if (this.isMovingUp && engine.input.keyboard.isHeld(Input.Keys.W)) {
-      this.moveUp();
-    }
+      if (engine.input.keyboard.wasPressed(Input.Keys.W)) {
+        this.isMovingUp = true;
+        this.moveUp();
+      }
 
-    if (this.isMovingDown && engine.input.keyboard.isHeld(Input.Keys.S)) {
-      this.moveDown();
-    }
+      if (engine.input.keyboard.wasReleased(Input.Keys.W)) {
+        this.isMovingUp = false;
+        if (!this.isMovingDown) {
+          this.stopMovement();
+        }
+      }
 
-    const gunReload = new Audio(Resources.gunLoad.path);
-    if (this.reloadtimer <= 0 && engine.input.keyboard.wasPressed(Input.Keys.R)) {
-      this.reload();
-      gunReload.play();
+      if (engine.input.keyboard.wasPressed(Input.Keys.S)) {
+        this.isMovingDown = true;
+        this.moveDown();
+      }
+
+      if (engine.input.keyboard.wasReleased(Input.Keys.S)) {
+        this.isMovingDown = false;
+        if (!this.isMovingUp) {
+          this.stopMovement();
+        }
+      }
+
+      if (this.isMovingRight && engine.input.keyboard.isHeld(Input.Keys.D)) {
+        this.moveRight();
+      }
+
+      if (this.isMovingLeft && engine.input.keyboard.isHeld(Input.Keys.A)) {
+        this.moveLeft();
+      }
+
+
+      if (this.isMovingUp && engine.input.keyboard.isHeld(Input.Keys.W)) {
+        this.moveUp();
+      }
+
+      if (this.isMovingDown && engine.input.keyboard.isHeld(Input.Keys.S)) {
+        this.moveDown();
+      }
+
+      const gunReload = new Audio(Resources.gunLoad.path);
+      if (this.reloadtimer <= 0 && engine.input.keyboard.wasPressed(Input.Keys.R)) {
+        this.reload();
+        gunReload.play();
+      }
     }
 
     this.ableUp = 1
