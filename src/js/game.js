@@ -53,7 +53,7 @@ export class Game extends Engine {
         this.kitchen1 = new kitchen1(this)
         this.kitchen2 = new kitchen2(this)
         this.playroom = new playroom(this)
-        this.engine = new Engine(this)
+        this.engine = new engineRoom(this)
 
 
         this.addScene('titleMenu', this.titlemenu)  
@@ -61,6 +61,7 @@ export class Game extends Engine {
         this.addScene('deathMenu', this.deathmenu)
 
         this.addScene('lobbyRoom', this.lobbyroom)  
+
         this.addScene('poolRoom', this.poolroom)
         this.addScene('bossRoom', this.bossroom)
         this.addScene('storageRoom', this.storageroom)
