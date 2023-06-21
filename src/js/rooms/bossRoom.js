@@ -18,6 +18,7 @@ export class bossRoom extends room {
         tpx = 767
         tpy = 50
         Demon
+        shelfTimer = 300
         spawnBarriers() {
         const bossMusic = new Audio(Resources.bossMusic.path)
 
@@ -51,5 +52,12 @@ export class bossRoom extends room {
 
         this.Demon = new demon(this.Sjaak, 767, 150)
         this.add(this.Demon)
+    }
+
+    update(Engine){
+        if (shelfTimer <= 0 ) {
+            
+        }
+
     }
 }
