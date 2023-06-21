@@ -14,13 +14,13 @@ export class spirit extends ghost {
     this.target = target;
     this.posX = posX;
     this.posY = posY;
-    this.speed = 140;
+    this.speed = 130;
     this.minDistance = 1;
     this.maxDistance = 5000;
     this.rotation = 0;
     this.hp = 2
     this.pos = new Vector(posX, posY);
-    this.graphics.use(Resources.spirit.toSprite());
+    this.graphics.use(Resources.Wisp.toSprite());
     this.pos = new Vector(this.posX, this.posY);
     this.scale = new Vector(0.3, 0.3);
   }
