@@ -114,7 +114,15 @@ import ammo30 from '../images/ui/ammo/ammo30.png'
 import score from '../images/ui/ammo/score.png'
 import artifactSlot from '../images/ui/ammo/artifact.png'
 
-
+//bosshp
+import bosshp1 from '../images/ui/ammo/bosshp1.png'
+import bosshp2 from '../images/ui/ammo/bosshp2.png'
+import bosshp3 from '../images/ui/ammo/bosshp3.png'
+import bosshp4 from '../images/ui/ammo/bosshp4.png'
+import bosshp5 from '../images/ui/ammo/bosshp5.png'
+import bosshp6 from '../images/ui/ammo/bosshp6.png'
+import bosshp7 from '../images/ui/ammo/bosshp7.png'
+import bosshp8 from '../images/ui/ammo/bosshp8.png'
 
 
 const Resources = {
@@ -145,7 +153,7 @@ const Resources = {
     Cellar: new ImageSource(cellar),
     Bathroom: new ImageSource(bathroom),
     Mirrorroom: new ImageSource(mirrorroom),
-    
+
     //menu
     Titleback: new ImageSource(titleback),
     Settingsback: new ImageSource(settingsBack),
@@ -194,6 +202,16 @@ const Resources = {
     Hp7: new ImageSource(hp7),
     Hp8: new ImageSource(hp8),
     Hp9: new ImageSource(hp9),
+
+    //bosshp
+    BossHp1: new ImageSource(bosshp1),
+    BossHp2: new ImageSource(bosshp2),
+    BossHp3: new ImageSource(bosshp3),
+    BossHp4: new ImageSource(bosshp4),
+    BossHp5: new ImageSource(bosshp5),
+    BossHp6: new ImageSource(bosshp6),
+    BossHp7: new ImageSource(bosshp7),
+    BossHp8: new ImageSource(bosshp8),
 
     // ammo
     Ammo0: new ImageSource(ammo0),
