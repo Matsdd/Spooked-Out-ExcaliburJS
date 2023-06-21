@@ -250,8 +250,8 @@ const Resources = {
 
     // score & artifact
     Score: new ImageSource(score),
-    artifactSlot: new ImageSource(artifactSlot)
-    artifactRing: new ImageSource(artifactRing)
+    artifactSlot: new ImageSource(artifactSlot),
+    artifactRing: new ImageSource(artifactRing),
     artifactMag: new ImageSource(artifactMag)
 
 
