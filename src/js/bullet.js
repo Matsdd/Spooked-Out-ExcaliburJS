@@ -4,6 +4,7 @@ import { ghost } from './enemies/ghost.js';
 import { phantom } from './enemies/phantom.js'
 import { Barrier } from './ui/barrier.js';
 import { vaas } from './props/vaas.js'
+import { shelf } from './props/shelf.js'
 import { mainCharacter } from './mainCharacter.js'
 
 export class bullet extends Actor {
@@ -56,6 +57,11 @@ export class bullet extends Actor {
     })
     this.on('collisionstart', (event) => {
       if (event.other instanceof vaas) {
+        this.kill()
+      }
+    })
+    this.on('collisionstart', (event) => {
+      if (event.other instanceof shelf) {
         this.kill()
       }
     })

@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js'
 
 export class shelf extends Actor {
   constructor(posX, posY) {
-    super({ width: Resources.shelf.width / 2, height: Resources.shelf.height / 2 });
+    super({ width: Resources.shelf.width / 2, height: Resources.shelf.height / 3.5});
     this.speed = 700;
     this.pos = new Vector(posX, posY);
     this.vel = new Vector(0 , 0);
