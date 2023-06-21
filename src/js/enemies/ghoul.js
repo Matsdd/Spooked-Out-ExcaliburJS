@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js';
 
 export class ghoul extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY, chosenPath) {
     super({
       width: Resources.ghoul.width / 1.6,
       height: Resources.ghoul.height / 1.6,
@@ -14,7 +14,7 @@ export class ghoul extends ghost {
     this.target = target;
     this.speed = 100;
     this.minDistance = 1;
-    this.maxDistance = 500;
+    this.maxDistance = 450;
     this.rotation = 0;
     this.hp = 10;
     this.soundInterval = null;
@@ -23,12 +23,13 @@ export class ghoul extends ghost {
     this.pos = new Vector(posX, posY);
     this.prox = false
     this.path = [
-      new Vector(765, 430),
-      new Vector(650, 330),
-      new Vector(900, 280),
-      new Vector(800, 350),
+      new Vector(),
+      new Vector(),
+      new Vector(),
+      new Vector(),
     ]
     this.currentWaypoint = 0;
+    this.chosenPath = chosenPath;
   }
 
   getRandomInt(max) {
@@ -71,6 +72,14 @@ export class ghoul extends ghost {
         this.bounceTimer = 10
       }
     });
+      switch (this.chosenPath) {
+        case 0:
+          this.path = [
+            new Vector(460, 170),
+            new Vector(920, 170),
+          ]
+          break;
+    }
 
 
     // Start playing sounds at random intervals
