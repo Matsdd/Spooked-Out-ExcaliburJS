@@ -32,7 +32,7 @@ export class mirrorroom extends room {
         this.Sjaak = new mainCharacter(767, 800)
         this.add(this.Sjaak)
 
-        this.Maria = new bloodyMary(this.Sjaak,400,100)
+        this.Maria = new bloodyMary(this.Sjaak,767,300)
         this.add(this.Maria)
         
         

@@ -13,7 +13,7 @@ export class bloodyMary extends ghost {
       height: Resources.BloodyMary.height / 1.6,
     });
     this.target = target;
-    this.speed = 60;
+    this.speed = 40;
     this.minDistance = 1;
     this.maxDistance = 550;
     this.rotation = 0;

@@ -5,15 +5,15 @@ import {Resources} from "../resources.js"
 export class Fire extends Actor {
 
     constructor(x,y) {
-        super({width:Resources.Fire.width, height:Resources.Fire.height})
+        super({width:Resources.Fire.width*0.3, height:Resources.Fire.height*0.3})
         this.graphics.use(Resources.Fire.toSprite())
-        this.despawnTime = 300
+        this.despawnTime = 900
         this.pos = new Vector(x,y)
-        this.scale = new Vector(0.1, 0.1)
+        this.scale = new Vector(0.4, 0.4)
     }
 
     onPreUpdate() {
-        this.despawnTime++
+        this.despawnTime--
         if (this.despawnTime <= 0) {
             this.kill()
         }

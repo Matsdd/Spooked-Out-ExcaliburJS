@@ -19,7 +19,8 @@ export class wisp extends ghost {
     this.minDistance = 1;
     this.maxDistance = 5000;
     this.rotation = 0;
-    this.hp = 2
+    this.hp = 3
+    this.currentScene
     this.timer = 0
     this.cooldown = 100
     this.pos = new Vector(posX, posY);
@@ -101,12 +102,12 @@ export class wisp extends ghost {
     this.moveTowardsTarget();
     this.bounceTimer -= 1
 
-    const currentScene = engine.currentScene;
-    const wipsInScene = currentScene.actors.find(actor => actor instanceof wisp);
+    this.currentScene = engine.currentScene;
+    const wipsInScene = this.currentScene.actors.find(actor => actor instanceof wisp);
     if (wipsInScene === this) {
         if (this.timer > this.cooldown) {
             const fire = new Fire(this.pos.x, this.pos.y,);
-            currentScene.add(fire);
+            this.currentScene.add(fire);
             this.timer = 0
         }
     };
@@ -114,6 +115,6 @@ export class wisp extends ghost {
 
   onPostKill() {
     const fire = new Fire(this.pos.x, this.pos.y,);
-    currentScene.add(fire);
+    this.currentScene.add(fire);
   }
 }
