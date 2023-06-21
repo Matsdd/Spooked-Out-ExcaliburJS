@@ -218,7 +218,7 @@ export class mainCharacter extends Actor {
   reload() {
     //reload sound here
     this.bullets = 10;
-    this.reloadtimer = 10;
+    this.reloadtimer = 100;
   }
 
   die(Engine) {
