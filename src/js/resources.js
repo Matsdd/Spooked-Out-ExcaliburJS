@@ -56,6 +56,8 @@ import lichtUit from "../images/props/lichtUit.png"
 import donker from "../images/props/donker.png"
 import vaas from "../images/props/vaas.png"
 import shelf from "../images/props/shelf.png"
+import fire from "../images/props/fire.png"
+import treasure from "../images/props/schatkist.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -198,6 +200,8 @@ const Resources = {
     Donker: new ImageSource(donker),
     Vaas: new ImageSource(vaas),
     shelf: new ImageSource(shelf),
+    Fire: new ImageSource(fire),
+    Treasure: new ImageSource(treasure),
 
     // music
     gameMusic: new Sound(backgroundMusic),
