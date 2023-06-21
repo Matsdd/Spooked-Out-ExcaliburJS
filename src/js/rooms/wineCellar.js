@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
-import { spirit } from '../enemies/spirit.js'
+import { guardian } from '../enemies/guardian.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
@@ -30,10 +30,14 @@ export class wineCellar extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Guardian.kill()
     }
 
     onActivate() {
         this.Sjaak = new mainCharacter(110, 250)
         this.add(this.Sjaak)
+
+        this.Guardian = new guardian(this.Sjaak, 900, 500)
+        this.add(this.Guardian)
     }
 }

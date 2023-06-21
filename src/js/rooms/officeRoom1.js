@@ -22,6 +22,14 @@ export class officeRoom1 extends room {
         this.add(left)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
+
+        const topleftdevider = new Barrier(613,115,10,200)
+        this.add(topleftdevider)
+        const middleleftdevider = new Barrier(613,450,10,340)
+        this.add(middleleftdevider)
+        const bottomleftdevider = new Barrier(613,800,10,200)
+        this.add(bottomleftdevider)
+
         const topleftcounter = new Barrier(450,80,350,80)
         this.add(topleftcounter)
         const topleftcounter2 = new Barrier(320,150,70,145)
@@ -30,13 +38,6 @@ export class officeRoom1 extends room {
         this.add(topleftchair)
         const topleftcounter3 = new Barrier(570,370,70,35)
         this.add(topleftcounter3)
-
-        const topleftdevider = new Barrier(613,115,10,200)
-        this.add(topleftdevider)
-        const middleleftdevider = new Barrier(613,450,10,340)
-        this.add(middleleftdevider)
-        const bottomleftdevider = new Barrier(613,800,10,200)
-        this.add(bottomleftdevider)
 
         const bottomleftcounter = new Barrier(450,450,320,130)
         this.add(bottomleftcounter)
@@ -54,12 +55,25 @@ export class officeRoom1 extends room {
         const bottomrightdevider = new Barrier(915,800,10,200)
         this.add(bottomrightdevider)
 
-        const toprightcounter = new Barrier(1234,510,10,860)
+        const toprightcounter = new Barrier(1120,90,230,80)
         this.add(toprightcounter)
-        const toprightchair = new Barrier(767,60,950,10)
+        const toprightcounter2 = new Barrier(1220,200,80,150)
+        this.add(toprightcounter2)
+        const toprightchair = new Barrier(1070,160,40,40)
         this.add(toprightchair)
+        const toprightchair2 = new Barrier(1140,210,40,40)
+        this.add(toprightchair2)
+        const toprighttable = new Barrier(975,425,105,145)
+        this.add(toprighttable)
 
-
+        const rightdevider = new Barrier(1013,420,205,80)
+        this.add(rightdevider)
+        const rightdevider2 = new Barrier(1215,420,50,80)
+        this.add(rightdevider2)
+        const bottomrightchair = new Barrier(1200,680,50,50)
+        this.add(bottomrightchair)
+        const bottomrightcounter = new Barrier(1120,700,60,220)
+        this.add(bottomrightcounter)
     }
     onDeactivate() {
         this.Sjaak.kill()
