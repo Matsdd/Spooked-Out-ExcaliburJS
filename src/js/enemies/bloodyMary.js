@@ -18,7 +18,7 @@ export class bloodyMary extends ghost {
     this.rotation = 0;
     this.hp = 10;
     this.soundInterval = null;
-    this.graphics.use(Resources.ghoul.toSprite());
+    this.graphics.use(Resources.BloodyMary.toSprite());
     this.scale = new Vector(0.3, 0.3);
     this.pos = new Vector(posX, posY);
     this.prox = false
