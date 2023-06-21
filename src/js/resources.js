@@ -24,7 +24,12 @@ import bedroom1 from "../images/rooms/bedroom1.png"
 import bedroom2 from "../images/rooms/bedroom2.png"
 import office1 from "../images/rooms/office1.png"
 import office2 from "../images/rooms/office2.png"
+import kitchen1 from "../images/rooms/kitchen1.png"
+import kitchen2 from "../images/rooms/kitchen2.png"
 import playroom from "../images/rooms/playroom.png"
+import engine from "../images/rooms/engine.png"
+
+
 
 import pool from "../images/rooms/pool.png"
 import boss from "../images/rooms/boss.png"
@@ -159,8 +164,13 @@ const Resources = {
     Bedroom2: new ImageSource(bedroom2),
     Office1: new ImageSource(office1),
     Office2: new ImageSource(office2),
+    kitchen1: new ImageSource(kitchen1),
+    kitchen2: new ImageSource(kitchen2),
     Playroom: new ImageSource(playroom),
+    Engine: new ImageSource(engine),
 
+
+    
     Pool: new ImageSource(pool),
     Boss: new ImageSource(boss),
     Storage: new ImageSource(storage),

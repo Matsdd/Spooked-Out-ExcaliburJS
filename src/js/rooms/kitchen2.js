@@ -11,8 +11,8 @@ import { Healwater } from '../props/healwater.js'
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
 
-export class kitchen1 extends room {
-    roomBackground = Resources.kitchen1
+export class kitchen2 extends room {
+    roomBackground = Resources.kitchen2
     zwart
     tpx = 767
     tpy = 80
