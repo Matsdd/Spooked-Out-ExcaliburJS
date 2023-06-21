@@ -13,7 +13,7 @@ export class Fire extends Actor {
         this.scale = new Vector(0.4, 0.4)
     }
 
-    onInitialize() {
+    onInitialize(engine) {
         this.on('collisionstart', (event) => {
             if (event.other instanceof mainCharacter) {
                 this.kill()
