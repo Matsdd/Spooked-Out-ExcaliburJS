@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js'
 import { spirit } from '../enemies/spirit.js'
+import { ghoul } from '../enemies/ghoul.js'
 import { bullet } from '../bullet.js'
 
 export class guardian extends ghost {
@@ -39,8 +40,12 @@ export class guardian extends ghost {
 
   }
 
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
   update(Engine) {
+    this.randomNumber
 
     this.timer++
     const direction = this.target.pos.sub(this.pos);
@@ -51,7 +56,9 @@ export class guardian extends ghost {
     if (guardianInScene === this) {
       
       if (this.timer > this.cooldown && distance > this.minDistance) {
-  
+        this.randomNumber = this.getRandomInt(2)
+        switch (this.randomNumber) {
+        case 0:
         const Spirit = new spirit(this.target, this.pos.x, this.pos.y,);
         Spirit.rotation = this.rotation;
         currentScene.add(Spirit);
@@ -60,7 +67,17 @@ export class guardian extends ghost {
         Spirit.rotation = direction.toAngle() + Math.PI / 2;
         currentScene.add(Spirit2);
 
-        this.timer = 0
+        this.timer = 0;
+        break;
+
+        case 1:
+        const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y,);
+        Ghoul.rotation = this.rotation;
+        currentScene.add(Ghoul);
+
+        this.timer = 0;
+
+        }
       };
     }
 

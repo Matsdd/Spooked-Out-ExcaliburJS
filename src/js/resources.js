@@ -44,11 +44,15 @@ import vaas from "../images/props/vaas.png"
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
 import Ghost1 from '../sfx/Ghost 1.mp3'
 import Ghost2 from '../sfx/Ghost 2.mp3'
+import Ghost3 from '../sfx/Ghost3.mp3'
+import Ghost4 from '../sfx/Ghost4.mp3'
 import hitSound from '../sfx/hitsound.wav'
 import bossRoar from '../sfx/BossRoar.mp3'
 import playerHit1 from '../sfx/playerHit.mp3'
 import playerHit2 from '../sfx/playerHit2.mp3'
 import deathScream from '../sfx/deathScream.mp3'
+import ghostDeath1 from '../sfx/poof1.mp3'
+import ghostDeath2 from '../sfx/poof2.mp3'
 
 // import dungeonAmbience from '../sfx/dungeonsound.mp3'
 import bossMusic from '../sfx/8-bit loop boss music.mp3'
@@ -148,10 +152,14 @@ const Resources = {
     gameMusic: new Sound(backgroundMusic),
     Ghost1: new Sound(Ghost1),
     Ghost2: new Sound(Ghost2),
+    Ghost3: new Sound(Ghost3),
+    Ghost4: new Sound(Ghost4),
     bossRoar: new Sound(bossRoar),
     playerHit1: new Sound(playerHit1),
     playerHit2: new Sound(playerHit2),
     deathScream: new Sound(deathScream),
+    ghostDeath1: new Sound(ghostDeath1),
+    ghostDeath2: new Sound(ghostDeath2),
 
     // dungeonAmbience: new Sound(dungeonAmbience),
     bossMusic: new Sound(bossMusic),
