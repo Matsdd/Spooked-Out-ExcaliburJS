@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js';
 
 export class wraith extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY, chosenPath) {
     super({
       width: Resources.Wraith.width / 1.6,
       height: Resources.Wraith.height / 1.75,
@@ -14,7 +14,7 @@ export class wraith extends ghost {
     this.target = target;
     this.speed = 70;
     this.minDistance = 1;
-    this.maxDistance = 500;
+    this.maxDistance = 300;
     this.rotation = 0;
     this.hp = 20;
     this.soundInterval = null;
@@ -23,12 +23,14 @@ export class wraith extends ghost {
     this.pos = new Vector(posX, posY);
     this.prox = false
     this.path = [
-      new Vector(100, 100),
-      new Vector(200, 200),
-      new Vector(300, 100),
-      new Vector(400, 200),
+      new Vector(),
+      new Vector(),
+      new Vector(),
+      new Vector(),
     ]
     this.currentWaypoint = 0;
+    this.chosenPath = chosenPath;
+    this.aggro = false;
   }
 
   onInitialize() {
@@ -38,6 +40,7 @@ export class wraith extends ghost {
       hitSound.volume = 0.3;
       if (event.other instanceof bullet) {
         this.hp -= 1;
+        this.aggro = true;
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
@@ -51,7 +54,16 @@ export class wraith extends ghost {
         this.bounceTimer = 10
       }
     });
-
+    switch (this.chosenPath) {
+      case 0:
+        this.path = [
+          new Vector(470, 600),
+          new Vector(470, 450),
+          new Vector(570, 450),
+          new Vector(570, 600),
+        ]
+        break;
+  }
 
     // Start playing sounds at random intervals
     this.playSoundAtRandomInterval();
@@ -84,7 +96,7 @@ export class wraith extends ghost {
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
 
-    if (this.bounceTimer < 0) {    if (distance > this.minDistance && distance < this.maxDistance) {
+    if (this.bounceTimer < 0) {    if (distance > this.minDistance && distance < this.maxDistance || this.aggro === true) {
       const desiredVel = direction.normalize().scale(this.speed);
       this.vel = desiredVel.clampMagnitude(this.speed);
 
