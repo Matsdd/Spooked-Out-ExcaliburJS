@@ -14,13 +14,19 @@ import phantomImage from "../images/ghosts/phantom.png"
 
 //rooms
 import lobby from "../images/rooms/lobby.png"
-import boss from "../images/rooms/boss.png"
-import cellar from "../images/rooms/cellar.png"
-import pool from "../images/rooms/pool.png"
-import storage from "../images/rooms/storage.png"
+
 import bedroom1 from "../images/rooms/bedroom1.png"
+import bedroom2 from "../images/rooms/bedroom2.png"
 import office1 from "../images/rooms/office1.png"
 import office2 from "../images/rooms/office2.png"
+import playroom from "../images/rooms/playroom.png"
+
+import pool from "../images/rooms/pool.png"
+import boss from "../images/rooms/boss.png"
+import storage from "../images/rooms/storage.png"
+import cellar from "../images/rooms/cellar.png"
+import bathroom from "../images/rooms/bathroom.png"
+import mirrorroom from "../images/rooms/mirrorroom.png"
 
 //menu
 import titleback from "../images/menu/titleback.png"
@@ -126,14 +132,20 @@ const Resources = {
 
     //rooms
     Lobby: new ImageSource(lobby),
-    Boss: new ImageSource(boss),
-    Cellar: new ImageSource(cellar),
-    Pool: new ImageSource(pool),
-    Storage: new ImageSource(storage),
+
     Bedroom1: new ImageSource(bedroom1),
+    Bedroom2: new ImageSource(bedroom2),
     Office1: new ImageSource(office1),
     Office2: new ImageSource(office2),
+    Playroom: new ImageSource(playroom),
 
+    Pool: new ImageSource(pool),
+    Boss: new ImageSource(boss),
+    Storage: new ImageSource(storage),
+    Cellar: new ImageSource(cellar),
+    Bathroom: new ImageSource(bathroom),
+    Mirrorroom: new ImageSource(mirrorroom),
+    
     //menu
     Titleback: new ImageSource(titleback),
     Settingsback: new ImageSource(settingsBack),
