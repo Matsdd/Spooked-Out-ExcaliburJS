@@ -13,7 +13,7 @@ export class fireBall extends Actor {
     super({ width: Resources.Fire.width / 6, height: Resources.Fire.height / 6});
     this.pos = new Vector(x, y);
     this.target = target;
-    this.speed = 260;
+    this.speed = 300;
     this.vel = new Vector(velx,vely)
   }
 

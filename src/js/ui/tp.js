@@ -6,10 +6,8 @@ import { mainCharacter } from "../mainCharacter.js"
 export class Tp extends Actor {
 game
 room
-tpActive = true
-bloedCounter = 0
 
-    constructor(x,y,width,height, game, room,tpAcitve) {
+    constructor(x,y,width,height, game, room) {
         super({width:Resources.Barrier.width, height:Resources.Barrier.height})
         this.graphics.use(Resources.Barrier.toSprite())
         this.pos = new Vector(x,y)
@@ -17,14 +15,11 @@ bloedCounter = 0
         this.graphics.opacity = 0
         this.game = game
         this.room = room
-        if (tpAcitve) {
-          this.tpActive = false
-        }
     }
 
     onInitialize(engine) {
         this.on('collisionstart', (event) => {
-          if (event.other instanceof mainCharacter && (this.tpActive && this.bloedCounter <= 4)) {
+          if (event.other instanceof mainCharacter) {
             this.nextRoom(this.game)
           }
         })
@@ -78,11 +73,5 @@ bloedCounter = 0
         this.game.goToScene('engine')
         break;
         }
-    }
-
-    update(engine) {
-      if (engine.input.keyboard.wasPressed(Input.Keys.B)) {
-        this.bloedCounter++
-      }
     }
 }

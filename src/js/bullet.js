@@ -6,6 +6,7 @@ import { Barrier } from './ui/barrier.js';
 import { vaas } from './props/vaas.js'
 import { shelf } from './props/shelf.js'
 import { mainCharacter } from './mainCharacter.js'
+import { fireBall } from './props/fireball.js'
 
 export class bullet extends Actor {
   constructor(x, y, target) {
@@ -46,6 +47,9 @@ export class bullet extends Actor {
         event.other.hp--
         event.other.die(engine)
         console.log(event.other.hp);
+      }
+      if (event.other instanceof fireBall) {
+        this.kill()
       }
     }
     });
