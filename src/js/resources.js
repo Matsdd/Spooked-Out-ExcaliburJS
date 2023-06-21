@@ -112,7 +112,9 @@ import ammo30 from '../images/ui/ammo/ammo30.png'
 
 //score & artifact
 import score from '../images/ui/ammo/score.png'
-import artifactSlot from '../images/ui/ammo/artifact.png'
+import artifactSlot from '../images/ui/ammo/artifactslot.png'
+import artifactRing from '../images/ui/ammo/artifactRing.png'
+import artifactMag from '../images/ui/ammo/artifactMag.png'
 
 //bosshp
 import bosshp1 from '../images/ui/ammo/bosshp1.png'
@@ -249,6 +251,8 @@ const Resources = {
     // score & artifact
     Score: new ImageSource(score),
     artifactSlot: new ImageSource(artifactSlot)
+    artifactRing: new ImageSource(artifactRing)
+    artifactMag: new ImageSource(artifactMag)
 
 
 }
