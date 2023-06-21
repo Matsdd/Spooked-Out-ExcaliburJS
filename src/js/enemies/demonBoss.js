@@ -11,7 +11,7 @@ export class demon extends ghost {
       height: Resources.demon.height / 1.6,
     });
     this.target = target;
-    this.speed = 60;
+    this.speed = 0;
     this.minDistance = 1;
     this.maxDistance = 1000;
     this.rotation = 0;
@@ -68,22 +68,10 @@ export class demon extends ghost {
     this.playSoundAtRandomInterval();
   }
 
-  moveTowardsTarget() {
-    const direction = this.target.pos.sub(this.pos);
-    const distance = direction.distance();
 
-    if (distance > this.minDistance && distance < this.maxDistance) {
-      const desiredVel = direction.normalize().scale(this.speed);
-      this.vel = desiredVel.clampMagnitude(this.speed);
-
-      // Calculate rotation based on movement direction
-      this.rotation = Math.atan2(this.vel.y, this.vel.x);
-    } else {
-      this.vel = Vector.Zero;
-    }
-  }
 
   update(engine, delta) {
-    this.moveTowardsTarget();
+    const direction = this.target.pos.sub(this.pos);
+    this.rotation = direction.toAngle() + Math.PI / 2;
   }
 }

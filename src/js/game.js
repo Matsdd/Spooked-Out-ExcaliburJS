@@ -53,7 +53,7 @@ export class Game extends Engine {
         this.addScene('officeRoom2', this.officeroom2)
 
 
-        this.goToScene('titleMenu')
+        this.goToScene('bossRoom')
 
         console.log("Enjoy!")
     }
