@@ -76,7 +76,13 @@ export class ghoul extends ghost {
         case 0:
           this.path = [
             new Vector(460, 170),
-            new Vector(920, 170),
+            new Vector(950, 170),
+          ]
+          break;
+          case 1:
+          this.path = [
+            new Vector(950, 170),
+            new Vector(460, 170),
           ]
           break;
     }
