@@ -5,6 +5,7 @@ import { ghost } from '../enemies/ghost.js'
 import { bullet } from '../bullet.js'
 
 export class spirit extends ghost {
+  bounceTimer = 0
   constructor(target, posX, posY) {
     super({
       width: Resources.spirit.width / 4,
@@ -63,6 +64,13 @@ export class spirit extends ghost {
           this.kill();
         }
       }
+      if (event.other instanceof mainCharacter) {
+        this.vel = new Vector(
+          Math.cos(this.rotation) * -10 * this.speed/2,
+          Math.sin(this.rotation) * -10 * this.speed/2
+        )
+        this.bounceTimer = 10
+      }
     });
 
     this.playSoundAtRandomInterval();
@@ -72,6 +80,7 @@ export class spirit extends ghost {
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
 
+    if (this.bounceTimer < 0) {
     if (distance > this.minDistance && distance < this.maxDistance) {
       const desiredVel = direction.normalize().scale(this.speed);
       this.vel = desiredVel.clampMagnitude(this.speed);
@@ -82,8 +91,10 @@ export class spirit extends ghost {
       this.vel = Vector.Zero;
     }
   }
+}
 
   update(engine, delta) {
     this.moveTowardsTarget();
+    this.bounceTimer -= 1
   }
 }
