@@ -58,6 +58,7 @@ import vaas from "../images/props/vaas.png"
 import shelf from "../images/props/shelf.png"
 import fire from "../images/props/fire.png"
 import treasure from "../images/props/schatkist.png"
+import mirror from "../images/props/mirror.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -203,6 +204,7 @@ const Resources = {
     shelf: new ImageSource(shelf),
     Fire: new ImageSource(fire),
     Treasure: new ImageSource(treasure),
+    Mirror: new ImageSource(mirror),
 
     // music
     gameMusic: new Sound(backgroundMusic),

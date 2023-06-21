@@ -6,7 +6,7 @@ import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
-import { Healwater } from '../props/healwater.js'
+import { Mirror } from '../ui/mirror.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
@@ -17,6 +17,8 @@ export class bathroom extends room {
     tpx = 767
     tpy = 80
     spawnBarriers() {
+        const mirror = new Mirror(465,80,200,30, this.game)
+        this.add(mirror)
         const up = new Barrier(767,80,950,10)
         this.add(up)
         const left = new Barrier(300,510,10,860)
