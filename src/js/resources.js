@@ -131,6 +131,7 @@ import artifactMag from '../images/ui/artifact/artifactMag.png'
 import artifactMilk from '../images/ui/artifact/artifactMilk.png'
 import artifactFeather from '../images/ui/artifact/artifactFeather.png'
 import artifactPiercing from '../images/ui/artifact/artifactPiercing.png'
+import artifactDual from '../images/ui/artifact/artifactDual.png'
 
 //bosshp
 import bosshp1 from '../images/ui/HP/bosshp1.png'
@@ -284,6 +285,7 @@ const Resources = {
     artifactMag: new ImageSource(artifactMag),
     artifactFeather: new ImageSource(artifactFeather),
     artifactPiercing: new ImageSource(artifactPiercing),
+    artifactDual: new ImageSource(artifactDual),
     artifactMilk: new ImageSource(artifactMilk)
 
 
