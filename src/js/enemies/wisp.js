@@ -21,7 +21,7 @@ export class wisp extends ghost {
     this.rotation = 0;
     this.hp = 2
     this.timer = 0
-    this.cooldown = 150
+    this.cooldown = 100
     this.pos = new Vector(posX, posY);
     this.graphics.use(Resources.Wisp.toSprite());
     this.pos = new Vector(this.posX, this.posY);
@@ -110,5 +110,10 @@ export class wisp extends ghost {
             this.timer = 0
         }
     };
+  }
+
+  onPostKill() {
+    const fire = new Fire(this.pos.x, this.pos.y,);
+    currentScene.add(fire);
   }
 }
