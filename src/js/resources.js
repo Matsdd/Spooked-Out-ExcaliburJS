@@ -104,8 +104,9 @@ import ammo28 from '../images/ui/ammo/ammo28.png'
 import ammo29 from '../images/ui/ammo/ammo29.png'
 import ammo30 from '../images/ui/ammo/ammo30.png'
 
-//score
+//score & artifact
 import score from '../images/ui/ammo/score.png'
+import artifactSlot from '../images/ui/ammo/artifact.png'
 
 
 
@@ -215,8 +216,9 @@ const Resources = {
     Ammo29: new ImageSource(ammo29),
     Ammo30: new ImageSource(ammo30),
 
-    // score
-    Score: new ImageSource(score)
+    // score & artifact
+    Score: new ImageSource(score),
+    artifactSlot: new ImageSource(artifactSlot)
 
 
 }
