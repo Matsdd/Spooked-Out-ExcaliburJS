@@ -18,6 +18,9 @@ import { officeRoom2 } from './rooms/officeRoom2'
 import { mirrorroom } from './rooms/mirrorRoom'
 import { playroom } from './rooms/playRoom'
 import { bathroom } from './rooms/bathroom'
+import { kitchen1 } from './rooms/kitchen1'
+import { kitchen2 } from './rooms/kitchen2'
+import { engineRoom } from './rooms/engineRoom'
 
 
 export class Game extends Engine {
@@ -45,12 +48,16 @@ export class Game extends Engine {
         this.Mirrorroom = new mirrorroom(this)
         this.playroom = new playroom(this)
         this.Bathroom = new bathroom(this)
+        this.Kitchen1 = new kitchen1(this)
+        this.Kitchen2 = new kitchen2(this)
+        this.engine = new engineRoom(this)
 
         this.addScene('titleMenu', this.titlemenu)  
         this.addScene('settingsMenu', this.settingsmenu)
         this.addScene('deathMenu', this.deathmenu)
 
         this.addScene('lobbyRoom', this.lobbyroom)  
+
         this.addScene('poolRoom', this.poolroom)
         this.addScene('wineCellar', this.winecellar)
         this.addScene('bossRoom', this.bossroom)
@@ -62,6 +69,9 @@ export class Game extends Engine {
         this.addScene('mirrorroom', this.Mirrorroom)
         this.addScene('playroom', this.Playroom)
         this.addScene('bathroom', this.Bathroom)
+        this.addScene('kitchen1', this.kitchen1)
+        this.addScene('kitchen2', this.kitchen2)
+        this.addScene('engine', this.engine)
 
         this.goToScene('bathroom')
 

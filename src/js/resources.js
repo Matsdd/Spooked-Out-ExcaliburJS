@@ -24,7 +24,12 @@ import bedroom1 from "../images/rooms/bedroom1.png"
 import bedroom2 from "../images/rooms/bedroom2.png"
 import office1 from "../images/rooms/office1.png"
 import office2 from "../images/rooms/office2.png"
+import kitchen1 from "../images/rooms/kitchen1.png"
+import kitchen2 from "../images/rooms/kitchen2.png"
 import playroom from "../images/rooms/playroom.png"
+import engine from "../images/rooms/engine.png"
+
+
 
 import pool from "../images/rooms/pool.png"
 import boss from "../images/rooms/boss.png"
@@ -51,6 +56,8 @@ import lichtUit from "../images/props/lichtUit.png"
 import donker from "../images/props/donker.png"
 import vaas from "../images/props/vaas.png"
 import shelf from "../images/props/shelf.png"
+import fire from "../images/props/fire.png"
+import treasure from "../images/props/schatkist.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -122,6 +129,9 @@ import artifactSlot from '../images/ui/artifact/artifactslot.png'
 import artifactRing from '../images/ui/artifact/artifactRing.png'
 import artifactMag from '../images/ui/artifact/artifactMag.png'
 import artifactMilk from '../images/ui/artifact/artifactMilk.png'
+import artifactFeather from '../images/ui/artifact/artifactFeather.png'
+import artifactPiercing from '../images/ui/artifact/artifactPiercing.png'
+import artifactDual from '../images/ui/artifact/artifactDual.png'
 
 //bosshp
 import bosshp1 from '../images/ui/HP/bosshp1.png'
@@ -159,7 +169,12 @@ const Resources = {
     Bedroom2: new ImageSource(bedroom2),
     Office1: new ImageSource(office1),
     Office2: new ImageSource(office2),
+    kitchen1: new ImageSource(kitchen1),
+    kitchen2: new ImageSource(kitchen2),
     Playroom: new ImageSource(playroom),
+    Engine: new ImageSource(engine),
+
+
 
     Pool: new ImageSource(pool),
     Boss: new ImageSource(boss),
@@ -186,6 +201,8 @@ const Resources = {
     Donker: new ImageSource(donker),
     Vaas: new ImageSource(vaas),
     shelf: new ImageSource(shelf),
+    Fire: new ImageSource(fire),
+    Treasure: new ImageSource(treasure),
 
     // music
     gameMusic: new Sound(backgroundMusic),
@@ -266,6 +283,9 @@ const Resources = {
     artifactSlot: new ImageSource(artifactSlot),
     artifactRing: new ImageSource(artifactRing),
     artifactMag: new ImageSource(artifactMag),
+    artifactFeather: new ImageSource(artifactFeather),
+    artifactPiercing: new ImageSource(artifactPiercing),
+    artifactDual: new ImageSource(artifactDual),
     artifactMilk: new ImageSource(artifactMilk)
 
 

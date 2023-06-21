@@ -3,8 +3,9 @@ import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js'
 import { bullet } from '../bullet.js'
+import { Fire } from '../props/fire.js'
 
-export class spirit extends ghost {
+export class wisp extends ghost {
   bounceTimer = 0
   constructor(target, posX, posY) {
     super({
@@ -14,11 +15,14 @@ export class spirit extends ghost {
     this.target = target;
     this.posX = posX;
     this.posY = posY;
-    this.speed = 130;
+    this.speed = 140;
     this.minDistance = 1;
     this.maxDistance = 5000;
     this.rotation = 0;
-    this.hp = 2
+    this.hp = 3
+    this.currentScene
+    this.timer = 0
+    this.cooldown = 100
     this.pos = new Vector(posX, posY);
     this.graphics.use(Resources.Wisp.toSprite());
     this.pos = new Vector(this.posX, this.posY);
@@ -94,7 +98,23 @@ export class spirit extends ghost {
 }
 
   update(engine, delta) {
+    this.timer++
     this.moveTowardsTarget();
     this.bounceTimer -= 1
+
+    this.currentScene = engine.currentScene;
+    const wipsInScene = this.currentScene.actors.find(actor => actor instanceof wisp);
+    if (wipsInScene === this) {
+        if (this.timer > this.cooldown) {
+            const fire = new Fire(this.pos.x, this.pos.y,);
+            this.currentScene.add(fire);
+            this.timer = 0
+        }
+    };
+  }
+
+  onPostKill() {
+    const fire = new Fire(this.pos.x, this.pos.y,);
+    this.currentScene.add(fire);
   }
 }

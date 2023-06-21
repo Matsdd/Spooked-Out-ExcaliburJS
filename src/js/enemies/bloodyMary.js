@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
+import { wisp } from './wisp.js';
 
 export class bloodyMary extends ghost {
   bounceTimer = 0
@@ -12,14 +13,16 @@ export class bloodyMary extends ghost {
       height: Resources.BloodyMary.height / 1.6,
     });
     this.target = target;
-    this.speed = 70;
+    this.speed = 40;
     this.minDistance = 1;
-    this.maxDistance = 450;
+    this.maxDistance = 550;
     this.rotation = 0;
-    this.hp = 10;
+    this.hp = 50;
+    this.timer = 0
+    this.cooldown = 300
     this.soundInterval = null;
     this.graphics.use(Resources.BloodyMary.toSprite());
-    this.scale = new Vector(0.3, 0.3);
+    this.scale = new Vector(0.6, 0.6);
     this.pos = new Vector(posX, posY);
     this.prox = false
     this.path = [
@@ -171,6 +174,7 @@ export class bloodyMary extends ghost {
   }
 
   update(engine, delta) {
+    this.timer++
     this.bounceTimer -= 1
     if (this.prox) {
       this.moveTowardsTarget(this.target.pos);
@@ -181,10 +185,26 @@ export class bloodyMary extends ghost {
 
     // Call the base update method to apply the calculated velocity and rotation
     super.update(engine, delta);
+
+    
+    const direction = this.target.pos.sub(this.pos);
+    const distance = direction.distance();
+    const currentScene = engine.currentScene;
+    const mariaInScene = currentScene.actors.find(actor => actor instanceof bloodyMary);
+    if (mariaInScene === this) {
+      if (this.timer > this.cooldown && distance > this.minDistance) {
+        const Wisp = new wisp(this.target, this.pos.x, this.pos.y,);
+        Wisp.rotation = this.rotation;
+        currentScene.add(Wisp);
+        this.timer = 0
+        }
+      };
   }
 
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
   }
+
+  
 }
