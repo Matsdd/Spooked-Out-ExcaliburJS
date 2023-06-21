@@ -30,6 +30,7 @@ export class ghoul extends ghost {
     ]
     this.currentWaypoint = 0;
     this.chosenPath = chosenPath;
+    this.aggro = false;
   }
 
   getRandomInt(max) {
@@ -48,6 +49,7 @@ export class ghoul extends ghost {
       if (event.other instanceof bullet) {
         this.hp -= 1;
         hitSound.play();
+        this.aggro = true;
         if (this.hp <= 0) {
           this.kill();
           this.randomNumber
@@ -148,7 +150,7 @@ export class ghoul extends ghost {
     const distance = direction.distance();
 
     if (this.bounceTimer < 0) {
-      if (distance > this.minDistance && distance < this.maxDistance) {
+      if (distance > this.minDistance && distance < this.maxDistance || this.aggro === true) {
         const desiredVel = direction.normalize().scale(this.speed);
         this.vel = desiredVel.clampMagnitude(this.speed);
 
