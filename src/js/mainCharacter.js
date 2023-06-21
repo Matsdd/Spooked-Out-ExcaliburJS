@@ -5,6 +5,7 @@ import { wraith } from './enemies/wraith.js'
 import { arach } from './enemies/arach.js'
 import { bullet } from './bullet.js'
 import { vaas } from './props/vaas.js'
+import { shelf } from './props/shelf.js'
 import { room } from './rooms/room.js'
 import { settingsMenu } from './menu/settingsmenu'
 import { Barrier } from './ui/barrier.js'
@@ -72,6 +73,11 @@ export class mainCharacter extends Actor {
       }
     }
       if (event.other instanceof vaas) {
+        this.hp -= 1;
+        playerHit.play();
+        this.die(Engine)
+      }
+      if (event.other instanceof shelf) {
         this.hp -= 1;
         playerHit.play();
         this.die(Engine)

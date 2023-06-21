@@ -14,7 +14,7 @@ export class shelf extends Actor {
 
   onInitialize(engine) {
     this.graphics.use(Resources.shelf.toSprite());
-    this.scale = new Vector(0.2, 0.2);
+    this.scale = new Vector(0.4, 0.4);
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof mainCharacter) {
