@@ -64,7 +64,7 @@ export class bossRoom extends room {
             this.randomNumber
 
         if (this.shelfTimer <= 0 ) {
-            this.randomNumber = this.getRandomInt(4);
+            this.randomNumber = this.getRandomInt(6);
             switch (this.randomNumber) {
                 case 0:
                     this.Shelf = new shelf(50, 410)
@@ -77,12 +77,22 @@ export class bossRoom extends room {
                     this.shelfTimer = 300;
                 break;
                 case 2:
-                    this.Shelf = new shelf(1490, 410)
+                    this.Shelf = new shelf(1490, 580)
                     this.add(this.Shelf)
                     this.shelfTimer = 300;
                 break;
                 case 3:
-                    this.Shelf = new shelf(1490, 410)
+                    this.Shelf = new shelf(50, 580)
+                    this.add(this.Shelf)
+                    this.shelfTimer = 300;
+                break;
+                case 4:
+                    this.Shelf = new shelf(1490, 770)
+                    this.add(this.Shelf)
+                    this.shelfTimer = 300;
+                break;
+                case 5:
+                    this.Shelf = new shelf(50, 770)
                     this.add(this.Shelf)
                     this.shelfTimer = 300;
                 break;
