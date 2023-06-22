@@ -14,15 +14,31 @@ import { room } from './room.js'
 export class kitchen1 extends room {
     roomBackground = Resources.kitchen1
     zwart
-    tpx = 767
-    tpy = 80
+    tpx = 620
+    tpy = 100
     spawnBarriers() {
-        const up = new Barrier(767,80,950,10)
+        const up = new Barrier(767,100,950,10)
         this.add(up)
         const left = new Barrier(300,510,10,860)
         this.add(left)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
+        const counter1 = new Barrier(860,250,80,350)
+        this.add(counter1)
+        const counter2 = new Barrier(930,410,220,80)
+        this.add(counter2)
+        const cabinet1 = new Barrier(1190,210,90,270)
+        this.add(cabinet1)
+        const fridge = new Barrier(1200,680,90,290)
+        this.add(fridge)
+        const table = new Barrier(525,680,190,180)
+        this.add(table)
+        const couch1 = new Barrier(330,720,60,280)
+        this.add(couch1)
+        const couch2 = new Barrier(500,860,280,40)
+        this.add(couch2)
+        const wardrobe = new Barrier(320,290,60,250)
+        this.add(wardrobe)
     }
     onDeactivate() {
         this.Sjaak.kill()
