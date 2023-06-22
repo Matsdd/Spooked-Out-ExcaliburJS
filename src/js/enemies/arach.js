@@ -6,10 +6,10 @@ import { bullet } from '../bullet.js';
 
 export class arach extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY, chosenPath) {
     super({
-      width: Resources.Arach.width / 1.6,
-      height: Resources.Arach.height / 1.6,
+      width: Resources.Arach.width / 1.1,
+      height: Resources.Arach.height / 2,
     });
     this.target = target;
     this.speed = 130;
@@ -19,7 +19,7 @@ export class arach extends ghost {
     this.hp = 10;
     this.soundInterval = null;
     this.graphics.use(Resources.Arach.toSprite());
-    this.scale = new Vector(0.3, 0.3);
+    this.scale = new Vector(0.45, 0.45);
     this.pos = new Vector(posX, posY);
     this.prox = false
     this.path = [
@@ -29,6 +29,8 @@ export class arach extends ghost {
       new Vector(400, 200),
     ]
     this.currentWaypoint = 0;
+    this.chosenPath = chosenPath;
+    this.aggro = false;
   }
 
   onInitialize() {
@@ -39,6 +41,7 @@ export class arach extends ghost {
       if (event.other instanceof bullet) {
         this.hp -= 1;
         hitSound.play();
+        this.aggro = true;
         if (this.hp <= 0) {
           this.kill();
         }
@@ -51,6 +54,18 @@ export class arach extends ghost {
         this.bounceTimer = 10
       }
     });
+
+    switch (this.chosenPath) {
+      case 0:
+        this.maxDistance = 450;
+        this.path = [
+          new Vector(1430, 150),
+          new Vector(1430, 300),
+          new Vector(1430, 150),
+          new Vector(1170, 150),
+        ]
+        break;
+  }
 
 
     // Start playing sounds at random intervals
@@ -84,7 +99,8 @@ export class arach extends ghost {
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
 
-    if (this.bounceTimer < 0) {    if (distance > this.minDistance && distance < this.maxDistance) {
+    if (this.bounceTimer < 0) {    
+      if (distance > this.minDistance && distance < this.maxDistance || this.aggro === true) {
       const desiredVel = direction.normalize().scale(this.speed);
       this.vel = desiredVel.clampMagnitude(this.speed);
 

@@ -2,6 +2,7 @@ import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
+import { arach } from '../enemies/arach.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
@@ -47,5 +48,8 @@ export class engineRoom extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(150, 800)
         this.add(this.Sjaak)
+
+        this.Arach = new arach(this.Sjaak, 1170, 150, 0)
+        this.add(this.Arach)
     }
 }
