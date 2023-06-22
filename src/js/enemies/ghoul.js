@@ -14,7 +14,7 @@ export class ghoul extends ghost {
     this.target = target;
     this.speed = 100;
     this.minDistance = 1;
-    this.maxDistance = 450;
+    this.maxDistance = 700;
     this.rotation = 0;
     this.hp = 10;
     this.soundInterval = null;
@@ -76,18 +76,21 @@ export class ghoul extends ghost {
     });
       switch (this.chosenPath) {
         case 0:
+          this.maxDistance = 450;
           this.path = [
             new Vector(460, 170),
             new Vector(950, 170),
           ]
           break;
           case 1:
+          this.maxDistance = 450;
           this.path = [
             new Vector(950, 170),
             new Vector(460, 170),
           ]
           break;
           case 2:
+          this.maxDistance = 450;
           this.path = [
             new Vector(365, 170),
             new Vector(1100, 170),
