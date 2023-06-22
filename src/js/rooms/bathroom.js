@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
-import { spirit } from '../enemies/spirit.js'
+import { wisp } from '../enemies/wisp.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
@@ -33,5 +33,10 @@ export class bathroom extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800)
         this.add(this.Sjaak)
+
+        this.Wisp = new wisp(this.Sjaak, 1150, 450)
+        this.add(this.Wisp)
+        this.Wisp2 = new wisp(this.Sjaak, 1150, 750)
+        this.add(this.Wisp2)
     }
 }

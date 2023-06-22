@@ -3,6 +3,11 @@ import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js'
 import { bullet } from '../bullet.js'
+import { spirit } from './spirit.js'
+import { ghoul } from './ghoul.js'
+import { wraith } from './wraith.js'
+import { poltergeist } from './poltergeist.js'
+import { arach } from './arach.js'
 
 export class demon extends ghost {
   constructor(target, posX, posY) {
@@ -16,6 +21,11 @@ export class demon extends ghost {
     this.maxDistance = 1000;
     this.rotation = 0;
     this.hp = 100
+    this.summonTimer = 0
+    this.summonCooldown = 300
+    this.bulletTimer = 0
+    this.bulletCooldown = 300
+    this.randomNumber = 0
     this.pos = new Vector(posX, posY);
   }
 
@@ -68,10 +78,135 @@ export class demon extends ghost {
     this.playSoundAtRandomInterval();
   }
 
-
-
   update(engine, delta) {
+    this.summonTimer++
     const direction = this.target.pos.sub(this.pos);
     this.rotation = direction.toAngle() + Math.PI / 2;
+
+    //spawn twee spiritus
+    this.summon(engine)
   }
+
+  summon(engine) {
+    const currentScene = engine.currentScene;
+    if (this.hp > 75 && this.summonTimer >= this.summonCooldown) {
+      console.log('pipi');
+      const Spirit = new spirit(this.target, this.pos.x+100, this.pos.y,);
+      Spirit.rotation = this.rotation;
+      currentScene.add(Spirit);
+
+      const spirit2 = new spirit(this.target, this.pos.x-100, this.pos.y,);
+      spirit2.rotation = this.rotation;
+      currentScene.add(spirit2);
+      this.summonTimer = 50
+    }
+
+    //schiet kogels, spawn twee spiritus of een goel en spirit (3/4)
+    if (this.hp <= 75 && this.hp > 50 && this.summonTimer >= this.summonCooldown) {
+      this.randomNumber = Math.round(Math.random())
+      switch (this.randomNumber) {
+        case 0:
+          const Spirit = new spirit(this.target, this.pos.x+100, this.pos.y);
+          Spirit.rotation = this.rotation;
+          currentScene.add(Spirit);
+    
+          const spirit2 = new spirit(this.target, this.pos.x-100, this.pos.y);
+          spirit2.rotation = this.rotation;
+          currentScene.add(spirit2);
+          
+          const spirit3 = new spirit(this.target, this.pos.x, this.pos.y+50);
+          spirit3.rotation = this.rotation;
+          currentScene.add(spirit3);
+          this.summonTimer = 0
+        break
+        case 1:
+          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y,);
+          Ghoul.rotation = this.rotation;
+          currentScene.add(Ghoul);
+          
+          const spirit4 = new spirit(this.target, this.pos.x, this.pos.y+50);
+          spirit4.rotation = this.rotation;
+          currentScene.add(spirit4);
+          this.summonTimer = -100
+        break
+      }
+    }
+
+    //schiet slowness, spawn vier spiritus, een goel en twee spiritus of een wraith(2/4)
+    if (this.hp <= 50 && this.hp > 25 && this.summonTimer >= this.summonCooldown) {
+      this.randomNumber = Math.round(Math.random() * 2)
+      switch (this.randomNumber) {
+        case 0:
+          const Spirit = new spirit(this.target, this.pos.x+100, this.pos.y);
+          Spirit.rotation = this.rotation;
+          currentScene.add(Spirit);
+    
+          const spirit2 = new spirit(this.target, this.pos.x-100, this.pos.y);
+          spirit2.rotation = this.rotation;
+          currentScene.add(spirit2);
+          
+          const spirit3 = new spirit(this.target, this.pos.x+100, this.pos.y+50);
+          spirit3.rotation = this.rotation;
+          currentScene.add(spirit3);
+          
+          const spirit4 = new spirit(this.target, this.pos.x-100, this.pos.y+50);
+          spirit4.rotation = this.rotation;
+          currentScene.add(spirit4);
+          this.summonTimer = -50
+        break
+        case 1:
+          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y,);
+          Ghoul.rotation = this.rotation;
+          currentScene.add(Ghoul);
+          
+          const spirit5 = new spirit(this.target, this.pos.x+100, this.pos.y);
+          spirit5.rotation = this.rotation;
+          currentScene.add(spirit5);
+          
+          const spirit6 = new spirit(this.target, this.pos.x-100, this.pos.y);
+          spirit6.rotation = this.rotation;
+          currentScene.add(spirit6);
+          this.summonTimer = -100
+        break
+        case 2:
+          const wrat = new wraith(this.target, this.pos.x-100, this.pos.y);
+          wrat.rotation = this.rotation;
+          currentScene.add(wrat);
+          this.summonTimer = -100
+        break
+      }
+    }
+
+    //kleine kans op rare ghost (1/4)
+    if (this.hp <= 25 && this.hp > 0 && this.summonTimer >= this.summonCooldown) {
+      this.randomNumber = Math.round(Math.random())
+      switch (this.randomNumber) {
+        case 0:
+          const Spirit = new spirit(this.target, this.pos.x+100, this.pos.y);
+          Spirit.rotation = this.rotation;
+          currentScene.add(Spirit);
+    
+          const spirit2 = new spirit(this.target, this.pos.x-100, this.pos.y);
+          spirit2.rotation = this.rotation;
+          currentScene.add(spirit2);
+          
+          const spirit3 = new spirit(this.target, this.pos.x, this.pos.y+50);
+          spirit3.rotation = this.rotation;
+          currentScene.add(spirit3);
+          this.summonTimer = 0
+        break
+        case 1:
+          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y,);
+          Ghoul.rotation = this.rotation;
+          currentScene.add(Ghoul);
+          
+          const spirit4 = new spirit(this.target, this.pos.x, this.pos.y+50);
+          spirit4.rotation = this.rotation;
+          currentScene.add(spirit4);
+          this.summonTimer = -100
+        break
+      }
+    }
+  }
+  
 }

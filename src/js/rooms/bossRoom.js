@@ -20,8 +20,8 @@ export class bossRoom extends room {
         tpy = 50
         Demon
         Shelf
-        shelfTimer = 300
-        spawnBarriers() {
+        shelfTimer = 180
+    spawnBarriers() {
         const bossMusic = new Audio(Resources.bossMusic.path)
 
         bossMusic.loop = true;

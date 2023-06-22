@@ -46,7 +46,7 @@ export class room extends Scene {
 
         const teleporter = new Tp(this.tpx,this.tpy,90,30, this.game,this)
         this.add(teleporter)
-        }
+    }
     
 
 

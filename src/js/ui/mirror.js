@@ -1,4 +1,4 @@
-import { Actor, Vector, Engine, Scene } from "excalibur"
+import { Actor, Vector, Engine, Scene, Input } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 import { mainCharacter } from "../mainCharacter.js"
@@ -6,6 +6,7 @@ import { mainCharacter } from "../mainCharacter.js"
 export class Mirror extends Actor {
 
 game
+mirrorActivated = 0
 
     constructor(x,y,width,height, game) {
         super({width:Resources.Barrier.width, height:Resources.Barrier.height})
@@ -16,12 +17,21 @@ game
         this.game = game
     }
 
-    onInitialize(engine,) {
-        this.on('collisionstart', (event) => {
+    onInitialize(engine) {
+        this.on('precollision', (event) => {
             if (event.other instanceof mainCharacter) {
-                this.game.goToScene('mirrorroom')
+                if (this.mirrorActivated >= 3) {
+                    this.game.goToScene('mirrorroom')
+                }      
+                if (engine.input.keyboard.wasPressed(Input.Keys.B)) {
+                    this.mirrorActivated++
                 }
-            })
-        }
+            }
+        })
+    }
+
+    update(engine) {
+        console.log(this.mirrorActivated);
+    }
 
 }

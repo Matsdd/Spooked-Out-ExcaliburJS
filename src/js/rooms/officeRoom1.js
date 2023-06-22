@@ -86,14 +86,18 @@ export class officeRoom1 extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800)
         this.add(this.Sjaak)
-        this.Spirit = new spirit(this.Sjaak,400,200)
-        this.add(this.Spirit)
-        this.Spirit2 = new spirit(this.Sjaak,430,180)
-        this.add(this.Spirit2)
 
-        this.Spirit3 = new spirit(this.Sjaak,400,600)
+        this.Spirit = new spirit(this.Sjaak,360,260)
+        this.add(this.Spirit)
+        this.Spirit2 = new spirit(this.Sjaak,450,260)
+        this.add(this.Spirit2)
+        this.Spirit3 = new spirit(this.Sjaak,540,260)
         this.add(this.Spirit3)
-        this.Spirit4 = new spirit(this.Sjaak,430,580)
+        this.Spirit4 = new spirit(this.Sjaak,450,710)
         this.add(this.Spirit4)
+        this.Spirit5 = new spirit(this.Sjaak,450,630)
+        this.add(this.Spirit5)
+        this.Spirit6 = new spirit(this.Sjaak,450,800)
+        this.add(this.Spirit6)
     }
 }
