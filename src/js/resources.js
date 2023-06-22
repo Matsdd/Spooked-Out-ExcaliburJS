@@ -60,6 +60,7 @@ import shelf from "../images/props/shelf.png"
 import fire from "../images/props/fire.png"
 import treasure from "../images/props/schatkist.png"
 import mirror from "../images/props/mirror.png"
+import ton from "../images/props/ton.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -206,6 +207,7 @@ const Resources = {
     Fire: new ImageSource(fire),
     Treasure: new ImageSource(treasure),
     Mirror: new ImageSource(mirror),
+    ton : new ImageSource(ton),
 
     // music
     gameMusic: new Sound(backgroundMusic),
