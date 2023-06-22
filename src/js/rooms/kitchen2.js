@@ -1,6 +1,6 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
-import { ghoul } from '../enemies/ghoul.js'
+import { arach } from '../enemies/arach.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
@@ -44,10 +44,14 @@ export class kitchen2 extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Arach.kill()
     }
 
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800)
         this.add(this.Sjaak)
+
+        this.Arach = new arach(this.Sjaak, 930, 230, 1)
+        this.add(this.Arach)
     }
 }

@@ -65,6 +65,13 @@ export class arach extends ghost {
           new Vector(1170, 150),
         ]
         break;
+        case 1:
+        this.maxDistance = 450;
+        this.path = [
+          new Vector(477, 230),
+          new Vector(930, 230),
+        ]
+        break;
   }
 
 
