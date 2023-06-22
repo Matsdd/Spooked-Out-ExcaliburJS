@@ -1,6 +1,6 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
-import { ghoul } from '../enemies/ghoul.js'
+import { poltergeist } from '../enemies/poltergeist.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
@@ -26,10 +26,20 @@ export class kitchen1 extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Poltergeist.kill()
+        this.Spirit.kill()
     }
 
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800)
         this.add(this.Sjaak)
+
+        this.Poltergeist = new poltergeist(this.Sjaak, 1000, 200)
+        this.add(this.Poltergeist)
+
+        this.Spirit = new spirit(this.Sjaak, 760, 180)
+        this.add(this.Spirit)
+        this.Spirit2 = new spirit(this.Sjaak, 760, 300)
+        this.add(this.Spirit2)
     }
 }

@@ -43,6 +43,7 @@ export class engineRoom extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Arach.kill()
     }
 
     onActivate() {
