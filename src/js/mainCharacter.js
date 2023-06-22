@@ -4,6 +4,7 @@ import { ghost } from './enemies/ghost.js'
 import { wraith } from './enemies/wraith.js'
 import { arach } from './enemies/arach.js'
 import { demon } from './enemies/demonBoss.js'
+import { guardian } from './enemies/guardian.js'
 import { bullet } from './bullet.js'
 import { vaas } from './props/vaas.js'
 import { shelf } from './props/shelf.js'
@@ -99,7 +100,44 @@ export class mainCharacter extends Actor {
         )
         this.bounceTimer = 10
       }
-    }
+      if (event.other instanceof guardian && this.pos.y <= 310) {
+        const pushAngle = 3 * Math.PI / 2;
+        const pushMagnitude = 3 * this.speed;
+        this.vel = new Vector(
+          Math.cos(pushAngle) * pushMagnitude,
+          Math.sin(pushAngle) * pushMagnitude
+        )
+        this.bounceTimer = 10
+      }
+      if (event.other instanceof guardian && this.pos.y >= 700) {
+        const pushAngle = Math.PI / 2;
+        const pushMagnitude = 3 * this.speed;
+        this.vel = new Vector(
+          Math.cos(pushAngle) * pushMagnitude,
+          Math.sin(pushAngle) * pushMagnitude
+        )
+        this.bounceTimer = 10
+      } else {
+        if (event.other instanceof guardian && this.pos.y > 310 && this.pos.x < 850) {
+          const pushAngle = Math.PI;
+          const pushMagnitude = 3 * this.speed;
+          this.vel = new Vector(
+            Math.cos(pushAngle) * pushMagnitude,
+            Math.sin(pushAngle) * pushMagnitude
+          )
+          this.bounceTimer = 10
+        }
+        if (event.other instanceof guardian && this.pos.y > 310 && this.pos.x > 850) {
+          const pushAngle = 0;
+          const pushMagnitude = 3 * this.speed;
+          this.vel = new Vector(
+            Math.cos(pushAngle) * pushMagnitude,
+            Math.sin(pushAngle) * pushMagnitude
+          )
+          this.bounceTimer = 10
+        }
+      }
+  }
     })
 
     const currentScene = Engine.currentScene;
