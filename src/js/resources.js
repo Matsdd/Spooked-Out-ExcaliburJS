@@ -1,4 +1,5 @@
-import { ImageSource, Sound, Resource, Loader } from 'excalibur'
+import titleImage from '../images/loadinglogo.png'
+import { ImageSource, Sound, Resource, Loader, Color } from 'excalibur'
 
 //characters
 import mainCharacterImage from '../images/mainCharacter.png'
@@ -362,4 +363,10 @@ for (const key in Resources) {
 }
 
 const ResourceLoader = new Loader(resourceArray)
+ResourceLoader.logo = titleImage
+ResourceLoader.logoWidth = 580
+ResourceLoader.logoHeight = 298
+ResourceLoader.backgroundColor = Color.Viridian
+ResourceLoader.loadingBarColor = Color.White
+
 export { Resources, ResourceLoader }

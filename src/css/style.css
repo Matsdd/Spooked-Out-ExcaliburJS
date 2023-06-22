@@ -4,6 +4,10 @@ body {
     background-color: black;
 }
 
+#excalibur-play {
+    background: rgb(107, 69, 98) !important;
+}
+
 .Startbutton {
     /* ... existing styles ... */
 
