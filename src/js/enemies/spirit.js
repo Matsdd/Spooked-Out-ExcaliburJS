@@ -8,7 +8,7 @@ export class spirit extends ghost {
   bounceTimer = 0
   constructor(target, posX, posY) {
     super({
-      width: Resources.spirit.width / 4,
+      width: Resources.spirit.width / 3,
       height: Resources.spirit.height / 4,
     });
     this.target = target;
