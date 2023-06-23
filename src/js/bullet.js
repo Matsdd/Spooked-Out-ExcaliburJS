@@ -8,6 +8,7 @@ import { shelf } from './props/shelf.js'
 import { mainCharacter } from './mainCharacter.js'
 import { fireBall } from './props/fireball.js'
 import { flash } from './flash.js'
+import { settingsMenu } from './menu/settingsMenu.js'
 
 export class bullet extends Actor {
   constructor(x, y, target) {
@@ -95,23 +96,24 @@ export class bullet extends Actor {
       timer.start()
   }
 
-shoot(timer) {
-  this.Flash = new flash(this.pos.x, this.pos.y)
-  this.engine.currentScene.add(this.Flash)
+  shoot(timer) {
+    this.Flash = new flash(this.pos.x, this.pos.y)
+    this.engine.currentScene.add(this.Flash)
 
-  const timer2 = new Timer({
-    fcn: () => this.Flash.kill(),
-    repeats: false,
-    interval: 100,
-  })  
-    this.engine.currentScene.add(timer2)
-    timer2.start()
+    const timer2 = new Timer({
+      fcn: () => this.Flash.kill(),
+      repeats: false,
+      interval: 100,
+    })  
+      this.engine.currentScene.add(timer2)
+      timer2.start()
 
-}
+  }
 
-  onPreUpdate() {
-    if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
+  update(engine) {
+    if (engine.currentScene instanceof settingsMenu) {
       this.kill()
     }
   }
+
 }
