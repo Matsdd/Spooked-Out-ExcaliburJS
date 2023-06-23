@@ -55,7 +55,7 @@ export class mainCharacter extends Actor {
       const playerHit = new Audio(Resources.playerHit2.path);
       if (event.other instanceof arach) {
         this.game.playerHp -= 1;
-        this.speed -= 10;
+        this.speed -= 15;
         this.slowtimer = 500;
         playerHit.play(1);
         console.log(this.game.playerHp)
