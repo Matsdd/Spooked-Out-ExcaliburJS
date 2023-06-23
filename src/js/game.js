@@ -79,11 +79,7 @@ export class Game extends Engine {
         this.addScene('barRoom', this.Barroom)
         this.addScene('dormRoom', this.Dormroom)
 
-<<<<<<< HEAD
-        this.goToScene('wineCellar')
-=======
         this.goToScene('playroom')
->>>>>>> 2e99d4591256c31dc3195a33113e314804ee3dab
 
         console.log("Enjoy!")
     }
