@@ -27,7 +27,7 @@ export class kitchen2 extends room {
         this.add(lefttopshelf)
         const topchair = new Barrier(440,170,60,60)
         this.add(topchair)
-        const cooking = new Barrier(598,630,145,370)
+        const cooking = new Barrier(598,620,145,345)
         this.add(cooking)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
