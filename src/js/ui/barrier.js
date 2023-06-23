@@ -2,6 +2,7 @@ import { Actor, Vector } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 import { treasure } from '../props/treasure.js'
+import { ton } from '../props/ton.js'
 
 export class Barrier extends Actor {
 
