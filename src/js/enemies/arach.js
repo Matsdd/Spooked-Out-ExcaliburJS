@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
+import { spin } from '../props/spin.js';
 
 export class arach extends ghost {
   bounceTimer = 0
@@ -16,7 +17,9 @@ export class arach extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 10;
+    this.hp = 14;
+    this.timer = 0
+    this.cooldown = 200
     this.soundInterval = null;
     this.graphics.use(Resources.Arach.toSprite());
     this.scale = new Vector(0.45, 0.45);
@@ -136,6 +139,25 @@ export class arach extends ghost {
 }
 
   update(engine, delta) {
+    this.timer++
+    console.log(this.timer);
+    const direction = this.target.pos.sub(this.pos);
+    const distance = direction.distance();
+
+    const currentScene = engine.currentScene;
+    const poltergeistInScene = currentScene.actors.find(actor => actor instanceof arach);
+    if (poltergeistInScene === this) {
+      
+      if (this.timer > this.cooldown && distance < this.maxDistance) {
+  
+        const Vaas = new spin(this.pos.x, this.pos.y, this.target);
+        Vaas.rotation = this.rotation;
+        currentScene.add(Vaas);
+
+        this.timer = 0
+      };
+    }
+
     this.bounceTimer -= 1
     if (this.prox) {
       this.moveTowardsTarget(this.target.pos);

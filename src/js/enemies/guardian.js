@@ -22,7 +22,7 @@ export class guardian extends ghost {
     this.hp = 50;
     this.maxHp = 50
     this.timer = 0;
-    this.cooldown = 150;
+    this.cooldown = 250;
     this.pos = new Vector(posX, posY);
   }
 

@@ -2,7 +2,7 @@ import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } fr
 import { Resources, ResourceLoader } from './resources.js';
 import { ghost } from './enemies/ghost.js'
 import { wraith } from './enemies/wraith.js'
-import { arach } from './enemies/arach.js'
+import { spin } from './props/spin.js'
 import { demon } from './enemies/demonBoss.js'
 import { guardian } from './enemies/guardian.js'
 import { bullet } from './bullet.js'
@@ -53,14 +53,6 @@ export class mainCharacter extends Actor {
 
     this.on('collisionstart', (event) => {
       const playerHit = new Audio(Resources.playerHit2.path);
-      if (event.other instanceof arach) {
-        this.game.playerHp -= 1;
-        this.speed -= 10;
-        this.slowtimer = 500;
-        playerHit.play(1);
-        console.log(this.game.playerHp)
-        this.die(Engine)
-      } else {
       if (event.other instanceof wraith) {
         this.game.playerHp -= 2
         playerHit.play(1);
@@ -74,6 +66,10 @@ export class mainCharacter extends Actor {
         this.die(Engine)
       }
     }
+      if (event.other instanceof spin) {
+        this.speed -= 8;
+        this.slowtimer = 500;
+      }
       if (event.other instanceof vaas) {
         this.game.playerHp -= 1;
         playerHit.play();
@@ -136,7 +132,6 @@ export class mainCharacter extends Actor {
           this.bounceTimer = 10
         }
       }
-  }
     })
 
     const currentScene = Engine.currentScene;

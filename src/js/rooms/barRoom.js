@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
-import { wisp } from '../enemies/wisp.js'
+import { poltergeist } from '../enemies/poltergeist.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
@@ -56,10 +56,18 @@ export class barRoom extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Poltergeist.kill()
+        this.Ghoul.kill()
     }
 
     onActivate() {
         this.Sjaak = new mainCharacter(700, 800, this.game)
         this.add(this.Sjaak)
+
+        this.Poltergeist = new poltergeist(this.Sjaak, 620, 430)
+        this.add(this.Poltergeist)
+
+        this.Ghoul = new ghoul(this.Sjaak, 360, 480, 3)
+        this.add(this.Ghoul)
     }
 }
