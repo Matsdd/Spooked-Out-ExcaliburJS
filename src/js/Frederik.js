@@ -37,12 +37,7 @@ export class frederik extends ghost {
       
  
     }
-
-
-
       this.rotation = direction.toAngle() + Math.PI / 2;
-
-
   }
 }
 
