@@ -95,7 +95,6 @@ export class bullet extends Actor {
       timer.start()
   }
 
-<<<<<<< HEAD
 shoot(timer) {
   this.Flash = new flash(this.pos.x, this.pos.y)
   this.engine.currentScene.add(this.Flash)
@@ -109,22 +108,6 @@ shoot(timer) {
     timer2.start()
 
 }
-=======
-  shoot(timer) {
-    this.Flash = new flash(this.pos.x, this.pos.y)
-    this.engine.currentScene.add(this.Flash)
-    timer.stop()
->>>>>>> 710de133a63dbb390294fc0e8d27f045329b4d72
-
-    const timer2 = new Timer({
-      fcn: () => this.Flash.kill(),
-      repeats: false,
-      interval: 100,
-    })  
-      this.engine.currentScene.add(timer2)
-      timer2.start()
-
-  }
 
   onPreUpdate() {
     if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
