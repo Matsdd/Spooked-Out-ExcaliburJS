@@ -56,8 +56,10 @@ export class wraith extends ghost {
     });
     switch (this.chosenPath) {
       case 0:
+        this.maxDistance = 350,
         this.path = [
-          this.maxDistance = 350,
+          new Vector(1000, 350),
+          new Vector(400, 350),
           new Vector(1000, 350),
           new Vector(400, 350),
         ]
