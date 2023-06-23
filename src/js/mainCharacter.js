@@ -40,8 +40,8 @@ export class mainCharacter extends Actor {
     this.rotation = 0;
     this.pos = new Vector(posX, posY);
     this.game = game;
-    this.bullets = 30;
-    this.maxAmmo = 30
+    this.bullets = 10;
+    this.maxAmmo = 10
     this.reloadtimer = 0;
     this.slowtimer = 0;
 
