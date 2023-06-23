@@ -57,6 +57,8 @@ export class bedroom2 extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Ghoul.kill()
+        this.Wraith.kill()
     }
 
     onActivate() {
@@ -66,7 +68,5 @@ export class bedroom2 extends room {
         this.add(this.Ghoul)
         this.Wraith = new wraith(this.Sjaak, 470, 450, 0)
         this.add(this.Wraith)
-        this.mim = new mimic(this.Sjaak, 470, 450, 0)
-        this.add(this.mim)
     }
 }
