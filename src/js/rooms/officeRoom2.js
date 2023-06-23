@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import * as ex from 'excalibur'
 import { mainCharacter } from '../mainCharacter.js'
-import { ghoul } from '../enemies/ghoul.js'
+import { shade } from '../enemies/shade.js'
 import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
@@ -119,6 +119,7 @@ export class officeRoom2 extends room {
         this.Sjaak.kill()
         this.Spirit.kill()
         this.Spirit2.kill()
+        this.Shade.kill()
     }
 
     onActivate() {
@@ -129,5 +130,8 @@ export class officeRoom2 extends room {
         this.add(this.Spirit)
         this.Spirit2 = new spirit(this.Sjaak, 520, 130)
         this.add(this.Spirit2)
+
+        this.Shade = new shade(this.Sjaak, 940, 150, 0)
+        this.add(this.Shade)
     }
 }
