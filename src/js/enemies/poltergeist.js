@@ -38,9 +38,12 @@ export class poltergeist extends ghost {
 
   }
 
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
   update(Engine) {
-
+    this.randomNumber
     this.timer++
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
@@ -50,10 +53,20 @@ export class poltergeist extends ghost {
     if (poltergeistInScene === this) {
       
       if (this.timer > this.cooldown && distance > this.minDistance) {
-  
-        const Vaas = new vaas(this.pos.x, this.pos.y, this.target);
-        Vaas.rotation = this.rotation;
-        currentScene.add(Vaas);
+        this.randomNumber = this.getRandomInt(2);
+        
+        switch (this.randomNumber) {
+          case 0:
+            const Vaas1 = new vaas(this.pos.x*0.90, this.pos.y*0.99, this.target);
+            Vaas1.rotation = this.rotation;
+            currentScene.add(Vaas1);
+            break;
+          case 1:
+            const Vaas = new vaas(this.pos.x*1.1, this.pos.y*1.01, this.target);
+            Vaas.rotation = this.rotation;
+            currentScene.add(Vaas);
+            break;
+        }
 
         this.timer = 0
       };
