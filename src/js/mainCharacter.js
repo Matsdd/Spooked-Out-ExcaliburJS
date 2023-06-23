@@ -41,6 +41,7 @@ export class mainCharacter extends Actor {
     this.pos = new Vector(posX, posY);
     this.game = game;
     this.bullets = 30;
+    this.maxAmmo = 30
     this.reloadtimer = 0;
     this.slowtimer = 0;
 
@@ -85,6 +86,9 @@ export class mainCharacter extends Actor {
       if (event.other instanceof Healwater) {
         if (event.other.healed == false) {
           this.game.playerHp += 3
+          if (this.game.playerHp > this.game.maxPlayerHP) {
+            this.game.playerHp = this.game.maxPlayerHp
+          }
           event.other.healed = true
         }
       }
@@ -278,7 +282,7 @@ export class mainCharacter extends Actor {
 
   reload() {
     //reload sound here
-    this.bullets = 10;
+    this.bullets = this.maxAmmo;
     this.reloadtimer = 100;
   }
 
