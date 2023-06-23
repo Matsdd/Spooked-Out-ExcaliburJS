@@ -96,6 +96,15 @@ export class ghoul extends ghost {
             new Vector(1100, 170),
           ]
           break;
+          case 3:
+          this.maxDistance = 300;
+          this.path = [
+            new Vector(360, 160),
+            new Vector(820, 160),
+            new Vector(360, 160),
+            new Vector(360, 480),
+          ]
+          break;
     }
 
 
