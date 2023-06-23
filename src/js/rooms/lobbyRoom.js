@@ -37,7 +37,7 @@ export class lobbyRoom extends room {
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(400, 700)
+        this.Sjaak = new mainCharacter(400, 700,this.game)
         this.add(this.Sjaak)
 
         this.Frederik = new frederik(this.Sjaak, 495, 315)

@@ -42,7 +42,7 @@ export class Bedroom1 extends room {
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(767, 800)
+        this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
         this.Ghoul = new ghoul(this.Sjaak,460, 170 ,0)
         this.add(this.Ghoul)

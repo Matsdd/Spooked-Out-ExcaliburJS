@@ -29,7 +29,7 @@ export class mirrorroom extends room {
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(600, 800)
+        this.Sjaak = new mainCharacter(600, 800,this.game)
         this.add(this.Sjaak)
 
         this.Maria = new bloodyMary(this.Sjaak,767,300)
