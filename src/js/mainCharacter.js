@@ -39,7 +39,7 @@ export class mainCharacter extends Actor {
     this.isMovingLeft = false;
     this.isMovingUp = false;
     this.isMovingDown = false;
-    this.speed = 150;
+    this.speed = 140;
     this.rotation = 0;
     this.pos = new Vector(posX, posY);
     this.game = game;
@@ -49,6 +49,9 @@ export class mainCharacter extends Actor {
     this.slowtimer = 0;
     this.reloadCounter = 0
     this.shootAvailable = true
+    this.stamina = 180
+    this.sprinting = false
+    this.sprintTimer = 40
   }
 
   onInitialize(Engine) {
@@ -90,6 +93,7 @@ export class mainCharacter extends Actor {
       if (event.other instanceof Healwater) {
         if (event.other.healed == false) {
           this.game.playerHp += 3
+
           if (this.game.playerHp > this.game.maxPlayerHP) {
             this.game.playerHp = this.game.maxPlayerHp
           }
@@ -317,6 +321,19 @@ export class mainCharacter extends Actor {
   update(engine) {
     this.bounceTimer -= 1
 
+    console.log(this.stamina);
+    if (!this.sprinting && this.stamina < 180) {
+      this.stamina += 4
+      if (this.stamina > 180) {
+        this.stamina = 180
+      }
+    }
+    this.sprintTimer--
+    if (this.sprintTimer < 0) {
+      this.sprinting = false
+    }
+
+
     if (this.reloadtimer <= 0 && this.reloadCounter != 0) {
       if (this.bullets !== this.maxAmmo) {
         this.bullets++
@@ -367,6 +384,14 @@ export class mainCharacter extends Actor {
         this.isMovingLeft = false;
         if (!this.isMovingRight) {
           this.stopMovement();
+        }
+      }
+      if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
+        if (this.stamina > 0) {
+          this.speed += 40
+          this.stamina--
+          this.sprintTimer = 40
+          this.sprinting = true
         }
       }
 
