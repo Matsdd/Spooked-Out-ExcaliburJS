@@ -31,8 +31,9 @@ import playroom from "../images/rooms/playroom.png"
 import engine from "../images/rooms/engine.png"
 import bar from "../images/rooms/bar.png"
 import dorm from "../images/rooms/dorm.png"
-
 import pool from "../images/rooms/pool.png"
+
+import bossPool from "../images/rooms/bosspool.png"
 import boss from "../images/rooms/boss.png"
 import storage from "../images/rooms/storage.png"
 import cellar from "../images/rooms/cellar.png"
@@ -181,8 +182,9 @@ const Resources = {
     Engine: new ImageSource(engine),
     Bar: new ImageSource(bar),
     Dorm: new ImageSource(dorm),
-
     Pool: new ImageSource(pool),
+    
+    BossPool: new ImageSource(bossPool),
     Boss: new ImageSource(boss),
     Storage: new ImageSource(storage),
     Cellar: new ImageSource(cellar),

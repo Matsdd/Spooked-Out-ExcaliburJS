@@ -29,10 +29,10 @@ room
         return Math.floor(Math.random() * max);
     }
 
-    nextRoom(engine, game) {
+    nextRoom(engine, game, score) {
       this.room.game.addScore()
 
-      if (score == 20) {
+      if (this.game.score == 20) {
         this.game.goToScene('bossPoolRoom')
       } else {
 
