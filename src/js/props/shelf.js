@@ -19,7 +19,6 @@ export class shelf extends Actor {
     this.on('collisionstart', (event) => {
       if (event.other instanceof mainCharacter) {
         this.kill();
-        console.log(event.other.hp);
       }
     });
     this.on('collisionstart', (event) => {

@@ -29,8 +29,8 @@ import kitchen1 from "../images/rooms/kitchen1.png"
 import kitchen2 from "../images/rooms/kitchen2.png"
 import playroom from "../images/rooms/playroom.png"
 import engine from "../images/rooms/engine.png"
-
-
+import bar from "../images/rooms/bar.png"
+import dorm from "../images/rooms/dorm.png"
 
 import pool from "../images/rooms/pool.png"
 import boss from "../images/rooms/boss.png"
@@ -176,8 +176,8 @@ const Resources = {
     kitchen2: new ImageSource(kitchen2),
     Playroom: new ImageSource(playroom),
     Engine: new ImageSource(engine),
-
-
+    Bar: new ImageSource(bar),
+    Dorm: new ImageSource(dorm),
 
     Pool: new ImageSource(pool),
     Boss: new ImageSource(boss),
