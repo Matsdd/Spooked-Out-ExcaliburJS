@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
-import { wisp } from '../enemies/wisp.js'
+import { spirit } from '../enemies/spirit.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
@@ -51,10 +51,21 @@ export class dormRoom extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Spirit.kill()
+        this.Spirit2.kill()
+        this.Ghoul.kill()
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(767, 800)
+        this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
+
+        this.Spirit = new spirit(this.Sjaak, 1150, 530)
+        this.add(this.Spirit)
+        this.Spirit2 = new spirit(this.Sjaak, 1150, 600)
+        this.add(this.Spirit2)
+
+        this.Ghoul = new ghoul(this.Sjaak, 1100, 230, 4)
+        this.add(this.Ghoul)
     }
 }

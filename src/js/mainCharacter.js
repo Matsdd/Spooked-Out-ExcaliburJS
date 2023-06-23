@@ -47,7 +47,7 @@ export class mainCharacter extends Actor {
     this.reloadtimer = 0;
     this.slowtimer = 0;
     this.reloadCounter = 0
-
+    this.shootAvailable = true
   }
 
   onInitialize(Engine) {
@@ -148,7 +148,7 @@ export class mainCharacter extends Actor {
     
 
     Engine.input.pointers.primary.on('down', (evt) => {
-      if (mainCharacterInScene === this && this.reloadtimer < 0 && this.bullets > 0) {
+      if (mainCharacterInScene === this && this.reloadtimer < 0 && this.bullets > 0 && this.shootAvailable) {
         
         const mouseX = evt.worldPos.x;
         const mouseY = evt.worldPos.y;
@@ -190,10 +190,10 @@ export class mainCharacter extends Actor {
     })
     Engine.currentScene.add(areaCheckerLeft)
 
-    const hp = new HP(this)
-    Engine.currentScene.add(hp)
-    const ammo = new Ammo(this)
-    Engine.currentScene.add(ammo)
+    this.hp = new HP(this)
+    Engine.currentScene.add(this.hp)
+    this.ammo = new Ammo(this)
+    Engine.currentScene.add(this.ammo)
 
     this.scoreLabel = new ex.Label({
       text: 'cash',
@@ -427,6 +427,13 @@ export class mainCharacter extends Actor {
     if (direction.distance() > 0) {
       this.rotation = direction.toAngle() + Math.PI / 2;
     }
+  }
+
+  onPostKill() {
+    this.shootAvailable = false
+    this.scoreLabel.text = ''
+    this.hp.kill()
+    this.ammo.kill()
   }
 
 }
