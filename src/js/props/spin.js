@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js'
 
 export class spin extends Actor {
   constructor(x, y, target) {
-    super({ width: Resources.Vaas.width / 5, height: Resources.Vaas.height / 5 });
+    super({ width: Resources.spin.width / 5, height: Resources.spin.height / 5 });
     this.pos = new Vector(x, y);
     this.target = target;
     this.speed = 700;
@@ -14,7 +14,7 @@ export class spin extends Actor {
   }
 
   onInitialize(engine) {
-    this.graphics.use(Resources.Vaas.toSprite());
+    this.graphics.use(Resources.spin.toSprite());
     this.scale = new Vector(0.2, 0.2);
 
     this.on('collisionstart', (event) => {
