@@ -21,7 +21,8 @@ import { bathroom } from './rooms/bathroom'
 import { kitchen1 } from './rooms/kitchen1'
 import { kitchen2 } from './rooms/kitchen2'
 import { engineRoom } from './rooms/engineRoom'
-
+import { barRoom } from './rooms/barRoom'
+import { dormRoom } from './rooms/dormRoom'
 
 export class Game extends Engine {
     score = 0
@@ -51,6 +52,8 @@ export class Game extends Engine {
         this.Kitchen1 = new kitchen1(this)
         this.Kitchen2 = new kitchen2(this)
         this.engine = new engineRoom(this)
+        this.Barroom = new barRoom(this)
+        this.Dormroom = new dormRoom(this)
 
         this.addScene('titleMenu', this.titlemenu)  
         this.addScene('settingsMenu', this.settingsmenu)
@@ -72,8 +75,10 @@ export class Game extends Engine {
         this.addScene('kitchen1', this.Kitchen1)
         this.addScene('kitchen2', this.Kitchen2)
         this.addScene('engine', this.engine)
+        this.addScene('barRoom', this.Barroom)
+        this.addScene('dormRoom', this.Dormroom)
 
-        this.goToScene('Bedroom2')
+        this.goToScene('barRoom')
 
         console.log("Enjoy!")
     }
