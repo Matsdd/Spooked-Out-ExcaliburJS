@@ -3,7 +3,7 @@ import {Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
 import { titleMenu } from './menu/titleMenu'
-import { settingsMenu } from './menu/settingsmenu'
+import { settingsMenu } from './menu/settingsMenu'
 import { deathMenu } from './menu/deathMenu'
 
 import { lobbyRoom } from './rooms/lobbyRoom'
