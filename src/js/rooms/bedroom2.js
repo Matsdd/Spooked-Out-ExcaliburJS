@@ -2,6 +2,7 @@ import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { wraith } from '../enemies/wraith.js'
+import { mimic } from '../enemies/mimic.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
@@ -65,5 +66,7 @@ export class bedroom2 extends room {
         this.add(this.Ghoul)
         this.Wraith = new wraith(this.Sjaak, 470, 450, 0)
         this.add(this.Wraith)
+        this.mim = new mimic(this.Sjaak, 470, 450, 0)
+        this.add(this.mim)
     }
 }
