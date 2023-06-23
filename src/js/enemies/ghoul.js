@@ -14,7 +14,7 @@ export class ghoul extends ghost {
     this.target = target;
     this.speed = 100;
     this.minDistance = 1;
-    this.maxDistance = 700;
+    this.maxDistance = 7000;
     this.rotation = 0;
     this.hp = 10;
     this.soundInterval = null;

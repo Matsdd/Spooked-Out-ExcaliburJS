@@ -7,6 +7,7 @@ import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
 import { cellarTp} from '../ui/cellartp.js'
 import { Licht } from '../props/licht.js'
+import { treasure } from '../props/treasure.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
@@ -39,6 +40,7 @@ export class storageRoom extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.Poltergeist.kill()
+        this.Treasure.kill()
     }
 
     onActivate() {
@@ -47,5 +49,8 @@ export class storageRoom extends room {
 
         this.Poltergeist = new poltergeist(this.Sjaak, 767, 200)
         this.add(this.Poltergeist)
+
+        this.Treasure = new treasure(this.Sjaak, 1000, 400)
+        this.add(this.Treasure)
     }
 }
