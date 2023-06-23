@@ -47,7 +47,7 @@ export class bullet extends Actor {
       }
       if (event.other instanceof mainCharacter) {
         this.kill()
-        event.other.hp--
+        event.other.game.playerHp--
         event.other.die(engine)
         console.log(event.other.hp);
       }
@@ -93,22 +93,20 @@ export class bullet extends Actor {
       timer.start()
   }
 
-shoot(timer) {
-  this.Flash = new flash(this.pos.x, this.pos.y)
-  this.engine.currentScene.add(this.Flash)
-  timer.stop()
+  shoot(timer) {
+    this.Flash = new flash(this.pos.x, this.pos.y)
+    this.engine.currentScene.add(this.Flash)
+    timer.stop()
 
-  const timer2 = new Timer({
-    fcn: () => this.Flash.kill(),
-    repeats: false,
-    interval: 100,
-  })  
-    this.engine.currentScene.add(timer2)
-    timer2.start()
+    const timer2 = new Timer({
+      fcn: () => this.Flash.kill(),
+      repeats: false,
+      interval: 100,
+    })  
+      this.engine.currentScene.add(timer2)
+      timer2.start()
 
-}
-
-
+  }
 
   onPreUpdate() {
     if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
