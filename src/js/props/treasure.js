@@ -7,7 +7,7 @@ import { bullet } from '../bullet.js'
 
 export class treasure extends Actor {
   constructor(target, posX, posY) {
-    super({ width: Resources.Treasure.width / 2, height: Resources.Treasure.height / 3.5});
+    super({ width: Resources.Treasure.width / 1.8, height: Resources.Treasure.height / 3});
     this.pos = new Vector(posX, posY);
     this.target = target;
   }
@@ -17,10 +17,13 @@ export class treasure extends Actor {
     this.scale = new Vector(0.4, 0.4);
     const currentScene = Engine.currentScene;
 
+    const treasure1 = new Barrier(this.pos.x, this.pos.y, Resources.Treasure.width /4,Resources.Treasure.height / 8)
+    currentScene.add(treasure1);
+
     this.on('collisionstart', (event) => {
       if (event.other instanceof bullet) {
         this.randomNumber
-        this.randomNumber = this.getRandomInt(5);
+        this.randomNumber = this.getRandomInt(3);
         if (this.randomNumber === 0) {
           const Mimic = new mimic(this.target, this.pos.x, this.pos.y);
           currentScene.add(Mimic);
@@ -30,11 +33,6 @@ export class treasure extends Actor {
         }
       }
     });
-    this.on('collisionstart', (event) => {
-      if (event.other instanceof Barrier) {
-        this.kill()
-      }
-    })
   }
 
   getRandomInt(max) {

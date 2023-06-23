@@ -1,6 +1,8 @@
 import { Actor, Vector } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
+import { treasure } from '../props/treasure.js'
+import { ton } from '../props/ton.js'
 
 export class Barrier extends Actor {
 
@@ -13,5 +15,13 @@ export class Barrier extends Actor {
     }
 
     onInitialize() {
+        this.on('collisionend', (event) => {
+            if (event.other instanceof treasure) {
+              this.kill();
+            }
+            if (event.other instanceof ton) {
+                this.kill();
+              }
+          });
     }
 }
