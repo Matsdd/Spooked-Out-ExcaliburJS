@@ -7,8 +7,8 @@ export class HP extends Actor {
     constructor(player) {
         super({width:Resources.Hp3.width, height:Resources.Hp3.height})
         this.graphics.use(Resources.Hp3.toSprite())
-        this.pos = new Vector(100,100)
-        this.scale = new Vector(0.4,0.4)
+        this.pos = new Vector(80,80)
+        this.scale = new Vector(0.25,0.25)
         this.graphics.opacity = 0.7
         this.player = player
     }

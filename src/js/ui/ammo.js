@@ -7,8 +7,8 @@ export class Ammo extends Actor {
     constructor(player) {
         super({width:Resources.Ammo10.width, height:Resources.Ammo10.height})
         this.graphics.use(Resources.Ammo10.toSprite())
-        this.pos = new Vector(100,200)
-        this.scale = new Vector(0.4,0.4)
+        this.pos = new Vector(200,80)
+        this.scale = new Vector(0.25,0.25)
         this.graphics.opacity = 0.7
         this.player = player
     }

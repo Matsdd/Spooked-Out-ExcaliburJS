@@ -40,7 +40,7 @@ export class mainCharacter extends Actor {
     this.rotation = 0;
     this.pos = new Vector(posX, posY);
     this.game = game;
-    this.bullets = 10;
+    this.bullets = 30;
     this.reloadtimer = 0;
     this.slowtimer = 0;
 
@@ -187,6 +187,11 @@ export class mainCharacter extends Actor {
     Engine.currentScene.add(hp)
     const ammo = new Ammo(this)
     Engine.currentScene.add(ammo)
+  }
+  
+  onActivate() {
+    pipi.setAmmo(this.bullets)
+    pipi.setHp(this.game.playerHp)
   }
 
   goToDeath(game) {
