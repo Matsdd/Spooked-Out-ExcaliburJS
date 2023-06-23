@@ -1,22 +1,33 @@
 import { Actor, Vector } from "excalibur";
 import { Resources } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js'
+import { mimic } from '../enemies/mimic.js'
 import { Barrier } from '../ui/barrier.js';
 import { bullet } from '../bullet.js'
 
 export class treasure extends Actor {
-  constructor(posX, posY) {
+  constructor(target, posX, posY) {
     super({ width: Resources.Treasure.width / 2, height: Resources.Treasure.height / 3.5});
     this.pos = new Vector(posX, posY);
+    this.target = target;
   }
 
-  onInitialize() {
+  onInitialize(Engine) {
     this.graphics.use(Resources.Treasure.toSprite());
     this.scale = new Vector(0.4, 0.4);
+    const currentScene = Engine.currentScene;
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof bullet) {
+        this.randomNumber
+        this.randomNumber = this.getRandomInt(5);
+        if (this.randomNumber === 0) {
+          const Mimic = new mimic(this.target, this.pos.x, this.pos.y);
+          currentScene.add(Mimic);
+          this.kill();
+        } else {
         this.kill();
+        }
       }
     });
     this.on('collisionstart', (event) => {
@@ -24,6 +35,10 @@ export class treasure extends Actor {
         this.kill()
       }
     })
+  }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
   }
 
   onPreUpdate() {

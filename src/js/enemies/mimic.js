@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js';
 
 export class mimic extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY, chosenPath) {
+  constructor(target, posX, posY) {
     super({
       width: Resources.Mimic.width / 1.6,
       height: Resources.Mimic.height / 1.6,
@@ -14,29 +14,13 @@ export class mimic extends ghost {
     this.target = target;
     this.speed = 30;
     this.minDistance = 1;
-    this.maxDistance = 10000;
     this.rotation = 0;
     this.hp = 30;
     this.soundInterval = null;
     this.graphics.use(Resources.Mimic.toSprite());
-    this.scale = new Vector(0.3, 0.3);
+    this.scale = new Vector(0.45, 0.45);
     this.pos = new Vector(posX, posY);
-    this.prox = false
-    this.path = [
-      new Vector(),
-      new Vector(),
-      new Vector(),
-      new Vector(),
-    ]
-    this.currentWaypoint = 0;
-    this.chosenPath = chosenPath;
-    this.aggro = false;
   }
-
-  getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-
   onInitialize() {
 
     this.on('collisionstart', (event) => {
@@ -74,33 +58,14 @@ export class mimic extends ghost {
         this.bounceTimer = 10
       }
     });
-      switch (this.chosenPath) {
-        case 0:
-          this.maxDistance = 450;
-          this.path = [
-            new Vector(460, 170),
-            new Vector(950, 170),
-          ]
-          break;
-          case 1:
-          this.maxDistance = 450;
-          this.path = [
-            new Vector(950, 170),
-            new Vector(460, 170),
-          ]
-          break;
-          case 2:
-          this.maxDistance = 450;
-          this.path = [
-            new Vector(365, 170),
-            new Vector(1100, 170),
-          ]
-          break;
-    }
+      
 
 
     // Start playing sounds at random intervals
     this.playSoundAtRandomInterval();
+  }
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
   }
 
   playSoundAtRandomInterval() {
@@ -159,42 +124,20 @@ export class mimic extends ghost {
     const distance = direction.distance();
 
     if (this.bounceTimer < 0) {
-      if (distance > this.minDistance && distance < this.maxDistance || this.aggro === true) {
+      if (distance > this.minDistance) {
         const desiredVel = direction.normalize().scale(this.speed);
         this.vel = desiredVel.clampMagnitude(this.speed);
 
         // Calculate rotation based on movement direction
         this.rotation = Math.atan2(this.vel.y, this.vel.x);
-      } else {
-        // Follow the predefined path
-        const targetWaypoint = this.path[this.currentWaypoint];
-        const direction = targetWaypoint.sub(this.pos);
-        const distance = direction.distance();
-
-        if (distance > this.minDistance) {
-          const desiredVel = direction.normalize().scale(this.speed);
-          this.vel = desiredVel.clampMagnitude(this.speed);
-
-          // Calculate rotation based on movement direction
-          this.rotation = Math.atan2(this.vel.y, this.vel.x);
-        } else {
-          // Reached the current waypoint, move to the next one
-          this.currentWaypoint = (this.currentWaypoint + 1) % this.path.length;
-          this.vel = Vector.Zero;
-        }
+        } 
       }
     }
 
-  }
-
   update(engine, delta) {
     this.bounceTimer -= 1
-    if (this.prox) {
       this.moveTowardsTarget(this.target.pos);
-    } else {
-      const targetWaypoint = this.path[this.currentWaypoint];
-      this.moveTowardsTarget(targetWaypoint);
-    }
+
 
     this.speed = 120 - (this.hp * 3)
 

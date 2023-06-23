@@ -29,17 +29,37 @@ export class barRoom extends room {
         this.add(barcounter1)
         const barcounter2 = new Barrier(460,405,100,380)
         this.add(barcounter2)
-        const barcounter3 = new Barrier(400,300,420,80)
+        const barcounter3 = new Barrier(680,255,500,80)
         this.add(barcounter3)
-        const barcounter4 = new Barrier(620,95,320,45)
+        const barcounter4 = new Barrier(900,220,60,100)
         this.add(barcounter4)
+        const barcounter5 = new Barrier(900,80,60,50)
+        this.add(barcounter5)
+        const rightshelf1 = new Barrier(1220,375,70,280)
+        this.add(rightshelf1)
+        const rightshelf2 = new Barrier(1220,710,70,180)
+        this.add(rightshelf2)
+        const table1 = new Barrier(470,730,120,120)
+        this.add(table1)
+        const table2 = new Barrier(855,710,130,130)
+        this.add(table2)
+        const table3 = new Barrier(970,520,130,130)
+        this.add(table3)
+        const chair1 = new Barrier(575,320,50,60)
+        this.add(chair1)
+        const chair2 = new Barrier(685,320,50,60)
+        this.add(chair2)
+        const chair3 = new Barrier(772,315,40,50)
+        this.add(chair3)
+        const chair4 = new Barrier(842,315,30,40)
+        this.add(chair4)
     }
     onDeactivate() {
         this.Sjaak.kill()
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(767, 800)
+        this.Sjaak = new mainCharacter(700, 800, this.game)
         this.add(this.Sjaak)
     }
 }
