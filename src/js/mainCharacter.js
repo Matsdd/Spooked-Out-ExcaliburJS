@@ -13,6 +13,8 @@ import { settingsMenu } from './menu/settingsmenu'
 import { Barrier } from './ui/barrier.js'
 import { BarrierChecker } from './ui/playerBarrierChecker.js'
 import { Healwater } from './props/healwater.js'
+import { HP } from './ui/HPeter.js'
+import { Ammo } from './ui/ammo.js'
 
 import * as ex from 'excalibur'
 
@@ -180,10 +182,22 @@ export class mainCharacter extends Actor {
       }
     })
     Engine.currentScene.add(areaCheckerLeft)
+
+    const hp = new HP(this)
+    Engine.currentScene.add(hp)
+    const ammo = new Ammo(this)
+    Engine.currentScene.add(ammo)
   }
 
   goToDeath(game) {
     this.game.goToScene('deathMenu')
+  }
+
+  fixAmmo(pipi) {
+    pipi.setAmmo(this.bullets)
+  }
+  fixHp(pipi) {
+    pipi.setHp(this.game.playerHp)
   }
 
   onPreUpdate(Engine) {
