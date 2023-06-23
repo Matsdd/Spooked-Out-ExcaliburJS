@@ -31,6 +31,7 @@ export class bullet extends Actor {
     this.on('collisionstart', (event) => {
       if (event.other instanceof phantom) {
         if (event.other.graphics.opacity == 1) {
+          this.shoot()
           this.kill();
           console.log(event.other.hp);
         }
@@ -41,6 +42,7 @@ export class bullet extends Actor {
           this.vel = direction.scale(-this.speed);
           this.rotation += Math.PI
         }else{
+          this.shoot()
           this.kill();
         }
         console.log(event.other.hp);
@@ -87,16 +89,32 @@ export class bullet extends Actor {
     const timer = new Timer({
       fcn: () => this.shoot(timer),
       repeats: false,
-      interval: 50,
+      interval: 40,
     })  
       this.engine.currentScene.add(timer)
       timer.start()
   }
 
+<<<<<<< HEAD
+shoot(timer) {
+  this.Flash = new flash(this.pos.x, this.pos.y)
+  this.engine.currentScene.add(this.Flash)
+
+  const timer2 = new Timer({
+    fcn: () => this.Flash.kill(),
+    repeats: false,
+    interval: 100,
+  })  
+    this.engine.currentScene.add(timer2)
+    timer2.start()
+
+}
+=======
   shoot(timer) {
     this.Flash = new flash(this.pos.x, this.pos.y)
     this.engine.currentScene.add(this.Flash)
     timer.stop()
+>>>>>>> 710de133a63dbb390294fc0e8d27f045329b4d72
 
     const timer2 = new Timer({
       fcn: () => this.Flash.kill(),
