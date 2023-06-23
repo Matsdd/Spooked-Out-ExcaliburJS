@@ -5,6 +5,7 @@ import { ghost } from '../enemies/ghost.js'
 import { spirit } from '../enemies/spirit.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { bullet } from '../bullet.js'
+import { bossBar } from '../ui/bossBar.js'
 
 export class guardian extends ghost {
   bouncing = true
@@ -19,6 +20,7 @@ export class guardian extends ghost {
     this.maxDistance = 500;
     this.rotation = 0;
     this.hp = 50;
+    this.maxHp = 50
     this.timer = 0;
     this.cooldown = 150;
     this.pos = new Vector(posX, posY);
@@ -37,6 +39,9 @@ export class guardian extends ghost {
       }
     });
 
+    
+    const bossbar = new bossBar(this)
+    Engine.currentScene.add(bossbar)
 
   }
 

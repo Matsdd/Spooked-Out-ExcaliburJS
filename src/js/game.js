@@ -79,7 +79,7 @@ export class Game extends Engine {
         this.addScene('barRoom', this.Barroom)
         this.addScene('dormRoom', this.Dormroom)
 
-        this.goToScene('barRoom')
+        this.goToScene('wineCellar')
 
         console.log("Enjoy!")
     }
@@ -87,10 +87,6 @@ export class Game extends Engine {
     addScore() {
         this.score++
         console.log(this.score);
-    }
-
-    onPreUpdate() {
-        console.log(this.playerHp);
     }
 }
 

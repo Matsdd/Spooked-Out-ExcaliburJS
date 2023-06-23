@@ -5,6 +5,7 @@ import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 import { wisp } from './wisp.js';
 import { fireBall } from '../props/fireball.js';
+import { bossBar } from '../ui/bossBar.js';
 
 export class bloodyMary extends ghost {
   bounceTimer = 0
@@ -19,6 +20,7 @@ export class bloodyMary extends ghost {
     this.maxDistance = 550;
     this.rotation = 0;
     this.hp = 50;
+    this.maxHp = 50
     this.timer = 0
     this.secondaryTimer = 0
     this.cooldown = 300
@@ -43,7 +45,7 @@ export class bloodyMary extends ghost {
     return Math.floor(Math.random() * max);
   }
 
-  onInitialize() {
+  onInitialize(engine) {
 
     this.on('collisionstart', (event) => {
       const hitSound = new Audio(Resources.hitSound.path);
@@ -88,6 +90,9 @@ export class bloodyMary extends ghost {
           break;
     }
 
+    
+    const bossbar = new bossBar(this)
+    engine.currentScene.add(bossbar)
 
     // Start playing sounds at random intervals
     this.playSoundAtRandomInterval();

@@ -6,6 +6,7 @@ import { bullet } from '../bullet.js'
 import { spirit } from './spirit.js'
 import { ghoul } from './ghoul.js'
 import { wraith } from './wraith.js'
+import { bossBar } from '../ui/bossBar.js'
 import { poltergeist } from './poltergeist.js'
 import { arach } from './arach.js'
 
@@ -21,6 +22,7 @@ export class demon extends ghost {
     this.maxDistance = 1000;
     this.rotation = 0;
     this.hp = 100
+    this.maxHp = 100
     this.summonTimer = 0
     this.summonCooldown = 300
     this.bulletTimer = 0
@@ -57,7 +59,7 @@ export class demon extends ghost {
     clearTimeout(this.soundInterval);
   }
 
-  onInitialize() {
+  onInitialize(engine) {
     this.graphics.use(Resources.demon.toSprite());
     this.scale = new Vector(1, 1);
 
@@ -74,6 +76,9 @@ export class demon extends ghost {
         }
       }
     });
+
+    const bossbar = new bossBar(this)
+    engine.currentScene.add(bossbar)
 
     this.playSoundAtRandomInterval();
   }
