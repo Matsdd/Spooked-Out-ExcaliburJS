@@ -51,6 +51,8 @@ export class bedroom2 extends room {
         this.add(chairlet)
         const bed = new Barrier(513,780,202,250)
         this.add(bed)
+        const licht = new Licht(this)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()
