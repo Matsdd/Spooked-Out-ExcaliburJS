@@ -6,7 +6,7 @@ export class flash extends Actor {
     super({width:Resources.Flash.width, height:Resources.Flash.height})
     this.pos = new Vector(x, y);
     this.graphics.use(Resources.Flash.toSprite())
-    this.scale = new Vector(0.5, 0.5);
+    this.scale = new Vector(0.3, 0.3);
     this.timer = 4
   }
 
