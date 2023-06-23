@@ -16,6 +16,7 @@ import { BarrierChecker } from './ui/playerBarrierChecker.js'
 import { Healwater } from './props/healwater.js'
 import { HP } from './ui/HPeter.js'
 import { Ammo } from './ui/ammo.js'
+import { score } from './ui/score.js'
 
 import * as ex from 'excalibur'
 
@@ -194,10 +195,13 @@ export class mainCharacter extends Actor {
     Engine.currentScene.add(this.hp)
     this.ammo = new Ammo(this)
     Engine.currentScene.add(this.ammo)
+    this.score = new score()
+    Engine.currentScene.add(this.score)
 
     this.scoreLabel = new ex.Label({
       text: 'cash',
-      pos: ex.vec(40, 180),
+      z: 99,
+      pos: ex.vec(70, 53),
       font: new ex.Font({
           size: 36,
           unit: ex.FontUnit.Px,
@@ -434,6 +438,7 @@ export class mainCharacter extends Actor {
     this.scoreLabel.text = ''
     this.hp.kill()
     this.ammo.kill()
+    this.score.kill()
   }
 
 }

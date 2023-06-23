@@ -13,6 +13,7 @@ char
         this.pos = new Vector(767,60)
         this.scale = new Vector(1,1)
         this.char = char
+        this.z = 99
     }
 
     update(engine) {

@@ -11,6 +11,7 @@ export class Donker extends Actor {
         this.scale = new Vector(2,2)
         this.pos = new Vector(765,430)
         this.sjaak = sjaak
+        this.z = 50
     }
 
     onPreUpdate() {
