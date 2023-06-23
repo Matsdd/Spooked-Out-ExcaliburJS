@@ -9,6 +9,7 @@ import { cellarTp} from '../ui/cellartp.js'
 import { Licht } from '../props/licht.js'
 import { treasure } from '../props/treasure.js'
 import { ton } from '../props/ton.js'
+import { nietschiet } from '../props/nietschiet.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
@@ -42,7 +43,14 @@ export class storageRoom extends room {
         this.Sjaak.kill()
         this.Poltergeist.kill()
         this.Treasure.kill()
+        this.Nietschiet.kill()
         this.Ton1.kill()
+        this.Ton2.kill()
+        this.Ton3.kill()
+        this.Ton4.kill()
+        this.Ton5.kill()
+        this.Ton6.kill()
+        this.Ton7.kill()
     }
 
     onActivate() {
@@ -54,6 +62,9 @@ export class storageRoom extends room {
 
         this.Treasure = new treasure(this.Sjaak, 1000, 400)
         this.add(this.Treasure)
+
+        this.Nietschiet = new nietschiet(438, 730)
+        this.add(this.Nietschiet)
 
         this.Ton1 = new ton(800,430)
         this.add(this.Ton1)
