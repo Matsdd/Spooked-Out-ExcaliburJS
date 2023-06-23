@@ -57,10 +57,9 @@ export class wraith extends ghost {
     switch (this.chosenPath) {
       case 0:
         this.path = [
-          new Vector(470, 600),
-          new Vector(470, 450),
-          new Vector(570, 450),
-          new Vector(570, 600),
+          this.maxDistance = 350,
+          new Vector(1000, 350),
+          new Vector(400, 350),
         ]
         break;
   }
@@ -127,7 +126,7 @@ export class wraith extends ghost {
   update(engine, delta) {
     this.bounceTimer -= 1
     if (this.prox) {
-      this.moveTowardsTarget(this.target.pos);
+      // this.moveTowardsTarget(this.target.pos);
     } else {
       const targetWaypoint = this.path[this.currentWaypoint];
       this.moveTowardsTarget(targetWaypoint);

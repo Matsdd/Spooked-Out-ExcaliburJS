@@ -78,7 +78,7 @@ export class shade extends ghost {
     });
       switch (this.chosenPath) {
         case 0:
-          this.maxDistance = 150;
+          this.maxDistance = 250;
           this.path = [
             new Vector(940, 450),
             new Vector(1450, 450),
