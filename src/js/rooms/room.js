@@ -5,6 +5,7 @@ import { ghoul } from '../enemies/ghoul.js'
 import { spirit } from '../enemies/spirit.js'
 import { demon } from '../enemies/demonBoss.js'
 import { poltergeist } from '../enemies/poltergeist.js'
+import { frederik } from '../frederik.js'
 import { Resources } from '../resources.js'
 import { roomBack } from './roomBack.js'
 import { Barrier } from '../ui/barrier.js'
@@ -51,6 +52,9 @@ export class room extends Scene {
         this.check = new CFG()
         this.check.on('precollision', (event) => {
             if (event.other instanceof ghost) {
+                if (event.other instanceof frederik) {
+                    return
+                }
                 this.teleportActive = false
             }
         }) 

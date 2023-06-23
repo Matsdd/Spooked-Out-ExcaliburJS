@@ -45,7 +45,7 @@ export class bathroom extends room {
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(767, 800)
+        this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
         this.Wisp = new wisp(this.Sjaak, 1150, 450)
