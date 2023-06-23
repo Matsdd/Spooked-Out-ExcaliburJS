@@ -15,7 +15,7 @@ export class shade extends ghost {
     this.target = target;
     this.speed = 100;
     this.minDistance = 1;
-    this.maxDistance = 700;
+    this.maxDistance = 300;
     this.rotation = 0;
     this.hp = 16;
     this.regenTimer = 80
@@ -78,12 +78,21 @@ export class shade extends ghost {
     });
       switch (this.chosenPath) {
         case 0:
-          this.maxDistance = 250;
+          this.maxDistance = 350;
           this.path = [
             new Vector(940, 450),
             new Vector(1450, 450),
             new Vector(940, 450),
             new Vector(940, 150),
+          ]
+          break;
+          case 1:
+          this.maxDistance = 350;
+          this.path = [
+            new Vector(400, 370),
+            new Vector(1150, 370),
+            new Vector(1150, 770),
+            new Vector(400, 770),
           ]
           break;
     }
@@ -190,7 +199,7 @@ export class shade extends ghost {
     this.regenTimer--
     this.bounceTimer -= 1
     if (this.prox) {
-      // this.moveTowardsTarget(this.target.pos);
+      this.moveTowardsTarget(this.target.pos);
     } else {
       const targetWaypoint = this.path[this.currentWaypoint];
       this.moveTowardsTarget(targetWaypoint);
