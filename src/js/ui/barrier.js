@@ -3,6 +3,7 @@ import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 import { treasure } from '../props/treasure.js'
 import { ton } from '../props/ton.js'
+import { nietschiet } from '../props/nietschiet.js'
 
 export class Barrier extends Actor {
 
@@ -20,6 +21,9 @@ export class Barrier extends Actor {
               this.kill();
             }
             if (event.other instanceof ton) {
+                this.kill();
+              }
+              if (event.other instanceof nietschiet) {
                 this.kill();
               }
           });
