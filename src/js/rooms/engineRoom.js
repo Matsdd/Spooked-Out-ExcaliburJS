@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
 import { ghoul } from '../enemies/ghoul.js'
-import { spirit } from '../enemies/spirit.js'
+import { shade } from '../enemies/shade.js'
 import { arach } from '../enemies/arach.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
@@ -44,6 +44,7 @@ export class engineRoom extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.Arach.kill()
+        this.Shade.kill()
     }
 
     onActivate() {
@@ -52,5 +53,8 @@ export class engineRoom extends room {
 
         this.Arach = new arach(this.Sjaak, 1170, 150, 0)
         this.add(this.Arach)
+
+        this.Shade = new shade(this.Sjaak, 400, 370, 1)
+        this.add(this.Shade)
     }
 }
