@@ -51,7 +51,10 @@ export class room extends Scene {
 
         this.check = new CFG()
         this.check.on('precollision', (event) => {
-            if (event.other instanceof ghost && !event.other instanceof frederik) {
+            if (event.other instanceof ghost) {
+                if (event.other instanceof frederik) {
+                    return
+                }
                 this.teleportActive = false
             }
         }) 
