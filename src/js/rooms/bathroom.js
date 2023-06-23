@@ -42,6 +42,8 @@ export class bathroom extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Wisp.kill()
+        this.Wisp2.kill()
     }
 
     onActivate() {

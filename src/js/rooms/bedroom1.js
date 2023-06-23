@@ -39,6 +39,7 @@ export class Bedroom1 extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.Ghoul.kill()
+        this.Ghoul2.kill()
     }
 
     onActivate() {

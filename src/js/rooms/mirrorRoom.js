@@ -26,6 +26,7 @@ export class mirrorroom extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Maria.kill()
     }
 
     onActivate() {
