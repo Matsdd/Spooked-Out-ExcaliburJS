@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
-import { ghoul } from '../enemies/ghoul.js'
-import { spirit } from '../enemies/spirit.js'
+import { wraith } from '../enemies/wraith.js'
+import { treasure } from '../props/treasure.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
@@ -44,10 +44,18 @@ export class playroom extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
+        this.Treasure.kill()
+        this.Wraith.kill()
     }
 
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
+
+        this.Wraith = new wraith(this.Sjaak, 400, 350, 0)
+        this.add(this.Wraith)
+        
+        this.Treasure = new treasure(this.Sjaak, 1160, 80)
+        this.add(this.Treasure)
     }
 }
