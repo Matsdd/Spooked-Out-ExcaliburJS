@@ -23,7 +23,7 @@ export class treasure extends Actor {
     this.on('collisionstart', (event) => {
       if (event.other instanceof bullet) {
         this.randomNumber
-        this.randomNumber = this.getRandomInt(5);
+        this.randomNumber = this.getRandomInt(3);
         if (this.randomNumber === 0) {
           const Mimic = new mimic(this.target, this.pos.x, this.pos.y);
           currentScene.add(Mimic);
