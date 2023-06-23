@@ -140,7 +140,6 @@ export class arach extends ghost {
 
   update(engine, delta) {
     this.timer++
-    console.log(this.timer);
     const direction = this.target.pos.sub(this.pos);
     const distance = direction.distance();
 
