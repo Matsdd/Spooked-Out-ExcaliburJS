@@ -26,6 +26,7 @@ import { dormRoom } from './rooms/dormRoom'
 
 export class Game extends Engine {
     score = 0
+    playerHp = 3
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
@@ -86,6 +87,10 @@ export class Game extends Engine {
     addScore() {
         this.score++
         console.log(this.score);
+    }
+
+    onPreUpdate() {
+        console.log(this.playerHp);
     }
 }
 

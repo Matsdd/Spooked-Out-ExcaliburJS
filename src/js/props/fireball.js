@@ -23,9 +23,8 @@ export class fireBall extends Actor {
         this.on('collisionstart', (event) => {
             if (event.other instanceof mainCharacter) {
                 this.kill()
-                event.other.hp--
+                event.other.game.playerHp--
                 event.other.die(engine)
-                console.log(event.other.hp);
             }
         })
 
