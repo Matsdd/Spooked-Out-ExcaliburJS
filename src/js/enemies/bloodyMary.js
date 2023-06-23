@@ -11,7 +11,7 @@ export class bloodyMary extends ghost {
   bounceTimer = 0
   constructor(target, posX, posY, chosenPath) {
     super({
-      width: Resources.BloodyMary.width / 1.6,
+      width: Resources.BloodyMary.width / 1.3,
       height: Resources.BloodyMary.height / 1.6,
     });
     this.target = target;

@@ -9,7 +9,7 @@ export class wisp extends ghost {
   bounceTimer = 0
   constructor(target, posX, posY) {
     super({
-      width: Resources.Wisp.width / 4,
+      width: Resources.Wisp.width / 2.5,
       height: Resources.Wisp.height / 4,
     });
     this.target = target;
