@@ -16,7 +16,7 @@ export class arach extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 10;
+    this.hp = 14;
     this.soundInterval = null;
     this.graphics.use(Resources.Arach.toSprite());
     this.scale = new Vector(0.45, 0.45);
