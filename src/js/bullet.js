@@ -50,12 +50,14 @@ export class bullet extends Actor {
       }
       if (event.other instanceof mainCharacter) {
         this.kill()
+        this.shoot()
         event.other.game.playerHp--
         event.other.die(engine)
         console.log(event.other.hp);
       }
       if (event.other instanceof fireBall) {
         this.kill()
+        this.shoot()
       }
     }
     });
@@ -65,16 +67,19 @@ export class bullet extends Actor {
         this.Flash = new flash(this.pos.x, this.pos.y)
         this.engine.currentScene.add(this.Flash)
         this.kill()
+        this.shoot()
       }
     })
     this.on('collisionstart', (event) => {
       if (event.other instanceof vaas) {
         this.kill()
+        this.shoot()
       }
     })
     this.on('collisionstart', (event) => {
       if (event.other instanceof shelf) {
         this.kill()
+        this.shoot()
       }
     })
 

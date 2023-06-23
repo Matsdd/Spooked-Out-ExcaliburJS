@@ -31,16 +31,20 @@ room
 
     nextRoom(engine, game) {
       this.room.game.addScore()
-      this.randomNumber
 
-      this.randomNumber = this.getRandomInt(12)
+      if (score == 20) {
+        this.game.goToScene('bossPoolRoom')
+      } else {
+
+      this.randomNumber
+      this.randomNumber = this.getRandomInt(13)
 
     switch (this.randomNumber) {
       case 0:
         this.game.goToScene('poolRoom')
         break;
       case 1:
-        this.game.goToScene('bossRoom')
+        this.game.goToScene('dorm')
         break;
       case 2:
         this.game.goToScene('storageRoom')
@@ -72,6 +76,10 @@ room
       case 11:
         this.game.goToScene('engine')
         break;
+      case 12:
+        this.game.goToScene('bar')
+        break;
         }
+      }
     }
 }
