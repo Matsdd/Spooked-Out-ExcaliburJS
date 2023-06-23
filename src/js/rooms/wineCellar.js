@@ -34,7 +34,7 @@ export class wineCellar extends room {
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(110, 250)
+        this.Sjaak = new mainCharacter(110, 250,this.game)
         this.add(this.Sjaak)
 
         this.Guardian = new guardian(this.Sjaak, 900, 500)

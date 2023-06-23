@@ -47,7 +47,7 @@ export class engineRoom extends room {
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(150, 800)
+        this.Sjaak = new mainCharacter(150, 800,this.game)
         this.add(this.Sjaak)
 
         this.Arach = new arach(this.Sjaak, 1170, 150, 0)

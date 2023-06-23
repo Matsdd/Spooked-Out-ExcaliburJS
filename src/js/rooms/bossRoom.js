@@ -49,7 +49,7 @@ export class bossRoom extends room {
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(767, 800)
+        this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
         this.Demon = new demon(this.Sjaak, 767, 150)

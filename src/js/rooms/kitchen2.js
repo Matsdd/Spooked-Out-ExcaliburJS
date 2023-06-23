@@ -48,7 +48,7 @@ export class kitchen2 extends room {
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(767, 800)
+        this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
         this.Arach = new arach(this.Sjaak, 930, 230, 1)
