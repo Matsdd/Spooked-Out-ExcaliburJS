@@ -50,6 +50,7 @@ import settings from "../images/menu/Settings.png"
 import titlescreen from "../images/menu/titlescreen.png"
 
 //props
+import flash from '../images/props/flash.png'
 import bulletImage from '../images/props/bullet.png'
 import barrier from '../images/props/barrier.png'
 import lichtAan from "../images/props/lichtAan.png"
@@ -197,6 +198,7 @@ const Resources = {
     Titlescreen: new ImageSource(titlescreen),
 
     //props
+    Flash: new ImageSource(flash),
     bullet: new ImageSource(bulletImage),
     Barrier: new ImageSource(barrier),
     LichtAan: new ImageSource(lichtAan),

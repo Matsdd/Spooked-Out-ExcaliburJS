@@ -1,4 +1,4 @@
-import { Actor, Vector } from "excalibur";
+import { Actor, Vector, Engine, Timer } from "excalibur";
 import { Resources } from './resources.js';
 import { ghost } from './enemies/ghost.js';
 import { phantom } from './enemies/phantom.js'
@@ -7,6 +7,7 @@ import { vaas } from './props/vaas.js'
 import { shelf } from './props/shelf.js'
 import { mainCharacter } from './mainCharacter.js'
 import { fireBall } from './props/fireball.js'
+import { flash } from './flash.js'
 
 export class bullet extends Actor {
   constructor(x, y, target) {
@@ -18,6 +19,8 @@ export class bullet extends Actor {
   }
 
   onInitialize(engine) {
+    this.engine = engine
+
     this.graphics.use(Resources.bullet.toSprite());
     this.scale = new Vector(0.2, 0.2);
     const gunShot = new Audio(Resources.gunShot.path);
@@ -73,14 +76,39 @@ export class bullet extends Actor {
     this.moveTowardsTarget();
   }
 
-  moveTowardsTarget() {
+  moveTowardsTarget(Engine) {
     const direction = new Vector(this.target.x, this.target.y).sub(this.pos).normalize();
     const offsetDirection = direction.clone().normalize().scale(this.offset.x, this.offset.y);
     const offsetPosition = this.pos.add(offsetDirection);
     this.pos = offsetPosition;
     this.vel = direction.scale(this.speed);
     this.rotation = direction.toAngle();
+
+    const timer = new Timer({
+      fcn: () => this.shoot(timer),
+      repeats: false,
+      interval: 50,
+    })  
+      this.engine.currentScene.add(timer)
+      timer.start()
   }
+
+shoot(timer) {
+  this.Flash = new flash(this.pos.x, this.pos.y)
+  this.engine.currentScene.add(this.Flash)
+  timer.stop()
+
+  const timer2 = new Timer({
+    fcn: () => this.Flash.kill(),
+    repeats: false,
+    interval: 100,
+  })  
+    this.engine.currentScene.add(timer2)
+    timer2.start()
+
+}
+
+
 
   onPreUpdate() {
     if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
