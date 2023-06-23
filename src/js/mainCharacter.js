@@ -273,6 +273,7 @@ export class mainCharacter extends Actor {
     if (this.game.playerHp <= 0) {
       deathScream.play();
       Engine.goToScene('deathMenu')
+      this.game.playerHp = 3
     }
   }
 

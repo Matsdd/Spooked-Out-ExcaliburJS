@@ -88,6 +88,10 @@ export class Game extends Engine {
         this.score++
         console.log(this.score);
     }
+
+    onPreUpdate() {
+        console.log(this.playerHp);
+    }
 }
 
 
