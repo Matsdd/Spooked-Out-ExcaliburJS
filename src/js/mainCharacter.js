@@ -36,7 +36,6 @@ export class mainCharacter extends Actor {
     this.isMovingDown = false;
     this.speed = 150;
     this.rotation = 0;
-    this.hp = 3;
     this.pos = new Vector(posX, posY);
     this.game = game;
     this.bullets = 10;
@@ -55,39 +54,39 @@ export class mainCharacter extends Actor {
     this.on('collisionstart', (event) => {
       const playerHit = new Audio(Resources.playerHit2.path);
       if (event.other instanceof arach) {
-        this.hp -= 1;
+        this.game.playerHp -= 1;
         this.speed -= 10;
         this.slowtimer = 500;
         playerHit.play(1);
-        console.log(this.hp)
+        console.log(this.game.playerHp)
         this.die(Engine)
       } else {
       if (event.other instanceof wraith) {
-        this.hp -= 2
+        this.game.playerHp -= 2
         playerHit.play(1);
-        console.log(this.hp)
+        console.log(this.game.playerHp)
         this.die(Engine)
       } else {
       if (event.other instanceof ghost) {
-        this.hp -= 1
+        this.game.playerHp -= 1
         playerHit.play(1);
-        console.log(this.hp)
+        console.log(this.game.playerHp)
         this.die(Engine)
       }
     }
       if (event.other instanceof vaas) {
-        this.hp -= 1;
+        this.game.playerHp -= 1;
         playerHit.play();
         this.die(Engine)
       }
       if (event.other instanceof shelf) {
-        this.hp -= 1;
+        this.game.playerHp -= 1;
         playerHit.play();
         this.die(Engine)
       }
       if (event.other instanceof Healwater) {
         if (event.other.healed == false) {
-          this.hp += 3
+          this.game.playerHp += 3
           event.other.healed = true
         }
       }
@@ -193,9 +192,8 @@ export class mainCharacter extends Actor {
   }
 
   onPreUpdate(Engine) {
-    if (this.hp <= 0) {
+    if (this.game.playerHp <= 0) {
       this.kill()
-      console.log(this.hp)
     }
   }
 
@@ -272,7 +270,7 @@ export class mainCharacter extends Actor {
 
   die(Engine) {
     const deathScream = new Audio(Resources.deathScream.path);
-    if (this.hp <= 0) {
+    if (this.game.playerHp <= 0) {
       deathScream.play();
       Engine.goToScene('deathMenu')
     }
