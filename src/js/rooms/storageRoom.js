@@ -8,6 +8,7 @@ import { Tp } from '../ui/tp.js'
 import { cellarTp} from '../ui/cellartp.js'
 import { Licht } from '../props/licht.js'
 import { treasure } from '../props/treasure.js'
+import { ton } from '../props/ton.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
@@ -41,10 +42,11 @@ export class storageRoom extends room {
         this.Sjaak.kill()
         this.Poltergeist.kill()
         this.Treasure.kill()
+        this.Ton1.kill()
     }
 
     onActivate() {
-        this.Sjaak = new mainCharacter(767, 800,this.game)
+        this.Sjaak = new mainCharacter(867, 800,this.game)
         this.add(this.Sjaak)
 
         this.Poltergeist = new poltergeist(this.Sjaak, 767, 200)
@@ -52,5 +54,24 @@ export class storageRoom extends room {
 
         this.Treasure = new treasure(this.Sjaak, 1000, 400)
         this.add(this.Treasure)
+
+        this.Ton1 = new ton(800,430)
+        this.add(this.Ton1)
+        this.Ton2 = new ton(0,0)
+        this.add(this.Ton2)
+        this.Ton3 = new ton(0,0)
+        this.add(this.Ton3)
+        this.Ton4 = new ton(600,590)
+        this.add(this.Ton4)
+        this.Ton5 = new ton(1000,540)
+        this.add(this.Ton5)
+        this.Ton6 = new ton(867,500)
+        this.add(this.Ton6)
+        this.Ton8 = new ton(660, 670)
+        this.add(this.Ton8)
+        this.Ton9 = new ton(700, 740)
+        this.add(this.Ton9)
+        this.Ton7 = new ton(680, 820)
+        this.add(this.Ton7)
     }
 }

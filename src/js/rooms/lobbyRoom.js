@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import * as ex from 'excalibur'
 import { mainCharacter } from '../mainCharacter.js'
-import { frederik } from '../Frederik.js'
+import { frederik } from '../frederik.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Licht } from '../props/licht.js'
