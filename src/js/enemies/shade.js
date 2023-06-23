@@ -78,24 +78,12 @@ export class shade extends ghost {
     });
       switch (this.chosenPath) {
         case 0:
-          this.maxDistance = 450;
+          this.maxDistance = 250;
           this.path = [
-            new Vector(460, 170),
-            new Vector(950, 170),
-          ]
-          break;
-          case 1:
-          this.maxDistance = 450;
-          this.path = [
-            new Vector(950, 170),
-            new Vector(460, 170),
-          ]
-          break;
-          case 2:
-          this.maxDistance = 450;
-          this.path = [
-            new Vector(365, 170),
-            new Vector(1100, 170),
+            new Vector(940, 450),
+            new Vector(1450, 450),
+            new Vector(940, 450),
+            new Vector(940, 150),
           ]
           break;
     }
@@ -202,7 +190,7 @@ export class shade extends ghost {
     this.regenTimer--
     this.bounceTimer -= 1
     if (this.prox) {
-      this.moveTowardsTarget(this.target.pos);
+      // this.moveTowardsTarget(this.target.pos);
     } else {
       const targetWaypoint = this.path[this.currentWaypoint];
       this.moveTowardsTarget(targetWaypoint);

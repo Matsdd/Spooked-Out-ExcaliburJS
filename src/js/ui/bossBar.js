@@ -37,6 +37,9 @@ char
         if (this.char.hp < 0.875*this.char.maxHp) {
             this.graphics.use(Resources.BossHp7.toSprite())
         }
+        if (this.char.hp <= 0) {
+            this.kill()
+        }
     }
 
 }

@@ -27,6 +27,7 @@ import { dormRoom } from './rooms/dormRoom'
 export class Game extends Engine {
     score = 0
     playerHp = 3
+    maxPlayerHp = 3
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
@@ -79,7 +80,11 @@ export class Game extends Engine {
         this.addScene('barRoom', this.Barroom)
         this.addScene('dormRoom', this.Dormroom)
 
+<<<<<<< HEAD
         this.goToScene('titleMenu')
+=======
+        this.goToScene('playroom')
+>>>>>>> 7f492dbd5dffece29f2dbcc9d979d5f5d79c709e
 
         console.log("Enjoy!")
     }

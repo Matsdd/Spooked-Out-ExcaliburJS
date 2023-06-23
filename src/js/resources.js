@@ -62,6 +62,7 @@ import fire from "../images/props/fire.png"
 import treasure from "../images/props/schatkist.png"
 import mirror from "../images/props/mirror.png"
 import ton from "../images/props/ton.png"
+import spin from "../images/props/spin.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -210,6 +211,7 @@ const Resources = {
     Treasure: new ImageSource(treasure),
     Mirror: new ImageSource(mirror),
     ton : new ImageSource(ton),
+    spin : new ImageSource(spin),
 
     // music
     gameMusic: new Sound(backgroundMusic),

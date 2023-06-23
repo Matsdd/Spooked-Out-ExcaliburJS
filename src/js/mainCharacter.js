@@ -13,6 +13,8 @@ import { settingsMenu } from './menu/settingsmenu'
 import { Barrier } from './ui/barrier.js'
 import { BarrierChecker } from './ui/playerBarrierChecker.js'
 import { Healwater } from './props/healwater.js'
+import { HP } from './ui/HPeter.js'
+import { Ammo } from './ui/ammo.js'
 
 import * as ex from 'excalibur'
 
@@ -39,6 +41,7 @@ export class mainCharacter extends Actor {
     this.pos = new Vector(posX, posY);
     this.game = game;
     this.bullets = 10;
+    this.maxAmmo = 10
     this.reloadtimer = 0;
     this.slowtimer = 0;
 
@@ -83,6 +86,9 @@ export class mainCharacter extends Actor {
       if (event.other instanceof Healwater) {
         if (event.other.healed == false) {
           this.game.playerHp += 3
+          if (this.game.playerHp > this.game.maxPlayerHP) {
+            this.game.playerHp = this.game.maxPlayerHp
+          }
           event.other.healed = true
         }
       }
@@ -180,10 +186,27 @@ export class mainCharacter extends Actor {
       }
     })
     Engine.currentScene.add(areaCheckerLeft)
+
+    const hp = new HP(this)
+    Engine.currentScene.add(hp)
+    const ammo = new Ammo(this)
+    Engine.currentScene.add(ammo)
+  }
+  
+  onActivate() {
+    pipi.setAmmo(this.bullets)
+    pipi.setHp(this.game.playerHp)
   }
 
   goToDeath(game) {
     this.game.goToScene('deathMenu')
+  }
+
+  fixAmmo(pipi) {
+    pipi.setAmmo(this.bullets)
+  }
+  fixHp(pipi) {
+    pipi.setHp(this.game.playerHp)
   }
 
   onPreUpdate(Engine) {
@@ -259,7 +282,7 @@ export class mainCharacter extends Actor {
 
   reload() {
     //reload sound here
-    this.bullets = 10;
+    this.bullets = this.maxAmmo;
     this.reloadtimer = 100;
   }
 
