@@ -6,11 +6,11 @@ import { bullet } from '../bullet.js'
 
 export class ton extends Actor {
   constructor(posX, posY) {
-    super({ width: Resources.ton.width / 2, height: Resources.ton.height / 3.5});
+    super({ width: Resources.ton.width/ 1.9 , height: Resources.ton.height/ 2.2});
     this.pos = new Vector(posX, posY);
   }
 
-  onInitialize() {
+  onInitialize(Engine) {
     this.graphics.use(Resources.ton.toSprite());
     this.scale = new Vector(0.4, 0.4);
 
@@ -19,11 +19,10 @@ export class ton extends Actor {
         this.kill();
       }
     });
-    this.on('collisionstart', (event) => {
-      if (event.other instanceof Barrier) {
-        this.kill()
-      }
-    })
+    
+    const currentScene = Engine.currentScene;
+    const ton1 = new Barrier(this.pos.x,this.pos.y, Resources.ton.width / 4.7,Resources.ton.height / 5.5)
+    currentScene.add(ton1);
   }
 
   onPreUpdate() {
