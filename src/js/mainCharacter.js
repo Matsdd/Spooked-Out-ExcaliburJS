@@ -1,5 +1,6 @@
-import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine } from 'excalibur';
+import { ImageSource, Sound, Resource, Loader, Actor, Vector, Input, Engine, TextAlign } from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js';
+//import * as ex from 'excalibur'
 import { ghost } from './enemies/ghost.js'
 import { wraith } from './enemies/wraith.js'
 import { spin } from './props/spin.js'
@@ -26,6 +27,7 @@ export class mainCharacter extends Actor {
   ableLeft
   game
   bounceTimer = 0
+  scoreLabel = ''
 
   constructor(posX, posY, game) {
     super({
@@ -191,6 +193,18 @@ export class mainCharacter extends Actor {
     Engine.currentScene.add(hp)
     const ammo = new Ammo(this)
     Engine.currentScene.add(ammo)
+
+    this.scoreLabel = new ex.Label({
+      text: 'cash',
+      pos: ex.vec(40, 180),
+      font: new ex.Font({
+          size: 36,
+          unit: ex.FontUnit.Px,
+          //textAlign: TextAlign.Right,
+          color: ex.Color.White
+      })
+    });
+    Engine.currentScene.add(this.scoreLabel)
   }
   
   onActivate() {
@@ -298,6 +312,10 @@ export class mainCharacter extends Actor {
   update(engine) {
     this.bounceTimer -= 1
 
+    if (this.scoreLabel != '') {
+      this.scoreLabel.text = this.game.score + ''
+    }
+    
     if (this.slowtimer > 0) {
       this.slowtimer--
     }
@@ -401,4 +419,5 @@ export class mainCharacter extends Actor {
       this.rotation = direction.toAngle() + Math.PI / 2;
     }
   }
+
 }
