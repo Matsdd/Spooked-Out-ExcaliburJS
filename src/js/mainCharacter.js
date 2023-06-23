@@ -46,6 +46,7 @@ export class mainCharacter extends Actor {
     this.maxAmmo = 10
     this.reloadtimer = 0;
     this.slowtimer = 0;
+    this.reloadCounter = 0
 
   }
 
@@ -147,7 +148,7 @@ export class mainCharacter extends Actor {
     
 
     Engine.input.pointers.primary.on('down', (evt) => {
-      if (mainCharacterInScene === this && this.reloadtimer <= 0 && this.bullets > 0) {
+      if (mainCharacterInScene === this && this.reloadtimer < 0 && this.bullets > 0) {
         
         const mouseX = evt.worldPos.x;
         const mouseY = evt.worldPos.y;
@@ -296,8 +297,8 @@ export class mainCharacter extends Actor {
 
   reload() {
     //reload sound here
-    this.bullets = this.maxAmmo;
-    this.reloadtimer = 100;
+    this.reloadtimer = 10;
+    this.reloadCounter = 10
   }
 
   die(Engine) {
@@ -312,6 +313,20 @@ export class mainCharacter extends Actor {
   update(engine) {
     this.bounceTimer -= 1
 
+    if (this.reloadtimer <= 0 && this.reloadCounter != 0) {
+      if (this.bullets !== this.maxAmmo) {
+        this.bullets++
+        this.reloadtimer = 10
+      }
+      this.reloadCounter--
+    }
+    
+    this.reloadtimer--
+
+    if (this.slowtimer <= 0) {
+      this.speed = 150;
+    }
+
     if (this.scoreLabel != '') {
       this.scoreLabel.text = this.game.score + ''
     }
@@ -320,13 +335,7 @@ export class mainCharacter extends Actor {
       this.slowtimer--
     }
 
-    if (this.slowtimer <= 0) {
-      this.speed = 150;
-    }
     
-    if (this.reloadtimer > 0) {
-      this.reloadtimer--
-    }
 
     if (engine.input.keyboard.wasPressed(ex.Input.Keys.Escape)) {
       engine.goToScene('settingsMenu')
