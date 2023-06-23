@@ -7,5 +7,13 @@ export class flash extends Actor {
     this.pos = new Vector(x, y);
     this.graphics.use(Resources.Flash.toSprite())
     this.scale = new Vector(0.5, 0.5);
+    this.timer = 4
+  }
+
+  update() {
+    this.timer--
+    if (this.timer < 0) {
+      this.kill()
+    }
   }
 }

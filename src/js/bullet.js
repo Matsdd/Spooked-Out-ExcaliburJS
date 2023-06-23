@@ -62,6 +62,8 @@ export class bullet extends Actor {
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof Barrier) {
+        this.Flash = new flash(this.pos.x, this.pos.y)
+        this.engine.currentScene.add(this.Flash)
         this.kill()
       }
     })
@@ -99,14 +101,6 @@ export class bullet extends Actor {
   shoot(timer) {
     this.Flash = new flash(this.pos.x, this.pos.y)
     this.engine.currentScene.add(this.Flash)
-
-    const timer2 = new Timer({
-      fcn: () => this.Flash.kill(),
-      repeats: false,
-      interval: 100,
-    })  
-      this.engine.currentScene.add(timer2)
-      timer2.start()
 
   }
 
