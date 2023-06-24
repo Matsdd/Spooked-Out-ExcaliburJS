@@ -23,6 +23,7 @@ import { kitchen2 } from './rooms/kitchen2'
 import { engineRoom } from './rooms/engineRoom'
 import { barRoom } from './rooms/barRoom'
 import { dormRoom } from './rooms/dormRoom'
+import { bossPoolRoom } from './rooms/bossPool'
 
 export class Game extends Engine {
     score = 0
@@ -31,7 +32,7 @@ export class Game extends Engine {
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
-        this.showDebug(true)
+        // this.showDebug(true)
     }
 
     startGame() {  
@@ -41,6 +42,7 @@ export class Game extends Engine {
 
         this.lobbyroom = new lobbyRoom(this)
         this.poolroom = new poolRoom(this)
+        this.bosspoolroom = new bossPoolRoom(this)
         this.winecellar = new wineCellar(this)
         this.bossroom = new bossRoom(this)
         this.storageroom = new storageRoom(this)
@@ -65,6 +67,7 @@ export class Game extends Engine {
 
         this.addScene('poolRoom', this.poolroom)
         this.addScene('wineCellar', this.winecellar)
+        this.addScene('bossPoolRoom', this.bosspoolroom)
         this.addScene('bossRoom', this.bossroom)
         this.addScene('storageRoom', this.storageroom)
         this.addScene('Bedroom1', this.Bedroom1)
