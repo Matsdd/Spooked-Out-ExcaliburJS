@@ -17,6 +17,7 @@ import bloodymaryImage from "../images/ghosts/bloodymary.png"
 import mareImage from "../images/ghosts/mare.png"
 import shadeImage from "../images/ghosts/shade.png"
 import mimicImage from "../images/ghosts/mimic.png"
+import eyesImage from "../images/ghosts/Eyes.png"
 
 //rooms
 import lobby from "../images/rooms/lobby.png"
@@ -168,6 +169,7 @@ const Resources = {
     Mare: new ImageSource(mareImage),
     Shade: new ImageSource(shadeImage),
     Mimic: new ImageSource(mimicImage),
+    Eyes: new ImageSource(eyesImage),
 
     //rooms
     Lobby: new ImageSource(lobby),

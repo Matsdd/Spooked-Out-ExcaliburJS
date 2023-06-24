@@ -27,6 +27,7 @@ export class wisp extends ghost {
     this.graphics.use(Resources.Wisp.toSprite());
     this.pos = new Vector(this.posX, this.posY);
     this.scale = new Vector(0.3, 0.3);
+    this.z = 98
   }
 
   playSoundAtRandomInterval() {

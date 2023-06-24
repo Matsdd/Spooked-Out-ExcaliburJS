@@ -3,6 +3,8 @@ import { Resources, ResourceLoader } from './resources.js';
 import { mainCharacter } from './mainCharacter.js';
 import { ghost } from './enemies/ghost.js'
 import { bullet } from './bullet.js'
+import { eyes } from './enemies/eyes.js'
+import { Donker } from './props/donker.js'
 
 export class frederik extends ghost {
   bouncing = true
@@ -18,11 +20,24 @@ export class frederik extends ghost {
     this.rotation = 0;
     this.cooldown = 100;
     this.pos = new Vector(posX, posY);
+    this.Eyes
   }
 
   onInitialize(Engine) {
     this.graphics.use(Resources.Frederik.toSprite());
     this.scale = new Vector(0.3, 0.3);
+
+    this.on('collisionstart', (event) => {
+      if (event.other instanceof Donker) {
+        this.Eyes = new eyes(this.pos.x,this.pos.y,this.target)
+        Engine.currentScene.add(this.Eyes)
+      }
+    })
+    this.on('collisionend', (event) => {
+      if (event.other instanceof Donker) {
+        this.Eyes.kill()
+      }
+    })
   }
 
 
