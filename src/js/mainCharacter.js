@@ -387,7 +387,7 @@ export class mainCharacter extends Actor {
     this.reloadtimer--
 
     if (this.slowtimer <= 0) {
-      this.speed = 150;
+      this.speed = 140
     }
 
     if (this.scoreLabel != '') {
