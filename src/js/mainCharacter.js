@@ -20,6 +20,8 @@ import { sprint } from './ui/sprint.js'
 import { score } from './ui/score.js'
 
 import * as ex from 'excalibur'
+import { upgradeHp } from './artifacts/upgradeHp.js';
+import { upgradeAmmo } from './artifacts/upgradeAmmo.js';
 
 export class mainCharacter extends Actor {
   barrierTarget
@@ -53,6 +55,11 @@ export class mainCharacter extends Actor {
     this.stamina = 180
     this.sprinting = false
     this.sprintTimer = 40
+    this.hpArtifact1 = false;
+    this.hpArtifact2 = false;
+    this.ammoArtifact1 = false;
+    this.ammoArtifact2 = false;
+    this.upgradeTimer = 0;
   }
 
   onInitialize(Engine) {
@@ -64,6 +71,27 @@ export class mainCharacter extends Actor {
 
     this.on('collisionstart', (event) => {
       const playerHit = new Audio(Resources.playerHit2.path);
+
+      if (event.other instanceof upgradeHp && this.hpArtifact1 === false) {
+        this.game.playerHp = 6
+        this.upgradeTimer = 100;
+        this.hpArtifact1 = true;
+      }
+      if (event.other instanceof upgradeHp && this.hpArtifact1 === true && this.upgradeTimer === 0) {
+        this.game.playerHp = 9
+        this.hpArtifact2 = true;
+        this.hpArtifact1 = false;
+      }
+      if (event.other instanceof upgradeAmmo && this.ammoArtifact1 === false) {
+        this.bullets = 20
+        this.upgradeTimer = 100;
+        this.ammoArtifact1 = true;
+      }
+      if (event.other instanceof upgradeAmmo && this.ammoArtifact1 === true && this.upgradeTimer === 0) {
+        this.bullets = 30
+        this.ammoArtifact2 = true;
+        this.ammoArtifact1 = false;
+      }
       if (event.other instanceof wraith) {
         this.game.playerHp -= 2
         playerHit.play(1);
@@ -93,12 +121,17 @@ export class mainCharacter extends Actor {
       }
       if (event.other instanceof Healwater) {
         if (event.other.healed == false) {
-          this.game.playerHp += 3
-
-          if (this.game.playerHp > this.game.maxPlayerHP) {
-            this.game.playerHp = this.game.maxPlayerHp
-          }
+          if( this.hpArtifact1 === true){
+            this.game.playerHp = 6
           event.other.healed = true
+          }
+          if( this.hpArtifact2 === true){
+            this.game.playerHp = 9
+          event.other.healed = true
+          }else{
+            this.game.playerHp = 3
+            event.other.healed = true
+        }
         }
       }
       if (event.other instanceof demon) {
@@ -324,6 +357,10 @@ export class mainCharacter extends Actor {
   update(engine) {
     this.bounceTimer -= 1
 
+    if(this.upgradeTimer > 0) {
+      this.upgradeTimer--
+    }
+    
     if (!this.sprinting && this.stamina < 180) {
       this.stamina += 4
       if (this.stamina > 180) {
