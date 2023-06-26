@@ -10,7 +10,7 @@ import { upgradeAmmo } from '../artifacts/upgradeAmmo.js';
 
 export class guardian extends ghost {
   bouncing = true
-  constructor(target, posX, posY,game) {
+  constructor(target, posX, posY, game) {
     super({
       width: Resources.Guardian.width / 1.6,
       height: Resources.Guardian.height / 1.6,
@@ -20,10 +20,11 @@ export class guardian extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 50 + (game.difficulty * 15)
-    this.maxHp = 50 + (game.difficulty * 15)
+    this.hp = 50 + (game.difficulty * 15);
+    this.maxHp = 50 + (game.difficulty * 15);
     this.timer = 0;
     this.cooldown = 250;
+    this.game = game
     this.pos = new Vector(posX, posY);
   }
 
@@ -139,11 +140,11 @@ export class guardian extends ghost {
         this.randomNumber = this.getRandomInt(2)
         switch (this.randomNumber) {
           case 0:
-            const Spirit = new spirit(this.target, this.pos.x, this.pos.y,);
+            const Spirit = new spirit(this.target, this.pos.x, this.pos.y, this.game);
             Spirit.rotation = this.rotation;
             currentScene.add(Spirit);
 
-            const Spirit2 = new spirit(this.target, this.pos.x / 1.2, this.pos.y,);
+            const Spirit2 = new spirit(this.target, this.pos.x / 1.2, this.pos.y, this.game);
             Spirit.rotation = direction.toAngle() + Math.PI / 2;
             currentScene.add(Spirit2);
 
@@ -151,7 +152,7 @@ export class guardian extends ghost {
             break;
 
           case 1:
-            const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y,);
+            const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game);
             Ghoul.rotation = this.rotation;
             currentScene.add(Ghoul);
 
