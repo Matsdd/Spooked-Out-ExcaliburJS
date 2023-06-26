@@ -11,9 +11,12 @@ import { room } from './room.js'
 export class lobbyRoom extends room {
     roomBackground = Resources.Lobby
     zwart
+    previousScene
     tpx = 1290
     tpy = 80
-    spawnBarriers() {
+    spawnBarriers(engine) {
+        this.previousScene = this.engine.currentScene
+
         const barriertopleft = new Barrier(205,215,410,430)
         this.add(barriertopleft)
         const barriertop = new Barrier(980,40,1150,80)

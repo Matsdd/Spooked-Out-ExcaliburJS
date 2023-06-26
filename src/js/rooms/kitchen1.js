@@ -14,9 +14,11 @@ import { room } from './room.js'
 export class kitchen1 extends room {
     roomBackground = Resources.kitchen1
     zwart
+    previousScene
     tpx = 620
     tpy = 100
-    spawnBarriers() {
+    spawnBarriers(engine) {
+        this.previousScene = this.engine.currentScene
         const up = new Barrier(767,100,950,10)
         this.add(up)
         const left = new Barrier(300,510,10,860)

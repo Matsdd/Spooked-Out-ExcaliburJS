@@ -22,6 +22,7 @@ export class room extends Scene {
     Sjaak
     tpx
     tpy
+    previousScene
     teleportActive = false
     teleporterInRoom = false
     constructor(game,tpx,tpy) {
@@ -64,7 +65,7 @@ export class room extends Scene {
 
     onPostUpdate() {
         if (this.teleportActive && !this.teleporterInRoom) {
-            const teleporter = new Tp(this.tpx,this.tpy,90,30, this.game,this)
+            const teleporter = new Tp(this.tpx,this.tpy,90,30, this.game,this, this.previousScene)
             this.add(teleporter)
             this.teleporterInRoom = true
         }
