@@ -1,8 +1,9 @@
 import { Actor, Vector } from "excalibur";
 import { Resources } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js'
+import { artifact } from "./artifact.js";
 
-export class upgradeSpeed extends Actor {
+export class upgradeSpeed extends artifact {
   constructor(posX, posY) {
     super({ width: Resources.upgradeSpeed.width/ 1.8 , height: Resources.upgradeSpeed.height/ 1.4});
     this.pos = new Vector(posX, posY);

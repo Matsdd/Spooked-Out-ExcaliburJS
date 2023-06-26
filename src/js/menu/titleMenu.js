@@ -58,5 +58,6 @@ export class titleMenu extends Scene {
     
     onActivate() {
         this.game.score = 0
+        this.game.playerHp = 3
     }
 }
