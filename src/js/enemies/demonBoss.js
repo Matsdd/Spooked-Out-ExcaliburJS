@@ -71,7 +71,7 @@ export class demon extends ghost {
       const hitSound = new Audio(Resources.hitSound.path);
       const deathSound = new Audio(Resources.ghostDeath1.path)
       hitSound.volume = 0.3;
-      deathsound.volume = 1;
+      deathSound.volume = 1;
       if (event.other instanceof bullet) {
         this.hp -= 1;
         hitSound.play();
