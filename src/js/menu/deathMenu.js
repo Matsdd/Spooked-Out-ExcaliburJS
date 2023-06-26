@@ -7,8 +7,9 @@ import { roomBack } from '../rooms/roomBack.js'
 
 export class deathMenu extends Scene {
 
-    constructor() {
+    constructor(game) {
         super({})
+        this.game = game
     }
     
     onInitialize(engine) {
@@ -26,5 +27,9 @@ export class deathMenu extends Scene {
             engine.kill()
         })
         this.add(button3)
+    }
+
+    onActivate() {
+        this.game.score = 0
     }
 }
