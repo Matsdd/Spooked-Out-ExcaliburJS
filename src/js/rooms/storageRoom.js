@@ -21,7 +21,6 @@ export class storageRoom extends room {
     tpx = 790
     tpy = 80
     spawnBarriers() {
-
         const up = new Barrier(767,80,950,10)
         this.add(up)
         const left = new Barrier(300,510,10,860)
@@ -39,6 +38,7 @@ export class storageRoom extends room {
         const cellarteleporter = new cellarTp(430,745,140,120, this.game)
         this.add(cellarteleporter)
     }
+    
     onDeactivate() {
         this.Sjaak.kill()
         this.Poltergeist.kill()

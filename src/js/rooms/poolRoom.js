@@ -14,6 +14,7 @@ import { room } from './room.js'
 export class poolRoom extends room {
     roomBackground = Resources.Pool
     zwart
+
     tpx = 767
     tpy = 80
     spawnBarriers() {
@@ -46,6 +47,6 @@ export class poolRoom extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
         this.water = new Healwater(760,520,400,400)
-        this.add(water)
+        this.add(this.water)
     }
 }

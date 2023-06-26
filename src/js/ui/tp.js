@@ -44,7 +44,7 @@ room
         this.game.goToScene('poolRoom')
         break;
       case 1:
-        this.game.goToScene('dorm')
+        this.game.goToScene('dormRoom')
         break;
       case 2:
         this.game.goToScene('storageRoom')
@@ -77,7 +77,7 @@ room
         this.game.goToScene('engine')
         break;
       case 12:
-        this.game.goToScene('bar')
+        this.game.goToScene('barRoom')
         break;
         }
       }
