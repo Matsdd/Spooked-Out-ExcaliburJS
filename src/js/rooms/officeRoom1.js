@@ -91,17 +91,17 @@ export class officeRoom1 extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Spirit = new spirit(this.Sjaak,360,260)
+        this.Spirit = new spirit(this.Sjaak,360,260,this.game)
         this.add(this.Spirit)
-        this.Spirit2 = new spirit(this.Sjaak,450,260)
+        this.Spirit2 = new spirit(this.Sjaak,450,260,this.game)
         this.add(this.Spirit2)
-        this.Spirit3 = new spirit(this.Sjaak,540,260)
+        this.Spirit3 = new spirit(this.Sjaak,540,260,this.game)
         this.add(this.Spirit3)
-        this.Spirit4 = new spirit(this.Sjaak,450,710)
+        this.Spirit4 = new spirit(this.Sjaak,450,710,this.game)
         this.add(this.Spirit4)
-        this.Spirit5 = new spirit(this.Sjaak,450,630)
+        this.Spirit5 = new spirit(this.Sjaak,450,630,this.game)
         this.add(this.Spirit5)
-        this.Spirit6 = new spirit(this.Sjaak,450,800)
+        this.Spirit6 = new spirit(this.Sjaak,450,800,this.game)
         this.add(this.Spirit6)
     }
 }

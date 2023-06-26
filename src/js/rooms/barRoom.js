@@ -66,10 +66,10 @@ export class barRoom extends room {
         this.Sjaak = new mainCharacter(700, 800, this.game)
         this.add(this.Sjaak)
 
-        this.Poltergeist = new poltergeist(this.Sjaak, 620, 430)
+        this.Poltergeist = new poltergeist(this.Sjaak, 620, 430,this.game)
         this.add(this.Poltergeist)
 
-        this.Ghoul = new ghoul(this.Sjaak, 360, 480, 3)
+        this.Ghoul = new ghoul(this.Sjaak, 360, 480, 3,this.game)
         this.add(this.Ghoul)
     }
 }

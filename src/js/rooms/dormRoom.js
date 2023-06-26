@@ -62,12 +62,12 @@ export class dormRoom extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Spirit = new spirit(this.Sjaak, 1150, 530)
+        this.Spirit = new spirit(this.Sjaak, 1150, 530,this.game)
         this.add(this.Spirit)
-        this.Spirit2 = new spirit(this.Sjaak, 1150, 600)
+        this.Spirit2 = new spirit(this.Sjaak, 1150, 600,this.game)
         this.add(this.Spirit2)
 
-        this.Ghoul = new ghoul(this.Sjaak, 1100, 230, 4)
+        this.Ghoul = new ghoul(this.Sjaak, 1100, 230, 4,this.game)
         this.add(this.Ghoul)
     }
 }

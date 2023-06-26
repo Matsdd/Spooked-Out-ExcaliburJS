@@ -59,10 +59,10 @@ export class storageRoom extends room {
         this.Sjaak = new mainCharacter(867, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Poltergeist = new poltergeist(this.Sjaak, 767, 200)
+        this.Poltergeist = new poltergeist(this.Sjaak, 767, 200,this.game)
         this.add(this.Poltergeist)
 
-        this.Treasure = new treasure(this.Sjaak, 1000, 400)
+        this.Treasure = new treasure(this.Sjaak, 1000, 400,this.game)
         this.add(this.Treasure)
 
         this.Nietschiet = new nietschiet(438, 730)
