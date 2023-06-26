@@ -148,6 +148,7 @@ import artifactDual from '../images/ui/artifact/artifactDual.png'
 import upgradeHp from '../images/ui/artifact/upgradeHp.png'
 import upgradeSpeed from '../images/ui/artifact/upgradeSpeed.png'
 import upgradeAmmo from '../images/ui/artifact/upgradeAmmo.png'
+import upgradeFlame from '../images/ui/artifact/upgradeFlame.png'
 
 //bosshp
 import bosshp1 from '../images/ui/HP/bosshp1.png'
@@ -317,6 +318,7 @@ const Resources = {
     artifactMilk: new ImageSource(artifactMilk),
     upgradeHp: new ImageSource(upgradeHp),
     upgradeSpeed: new ImageSource(upgradeSpeed),
+    upgradeFlame: new ImageSource(upgradeFlame),
     upgradeAmmo: new ImageSource(upgradeAmmo)
 
 }
