@@ -6,6 +6,7 @@ import { bullet } from '../bullet.js';
 import { wisp } from './wisp.js';
 import { fireBall } from '../props/fireball.js';
 import { bossBar } from '../ui/bossBar.js';
+import { upgradeHp } from '../artifacts/upgradeHp.js';
 
 export class bloodyMary extends ghost {
   bounceTimer = 0
@@ -46,6 +47,7 @@ export class bloodyMary extends ghost {
   }
 
   onInitialize(engine) {
+    const currentScene = engine.currentScene;
 
     this.on('collisionstart', (event) => {
       const hitSound = new Audio(Resources.hitSound.path);
@@ -59,6 +61,8 @@ export class bloodyMary extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          const upgrade = new  upgradeHp(this.pos.x, this.pos.y);
+          currentScene.add(upgrade);
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 

@@ -14,9 +14,11 @@ import { room } from './room.js'
 export class bathroom extends room {
     roomBackground = Resources.Bathroom
     zwart
+    previousScene
     tpx = 730
     tpy = 80
-    spawnBarriers() {
+    spawnBarriers(engine) {
+        this.previousScene = this.engine.currentScene
         const mirror = new Mirror(465,80,200,30, this.game)
         this.add(mirror)
         const up = new Barrier(767,80,950,10)

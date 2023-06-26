@@ -7,7 +7,7 @@ export class Tp extends Actor {
 game
 room
 
-    constructor(x,y,width,height, game, room) {
+    constructor(x,y,width,height, game, room, previousScene) {
         super({width:Resources.Barrier.width, height:Resources.Barrier.height})
         this.graphics.use(Resources.Barrier.toSprite())
         this.pos = new Vector(x,y)
@@ -15,6 +15,7 @@ room
         this.graphics.opacity = 0
         this.game = game
         this.room = room
+        console.log(previousScene)
     }
 
     onInitialize(engine) {
@@ -44,7 +45,7 @@ room
         this.game.goToScene('poolRoom')
         break;
       case 1:
-        this.game.goToScene('dorm')
+        this.game.goToScene('dormRoom')
         break;
       case 2:
         this.game.goToScene('storageRoom')
@@ -77,7 +78,7 @@ room
         this.game.goToScene('engine')
         break;
       case 12:
-        this.game.goToScene('bar')
+        this.game.goToScene('barRoom')
         break;
         }
       }

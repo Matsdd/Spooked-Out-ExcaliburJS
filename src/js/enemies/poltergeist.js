@@ -25,21 +25,132 @@ export class poltergeist extends ghost {
   onInitialize(Engine) {
     this.graphics.use(Resources.poltergeist.toSprite());
     this.scale = new Vector(0.3, 0.3);
+    const hitSound = new Audio(Resources.hitSound.path);
+    const ghostDeath1 = new Audio(Resources.ghostDeath1.path);
+    const ghostDeath2 = new Audio(Resources.ghostDeath2.path);
+    ghostDeath1.volume = 0.5
+    ghostDeath2.volume = 0.5
+    hitSound.volume = 0.3;
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof bullet) {
         this.hp -= 1;
+        hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          this.randomNumber
+          this.randomNumber = this.getRandomInt(2);
+
+          switch (this.randomNumber) {
+            case 0:
+              ghostDeath1.play();
+              break;
+            case 1:
+              ghostDeath2.play();
+              break;
+          }
         }
       }
     });
 
+    playSoundAtRandomInterval() {
+      const minInterval = 8000; // Minimum interval in milliseconds
+      const maxInterval = 17000; // Maximum interval in milliseconds
+
+      const randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
+
+      // Play the sound
+      const sound = new Audio(Resources.Ghost1.path);
+      const sound2 = new Audio(Resources.Ghost2.path);
+      const sound3 = new Audio(Resources.Ghost3.path);
+      const sound4 = new Audio(Resources.Ghost4.path);
+      sound.volume = 0.2;
+      sound2.volume = 0.2;
+      sound3.volume = 0.2;
+      sound4.volume = 0.2;
+
+      // Set pitch
+      const minPlaybackRate = 1; // Minimum playback rate
+      const maxPlaybackRate = 4; // Maximum playback rate
+      const randomPlaybackRate = Math.random() * (maxPlaybackRate - minPlaybackRate) + minPlaybackRate;
+      sound.playbackRate = randomPlaybackRate;
+
+      this.randomNumber
+      this.randomNumber = this.getRandomInt(4);
+
+      switch (this.randomNumber) {
+        case 0:
+          sound.play();
+          break;
+        case 1:
+          sound2.play();
+          break;
+        case 2:
+          sound3.play();
+          break;
+        case 3:
+          sound4.play();
+          break;
+      }
+
+      this.playSoundAtRandomInterval();
+    }
 
   }
 
   getRandomInt(max) {
     return Math.floor(Math.random() * max);
+  }
+
+  playSoundAtRandomInterval() {
+    const minInterval = 8000; // Minimum interval in milliseconds
+    const maxInterval = 17000; // Maximum interval in milliseconds
+
+    const randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
+
+    // Play the sound
+    // const sounds = new Audio[Resources.Ghost1.path, Resources.Ghost2.path, Resources.Ghost3.path];
+
+    const sound = new Audio(Resources.Ghost1.path);
+    const sound2 = new Audio(Resources.Ghost2.path);
+    const sound3 = new Audio(Resources.Ghost3.path);
+    const sound4 = new Audio(Resources.Ghost4.path);
+    sound.volume = 0.2;
+    sound2.volume = 0.2;
+    sound3.volume = 0.2;
+    sound4.volume = 0.2;
+
+    // Set pitch
+    const minPlaybackRate = 1; // Minimum playback rate
+    const maxPlaybackRate = 4; // Maximum playback rate
+    const randomPlaybackRate = Math.random() * (maxPlaybackRate - minPlaybackRate) + minPlaybackRate;
+    sound.playbackRate = randomPlaybackRate;
+
+
+    this.randomNumber
+    this.randomNumber = this.getRandomInt(4);
+
+    switch (this.randomNumber) {
+      case 0:
+        sound.play();
+        break;
+      case 1:
+        sound2.play();
+        break;
+      case 2:
+        sound3.play();
+        break;
+      case 3:
+        sound4.play();
+        break;
+    }
+
+
+
+    // Schedule the next sound playback
+    this.soundInterval = setTimeout(() => {
+      this.playSoundAtRandomInterval();
+    }, randomInterval);
   }
 
   update(Engine) {
@@ -51,18 +162,18 @@ export class poltergeist extends ghost {
     const currentScene = Engine.currentScene;
     const poltergeistInScene = currentScene.actors.find(actor => actor instanceof poltergeist);
     if (poltergeistInScene === this) {
-      
+
       if (this.timer > this.cooldown && distance > this.minDistance) {
         this.randomNumber = this.getRandomInt(2);
-        
+
         switch (this.randomNumber) {
           case 0:
-            const Vaas1 = new vaas(this.pos.x*0.90, this.pos.y*0.99, this.target);
+            const Vaas1 = new vaas(this.pos.x * 0.90, this.pos.y * 0.99, this.target);
             Vaas1.rotation = this.rotation;
             currentScene.add(Vaas1);
             break;
           case 1:
-            const Vaas = new vaas(this.pos.x*1.1, this.pos.y*1.01, this.target);
+            const Vaas = new vaas(this.pos.x * 1.1, this.pos.y * 1.01, this.target);
             Vaas.rotation = this.rotation;
             currentScene.add(Vaas);
             break;
@@ -75,7 +186,7 @@ export class poltergeist extends ghost {
 
     if (direction.distance() > 0) {
       this.rotation = direction.toAngle() + Math.PI / 2;
-    }else {
+    } else {
       this.timer = 0
     }
   }

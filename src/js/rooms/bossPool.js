@@ -14,9 +14,11 @@ import { room } from './room.js'
 export class bossPoolRoom extends room {
     roomBackground = Resources.BossPool
     zwart
+
     tpx = 0
     tpy = 0
     spawnBarriers() {
+
         const zwembadlinks = new Barrier(510,510,10,480)
         this.add(zwembadlinks)
         const zwembadrechts = new Barrier(1025,510,10,480)

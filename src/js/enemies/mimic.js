@@ -21,6 +21,7 @@ export class mimic extends ghost {
     this.scale = new Vector(0.45, 0.45);
     this.pos = new Vector(posX, posY);
   }
+
   onInitialize() {
 
     this.on('collisionstart', (event) => {
@@ -58,7 +59,7 @@ export class mimic extends ghost {
         this.bounceTimer = 10
       }
     });
-      
+
 
 
     // Start playing sounds at random intervals
@@ -130,13 +131,13 @@ export class mimic extends ghost {
 
         // Calculate rotation based on movement direction
         this.rotation = Math.atan2(this.vel.y, this.vel.x);
-        } 
       }
     }
+  }
 
   update(engine, delta) {
     this.bounceTimer -= 1
-      this.moveTowardsTarget(this.target.pos);
+    this.moveTowardsTarget(this.target.pos);
 
 
     this.speed = 120 - (this.hp * 3)

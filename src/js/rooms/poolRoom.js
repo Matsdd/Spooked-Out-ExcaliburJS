@@ -14,9 +14,11 @@ import { room } from './room.js'
 export class poolRoom extends room {
     roomBackground = Resources.Pool
     zwart
+    previousScene
     tpx = 767
     tpy = 80
-    spawnBarriers() {
+    spawnBarriers(engine) {
+        this.previousScene = this.engine.currentScene
         const zwembadlinks = new Barrier(510,510,10,480)
         this.add(zwembadlinks)
         const zwembadrechts = new Barrier(1025,510,10,480)
@@ -46,6 +48,6 @@ export class poolRoom extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
         this.water = new Healwater(760,520,400,400)
-        this.add(water)
+        this.add(this.water)
     }
 }
