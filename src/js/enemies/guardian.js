@@ -6,6 +6,7 @@ import { spirit } from '../enemies/spirit.js'
 import { ghoul } from '../enemies/ghoul.js'
 import { bullet } from '../bullet.js'
 import { bossBar } from '../ui/bossBar.js'
+import { upgradeAmmo } from '../artifacts/upgradeAmmo.js';
 
 export class guardian extends ghost {
   bouncing = true
@@ -42,6 +43,8 @@ export class guardian extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          const upgrade = new  upgradeAmmo(this.pos.x, this.pos.y);
+          currentScene.add(upgrade);
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
