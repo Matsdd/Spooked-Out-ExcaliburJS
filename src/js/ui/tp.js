@@ -35,7 +35,7 @@ scene
     nextRoom(engine, game, score) {
       this.room.game.addScore()
 
-      if (this.game.score == 20) {
+      if (this.game.score == 1) {
         this.game.goToScene('bossPoolRoom')
       } else {
 
