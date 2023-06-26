@@ -14,9 +14,11 @@ import { room } from './room.js'
 export class bossPoolRoom extends room {
     roomBackground = Resources.BossPool
     zwart
+
     tpx = 0
     tpy = 0
     spawnBarriers() {
+
         const zwembadlinks = new Barrier(510,510,10,480)
         this.add(zwembadlinks)
         const zwembadrechts = new Barrier(1025,510,10,480)
@@ -48,7 +50,7 @@ export class bossPoolRoom extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
-        const water = new Healwater(760,520,400,400)
-        this.add(water)
+        this.water = new Healwater(760,520,400,400)
+        this.add(this.water)
     }
 }
