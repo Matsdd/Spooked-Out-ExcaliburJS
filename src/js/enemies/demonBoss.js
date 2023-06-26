@@ -13,7 +13,7 @@ import { arach } from './arach.js'
 import { upgradeSpeed } from '../artifacts/upgradeSpeed.js';
 
 export class demon extends ghost {
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY,game) {
     super({
       width: Resources.demon.width / 1.6,
       height: Resources.demon.height / 1.6,
@@ -23,8 +23,9 @@ export class demon extends ghost {
     this.minDistance = 1;
     this.maxDistance = 1000;
     this.rotation = 0;
-    this.hp = 100
-    this.maxHp = 100
+    this.game = game
+    this.hp = 100 + (50 * game.difficulty)
+    this.maxHp = 100 + (50 * game.difficulty)
     this.summonTimer = 0
     this.summonCooldown = 300
     this.bulletTimer = 0
@@ -59,6 +60,7 @@ export class demon extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.game.difficulty++
   }
 
   onInitialize(engine) {
