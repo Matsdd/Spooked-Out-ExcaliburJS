@@ -8,7 +8,7 @@ game
 room
 scene
 
-    constructor(x,y,width,height, game, room, previousScene) {
+    constructor(x,y,width,height, game, room) {
         super({width:Resources.Barrier.width, height:Resources.Barrier.height})
         this.graphics.use(Resources.Barrier.toSprite())
         this.pos = new Vector(x,y)
@@ -16,8 +16,6 @@ scene
         this.graphics.opacity = 0
         this.game = game
         this.room = room
-        this.scene = previousScene
-        console.log(previousScene)
     }
 
     onInitialize(engine) {
@@ -41,7 +39,16 @@ scene
 
       this.randomNumber
       this.randomNumber = this.getRandomInt(13)
-
+      if (this.randomNumber == this.game.previousscene) {
+        this.randomNumber = this.getRandomInt(13)
+        if (this.randomNumber == this.game.previousscene) {
+          this.randomNumber = this.getRandomInt(13)
+          if (this.randomNumber == this.game.previousscene) {
+            this.randomNumber = this.getRandomInt(13)
+          }
+        }
+      }
+      
     switch (this.randomNumber) {
       case 0:
         if(this.scene == 'poolRoom') {
@@ -135,6 +142,7 @@ scene
       }
         break;
         }
+        this.game.previousscene = this.randomNumber
       }
     }
 }
