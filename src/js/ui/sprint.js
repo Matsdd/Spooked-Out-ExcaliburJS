@@ -15,10 +15,16 @@ export class sprint extends Actor {
     }
 
     update() {
-        //this.player.fixSprint(this)
+        this.player.fixSprint(this)
     }
 
     setSprint(sprint) {
-        this.pos.x = sprint
+        this.pos.x = sprint + 40
+
+        if (sprint == 0) {
+            this.graphics.use(Resources.sprintR.toSprite())
+        }else{
+            this.graphics.use(Resources.sprint.toSprite())
+        }
     }
 }

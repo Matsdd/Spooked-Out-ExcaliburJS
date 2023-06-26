@@ -235,7 +235,7 @@ export class mainCharacter extends Actor {
     Engine.currentScene.add(this.ammo)
     this.score = new score()
     Engine.currentScene.add(this.score)
-    this.sprint = new sprint()
+    this.sprint = new sprint(this)
     Engine.currentScene.add(this.sprint)
 
     this.scoreLabel = new ex.Label({
@@ -266,6 +266,9 @@ export class mainCharacter extends Actor {
   }
   fixHp(pipi) {
     pipi.setHp(this.game.playerHp)
+  }
+  fixSprint(pipi) {
+    pipi.setSprint(this.stamina)
   }
 
   onPreUpdate(Engine) {
@@ -362,7 +365,7 @@ export class mainCharacter extends Actor {
     }
     
     if (!this.sprinting && this.stamina < 180) {
-      this.stamina += 4
+      this.stamina += 2.5
       if (this.stamina > 180) {
         this.stamina = 180
       }
