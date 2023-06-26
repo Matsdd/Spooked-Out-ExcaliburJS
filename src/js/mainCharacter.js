@@ -23,6 +23,7 @@ import * as ex from 'excalibur'
 import { upgradeHp } from './artifacts/upgradeHp.js';
 import { upgradeAmmo } from './artifacts/upgradeAmmo.js';
 import { upgradeSpeed } from './artifacts/upgradeSpeed.js';
+import { upgradeDual } from './artifacts/upgradeDual.js';
 
 export class mainCharacter extends Actor {
   barrierTarget
@@ -63,6 +64,7 @@ export class mainCharacter extends Actor {
     this.upgradeTimer = 0;
     this.bounceSpeed = 140; 
     this.speedMultiplier = 140;
+    this.dualShot = false;
   }
 
   onInitialize(Engine) {
@@ -104,6 +106,9 @@ export class mainCharacter extends Actor {
         this.speedMultiplier += 10
         this.speed = this.speedMultiplier
         this.upgradeTimer = 10
+      }
+      if (event.other instanceof upgradeDual) {
+        this.dualShot = true
       }
       if (event.other instanceof wraith) {
         this.game.playerHp -= 2
@@ -201,13 +206,29 @@ export class mainCharacter extends Actor {
 
     Engine.input.pointers.primary.on('down', (evt) => {
       if (mainCharacterInScene === this && this.reloadtimer < 0 && this.bullets > 0 && this.shootAvailable) {
-        
+        if (this.dualShot === true) {
+          const mouseX = evt.worldPos.x;
+          const mouseY = evt.worldPos.y;
+
+          const spawnDelay = 100;
+    
+          const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
+          currentScene.add(Bullet);
+    
+          setTimeout(() => {
+            const Bullet2 = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
+            currentScene.add(Bullet2);
+          }, spawnDelay);
+    
+          this.bullets--;
+        }else {
         const mouseX = evt.worldPos.x;
         const mouseY = evt.worldPos.y;
 
         const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
         currentScene.add(Bullet);
         this.bullets--
+      }
       }
     });
 
@@ -240,6 +261,7 @@ export class mainCharacter extends Actor {
         this.ableLeft = 0
       }
     })
+    
     Engine.currentScene.add(areaCheckerLeft)
 
     this.hp = new HP(this)
