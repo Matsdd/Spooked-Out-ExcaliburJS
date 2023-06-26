@@ -84,20 +84,6 @@ export class mare extends ghost {
             new Vector(950, 170),
           ]
           break;
-          case 1:
-          this.maxDistance = 450;
-          this.path = [
-            new Vector(950, 170),
-            new Vector(460, 170),
-          ]
-          break;
-          case 2:
-          this.maxDistance = 450;
-          this.path = [
-            new Vector(365, 170),
-            new Vector(1100, 170),
-          ]
-          break;
     }
 
     this.on('precollision', (event) => {
