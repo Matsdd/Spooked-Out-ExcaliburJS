@@ -10,6 +10,7 @@ import { bossBar } from '../ui/bossBar.js'
 import { darkAttack } from '../props/darkAttack.js'
 import { poltergeist } from './poltergeist.js'
 import { arach } from './arach.js'
+import { upgradeSpeed } from '../artifacts/upgradeSpeed.js';
 
 export class demon extends ghost {
   constructor(target, posX, posY) {
@@ -74,6 +75,8 @@ export class demon extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          const upgrade = new  upgradeSpeed(this.pos.x, this.pos.y);
+          currentScene.add(upgrade);
           deathSound.play();
         }
       }

@@ -52,7 +52,7 @@ export class bossRoom extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Demon = new demon(this.Sjaak, 767, 150)
+        this.Demon = new demon(this.Sjaak, 767, 150,this.game)
         this.add(this.Demon)
     }
 
