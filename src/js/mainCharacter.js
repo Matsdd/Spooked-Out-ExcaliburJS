@@ -443,7 +443,7 @@ export class mainCharacter extends Actor {
       }
       if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
         if (this.stamina > 0) {
-          this.speed += 40
+          this.speed = 180
           this.stamina--
           this.sprintTimer = 40
           this.sprinting = true

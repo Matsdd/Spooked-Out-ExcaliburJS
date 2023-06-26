@@ -6,10 +6,11 @@ import { Barrier } from '../ui/barrier.js';
 import { bullet } from '../bullet.js'
 
 export class treasure extends Actor {
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY,game) {
     super({ width: Resources.Treasure.width / 1.8, height: Resources.Treasure.height / 3});
     this.pos = new Vector(posX, posY);
     this.target = target;
+    this.game = game
   }
 
   onInitialize(Engine) {
@@ -25,7 +26,7 @@ export class treasure extends Actor {
         this.randomNumber
         this.randomNumber = this.getRandomInt(3);
         if (this.randomNumber === 0) {
-          const Mimic = new mimic(this.target, this.pos.x, this.pos.y);
+          const Mimic = new mimic(this.target, this.pos.x, this.pos.y, this.game);
           currentScene.add(Mimic);
           this.kill();
         } else {
