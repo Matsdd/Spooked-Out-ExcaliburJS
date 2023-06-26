@@ -31,5 +31,6 @@ export class deathMenu extends Scene {
 
     onActivate() {
         this.game.score = 0
+        this.game.playerHp = 3
     }
 }
