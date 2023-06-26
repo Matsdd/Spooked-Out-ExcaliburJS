@@ -22,6 +22,7 @@ import { score } from './ui/score.js'
 import * as ex from 'excalibur'
 import { upgradeHp } from './artifacts/upgradeHp.js';
 import { upgradeAmmo } from './artifacts/upgradeAmmo.js';
+import { upgradeSpeed } from './artifacts/upgradeSpeed.js';
 
 export class mainCharacter extends Actor {
   barrierTarget
@@ -60,6 +61,8 @@ export class mainCharacter extends Actor {
     this.ammoArtifact1 = false;
     this.ammoArtifact2 = false;
     this.upgradeTimer = 0;
+    this.bounceSpeed = 140; 
+    this.speedMultiplier = 140;
   }
 
   onInitialize(Engine) {
@@ -91,6 +94,16 @@ export class mainCharacter extends Actor {
         this.bullets = 30
         this.ammoArtifact2 = true;
         this.ammoArtifact1 = false;
+      }
+      if (event.other instanceof upgradeAmmo && this.ammoArtifact1 === true && this.upgradeTimer === 0) {
+        this.bullets = 30
+        this.ammoArtifact2 = true;
+        this.ammoArtifact1 = false;
+      }
+      if (event.other instanceof upgradeSpeed && this.upgradeTimer === 0) {
+        this.speedMultiplier += 10
+        this.speed = this.speedMultiplier
+        this.upgradeTimer = 10
       }
       if (event.other instanceof wraith) {
         this.game.playerHp -= 2
@@ -136,7 +149,7 @@ export class mainCharacter extends Actor {
       }
       if (event.other instanceof demon) {
         const pushAngle = Math.PI / 2;
-        const pushMagnitude = 7 * this.speed;
+        const pushMagnitude = 7 * this.bounceSpeed;
         this.vel = new Vector(
           Math.cos(pushAngle) * pushMagnitude,
           Math.sin(pushAngle) * pushMagnitude
@@ -145,7 +158,7 @@ export class mainCharacter extends Actor {
       }
       if (event.other instanceof guardian && this.pos.y <= 310) {
         const pushAngle = 3 * Math.PI / 2;
-        const pushMagnitude = 3 * this.speed;
+        const pushMagnitude = 3 * this.bounceSpeed;
         this.vel = new Vector(
           Math.cos(pushAngle) * pushMagnitude,
           Math.sin(pushAngle) * pushMagnitude
@@ -154,7 +167,7 @@ export class mainCharacter extends Actor {
       }
       if (event.other instanceof guardian && this.pos.y >= 700) {
         const pushAngle = Math.PI / 2;
-        const pushMagnitude = 3 * this.speed;
+        const pushMagnitude = 3 * this.bounceSpeed;
         this.vel = new Vector(
           Math.cos(pushAngle) * pushMagnitude,
           Math.sin(pushAngle) * pushMagnitude
@@ -163,7 +176,7 @@ export class mainCharacter extends Actor {
       } else {
         if (event.other instanceof guardian && this.pos.y > 310 && this.pos.x < 850) {
           const pushAngle = Math.PI;
-          const pushMagnitude = 3 * this.speed;
+          const pushMagnitude = 3 * this.bounceSpeed;
           this.vel = new Vector(
             Math.cos(pushAngle) * pushMagnitude,
             Math.sin(pushAngle) * pushMagnitude
@@ -172,7 +185,7 @@ export class mainCharacter extends Actor {
         }
         if (event.other instanceof guardian && this.pos.y > 310 && this.pos.x > 850) {
           const pushAngle = 0;
-          const pushMagnitude = 3 * this.speed;
+          const pushMagnitude = 3 * this.bounceSpeed;
           this.vel = new Vector(
             Math.cos(pushAngle) * pushMagnitude,
             Math.sin(pushAngle) * pushMagnitude
@@ -387,7 +400,7 @@ export class mainCharacter extends Actor {
     this.reloadtimer--
 
     if (this.slowtimer <= 0) {
-      this.speed = 150;
+      this.speed = this.speedMultiplier;
     }
 
     if (this.scoreLabel != '') {
