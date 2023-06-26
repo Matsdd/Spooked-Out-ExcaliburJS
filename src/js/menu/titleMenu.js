@@ -10,8 +10,9 @@ import { roomBack } from '../rooms/roomBack.js'
 
 export class titleMenu extends Scene {
 
-    constructor() {
+    constructor(game) {
         super({})
+        this.game = game
     }
 
     onInitialize(engine) {
@@ -52,5 +53,10 @@ export class titleMenu extends Scene {
             engine.kill()
         })
         this.add(button3)
+    }
+
+    
+    onActivate() {
+        this.game.score = 0
     }
 }
