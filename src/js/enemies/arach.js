@@ -36,6 +36,10 @@ export class arach extends ghost {
     this.aggro = false;
   }
 
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
   onInitialize() {
 
     this.on('collisionstart', (event) => {
