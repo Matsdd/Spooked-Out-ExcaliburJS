@@ -10,9 +10,10 @@ import { bossBar } from '../ui/bossBar.js'
 import { darkAttack } from '../props/darkAttack.js'
 import { poltergeist } from './poltergeist.js'
 import { arach } from './arach.js'
+import { upgradeSpeed } from '../artifacts/upgradeSpeed.js';
 
 export class demon extends ghost {
-  constructor(target, posX, posY,game) {
+  constructor(target, posX, posY) {
     super({
       width: Resources.demon.width / 1.6,
       height: Resources.demon.height / 1.6,
@@ -22,18 +23,14 @@ export class demon extends ghost {
     this.minDistance = 1;
     this.maxDistance = 1000;
     this.rotation = 0;
-    this.game = game
+    this.hp = 100
+    this.maxHp = 100
     this.summonTimer = 0
     this.summonCooldown = 300
     this.bulletTimer = 0
     this.bulletCooldown = 300
     this.randomNumber = 0
     this.pos = new Vector(posX, posY);
-
-    
-    this.hp = 100 + (this.game.difficulty * 50)
-    this.maxHp = 100 + (this.game.difficulty * 50)
-    console.log(this.hp);
   }
 
   playSoundAtRandomInterval() {
@@ -62,8 +59,6 @@ export class demon extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
-    this.game.difficulty++
-    console.log('pipi ' + this.game.difficulty);
   }
 
   onInitialize(engine) {
@@ -74,12 +69,14 @@ export class demon extends ghost {
       const hitSound = new Audio(Resources.hitSound.path);
       const deathSound = new Audio(Resources.ghostDeath1.path)
       hitSound.volume = 0.3;
-      deathSound.volume = 1;
+      ghostDeath1.volume = 1;
       if (event.other instanceof bullet) {
         this.hp -= 1;
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          const upgrade = new  upgradeSpeed(this.pos.x, this.pos.y);
+          currentScene.add(upgrade);
           deathSound.play();
         }
       }
@@ -103,7 +100,7 @@ export class demon extends ghost {
 
   summon(engine) {
     const currentScene = engine.currentScene;
-    if (this.hp > (0.75 *this.maxHp) && this.summonTimer >= this.summonCooldown) {
+    if (this.hp > 75 && this.summonTimer >= this.summonCooldown) {
       console.log('pipi');
       const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y,);
       Spirit.rotation = this.rotation;
@@ -117,13 +114,13 @@ export class demon extends ghost {
     }
 
     //schiet kogels, spawn twee spiritus of een goel en spirit (3/4)
-    if (this.hp <= (0.75 *this.maxHp) && this.hp > (0.5 *this.maxHp) && this.bulletTimer >= this.bulletCooldown) {
+    if (this.hp <= 75 && this.hp > 50 && this.bulletTimer >= this.bulletCooldown) {
       const dark = new darkAttack(this.pos.x, this.pos.y, this.target)
       engine.currentScene.add(dark)
       this.randomNumber = Math.round(Math.random())
       this.bulletTimer = this.randomNumber * 80
     }
-    if (this.hp <= (0.75 *this.maxHp) && this.hp > (0.5 *this.maxHp) && this.summonTimer >= this.summonCooldown) {
+    if (this.hp <= 75 && this.hp > 50 && this.summonTimer >= this.summonCooldown) {
       this.randomNumber = Math.round(Math.random())
       switch (this.randomNumber) {
         case 0:
@@ -154,13 +151,13 @@ export class demon extends ghost {
     }
 
     //schiet slowness, spawn vier spiritus, een goel en twee spiritus of een wraith(2/4)
-    if (this.hp <= (0.5 *this.maxHp) && this.bulletTimer >= this.bulletCooldown) {
+    if (this.hp <= 50 && this.bulletTimer >= this.bulletCooldown) {
       const dark = new darkAttack(this.pos.x, this.pos.y, this.target)
       engine.currentScene.add(dark)
       this.randomNumber = Math.round(Math.random())
       this.bulletTimer = this.randomNumber * 150
     }
-    if (this.hp <= (0.5 *this.maxHp) && this.hp > (0.25 *this.maxHp) && this.summonTimer >= this.summonCooldown) {
+    if (this.hp <= 50 && this.hp > 25 && this.summonTimer >= this.summonCooldown) {
       this.randomNumber = Math.round(Math.random() * 2)
       switch (this.randomNumber) {
         case 0:
@@ -205,7 +202,7 @@ export class demon extends ghost {
     }
 
     //kleine kans op rare ghost (1/4)
-    if (this.hp <= (0.25 *this.maxHp) && this.hp > 0 && this.summonTimer >= this.summonCooldown) {
+    if (this.hp <= 25 && this.hp > 0 && this.summonTimer >= this.summonCooldown) {
       this.randomNumber = Math.round(Math.random() * 4)
       switch (this.randomNumber) {
         case 0:
@@ -250,6 +247,5 @@ export class demon extends ghost {
       }
     }
   }
-
 
 }
