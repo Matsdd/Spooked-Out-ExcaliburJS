@@ -6,7 +6,7 @@ import { vaas } from '../props/vaas.js'
 import { bullet } from '../bullet.js'
 
 export class poltergeist extends ghost {
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY,game) {
     super({
       width: Resources.poltergeist.width / 1.6,
       height: Resources.poltergeist.height / 1.6,
@@ -16,7 +16,7 @@ export class poltergeist extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 15;
+    this.hp = 15 + (game.difficulty * 3)
     this.timer = 0;
     this.cooldown = 100;
     this.pos = new Vector(posX, posY);

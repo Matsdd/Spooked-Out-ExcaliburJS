@@ -519,6 +519,7 @@ export class mainCharacter extends Actor {
     this.hp.kill()
     this.ammo.kill()
     this.score.kill()
+    this.sprint.kill()
   }
 
 }

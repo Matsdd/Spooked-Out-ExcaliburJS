@@ -15,7 +15,7 @@ export class mimic extends ghost {
     this.speed = 30;
     this.minDistance = 1;
     this.rotation = 0;
-    this.hp = 30;
+    this.hp = 20 + (game.difficulty * 5)
     this.soundInterval = null;
     this.graphics.use(Resources.Mimic.toSprite());
     this.scale = new Vector(0.45, 0.45);

@@ -7,7 +7,7 @@ import { Donker } from '../props/donker.js';
 
 export class mare extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY, chosenPath) {
+  constructor(target, posX, posY, chosenPath,game) {
     super({
       width: Resources.Mare.width / 1.6,
       height: Resources.Mare.height / 1.6,
@@ -17,7 +17,7 @@ export class mare extends ghost {
     this.minDistance = 1;
     this.maxDistance = 700;
     this.rotation = 0;
-    this.hp = 22
+    this.hp = 22 + (game.difficulty * 4)
     this.regenTimer = 100
     this.soundInterval = null;
     this.graphics.use(Resources.Mare.toSprite());
