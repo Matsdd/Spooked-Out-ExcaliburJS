@@ -14,6 +14,14 @@ export class Donker extends Actor {
         this.z = 50
     }
 
+    onInitialize() {
+        this.on('collisionstart', (event) => {
+            if (event.other instanceof Donker) {
+                this.kill()
+            }
+        })
+    }
+
     onPreUpdate() {
         this.pos = this.sjaak.pos
     }

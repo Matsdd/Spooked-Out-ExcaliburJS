@@ -43,13 +43,12 @@ export class engineRoom extends room {
         const rightBarrel = new Barrier(1255,370,80,180)
         this.add(rightBarrel)
 
-        const licht = new Licht(this,Resources.LichtUit,1290,50)
-        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()
         this.Arach.kill()
         this.Shade.kill()
+        this.licht.kill()
         if (this.zwart != null) {
             this.zwart.kill()
         }
@@ -64,5 +63,9 @@ export class engineRoom extends room {
 
         this.Shade = new shade(this.Sjaak, 400, 370, 1,this.game)
         this.add(this.Shade)
+
+        
+        this.licht = new Licht(this,Resources.LichtUit,1290,50)
+        this.add(this.licht)
     }
 }

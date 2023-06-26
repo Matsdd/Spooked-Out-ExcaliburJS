@@ -14,6 +14,14 @@ export class Ammo extends Actor {
         this.z = 99
     }
 
+    onInitialize() {
+        this.on('collisionstart', (event) => {
+            if (event.other instanceof Ammo) {
+                this.kill()
+            }
+        })
+    }
+
     update() {
         this.player.fixAmmo(this)
     }

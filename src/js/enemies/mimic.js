@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js';
 
 export class mimic extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY,game) {
     super({
       width: Resources.Mimic.width / 1.6,
       height: Resources.Mimic.height / 1.6,

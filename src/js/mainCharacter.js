@@ -34,6 +34,7 @@ export class mainCharacter extends Actor {
   game
   bounceTimer = 0
   scoreLabel = ''
+  currentscene
 
   constructor(posX, posY, game) {
     super({
@@ -266,6 +267,7 @@ export class mainCharacter extends Actor {
     
     Engine.currentScene.add(areaCheckerLeft)
 
+    this.currentscene = Engine.currentScene
     this.hp = new HP(this)
     Engine.currentScene.add(this.hp)
     this.ammo = new Ammo(this)

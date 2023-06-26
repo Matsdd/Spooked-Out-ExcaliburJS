@@ -95,5 +95,19 @@ export class storageRoom extends room {
         if (this.zwart != null) {
             this.zwart.kill()
         }
+        this.Sjaak.kill()
+        this.Poltergeist.kill()
+        this.Treasure.kill()
+        this.Nietschiet.kill()
+
+        this.Ton1.kill()
+        this.Ton2.kill()
+        this.Ton3.kill()
+        this.Ton4.kill()
+        this.Ton5.kill()
+        this.Ton6.kill()
+        this.Ton7.kill()
+        this.Ton8.kill()
+        this.Ton9.kill()
     }
 }

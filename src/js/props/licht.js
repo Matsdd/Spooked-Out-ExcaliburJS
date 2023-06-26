@@ -2,6 +2,8 @@ import { Actor, Vector } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 import { bullet } from '../bullet.js'
+import { Donker } from './donker.js'
+import { Glow } from './glow.js'
 
 export class Licht extends Actor {
     game
@@ -14,7 +16,7 @@ export class Licht extends Actor {
         this.graphicsUsing = grap
     }
 
-    onInitialize() {
+    onInitialize(engine) {
         this.on('collisionstart', (event) => {
             if (event.other instanceof bullet) {
                 if (this.graphicsUsing == Resources.LichtUit) {
@@ -24,6 +26,15 @@ export class Licht extends Actor {
                 }
                 console.log(this.graphicsUsing);
                 this.graphics.use(this.graphicsUsing.toSprite())
+            }
+            if (event.other instanceof Donker) {
+                this.glow = new Glow(this.pos.x,this.pos.y) 
+                engine.currentScene.add(this.glow)
+            }
+        })
+        this.on('collisionend', (event) => {
+            if (event.other instanceof Donker) {
+                this.glow.kill()
             }
         })
     }
