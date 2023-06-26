@@ -30,6 +30,54 @@ export class wisp extends ghost {
     this.z = 98
   }
 
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  onPostKill() {
+    // Clear the sound interval
+    clearTimeout(this.soundInterval);
+  }
+
+  onInitialize() {
+    this.on('collisionstart', (event) => {
+      const hitSound = new Audio(Resources.hitSound.path);
+      const ghostDeath1 = new Audio(Resources.ghostDeath1.path);
+      const ghostDeath2 = new Audio(Resources.ghostDeath2.path);
+      ghostDeath1.volume = 0.5
+      ghostDeath2.volume = 0.5
+      hitSound.volume = 0.3;
+      if (event.other instanceof bullet) {
+        this.hp -= 1;
+        hitSound.play();
+        if (this.hp <= 0) {
+          this.kill();
+          this.randomNumber
+          this.randomNumber = this.getRandomInt(2);
+
+          switch (this.randomNumber) {
+            case 0:
+              ghostDeath1.play();
+              break;
+            case 1:
+              ghostDeath2.play();
+              break;
+          }
+
+        }
+      }
+      if (event.other instanceof mainCharacter) {
+        this.vel = new Vector(
+          Math.cos(this.rotation) * -10 * this.speed / 2,
+          Math.sin(this.rotation) * -10 * this.speed / 2
+        )
+        this.bounceTimer = 10
+      }
+    });
+
+    this.playSoundAtRandomInterval();
+  }
+
   playSoundAtRandomInterval() {
     const minInterval = 8000; // Minimum interval in milliseconds
     const maxInterval = 17000; // Maximum interval in milliseconds
@@ -79,50 +127,6 @@ export class wisp extends ghost {
     this.soundInterval = setTimeout(() => {
       this.playSoundAtRandomInterval();
     }, randomInterval);
-  }
-
-  onPostKill() {
-    // Clear the sound interval
-    clearTimeout(this.soundInterval);
-  }
-
-  onInitialize() {
-    this.on('collisionstart', (event) => {
-      const hitSound = new Audio(Resources.hitSound.path);
-      const ghostDeath1 = new Audio(Resources.ghostDeath1.path);
-      const ghostDeath2 = new Audio(Resources.ghostDeath2.path);
-      ghostDeath1.volume = 0.5
-      ghostDeath2.volume = 0.5
-      hitSound.volume = 0.3;
-      if (event.other instanceof bullet) {
-        this.hp -= 1;
-        hitSound.play();
-        if (this.hp <= 0) {
-          this.kill();
-          this.randomNumber
-          this.randomNumber = this.getRandomInt(2);
-
-          switch (this.randomNumber) {
-            case 0:
-              ghostDeath1.play();
-              break;
-            case 1:
-              ghostDeath2.play();
-              break;
-          }
-
-        }
-      }
-      if (event.other instanceof mainCharacter) {
-        this.vel = new Vector(
-          Math.cos(this.rotation) * -10 * this.speed / 2,
-          Math.sin(this.rotation) * -10 * this.speed / 2
-        )
-        this.bounceTimer = 10
-      }
-    });
-
-    this.playSoundAtRandomInterval();
   }
 
   moveTowardsTarget() {

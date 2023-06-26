@@ -25,55 +25,8 @@ export class spirit extends ghost {
     this.scale = new Vector(0.3, 0.3);
   }
 
-  playSoundAtRandomInterval() {
-    const minInterval = 5000; // Minimum interval in milliseconds
-    const maxInterval = 13000; // Maximum interval in milliseconds
-
-    const randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
-
-    // Play the sound
-    // const sounds = new Audio[Resources.Ghost1.path, Resources.Ghost2.path, Resources.Ghost3.path];
-
-    const sound = new Audio(Resources.Ghost1.path);
-    const sound2 = new Audio(Resources.Ghost2.path);
-    const sound3 = new Audio(Resources.Ghost3.path);
-    const sound4 = new Audio(Resources.Ghost4.path);
-    sound.volume = 0.2;
-    sound2.volume = 0.2;
-    sound3.volume = 0.2;
-    sound4.volume = 0.2;
-
-    // Set pitch
-    const minPlaybackRate = 1; // Minimum playback rate
-    const maxPlaybackRate = 4; // Maximum playback rate
-    const randomPlaybackRate = Math.random() * (maxPlaybackRate - minPlaybackRate) + minPlaybackRate;
-    sound.playbackRate = randomPlaybackRate;
-
-
-    this.randomNumber
-    this.randomNumber = this.getRandomInt(4);
-
-    switch (this.randomNumber) {
-      case 0:
-        sound.play();
-        break;
-      case 1:
-        sound2.play();
-        break;
-      case 2:
-        sound3.play();
-        break;
-      case 3:
-        sound4.play();
-        break;
-    }
-
-
-
-    // Schedule the next sound playback
-    this.soundInterval = setTimeout(() => {
-      this.playSoundAtRandomInterval();
-    }, randomInterval);
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
   }
 
   onPostKill() {
@@ -117,6 +70,55 @@ export class spirit extends ghost {
     });
 
     this.playSoundAtRandomInterval();
+  }
+
+  playSoundAtRandomInterval() {
+    const minInterval = 8000; // Minimum interval in milliseconds
+    const maxInterval = 17000; // Maximum interval in milliseconds
+
+    const randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
+
+    // Play the sound
+    // const sounds = new Audio[Resources.Ghost1.path, Resources.Ghost2.path, Resources.Ghost3.path];
+
+    const sound = new Audio(Resources.Ghost1.path);
+    const sound2 = new Audio(Resources.Ghost2.path);
+    const sound3 = new Audio(Resources.Ghost3.path);
+    const sound4 = new Audio(Resources.Ghost4.path);
+    sound.volume = 0.2;
+    sound2.volume = 0.2;
+    sound3.volume = 0.2;
+    sound4.volume = 0.2;
+
+    // Set pitch
+    const minPlaybackRate = 1; // Minimum playback rate
+    const maxPlaybackRate = 4; // Maximum playback rate
+    const randomPlaybackRate = Math.random() * (maxPlaybackRate - minPlaybackRate) + minPlaybackRate;
+    sound.playbackRate = randomPlaybackRate;
+
+
+    this.randomNumber
+    this.randomNumber = this.getRandomInt(4);
+
+    switch (this.randomNumber) {
+      case 0:
+        sound.play();
+        break;
+      case 1:
+        sound2.play();
+        break;
+      case 2:
+        sound3.play();
+        break;
+      case 3:
+        sound4.play();
+        break;
+    }
+
+    // Schedule the next sound playback
+    this.soundInterval = setTimeout(() => {
+      this.playSoundAtRandomInterval();
+    }, randomInterval);
   }
 
   moveTowardsTarget() {
