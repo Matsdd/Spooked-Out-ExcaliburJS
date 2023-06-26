@@ -7,6 +7,7 @@ import { spirit } from './spirit.js'
 import { ghoul } from './ghoul.js'
 import { wraith } from './wraith.js'
 import { bossBar } from '../ui/bossBar.js'
+import { darkAttack } from '../props/darkAttack.js'
 import { poltergeist } from './poltergeist.js'
 import { arach } from './arach.js'
 
@@ -85,6 +86,7 @@ export class demon extends ghost {
 
   update(engine, delta) {
     this.summonTimer++
+    this.bulletTimer++
     const direction = this.target.pos.sub(this.pos);
     this.rotation = direction.toAngle() + Math.PI / 2;
 
@@ -104,9 +106,16 @@ export class demon extends ghost {
       spirit2.rotation = this.rotation;
       currentScene.add(spirit2);
       this.summonTimer = 50
+    
     }
 
     //schiet kogels, spawn twee spiritus of een goel en spirit (3/4)
+    if (this.hp <= 75 && this.hp > 50  && this.bulletTimer >= this.bulletCooldown) {
+      const dark = new darkAttack(this.pos.x,this.pos.y,this.target)
+      engine.currentScene.add(dark)
+      this.randomNumber = Math.round(Math.random())
+      this.bulletTimer = this.randomNumber * 80
+    }
     if (this.hp <= 75 && this.hp > 50 && this.summonTimer >= this.summonCooldown) {
       this.randomNumber = Math.round(Math.random())
       switch (this.randomNumber) {
@@ -138,6 +147,12 @@ export class demon extends ghost {
     }
 
     //schiet slowness, spawn vier spiritus, een goel en twee spiritus of een wraith(2/4)
+    if (this.hp <= 50 && this.bulletTimer >= this.bulletCooldown) {
+      const dark = new darkAttack(this.pos.x,this.pos.y,this.target)
+      engine.currentScene.add(dark)
+      this.randomNumber = Math.round(Math.random())
+      this.bulletTimer = this.randomNumber * 150
+    }
     if (this.hp <= 50 && this.hp > 25 && this.summonTimer >= this.summonCooldown) {
       this.randomNumber = Math.round(Math.random() * 2)
       switch (this.randomNumber) {
@@ -184,7 +199,7 @@ export class demon extends ghost {
 
     //kleine kans op rare ghost (1/4)
     if (this.hp <= 25 && this.hp > 0 && this.summonTimer >= this.summonCooldown) {
-      this.randomNumber = Math.round(Math.random())
+      this.randomNumber = Math.round(Math.random() * 4)
       switch (this.randomNumber) {
         case 0:
           const Spirit = new spirit(this.target, this.pos.x+100, this.pos.y);
@@ -209,6 +224,21 @@ export class demon extends ghost {
           spirit4.rotation = this.rotation;
           currentScene.add(spirit4);
           this.summonTimer = -100
+        break
+        case 2:
+          const Wrat = new wraith(this.target, this.pos.x, this.pos.y,);
+          Wrat.rotation = this.rotation;
+          currentScene.add(Wrat);
+        break
+        case 3:
+          const kever = new arach(this.target, this.pos.x, this.pos.y,);
+          kever.rotation = this.rotation;
+          currentScene.add(kever);
+        break
+        case 4:
+          const pot = new poltergeist(this.target, (Math.round(Math.random() * 1000)) + 100,350);
+          pot.rotation = this.rotation;
+          currentScene.add(pot);
         break
       }
     }
