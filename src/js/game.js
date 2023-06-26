@@ -29,6 +29,7 @@ export class Game extends Engine {
     score = 0
     playerHp = 3
     maxPlayerHp = 3
+    difficulty = 1
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
