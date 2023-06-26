@@ -4,15 +4,14 @@ import {Resources} from "../resources.js"
 import { bullet } from '../bullet.js'
 
 export class Licht extends Actor {
-    graphicsUsing = Resources.LichtAan
-    donker = false
     game
-    constructor(game) {
+    constructor(game,grap,x,y) {
         super({width:Resources.LichtUit.width*0.5, height:Resources.LichtUit.height*0.8})
-        this.graphics.use(Resources.LichtUit.toSprite())
-        this.pos = new Vector(1000,50)
+        this.graphics.use(grap.toSprite())
+        this.pos = new Vector(x,y)
         this.scale = new Vector(0.25,0.25)
         this.game = game
+        this.graphicsUsing = grap
     }
 
     onInitialize() {

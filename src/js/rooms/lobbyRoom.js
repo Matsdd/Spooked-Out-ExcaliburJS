@@ -30,7 +30,7 @@ export class lobbyRoom extends room {
         const barrierfridge2 = new Barrier(1520,465,40,450)
         this.add(barrierfridge2)
         
-        const licht = new Licht(this)
+        const licht = new Licht(this,Resources.LichtUit,1000,50)
         this.add(licht)
     }
 

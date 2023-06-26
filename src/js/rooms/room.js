@@ -78,7 +78,9 @@ export class room extends Scene {
             this.add(this.zwart)
         }
         if (zwart == 'kill') {
-            this.zwart.kill()
+            if (this.zwart != null) {
+                this.zwart.kill()
+            }
         }
     }
 }
