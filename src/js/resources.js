@@ -66,6 +66,7 @@ import mirror from "../images/props/mirror.png"
 import ton from "../images/props/ton.png"
 import spin from "../images/props/spin.png"
 import nietschiet from "../images/props/nietschiet.png"
+import bossAttack from "../images/props/swatztika.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -131,7 +132,7 @@ import ammo28 from '../images/ui/ammo/ammo28.png'
 import ammo29 from '../images/ui/ammo/ammo29.png'
 import ammo30 from '../images/ui/ammo/ammo30.png'
 
-//score & artifact
+//score, artifacts & upgrades
 import score from '../images/ui/score.png'
 import artifactSlot from '../images/ui/artifact/artifactslot.png'
 import artifactRing from '../images/ui/artifact/artifactRing.png'
@@ -140,6 +141,9 @@ import artifactMilk from '../images/ui/artifact/artifactMilk.png'
 import artifactFeather from '../images/ui/artifact/artifactFeather.png'
 import artifactPiercing from '../images/ui/artifact/artifactPiercing.png'
 import artifactDual from '../images/ui/artifact/artifactDual.png'
+import upgradeHp from '../images/ui/artifact/upgradeHp.png'
+import upgradeSpeed from '../images/ui/artifact/upgradeSpeed.png'
+import upgradeAmmo from '../images/ui/artifact/upgradeAmmo.png'
 
 //bosshp
 import bosshp1 from '../images/ui/HP/bosshp1.png'
@@ -185,7 +189,7 @@ const Resources = {
     Bar: new ImageSource(bar),
     Dorm: new ImageSource(dorm),
     Pool: new ImageSource(pool),
-    
+
     BossPool: new ImageSource(bossPool),
     Boss: new ImageSource(boss),
     Storage: new ImageSource(storage),
@@ -215,9 +219,10 @@ const Resources = {
     Fire: new ImageSource(fire),
     Treasure: new ImageSource(treasure),
     Mirror: new ImageSource(mirror),
-    ton : new ImageSource(ton),
-    spin : new ImageSource(spin),
-    nietschiet : new ImageSource(nietschiet), 
+    ton: new ImageSource(ton),
+    spin: new ImageSource(spin),
+    nietschiet: new ImageSource(nietschiet),
+    bossattack: new ImageSource(bossAttack),
 
     // music
     gameMusic: new Sound(backgroundMusic),
@@ -293,7 +298,7 @@ const Resources = {
     Ammo29: new ImageSource(ammo29),
     Ammo30: new ImageSource(ammo30),
 
-    // score & artifact
+    // score, artifacts & upgrades
     Score: new ImageSource(score),
     artifactSlot: new ImageSource(artifactSlot),
     artifactRing: new ImageSource(artifactRing),
@@ -301,8 +306,10 @@ const Resources = {
     artifactFeather: new ImageSource(artifactFeather),
     artifactPiercing: new ImageSource(artifactPiercing),
     artifactDual: new ImageSource(artifactDual),
-    artifactMilk: new ImageSource(artifactMilk)
-
+    artifactMilk: new ImageSource(artifactMilk),
+    upgradeHp: new ImageSource(upgradeHp),
+    upgradeSpeed: new ImageSource(upgradeSpeed),
+    upgradeAmmo: new ImageSource(upgradeAmmo)
 
 }
 
