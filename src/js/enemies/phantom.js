@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js';
 
 export class phantom extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY,game) {
     super({
       width: Resources.Phantom.width / 1.6,
       height: Resources.Phantom.height / 1.6,
@@ -16,7 +16,7 @@ export class phantom extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 8;
+    this.hp = 8 + game.difficulty
     this.soundInterval = null;
     this.graphics.use(Resources.Phantom.toSprite());
     this.scale = new Vector(0.3, 0.3);

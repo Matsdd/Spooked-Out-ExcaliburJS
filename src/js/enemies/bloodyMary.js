@@ -10,7 +10,7 @@ import { upgradeHp } from '../artifacts/upgradeHp.js';
 
 export class bloodyMary extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY, chosenPath) {
+  constructor(target, posX, posY, chosenPath, game) {
     super({
       width: Resources.BloodyMary.width / 1.3,
       height: Resources.BloodyMary.height / 1.6,
@@ -20,8 +20,8 @@ export class bloodyMary extends ghost {
     this.minDistance = 1;
     this.maxDistance = 550;
     this.rotation = 0;
-    this.hp = 50;
-    this.maxHp = 50
+    this.hp = 50 + (game.difficulty * 15)
+    this.maxHp = 50 + (game.difficulty * 15)
     this.timer = 0
     this.secondaryTimer = 0
     this.cooldown = 300

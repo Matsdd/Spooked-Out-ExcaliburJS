@@ -7,7 +7,7 @@ import { Fire } from '../props/fire.js'
 
 export class wisp extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY,game) {
     super({
       width: Resources.Wisp.width / 2.5,
       height: Resources.Wisp.height / 4,
@@ -19,7 +19,7 @@ export class wisp extends ghost {
     this.minDistance = 1;
     this.maxDistance = 5000;
     this.rotation = 0;
-    this.hp = 3
+    this.hp = 3 + game.difficulty
     this.currentScene
     this.timer = 0
     this.cooldown = 100

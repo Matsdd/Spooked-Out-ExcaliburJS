@@ -7,7 +7,7 @@ import { Donker } from '../props/donker.js';
 
 export class shade extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY, chosenPath) {
+  constructor(target, posX, posY, chosenPath,game) {
     super({
       width: Resources.Shade.width / 1.6,
       height: Resources.Shade.height / 1.6,
@@ -17,7 +17,7 @@ export class shade extends ghost {
     this.minDistance = 1;
     this.maxDistance = 300;
     this.rotation = 0;
-    this.hp = 16;
+    this.hp = 16 + (game.difficulty * 3)
     this.regenTimer = 80
     this.soundInterval = null;
     this.graphics.use(Resources.Shade.toSprite());

@@ -10,7 +10,7 @@ import { upgradeAmmo } from '../artifacts/upgradeAmmo.js';
 
 export class guardian extends ghost {
   bouncing = true
-  constructor(target, posX, posY) {
+  constructor(target, posX, posY,game) {
     super({
       width: Resources.Guardian.width / 1.6,
       height: Resources.Guardian.height / 1.6,
@@ -20,8 +20,8 @@ export class guardian extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 50;
-    this.maxHp = 50
+    this.hp = 50 + (game.difficulty * 15)
+    this.maxHp = 50 + (game.difficulty * 15)
     this.timer = 0;
     this.cooldown = 250;
     this.pos = new Vector(posX, posY);

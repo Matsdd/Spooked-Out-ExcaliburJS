@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js';
 
 export class wraith extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY, chosenPath) {
+  constructor(target, posX, posY, chosenPath,game) {
     super({
       width: Resources.Wraith.width / 1.6,
       height: Resources.Wraith.height / 1.75,
@@ -16,7 +16,7 @@ export class wraith extends ghost {
     this.minDistance = 1;
     this.maxDistance = 300;
     this.rotation = 0;
-    this.hp = 20;
+    this.hp = 20 + (game.difficulty * 4)
     this.soundInterval = null;
     this.graphics.use(Resources.Wraith.toSprite());
     this.scale = new Vector(0.5, 0.5);
