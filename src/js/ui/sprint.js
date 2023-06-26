@@ -2,7 +2,7 @@ import { Actor, Vector } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 
-export class HP extends Actor {
+export class sprint extends Actor {
 
     constructor(player) {
         super({width:Resources.sprint.width, height:Resources.sprint.height})

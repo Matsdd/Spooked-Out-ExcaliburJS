@@ -16,6 +16,7 @@ import { BarrierChecker } from './ui/playerBarrierChecker.js'
 import { Healwater } from './props/healwater.js'
 import { HP } from './ui/HPeter.js'
 import { Ammo } from './ui/ammo.js'
+import { sprint } from './ui/sprint.js'
 import { score } from './ui/score.js'
 
 import * as ex from 'excalibur'
@@ -201,6 +202,8 @@ export class mainCharacter extends Actor {
     Engine.currentScene.add(this.ammo)
     this.score = new score()
     Engine.currentScene.add(this.score)
+    this.sprint = new sprint()
+    Engine.currentScene.add(this.sprint)
 
     this.scoreLabel = new ex.Label({
       text: 'cash',
