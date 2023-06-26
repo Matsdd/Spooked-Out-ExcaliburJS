@@ -47,6 +47,8 @@ export class mainCharacter extends Actor {
     this.speed = 140;
     this.rotation = 0;
     this.pos = new Vector(posX, posY);
+    this.x = posX
+    this.y = posY
     this.game = game;
     this.bullets = 10;
     this.maxAmmo = 10
@@ -285,6 +287,8 @@ export class mainCharacter extends Actor {
       })
     });
     Engine.currentScene.add(this.scoreLabel)
+
+    this.pos = new Vector(this.x,this.y)
   }
   
   onActivate() {
