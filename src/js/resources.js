@@ -99,6 +99,10 @@ import hp7 from '../images/ui/HP/hp7.png'
 import hp8 from '../images/ui/HP/hp8.png'
 import hp9 from '../images/ui/HP/hp9.png'
 
+//sprint
+import Sprint from '../images/ui/sprint.png'
+import SprintR from '../images/ui/sprintR.png'
+
 // ammo
 import ammo0 from '../images/ui/ammo/ammo0.png'
 import ammo1 from '../images/ui/ammo/ammo1.png'
@@ -254,6 +258,10 @@ const Resources = {
     Hp7: new ImageSource(hp7),
     Hp8: new ImageSource(hp8),
     Hp9: new ImageSource(hp9),
+
+    //sprint
+    sprint: new ImageSource(Sprint),
+    sprintR: new ImageSource(SprintR),
 
     //bosshp
     BossHp1: new ImageSource(bosshp1),
