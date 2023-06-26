@@ -50,6 +50,8 @@ export class dormRoom extends room {
         const chair2 = new Barrier(440,750,60,60)
         this.add(chair2)
 
+        const licht = new Licht(this,Resources.LichtAan,560,60)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()

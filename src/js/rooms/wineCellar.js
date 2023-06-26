@@ -27,6 +27,9 @@ export class wineCellar extends room {
         this.add(right)
         const counter = new Barrier(1000,100,80,60)
         this.add(counter)
+
+        const licht = new Licht(this,Resources.LichtAan,180,50)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()
@@ -37,7 +40,7 @@ export class wineCellar extends room {
         this.Sjaak = new mainCharacter(110, 250,this.game)
         this.add(this.Sjaak)
 
-        this.Guardian = new guardian(this.Sjaak, 900, 500,this.game)
+        this.Guardian = new guardian(this.Sjaak, 900, 500, this.game)
         this.add(this.Guardian)
     }
 }

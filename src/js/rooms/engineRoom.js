@@ -42,6 +42,9 @@ export class engineRoom extends room {
         this.add(topPipe2)
         const rightBarrel = new Barrier(1255,370,80,180)
         this.add(rightBarrel)
+
+        const licht = new Licht(this,Resources.LichtUit,1290,50)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()

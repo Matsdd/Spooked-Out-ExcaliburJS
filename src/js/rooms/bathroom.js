@@ -41,6 +41,9 @@ export class bathroom extends room {
         this.add(middlewall3)
         const toiler = new Barrier(1088,120,110,130)
         this.add(toiler)
+
+        const licht = new Licht(this,Resources.LichtAan,800,70)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()

@@ -40,6 +40,9 @@ export class bossPoolRoom extends room {
         this.add(left)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
+
+        const licht = new Licht(this,Resources.LichtAan,700,50)
+        this.add(licht)
     }
 
     onDeactivate() {

@@ -43,6 +43,9 @@ export class playroom extends room {
         this.add(slide4)
         const slide5 = new Barrier(460,470,170,100)
         this.add(slide5)
+
+        const licht = new Licht(this,Resources.LichtAan,820,60)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()

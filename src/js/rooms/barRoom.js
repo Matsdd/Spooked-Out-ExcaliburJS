@@ -55,6 +55,9 @@ export class barRoom extends room {
         this.add(chair3)
         const chair4 = new Barrier(842,315,30,40)
         this.add(chair4)
+
+        const licht = new Licht(this,Resources.LichtAan,430,50)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()

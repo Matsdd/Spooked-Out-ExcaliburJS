@@ -116,6 +116,9 @@ export class officeRoom2 extends room {
         this.add(chair8)
         const chair9 = new Barrier(1340,740,40,40)
         this.add(chair9)
+
+        const licht = new Licht(this,Resources.LichtUit,910,50)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()

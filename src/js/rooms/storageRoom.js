@@ -86,5 +86,8 @@ export class storageRoom extends room {
         this.add(this.Ton9)
         this.Ton7 = new ton(680, 820)
         this.add(this.Ton7)
+
+        const licht = new Licht(this,Resources.LichtAan,720,60)
+        this.add(licht)
     }
 }

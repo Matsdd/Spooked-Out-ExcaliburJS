@@ -17,7 +17,7 @@ export class arach extends ghost {
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
-    this.hp = 14 + (game.difficulty * 2)
+    this.hp = 16 + (game.difficulty * 3)
     this.timer = 0
     this.cooldown = 200
     this.soundInterval = null;
