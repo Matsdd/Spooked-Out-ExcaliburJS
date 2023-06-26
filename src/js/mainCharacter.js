@@ -321,7 +321,6 @@ export class mainCharacter extends Actor {
   update(engine) {
     this.bounceTimer -= 1
 
-    console.log(this.stamina);
     if (!this.sprinting && this.stamina < 180) {
       this.stamina += 4
       if (this.stamina > 180) {
