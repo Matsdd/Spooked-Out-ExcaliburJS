@@ -58,6 +58,9 @@ export class dormRoom extends room {
         this.Spirit.kill()
         this.Spirit2.kill()
         this.Ghoul.kill()
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

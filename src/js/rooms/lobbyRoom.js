@@ -37,6 +37,10 @@ export class lobbyRoom extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.Frederik.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

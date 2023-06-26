@@ -38,11 +38,18 @@ export class Bedroom1 extends room {
         this.add(left)
         const right = new Barrier(1234,510,10,860)
         this.add(right)
+        
+        const licht = new Licht(this,Resources.LichtAan,730,60)
+        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()
         this.Phantom.kill()
         this.Mare.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

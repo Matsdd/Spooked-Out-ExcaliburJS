@@ -90,4 +90,10 @@ export class storageRoom extends room {
         const licht = new Licht(this,Resources.LichtAan,720,60)
         this.add(licht)
     }
+
+    onDeactivate() {
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
+    }
 }

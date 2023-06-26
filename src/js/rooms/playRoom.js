@@ -51,6 +51,10 @@ export class playroom extends room {
         this.Sjaak.kill()
         this.Treasure.kill()
         this.Wraith.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

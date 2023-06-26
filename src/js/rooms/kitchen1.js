@@ -47,6 +47,10 @@ export class kitchen1 extends room {
         this.Poltergeist.kill()
         this.Spirit.kill()
         this.Spirit2.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

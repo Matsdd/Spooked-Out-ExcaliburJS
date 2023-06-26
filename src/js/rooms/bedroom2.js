@@ -62,6 +62,10 @@ export class bedroom2 extends room {
         this.Sjaak.kill()
         this.Ghoul.kill()
         this.Wraith.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

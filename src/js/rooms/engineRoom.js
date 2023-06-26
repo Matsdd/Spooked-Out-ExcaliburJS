@@ -50,6 +50,9 @@ export class engineRoom extends room {
         this.Sjaak.kill()
         this.Arach.kill()
         this.Shade.kill()
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

@@ -46,6 +46,10 @@ export class bossRoom extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.Demon.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

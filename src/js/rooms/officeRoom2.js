@@ -125,6 +125,10 @@ export class officeRoom2 extends room {
         this.Spirit.kill()
         this.Spirit2.kill()
         this.Shade.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

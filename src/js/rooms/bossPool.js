@@ -48,6 +48,10 @@ export class bossPoolRoom extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.water.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {

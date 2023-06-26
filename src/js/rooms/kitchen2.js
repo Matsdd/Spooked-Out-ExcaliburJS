@@ -47,6 +47,10 @@ export class kitchen2 extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.Arach.kill()
+
+        if (this.zwart != null) {
+            this.zwart.kill()
+        }
     }
 
     onActivate() {
