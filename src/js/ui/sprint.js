@@ -7,14 +7,18 @@ export class sprint extends Actor {
     constructor(player) {
         super({width:Resources.sprint.width, height:Resources.sprint.height})
         this.graphics.use(Resources.sprint.toSprite())
-        this.pos = new Vector(100,180)
-        this.scale = new Vector(0.25,0.25)
+        this.pos = new Vector(200,200)
+        this.scale = new Vector(0.15,0.15)
         this.graphics.opacity = 0.7
         this.player = player
         this.z = 99
     }
 
     update() {
-        this.player.fixHp(this)
+        //this.player.fixSprint(this)
+    }
+
+    setSprint(sprint) {
+        this.pos.x = sprint
     }
 }
