@@ -32,7 +32,7 @@ export class Game extends Engine {
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
-        // this.showDebug(true)
+        this.showDebug(true)
     }
 
     startGame() {  
@@ -83,7 +83,7 @@ export class Game extends Engine {
         this.addScene('barRoom', this.Barroom)
         this.addScene('dormRoom', this.Dormroom)
 
-        this.goToScene('poolRoom')
+        this.goToScene('titleMenu')
 
         console.log("Enjoy!")
     }
