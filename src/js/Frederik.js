@@ -29,13 +29,13 @@ export class frederik extends ghost {
 
     this.on('collisionstart', (event) => {
       if (event.other instanceof Donker) {
-        this.Eyes = new eyes(this.pos.x,this.pos.y,this.target)
-        Engine.currentScene.add(this.Eyes)
+        //this.Eyes = new eyes(this.pos.x,this.pos.y,this.target)
+        //Engine.currentScene.add(this.Eyes)
       }
     })
     this.on('collisionend', (event) => {
       if (event.other instanceof Donker) {
-        this.Eyes.kill()
+        //this.Eyes.kill()
       }
     })
   }
