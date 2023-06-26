@@ -113,6 +113,13 @@ export class settingsMenu extends Scene {
                   this.game.goToScene('barRoom')
                 }
                   break;
+                case 13: 
+                  if(this.scene == 'lobbyRoom') {
+                    return;
+                } else {
+                  this.game.goToScene('lobbyRoom')
+                }
+                  break;
                   }
         })
         this.add(button)

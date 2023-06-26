@@ -99,13 +99,17 @@ export class shade extends ghost {
 
     this.on('precollision', (event) => {
       this.maxDistance = 300
-        if (this.regenTimer <= 0 && event.other instanceof Donker) {
-            if (this.hp < 16) {
+      this.speed = 100
+      this.aggro = true
+        if (event.other instanceof Donker) {
+            if (this.hp < 16 && this.regenTimer <= 0) {
                 this.hp++
                 console.log(this.hp);
                 this.regenTimer = 60
-                this.maxDistance = 200
             }
+            this.maxDistance = 200
+            this.speed = 80
+            this.aggro = false
         }
     })
 
