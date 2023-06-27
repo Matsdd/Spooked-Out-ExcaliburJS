@@ -7,17 +7,19 @@ import { spin } from '../props/spin.js';
 
 export class arach extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY, chosenPath,game) {
+  constructor(target, posX, posY, chosenPath,game,getscore) {
     super({
       width: Resources.Arach.width / 1.1,
       height: Resources.Arach.height / 2,
     });
     this.target = target;
     this.speed = 130;
+    this.getscore = getscore
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
     this.hp = 16 + (game.difficulty * 3)
+    this.game = game
     this.timer = 0
     this.cooldown = 200
     this.soundInterval = null;
@@ -219,5 +221,8 @@ export class arach extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    if (this.getscore) {
+    this.game.addScore(3,false)
+    }
   }
 }

@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js'
 
 export class spirit extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY,game) {
+  constructor(target, posX, posY,game,getscore) {
     super({
       width: Resources.spirit.width / 3,
       height: Resources.spirit.height / 4,
@@ -14,10 +14,12 @@ export class spirit extends ghost {
     this.target = target;
     this.posX = posX;
     this.posY = posY;
+    this.getscore = getscore
     this.speed = 140;
     this.minDistance = 1;
     this.maxDistance = 5000;
     this.rotation = 0;
+    this.game = game
     this.hp = 2 + game.difficulty
     this.pos = new Vector(posX, posY);
     this.graphics.use(Resources.spirit.toSprite());
@@ -141,5 +143,10 @@ export class spirit extends ghost {
   update(engine, delta) {
     this.moveTowardsTarget();
     this.bounceTimer -= 1
+  }
+  onPostKill() {
+    if (this.getscore) {
+    this.game.addScore(1,false)
+    }
   }
 }

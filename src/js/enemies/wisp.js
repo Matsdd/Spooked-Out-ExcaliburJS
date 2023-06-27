@@ -7,7 +7,7 @@ import { Fire } from '../props/fire.js'
 
 export class wisp extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY,game) {
+  constructor(target, posX, posY,game,getscore) {
     super({
       width: Resources.Wisp.width / 2.5,
       height: Resources.Wisp.height / 4,
@@ -15,6 +15,7 @@ export class wisp extends ghost {
     this.target = target;
     this.posX = posX;
     this.posY = posY;
+    this.getscore = getscore
     this.speed = 140;
     this.minDistance = 1;
     this.maxDistance = 5000;
@@ -22,6 +23,7 @@ export class wisp extends ghost {
     this.hp = 3 + game.difficulty
     this.currentScene
     this.timer = 0
+    this.game = game
     this.cooldown = 100
     this.pos = new Vector(posX, posY);
     this.graphics.use(Resources.Wisp.toSprite());
@@ -165,5 +167,8 @@ export class wisp extends ghost {
   onPostKill() {
     const fire = new Fire(this.pos.x, this.pos.y,);
     this.currentScene.add(fire);
+    if (this.getscore) {
+    this.game.addScore(2,false)
+    }
   }
 }

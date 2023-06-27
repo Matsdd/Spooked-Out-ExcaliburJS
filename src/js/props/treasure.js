@@ -46,4 +46,8 @@ export class treasure extends Actor {
     }
   }
 
+  onPostKill() {
+    this.game.getscore(3,false)
+  }
+
 }

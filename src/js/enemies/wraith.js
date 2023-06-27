@@ -6,17 +6,19 @@ import { bullet } from '../bullet.js';
 
 export class wraith extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY, chosenPath,game) {
+  constructor(target, posX, posY, chosenPath,game,getscore) {
     super({
       width: Resources.Wraith.width / 1.6,
       height: Resources.Wraith.height / 1.75,
     });
     this.target = target;
     this.speed = 70;
+    this.getscore = getscore
     this.minDistance = 1;
     this.maxDistance = 7000
     this.rotation = 0;
     this.hp = 20 + (game.difficulty * 4)
+    this.game = game
     this.soundInterval = null;
     this.graphics.use(Resources.Wraith.toSprite());
     this.scale = new Vector(0.5, 0.5);
@@ -198,6 +200,9 @@ export class wraith extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    if (this.getscore) {
+      this.game.addScore(5,false)
+    }
   }
 }
 

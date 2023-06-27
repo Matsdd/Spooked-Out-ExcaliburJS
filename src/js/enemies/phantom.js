@@ -18,6 +18,7 @@ export class phantom extends ghost {
     this.rotation = 0;
     this.hp = 5 + game.difficulty
     this.soundInterval = null;
+    this.game = game
     this.graphics.use(Resources.Phantom.toSprite());
     this.scale = new Vector(0.4, 0.4);
     this.pos = new Vector(posX, posY);
@@ -157,5 +158,6 @@ export class phantom extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.game.addScore(5,false)
   }
 }

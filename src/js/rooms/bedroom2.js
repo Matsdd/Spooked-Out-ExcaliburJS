@@ -71,9 +71,9 @@ export class bedroom2 extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(1067, 800,this.game)
         this.add(this.Sjaak)
-        this.Ghoul = new ghoul(this.Sjaak, 365, 170, 2,this.game)
+        this.Ghoul = new ghoul(this.Sjaak, 365, 170, 2,this.game,true)
         this.add(this.Ghoul)
-        this.Wraith = new wraith(this.Sjaak, 470, 450, 0,this.game)
+        this.Wraith = new wraith(this.Sjaak, 470, 450, 0,this.game,true)
         this.add(this.Wraith)
     }
 }

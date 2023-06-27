@@ -22,6 +22,7 @@ export class bloodyMary extends ghost {
     this.rotation = 0;
     this.hp = 50 + (game.difficulty * 15)
     this.maxHp = 50 + (game.difficulty * 15)
+    this.game = game
     this.timer = 0
     this.secondaryTimer = 0
     this.cooldown = 300
@@ -207,7 +208,7 @@ export class bloodyMary extends ghost {
     const mariaInScene = currentScene.actors.find(actor => actor instanceof bloodyMary);
     if (mariaInScene === this) {
       if (this.timer > this.cooldown && distance > this.minDistance) {
-        const Wisp = new wisp(this.target, this.pos.x, this.pos.y,);
+        const Wisp = new wisp(this.target, this.pos.x, this.pos.y,this.game,false);
         Wisp.rotation = this.rotation;
         currentScene.add(Wisp);
         this.timer = 0
@@ -256,6 +257,7 @@ export class bloodyMary extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.game.addScore(15,false)
   }
 
   

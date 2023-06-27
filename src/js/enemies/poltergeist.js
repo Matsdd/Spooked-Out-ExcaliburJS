@@ -6,17 +6,19 @@ import { vaas } from '../props/vaas.js'
 import { bullet } from '../bullet.js'
 
 export class poltergeist extends ghost {
-  constructor(target, posX, posY,game) {
+  constructor(target, posX, posY,game,getscore) {
     super({
       width: Resources.poltergeist.width / 1.6,
       height: Resources.poltergeist.height / 1.6,
     });
     this.target = target;
     this.speed = 0;
+    this.getscore = getscore
     this.minDistance = 1;
     this.maxDistance = 500;
     this.rotation = 0;
     this.hp = 15 + (game.difficulty * 3)
+    this.game = game
     this.timer = 0;
     this.cooldown = 100;
     this.pos = new Vector(posX, posY);
@@ -147,6 +149,12 @@ export class poltergeist extends ghost {
       this.rotation = direction.toAngle() + Math.PI / 2;
     } else {
       this.timer = 0
+    }
+  }
+
+  onPostKill() {
+    if (this.getscore) {
+    this.game.addScore(4,false)
     }
   }
 }

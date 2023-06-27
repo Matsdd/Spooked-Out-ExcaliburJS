@@ -6,7 +6,7 @@ import { bullet } from '../bullet.js';
 
 export class ghoul extends ghost {
   bounceTimer = 0
-  constructor(target, posX, posY, chosenPath,game) {
+  constructor(target, posX, posY, chosenPath,game,getscore) {
     super({
       width: Resources.ghoul.width / 1.6,
       height: Resources.ghoul.height / 1.6,
@@ -14,9 +14,11 @@ export class ghoul extends ghost {
     this.target = target;
     this.speed = 100;
     this.minDistance = 1;
+    this.getscore = getscore
     this.maxDistance = 7000;
     this.rotation = 0;
     this.hp = 10 + (game.difficulty * 2)
+    this.game = game
     this.soundInterval = null;
     this.graphics.use(Resources.ghoul.toSprite());
     this.scale = new Vector(0.3, 0.3);
@@ -232,5 +234,8 @@ export class ghoul extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    if (this.getscore) {
+    this.game.addScore(2,false)
+    }
   }
 }

@@ -18,6 +18,7 @@ export class mare extends ghost {
     this.maxDistance = 700;
     this.rotation = 0;
     this.hp = 22 + (game.difficulty * 4)
+    this.game = game
     this.regenTimer = 100
     this.soundInterval = null;
     this.graphics.use(Resources.Mare.toSprite());
@@ -202,5 +203,6 @@ export class mare extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.game.addScore(6,false)
   }
 }

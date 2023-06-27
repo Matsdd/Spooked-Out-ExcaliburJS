@@ -55,9 +55,9 @@ export class Bedroom1 extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
-        this.Phantom = new phantom(this.Sjaak,1060, 270, this.game)
+        this.Phantom = new phantom(this.Sjaak,1060, 270, this.game,true)
         this.add(this.Phantom)
-        this.Mare = new mare(this.Sjaak,460, 170, 0, this.game)
+        this.Mare = new mare(this.Sjaak,460, 170, 0, this.game,true)
         this.add(this.Mare)
     }
 }

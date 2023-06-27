@@ -134,12 +134,12 @@ export class officeRoom2 extends room {
         this.Sjaak = new mainCharacter(700, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Spirit = new spirit(this.Sjaak, 150, 190,this.game)
+        this.Spirit = new spirit(this.Sjaak, 150, 190,this.game,true)
         this.add(this.Spirit)
-        this.Spirit2 = new spirit(this.Sjaak, 520, 130,this.game)
+        this.Spirit2 = new spirit(this.Sjaak, 520, 130,this.game,true)
         this.add(this.Spirit2)
 
-        this.Shade = new shade(this.Sjaak, 940, 150, 0,this.game)
+        this.Shade = new shade(this.Sjaak, 940, 150, 0,this.game,true)
         this.add(this.Shade)
 
         

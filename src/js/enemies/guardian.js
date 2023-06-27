@@ -22,6 +22,7 @@ export class guardian extends ghost {
     this.rotation = 0;
     this.hp = 50 + (game.difficulty * 15);
     this.maxHp = 50 + (game.difficulty * 15);
+    this.game = game
     this.timer = 0;
     this.cooldown = 250;
     this.game = game
@@ -140,11 +141,11 @@ export class guardian extends ghost {
         this.randomNumber = this.getRandomInt(2)
         switch (this.randomNumber) {
           case 0:
-            const Spirit = new spirit(this.target, this.pos.x, this.pos.y, this.game);
+            const Spirit = new spirit(this.target, this.pos.x, this.pos.y, this.game,false);
             Spirit.rotation = this.rotation;
             currentScene.add(Spirit);
 
-            const Spirit2 = new spirit(this.target, this.pos.x / 1.2, this.pos.y, this.game);
+            const Spirit2 = new spirit(this.target, this.pos.x / 1.2, this.pos.y, this.game,false);
             Spirit.rotation = direction.toAngle() + Math.PI / 2;
             currentScene.add(Spirit2);
 
@@ -152,7 +153,7 @@ export class guardian extends ghost {
             break;
 
           case 1:
-            const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, 1, this.game);
+            const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, 1, this.game,false);
             Ghoul.rotation = this.rotation;
             currentScene.add(Ghoul);
 
@@ -168,6 +169,11 @@ export class guardian extends ghost {
     //     }else {
     //       this.timer = 0
     //     }
+  }
+
+  onPostKill() {
+    
+    this.game.addScore(15,false)
   }
 }
 

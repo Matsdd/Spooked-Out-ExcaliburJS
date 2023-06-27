@@ -58,9 +58,9 @@ export class bathroom extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Wisp = new wisp(this.Sjaak, 1150, 450,this.game)
+        this.Wisp = new wisp(this.Sjaak, 1150, 450,this.game,true)
         this.add(this.Wisp)
-        this.Wisp2 = new wisp(this.Sjaak, 1150, 750,this.game)
+        this.Wisp2 = new wisp(this.Sjaak, 1150, 750,this.game,true)
         this.add(this.Wisp2)
     }
 }

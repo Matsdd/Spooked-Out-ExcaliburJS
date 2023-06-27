@@ -19,6 +19,7 @@ export class shade extends ghost {
     this.rotation = 0;
     this.hp = 16 + (game.difficulty * 3)
     this.regenTimer = 80
+    this.game = game
     this.soundInterval = null;
     this.graphics.use(Resources.Shade.toSprite());
     this.scale = new Vector(0.3, 0.3);
@@ -225,5 +226,6 @@ export class shade extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.game.addScore(6,false)
   }
 }

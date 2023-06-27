@@ -61,12 +61,12 @@ export class kitchen1 extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Poltergeist = new poltergeist(this.Sjaak, 1000, 200,this.game)
+        this.Poltergeist = new poltergeist(this.Sjaak, 1000, 200,this.game,true)
         this.add(this.Poltergeist)
 
-        this.Spirit = new spirit(this.Sjaak, 760, 180,this.game)
+        this.Spirit = new spirit(this.Sjaak, 760, 180,this.game,true)
         this.add(this.Spirit)
-        this.Spirit2 = new spirit(this.Sjaak, 760, 300,this.game)
+        this.Spirit2 = new spirit(this.Sjaak, 760, 300,this.game,true)
         this.add(this.Spirit2)
     }
 }

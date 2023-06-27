@@ -16,6 +16,7 @@ export class mimic extends ghost {
     this.minDistance = 1;
     this.rotation = 0;
     this.hp = 20 + (game.difficulty * 5)
+    this.game = game
     this.soundInterval = null;
     this.graphics.use(Resources.Mimic.toSprite());
     this.scale = new Vector(0.45, 0.45);
@@ -149,5 +150,6 @@ export class mimic extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.game.addScore(12,false)
   }
 }
