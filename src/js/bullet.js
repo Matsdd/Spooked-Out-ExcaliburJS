@@ -40,7 +40,8 @@ export class bullet extends Actor {
       if (event.other instanceof phantom) {
         if (event.other.graphics.opacity == 1) {
           if ( this.burnShot === true ) {
-            event.other.burn = true
+            event.other.burn = true;
+            event.other.burnCount = 0;
           }
           if ( this.pierceShot === true && this.health > 0 ) {
             this.health--
@@ -55,6 +56,7 @@ export class bullet extends Actor {
       if (event.other instanceof ghost) {
         if ( this.burnShot === true ) {
           event.other.burn = true
+          event.other.burnCount = 0;
         }
         if (event.other.bouncing) {
           const direction = new Vector(this.target.x, this.target.y).sub(this.pos).normalize();

@@ -32,7 +32,9 @@ export class ghoul extends ghost {
     this.chosenPath = chosenPath;
     this.aggro = false;
     this.burn = false;
+    this.burnCount = 0;
     this.burnTimer = 0;
+    this.burn1 = true;
   }
 
   getRandomInt(max) {
@@ -40,12 +42,6 @@ export class ghoul extends ghost {
   }
 
   onInitialize() {
-
-    if ( this.burn === true && this.burnTimer <= 0) {
-      this.hp -= 1;
-      this.burnTimer = 100;
-      console.log(this.hp)
-    }
 
     this.on('collisionstart', (event) => {
       const hitSound = new Audio(Resources.hitSound.path);
@@ -214,9 +210,43 @@ export class ghoul extends ghost {
   update(engine, delta) {
     this.bounceTimer -= 1
 
+    if ( this.burn === true && this.burnTimer <= 0) {
+      const hitSound = new Audio(Resources.hitSound.path);
+      const ghostDeath1 = new Audio(Resources.ghostDeath1.path);
+      const ghostDeath2 = new Audio(Resources.ghostDeath2.path);
+      ghostDeath1.volume = 0.5
+      ghostDeath2.volume = 0.5
+      hitSound.volume = 0.3;
+      if (this.burn1 === false ){
+        this.hp -= 1;
+        hitSound.play();
+        }
+      this.burn1 = false;
+      this.burnTimer = 100;
+      this.burnCount += 1;
+      if ( this.burnCount === 3 ) {
+        this.burn = false;
+        this.burnCount = 0;
+        this.burn1 = true;
+      }
+      if (this.hp <= 0) {
+        this.kill();
+        this.randomNumber
+        this.randomNumber = this.getRandomInt(2);
+
+        switch (this.randomNumber) {
+          case 0:
+            ghostDeath1.play();
+            break;
+          case 1:
+            ghostDeath2.play();
+            break;
+        }
+
+      }
+    }
     if ( this.burnTimer > 0 ) {
       this.burnTimer--
-      console.log(this.burnTimer)
     }
     if (this.prox) {
       this.moveTowardsTarget(this.target.pos);

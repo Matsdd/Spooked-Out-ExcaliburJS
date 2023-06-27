@@ -23,6 +23,10 @@ export class spirit extends ghost {
     this.graphics.use(Resources.spirit.toSprite());
     this.pos = new Vector(this.posX, this.posY);
     this.scale = new Vector(0.3, 0.3);
+    this.burn = false;
+    this.burnCount = 0;
+    this.burnTimer = 0;
+    this.burn1 = true;
   }
 
   getRandomInt(max) {
@@ -139,6 +143,29 @@ export class spirit extends ghost {
   }
 
   update(engine, delta) {
+
+    if ( this.burn === true && this.burnTimer <= 0) {
+      if (this.burn1 === false ){
+      this.hp -= 1;
+      }
+      this.burn1 = false;
+      this.burnTimer = 100;
+      this.burnCount += 1;
+      console.log(this.hp)
+      if ( this.burnCount === 3 ) {
+        this.burn = false;
+        this.burnCount = 0;
+        this.burn1 = true;
+      }
+      if (this.hp <= 0) {
+        this.kill();
+      }
+    }
+
+    if ( this.burnTimer > 0 ) {
+      this.burnTimer--
+    }
+
     this.moveTowardsTarget();
     this.bounceTimer -= 1
   }
