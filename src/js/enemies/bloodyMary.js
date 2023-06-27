@@ -250,36 +250,36 @@ export class bloodyMary extends ghost {
 
       if (this.secondaryTimer > this.secondaryCooldown && distance > this.minDistance) {
         if (this.fireKind == 0) {
-          const fireball1 = new fireBall(this.pos.x, this.pos.y, this.target,50,0);
+          const fireball1 = new fireBall(this.pos.x, this.pos.y, this.target,80,0);
           currentScene.add(fireball1);
           this.secondaryTimer = 0
   
-          const fireball2 = new fireBall(this.pos.x, this.pos.y, this.target,-50,0);
+          const fireball2 = new fireBall(this.pos.x, this.pos.y, this.target,-80,0);
           currentScene.add(fireball2);
           this.secondaryTimer = 0
   
-          const fireball3 = new fireBall(this.pos.x, this.pos.y, this.target,0,50);
+          const fireball3 = new fireBall(this.pos.x, this.pos.y, this.target,0,80);
           currentScene.add(fireball3);
           this.secondaryTimer = 0
   
-          const fireball4 = new fireBall(this.pos.x, this.pos.y, this.target,0,-50);
+          const fireball4 = new fireBall(this.pos.x, this.pos.y, this.target,0,-80);
           currentScene.add(fireball4);
           this.secondaryTimer = 0
           this.fireKind++
         }else{
-          const fireball1 = new fireBall(this.pos.x, this.pos.y, this.target,33,33);
+          const fireball1 = new fireBall(this.pos.x, this.pos.y, this.target,56,56);
           currentScene.add(fireball1);
           this.secondaryTimer = 0
   
-          const fireball2 = new fireBall(this.pos.x, this.pos.y, this.target,-33,33);
+          const fireball2 = new fireBall(this.pos.x, this.pos.y, this.target,-56,56);
           currentScene.add(fireball2);
           this.secondaryTimer = 0
   
-          const fireball3 = new fireBall(this.pos.x, this.pos.y, this.target,-33,-33);
+          const fireball3 = new fireBall(this.pos.x, this.pos.y, this.target,-56,-56);
           currentScene.add(fireball3);
           this.secondaryTimer = 0
   
-          const fireball4 = new fireBall(this.pos.x, this.pos.y, this.target,33,-33);
+          const fireball4 = new fireBall(this.pos.x, this.pos.y, this.target,56,-56);
           currentScene.add(fireball4);
           this.secondaryTimer = 0
           this.fireKind = 0
