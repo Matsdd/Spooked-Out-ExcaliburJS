@@ -36,6 +36,7 @@ export class demon extends ghost {
     this.bulletCooldown = 300
     this.randomNumber = 0
     this.pos = new Vector(posX, posY);
+    this.dead = false;
   }
 
   getRandomInt(max) {
@@ -50,7 +51,12 @@ export class demon extends ghost {
 
     // Play the sound
     const sound = new Audio(Resources.bossRoar.path);
-    sound.volume = 0.5;
+
+    if ( this.dead === true ){
+      sound.volume = 0 ;
+    } else {
+      sound.volume = 0.5;
+    }
 
     // Set pitch
     const minPlaybackRate = 0.6; // Minimum playback rate
@@ -86,6 +92,7 @@ export class demon extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          this.dead = true;
           this.game.addScore(25,false)
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
@@ -124,10 +131,14 @@ export class demon extends ghost {
     const bossbar = new bossBar(this)
     engine.currentScene.add(bossbar)
 
-    this.playSoundAtRandomInterval();
+
+
+      this.playSoundAtRandomInterval();
+
   }
 
   update(engine, delta) {
+    
     this.summonTimer++
     this.bulletTimer++
     const direction = this.target.pos.sub(this.pos);
