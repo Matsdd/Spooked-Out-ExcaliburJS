@@ -89,7 +89,6 @@ export class bloodyMary extends ghost {
               }
             break;
           }
-          this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
           switch (this.randomNumber) {

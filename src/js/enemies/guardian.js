@@ -7,6 +7,9 @@ import { ghoul } from '../enemies/ghoul.js'
 import { bullet } from '../bullet.js'
 import { bossBar } from '../ui/bossBar.js'
 import { upgradeAmmo } from '../artifacts/upgradeAmmo.js';
+import { upgradeHp } from '../artifacts/upgradeHp.js';
+import { upgradeSpeed } from '../artifacts/upgradeSpeed.js';
+import { upgradePierce } from '../artifacts/upgradePierce.js';
 
 export class guardian extends ghost {
   bouncing = true
@@ -30,6 +33,7 @@ export class guardian extends ghost {
   }
 
   onInitialize(Engine) {
+    const currentScene = Engine.currentScene;
     this.graphics.use(Resources.Guardian.toSprite());
     this.scale = new Vector(0.3, 0.3);
 
@@ -45,9 +49,35 @@ export class guardian extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
-          const upgrade = new upgradeAmmo(this.pos.x, this.pos.y);
-          currentScene.add(upgrade);
           this.randomNumber
+          this.randomNumber = this.getRandomInt(2);
+          switch (this.randomNumber) {
+            case 0:
+            this.upgrade = new  upgradePierce(this.pos.x, this.pos.y);
+            currentScene.add(this.upgrade);
+            console.log("dual")
+            break;
+            case 1:
+              this.randomNumber = this.getRandomInt(3);
+              switch (this.randomNumber) {
+                case 0 :
+                this.upgrade = new  upgradeHp(this.pos.x, this.pos.y);
+                currentScene.add(this.upgrade);
+                console.log("hp")
+                break;
+                case 1 :
+                this.upgrade = new  upgradeAmmo(this.pos.x, this.pos.y);
+                currentScene.add(this.upgrade);
+                console.log("ammo")
+                break;
+                case 2 :
+                this.upgrade = new  upgradeSpeed(this.pos.x, this.pos.y);
+                currentScene.add(this.upgrade);
+                console.log("speed")
+                break;
+              }
+            break;
+          }
           this.randomNumber = this.getRandomInt(2);
 
           switch (this.randomNumber) {
