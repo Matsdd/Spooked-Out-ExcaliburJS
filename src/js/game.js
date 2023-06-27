@@ -30,7 +30,7 @@ export class Game extends Engine {
     playerHp = 3
     maxPlayerHp = 3
     difficulty = 0
-    previousscene
+    previousscene = 13
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
@@ -85,7 +85,7 @@ export class Game extends Engine {
         this.addScene('barRoom', this.Barroom)
         this.addScene('dormRoom', this.Dormroom)
 
-        this.goToScene('Bedroom1')
+        this.goToScene('titleMenu')
 
         console.log("Enjoy!")
     }

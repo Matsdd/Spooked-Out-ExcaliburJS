@@ -67,6 +67,7 @@ import ton from "../images/props/ton.png"
 import spin from "../images/props/spin.png"
 import nietschiet from "../images/props/nietschiet.png"
 import bossAttack from "../images/props/swatztika.png"
+import gloei from "../images/props/gloei.png"
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -229,6 +230,7 @@ const Resources = {
     spin: new ImageSource(spin),
     nietschiet: new ImageSource(nietschiet),
     bossattack: new ImageSource(bossAttack),
+    Gloei: new ImageSource(gloei),
 
     // music
     gameMusic: new Sound(backgroundMusic),

@@ -92,6 +92,7 @@ export class mare extends ghost {
                 this.hp--
                 console.log(this.hp);
                 this.regenTimer = 100
+                this.aggro = true
             }
         }
     })

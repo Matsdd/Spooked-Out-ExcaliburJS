@@ -41,6 +41,10 @@ export class kitchen1 extends room {
         this.add(couch2)
         const wardrobe = new Barrier(320,290,60,250)
         this.add(wardrobe)
+
+        
+        this.licht = new Licht(this,Resources.LichtAan,700,70)
+        this.add(this.licht)
     }
     onDeactivate() {
         this.Sjaak.kill()

@@ -117,14 +117,13 @@ export class officeRoom2 extends room {
         const chair9 = new Barrier(1340,740,40,40)
         this.add(chair9)
 
-        const licht = new Licht(this,Resources.LichtUit,910,50)
-        this.add(licht)
     }
     onDeactivate() {
         this.Sjaak.kill()
         this.Spirit.kill()
         this.Spirit2.kill()
         this.Shade.kill()
+        this.licht.kill()
 
         if (this.zwart != null) {
             this.zwart.kill()
@@ -142,5 +141,9 @@ export class officeRoom2 extends room {
 
         this.Shade = new shade(this.Sjaak, 940, 150, 0,this.game)
         this.add(this.Shade)
+
+        
+        this.licht = new Licht(this,Resources.LichtUit,910,50)
+        this.add(this.licht)
     }
 }

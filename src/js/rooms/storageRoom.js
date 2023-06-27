@@ -62,7 +62,7 @@ export class storageRoom extends room {
         this.Poltergeist = new poltergeist(this.Sjaak, 767, 200,this.game)
         this.add(this.Poltergeist)
 
-        this.Treasure = new treasure(this.Sjaak, 1000, 400,this.game)
+        this.Treasure = new treasure(this.Sjaak, 1000, 110,this.game)
         this.add(this.Treasure)
 
         this.Nietschiet = new nietschiet(438, 730)
@@ -70,9 +70,9 @@ export class storageRoom extends room {
 
         this.Ton1 = new ton(800,430)
         this.add(this.Ton1)
-        this.Ton2 = new ton(0,0)
+        this.Ton2 = new ton(430,200)
         this.add(this.Ton2)
-        this.Ton3 = new ton(0,0)
+        this.Ton3 = new ton(1090, 300)
         this.add(this.Ton3)
         this.Ton4 = new ton(600,590)
         this.add(this.Ton4)
@@ -95,5 +95,19 @@ export class storageRoom extends room {
         if (this.zwart != null) {
             this.zwart.kill()
         }
+        this.Sjaak.kill()
+        this.Poltergeist.kill()
+        this.Treasure.kill()
+        this.Nietschiet.kill()
+
+        this.Ton1.kill()
+        this.Ton2.kill()
+        this.Ton3.kill()
+        this.Ton4.kill()
+        this.Ton5.kill()
+        this.Ton6.kill()
+        this.Ton7.kill()
+        this.Ton8.kill()
+        this.Ton9.kill()
     }
 }
