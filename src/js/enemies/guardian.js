@@ -49,6 +49,7 @@ export class guardian extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          this.game.addScore(20,false)
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
           switch (this.randomNumber) {
@@ -203,7 +204,6 @@ export class guardian extends ghost {
 
   onPostKill() {
     
-    this.game.addScore(15,false)
   }
 }
 

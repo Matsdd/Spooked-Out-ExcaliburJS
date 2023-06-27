@@ -61,6 +61,9 @@ export class arach extends ghost {
         this.aggro = true;
         if (this.hp <= 0) {
           this.kill();
+          if (this.getscore) {
+          this.game.addScore(3,false)
+          }
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
@@ -207,6 +210,9 @@ export class arach extends ghost {
       }
       if (this.hp <= 0) {
         this.kill();
+        if (this.getscore) {
+        this.game.addScore(3,false)
+        }
       }
     }
 
@@ -247,8 +253,5 @@ export class arach extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
-    if (this.getscore) {
-    this.game.addScore(3,false)
-    }
   }
 }

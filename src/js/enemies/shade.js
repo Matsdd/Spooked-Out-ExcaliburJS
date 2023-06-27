@@ -61,6 +61,7 @@ export class shade extends ghost {
         this.aggro = true;
         if (this.hp <= 0) {
           this.kill();
+          this.game.addScore(6,false)
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
@@ -225,6 +226,7 @@ export class shade extends ghost {
         this.burn1 = true;
       }
       if (this.hp <= 0) {
+        this.game.addScore(6,false)
         this.kill();
       }
     }
@@ -253,6 +255,5 @@ export class shade extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
-    this.game.addScore(6,false)
   }
 }

@@ -55,6 +55,7 @@ export class mare extends ghost {
         this.aggro = true;
         if (this.hp <= 0) {
           this.kill();
+          this.game.addScore(6,false)
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
@@ -203,6 +204,5 @@ export class mare extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
-    this.game.addScore(6,false)
   }
 }

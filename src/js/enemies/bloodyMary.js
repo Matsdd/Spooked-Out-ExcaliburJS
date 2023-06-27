@@ -64,6 +64,7 @@ export class bloodyMary extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          this.game.addScore(20,false)
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
           switch (this.randomNumber) {
@@ -281,7 +282,6 @@ export class bloodyMary extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
-    this.game.addScore(15,false)
   }
 
   

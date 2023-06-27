@@ -54,6 +54,11 @@ export class wisp extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          const fire = new Fire(this.pos.x, this.pos.y,);
+          this.currentScene.add(fire);
+          if (this.getscore) {
+          this.game.addScore(2,false)
+          }
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
@@ -165,10 +170,5 @@ export class wisp extends ghost {
   }
 
   onPostKill() {
-    const fire = new Fire(this.pos.x, this.pos.y,);
-    this.currentScene.add(fire);
-    if (this.getscore) {
-    this.game.addScore(2,false)
-    }
   }
 }
