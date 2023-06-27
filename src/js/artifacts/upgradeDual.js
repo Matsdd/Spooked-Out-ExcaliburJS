@@ -5,12 +5,12 @@ import { artifact } from "./artifact.js";
 
 export class upgradeDual extends artifact {
   constructor(posX, posY) {
-    // super({ width: Resources.upgradeDual.width/ 1.5 , height: Resources.upgradeDual.height/ 1.05});
+    super({ width: Resources.upgradeDual.width/ 1.5 , height: Resources.upgradeDual.height/ 1.05});
     this.pos = new Vector(posX, posY);
   }
 
   onInitialize(Engine) {
-    // this.graphics.use(Resources.upgradeDual.toSprite());
+    this.graphics.use(Resources.upgradeDual.toSprite());
     this.scale = new Vector(0.2, 0.2);
 
     this.on('collisionstart', (event) => {
