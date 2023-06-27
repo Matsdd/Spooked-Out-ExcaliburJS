@@ -104,11 +104,11 @@ export class demon extends ghost {
     const currentScene = engine.currentScene;
     if (this.hp > 75 && this.summonTimer >= this.summonCooldown) {
       console.log('pipi');
-      const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game);
+      const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game,false);
       Spirit.rotation = this.rotation;
       currentScene.add(Spirit);
 
-      const spirit2 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game);
+      const spirit2 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game,false);
       spirit2.rotation = this.rotation;
       currentScene.add(spirit2);
       this.summonTimer = 50
@@ -126,25 +126,25 @@ export class demon extends ghost {
       this.randomNumber = Math.round(Math.random())
       switch (this.randomNumber) {
         case 0:
-          const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game);
+          const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game,false);
           Spirit.rotation = this.rotation;
           currentScene.add(Spirit);
 
-          const spirit2 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game);
+          const spirit2 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game,false);
           spirit2.rotation = this.rotation;
           currentScene.add(spirit2);
 
-          const spirit3 = new spirit(this.target, this.pos.x, this.pos.y + 50, this.game);
+          const spirit3 = new spirit(this.target, this.pos.x, this.pos.y + 50, this.game,false);
           spirit3.rotation = this.rotation;
           currentScene.add(spirit3);
           this.summonTimer = 0
           break
         case 1:
-          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game);
+          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game,false);
           Ghoul.rotation = this.rotation;
           currentScene.add(Ghoul);
 
-          const spirit4 = new spirit(this.target, this.pos.x, this.pos.y + 50, this.game);
+          const spirit4 = new spirit(this.target, this.pos.x, this.pos.y + 50, this.game,false);
           spirit4.rotation = this.rotation;
           currentScene.add(spirit4);
           this.summonTimer = -100
@@ -163,39 +163,39 @@ export class demon extends ghost {
       this.randomNumber = Math.round(Math.random() * 2)
       switch (this.randomNumber) {
         case 0:
-          const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game);
+          const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game,false);
           Spirit.rotation = this.rotation;
           currentScene.add(Spirit);
 
-          const spirit2 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game);
+          const spirit2 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game,false);
           spirit2.rotation = this.rotation;
           currentScene.add(spirit2);
 
-          const spirit3 = new spirit(this.target, this.pos.x + 100, this.pos.y + 50, this.game);
+          const spirit3 = new spirit(this.target, this.pos.x + 100, this.pos.y + 50, this.game,false);
           spirit3.rotation = this.rotation;
           currentScene.add(spirit3);
 
-          const spirit4 = new spirit(this.target, this.pos.x - 100, this.pos.y + 50, this.game);
+          const spirit4 = new spirit(this.target, this.pos.x - 100, this.pos.y + 50, this.game,false);
           spirit4.rotation = this.rotation;
           currentScene.add(spirit4);
           this.summonTimer = -50
           break
         case 1:
-          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game);
+          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game,false);
           Ghoul.rotation = this.rotation;
           currentScene.add(Ghoul);
 
-          const spirit5 = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game);
+          const spirit5 = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game,false);
           spirit5.rotation = this.rotation;
           currentScene.add(spirit5);
 
-          const spirit6 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game);
+          const spirit6 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game,false);
           spirit6.rotation = this.rotation;
           currentScene.add(spirit6);
           this.summonTimer = -100
           break
         case 2:
-          const wrat = new wraith(this.target, this.pos.x - 100, this.pos.y, this.game);
+          const wrat = new wraith(this.target, this.pos.x - 100, this.pos.y, this.game,false);
           wrat.rotation = this.rotation;
           currentScene.add(wrat);
           this.summonTimer = -100
@@ -208,46 +208,49 @@ export class demon extends ghost {
       this.randomNumber = Math.round(Math.random() * 4)
       switch (this.randomNumber) {
         case 0:
-          const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game);
+          const Spirit = new spirit(this.target, this.pos.x + 100, this.pos.y, this.game,false);
           Spirit.rotation = this.rotation;
           currentScene.add(Spirit);
 
-          const spirit2 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game);
+          const spirit2 = new spirit(this.target, this.pos.x - 100, this.pos.y, this.game,false);
           spirit2.rotation = this.rotation;
           currentScene.add(spirit2);
 
-          const spirit3 = new spirit(this.target, this.pos.x, this.pos.y + 50, this.game);
+          const spirit3 = new spirit(this.target, this.pos.x, this.pos.y + 50, this.game,false);
           spirit3.rotation = this.rotation;
           currentScene.add(spirit3);
           this.summonTimer = 0
           break
         case 1:
-          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game);
+          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game,false);
           Ghoul.rotation = this.rotation;
           currentScene.add(Ghoul);
 
-          const spirit4 = new spirit(this.target, this.pos.x, this.pos.y + 50, this.game);
+          const spirit4 = new spirit(this.target, this.pos.x, this.pos.y + 50, this.game,false);
           spirit4.rotation = this.rotation;
           currentScene.add(spirit4);
           this.summonTimer = -100
           break
         case 2:
-          const Wrat = new wraith(this.target, this.pos.x, this.pos.y, this.game);
+          const Wrat = new wraith(this.target, this.pos.x, this.pos.y, this.game,false);
           Wrat.rotation = this.rotation;
           currentScene.add(Wrat);
           break
         case 3:
-          const kever = new arach(this.target, this.pos.x, this.pos.y, this.game);
+          const kever = new arach(this.target, this.pos.x, this.pos.y, this.game,false);
           kever.rotation = this.rotation;
           currentScene.add(kever);
           break
         case 4:
-          const pot = new poltergeist(this.target, (Math.round(Math.random() * 1000)) + 100, 350, this.game);
+          const pot = new poltergeist(this.target, (Math.round(Math.random() * 1000)) + 100, 350, this.game,false);
           pot.rotation = this.rotation;
           currentScene.add(pot);
           break
       }
     }
+  }
+  onPostKill() {
+    this.game.addScore(25,false)
   }
 
 }
