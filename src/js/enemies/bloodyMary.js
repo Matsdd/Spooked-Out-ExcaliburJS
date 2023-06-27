@@ -43,7 +43,6 @@ export class bloodyMary extends ghost {
       new Vector(),
     ]
     this.currentWaypoint = 0;
-    this.chosenPath = chosenPath;
   }
 
   getRandomInt(max) {
