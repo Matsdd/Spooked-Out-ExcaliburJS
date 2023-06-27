@@ -316,7 +316,7 @@ const Resources = {
     artifactRing: new ImageSource(artifactRing),
     artifactMag: new ImageSource(artifactMag),
     artifactFeather: new ImageSource(artifactFeather),
-    artifactPiercing: new ImageSource(artifactPiercing),
+    upgradePierce: new ImageSource(artifactPiercing),
     artifactDual: new ImageSource(artifactDual),
     artifactMilk: new ImageSource(artifactMilk),
     upgradeHp: new ImageSource(upgradeHp),

@@ -11,12 +11,14 @@ import { flash } from './flash.js'
 import { settingsMenu } from './menu/settingsMenu.js'
 
 export class bullet extends Actor {
-  constructor(x, y, target) {
+  constructor(x, y, target, pierceShot) {
     super({ width: Resources.bullet.width / 20, height: Resources.bullet.height / 20 });
     this.pos = new Vector(x, y);
     this.target = target;
     this.speed = 700;
     this.offset = new Vector(40, 0);
+    this.pierceShot = pierceShot;
+    this.health = 2;
   }
 
   onInitialize(engine) {
@@ -32,9 +34,14 @@ export class bullet extends Actor {
     this.on('collisionstart', (event) => {
       if (event.other instanceof phantom) {
         if (event.other.graphics.opacity == 1) {
+          if ( this.pierceShot === true && this.health > 0 ) {
+            this.health--
+            console.log(event.other.hp);
+          } else {
           this.shoot()
           this.kill();
           console.log(event.other.hp);
+          }
         }
       } else {
       if (event.other instanceof ghost) {
@@ -43,8 +50,12 @@ export class bullet extends Actor {
           this.vel = direction.scale(-this.speed);
           this.rotation += Math.PI
         }else{
+          if ( this.pierceShot === true && this.health > 0 ) {
+            this.health--
+          } else {
           this.shoot()
           this.kill();
+          }
         }
         console.log(event.other.hp);
       }

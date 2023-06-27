@@ -24,6 +24,7 @@ import { upgradeHp } from './artifacts/upgradeHp.js';
 import { upgradeAmmo } from './artifacts/upgradeAmmo.js';
 import { upgradeSpeed } from './artifacts/upgradeSpeed.js';
 import { upgradeDual } from './artifacts/upgradeDual.js';
+import { upgradePierce } from './artifacts/upgradePierce.js';
 
 export class mainCharacter extends Actor {
   barrierTarget
@@ -69,7 +70,7 @@ export class mainCharacter extends Actor {
     this.speedMultiplier = 140;
     this.dualShot = false;
     this.burnShot = false
-    this.pierceShot = false
+    this.pierceShot = false;
   }
 
   onInitialize(Engine) {
@@ -114,6 +115,9 @@ export class mainCharacter extends Actor {
       }
       if (event.other instanceof upgradeDual) {
         this.dualShot = true
+      }
+      if (event.other instanceof upgradePierce) {
+        this.pierceShot = true
       }
       if (event.other instanceof wraith) {
         this.game.playerHp -= 2
@@ -217,11 +221,11 @@ export class mainCharacter extends Actor {
 
           const spawnDelay = 100;
     
-          const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
+          const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot);
           currentScene.add(Bullet);
     
           setTimeout(() => {
-            const Bullet2 = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
+            const Bullet2 = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot);
             currentScene.add(Bullet2);
           }, spawnDelay);
     
@@ -230,7 +234,7 @@ export class mainCharacter extends Actor {
         const mouseX = evt.worldPos.x;
         const mouseY = evt.worldPos.y;
 
-        const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY));
+        const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot);
         currentScene.add(Bullet);
         this.bullets--
       }
