@@ -69,6 +69,7 @@ import nietschiet from "../images/props/nietschiet.png"
 import bossAttack from "../images/props/swatztika.png"
 import gloei from "../images/props/gloei.png"
 import fireBullet from '../images/props/fireBullet.png'
+import stofzuiger from '../images/props/Teletubie.jpg'
 
 // music
 import backgroundMusic from '../sfx/8-bit loop background music.mp3'
@@ -233,6 +234,7 @@ const Resources = {
     bossattack: new ImageSource(bossAttack),
     Gloei: new ImageSource(gloei),
     fireBullet: new ImageSource(fireBullet),
+    Stofzuiger: new ImageSource(stofzuiger),
 
     // music
     gameMusic: new Sound(backgroundMusic),
