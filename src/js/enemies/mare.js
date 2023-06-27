@@ -34,6 +34,7 @@ export class mare extends ghost {
     this.currentWaypoint = 0;
     this.chosenPath = chosenPath;
     this.aggro = false;
+    this.dead = false;
   }
 
   getRandomInt(max) {
@@ -55,6 +56,7 @@ export class mare extends ghost {
         this.aggro = true;
         if (this.hp <= 0) {
           this.kill();
+          this.dead = true;
           this.game.addScore(6,false)
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
@@ -116,10 +118,17 @@ export class mare extends ghost {
     const sound2 = new Audio(Resources.Ghost2.path);
     const sound3 = new Audio(Resources.Ghost3.path);
     const sound4 = new Audio(Resources.Ghost4.path);
-    sound.volume = 0.2;
-    sound2.volume = 0.2;
-    sound3.volume = 0.2;
-    sound4.volume = 0.2;
+    if ( this.dead === true ){
+      sound.volume = 0 ;
+      sound2.volume = 0 ;
+      sound3.volume = 0 ;
+      sound4.volume = 0 ;
+    } else {
+      sound.volume = 0.2;
+      sound2.volume = 0.2;
+      sound3.volume = 0.2;
+      sound4.volume = 0.2;
+    }
 
     // Set pitch
     const minPlaybackRate = 1; // Minimum playback rate
