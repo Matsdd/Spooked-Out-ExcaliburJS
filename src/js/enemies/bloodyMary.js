@@ -43,6 +43,7 @@ export class bloodyMary extends ghost {
       new Vector(),
     ]
     this.currentWaypoint = 0;
+    this.dead = false; 
   }
 
   getRandomInt(max) {
@@ -65,6 +66,7 @@ export class bloodyMary extends ghost {
         if (this.hp <= 0) {
           this.kill();
           this.game.addScore(20,false)
+          this.dead = true;
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
           switch (this.randomNumber) {
@@ -141,10 +143,17 @@ export class bloodyMary extends ghost {
     const sound2 = new Audio(Resources.Ghost2.path);
     const sound3 = new Audio(Resources.Ghost3.path);
     const sound4 = new Audio(Resources.Ghost4.path);
-    sound.volume = 0.2;
-    sound2.volume = 0.2;
-    sound3.volume = 0.2;
-    sound4.volume = 0.2;
+    if ( this.dead === true ){
+      sound.volume = 0 ;
+      sound2.volume = 0 ;
+      sound3.volume = 0 ;
+      sound4.volume = 0 ;
+    } else {
+      sound.volume = 0.2;
+      sound2.volume = 0.2;
+      sound3.volume = 0.2;
+      sound4.volume = 0.2;
+    }
 
     // Set pitch
     const minPlaybackRate = 1; // Minimum playback rate
@@ -282,6 +291,7 @@ export class bloodyMary extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.game.addScore(15,false)
   }
 
   

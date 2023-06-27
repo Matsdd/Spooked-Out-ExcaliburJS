@@ -30,6 +30,7 @@ export class wisp extends ghost {
     this.pos = new Vector(this.posX, this.posY);
     this.scale = new Vector(0.3, 0.3);
     this.z = 98
+    this.dead = false
   }
 
   getRandomInt(max) {
@@ -54,6 +55,7 @@ export class wisp extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          this.dead = true;
           const fire = new Fire(this.pos.x, this.pos.y,);
           this.currentScene.add(fire);
           if (this.getscore) {
@@ -98,10 +100,17 @@ export class wisp extends ghost {
     const sound2 = new Audio(Resources.Ghost2.path);
     const sound3 = new Audio(Resources.Ghost3.path);
     const sound4 = new Audio(Resources.Ghost4.path);
-    sound.volume = 0.2;
-    sound2.volume = 0.2;
-    sound3.volume = 0.2;
-    sound4.volume = 0.2;
+    if ( this.dead === true ){
+      sound.volume = 0 ;
+      sound2.volume = 0 ;
+      sound3.volume = 0 ;
+      sound4.volume = 0 ;
+    } else {
+      sound.volume = 0.2;
+      sound2.volume = 0.2;
+      sound3.volume = 0.2;
+      sound4.volume = 0.2;
+    }
 
     // Set pitch
     const minPlaybackRate = 1; // Minimum playback rate
