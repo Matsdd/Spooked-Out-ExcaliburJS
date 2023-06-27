@@ -74,16 +74,14 @@ export class storageRoom extends room {
         this.add(this.Ton2)
         this.Ton3 = new ton(1090, 300)
         this.add(this.Ton3)
-        this.Ton4 = new ton(600,590)
+        this.Ton4 = new ton(600,540)
         this.add(this.Ton4)
         this.Ton5 = new ton(1000,540)
         this.add(this.Ton5)
-        this.Ton6 = new ton(867,500)
+        this.Ton6 = new ton(867,540)
         this.add(this.Ton6)
         this.Ton8 = new ton(660, 670)
         this.add(this.Ton8)
-        this.Ton9 = new ton(700, 740)
-        this.add(this.Ton9)
         this.Ton7 = new ton(680, 820)
         this.add(this.Ton7)
 
@@ -108,6 +106,5 @@ export class storageRoom extends room {
         this.Ton6.kill()
         this.Ton7.kill()
         this.Ton8.kill()
-        this.Ton9.kill()
     }
 }
