@@ -11,6 +11,10 @@ import { darkAttack } from '../props/darkAttack.js'
 import { poltergeist } from './poltergeist.js'
 import { arach } from './arach.js'
 import { upgradeSpeed } from '../artifacts/upgradeSpeed.js';
+import { upgradePierce } from '../artifacts/upgradePierce.js';
+import { upgradeDual } from '../artifacts/upgradeDual.js';
+import { upgradeHp } from '../artifacts/upgradeHp.js';
+import { upgradeAmmo } from '../artifacts/upgradeAmmo.js';
 
 export class demon extends ghost {
   constructor(target, posX, posY,game) {
@@ -32,6 +36,10 @@ export class demon extends ghost {
     this.bulletCooldown = 300
     this.randomNumber = 0
     this.pos = new Vector(posX, posY);
+  }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
   }
 
   playSoundAtRandomInterval() {
@@ -64,6 +72,7 @@ export class demon extends ghost {
   }
 
   onInitialize(engine) {
+    const currentScene = engine.currentScene;
     this.graphics.use(Resources.demon.toSprite());
     this.scale = new Vector(1, 1);
 
@@ -77,8 +86,35 @@ export class demon extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
-          const upgrade = new  upgradeSpeed(this.pos.x, this.pos.y);
-          currentScene.add(upgrade);
+          this.randomNumber
+          this.randomNumber = this.getRandomInt(2);
+          switch (this.randomNumber) {
+            case 0:
+            this.upgrade = new  upgradeDual(this.pos.x, this.pos.y);
+            currentScene.add(this.upgrade);
+            console.log("dual")
+            break;
+            case 1:
+              this.randomNumber = this.getRandomInt(3);
+              switch (this.randomNumber) {
+                case 0 :
+                this.upgrade = new  upgradeHp(this.pos.x, this.pos.y);
+                currentScene.add(this.upgrade);
+                console.log("hp")
+                break;
+                case 1 :
+                this.upgrade = new  upgradeAmmo(this.pos.x, this.pos.y);
+                currentScene.add(this.upgrade);
+                console.log("ammo")
+                break;
+                case 2 :
+                this.upgrade = new  upgradeSpeed(this.pos.x, this.pos.y);
+                currentScene.add(this.upgrade);
+                console.log("speed")
+                break;
+              }
+            break;
+          }
           deathSound.play();
         }
       }
