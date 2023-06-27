@@ -33,6 +33,7 @@ export class shade extends ghost {
     this.currentWaypoint = 0;
     this.chosenPath = chosenPath;
     this.aggro = false;
+    this.donkerTimer = 10;
   }
 
   getRandomInt(max) {
@@ -50,6 +51,7 @@ export class shade extends ghost {
       hitSound.volume = 0.3;
       if (event.other instanceof bullet) {
         this.hp -= 1;
+        this.maxDistance = 2000;
         hitSound.play();
         this.aggro = true;
         if (this.hp <= 0) {
@@ -98,9 +100,7 @@ export class shade extends ghost {
     }
 
     this.on('precollision', (event) => {
-      this.maxDistance = 300
       this.speed = 100
-      this.aggro = true
         if (event.other instanceof Donker) {
             if (this.hp < 16 && this.regenTimer <= 0) {
                 this.hp++
@@ -109,7 +109,10 @@ export class shade extends ghost {
             }
             this.maxDistance = 200
             this.speed = 80
-            this.aggro = false
+        } else {
+          if( this.donkerTimer <= 0 ) {
+          this.aggro = true
+          }
         }
     })
 
@@ -209,6 +212,10 @@ export class shade extends ghost {
     } else {
       const targetWaypoint = this.path[this.currentWaypoint];
       this.moveTowardsTarget(targetWaypoint);
+    }
+
+    if ( this.darkTimer > 0) {
+      this.darkTimer--
     }
 
     // Call the base update method to apply the calculated velocity and rotation
