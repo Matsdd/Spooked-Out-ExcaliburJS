@@ -69,22 +69,22 @@ export class bloodyMary extends ghost {
           switch (this.randomNumber) {
             case 0:
             this.upgrade = new  upgradeFlame(this.pos.x, this.pos.y);
-            currentScene.add(upgrade);
+            currentScene.add(this.upgrade);
             break;
             case 1:
               this.randomNumber = this.getRandomInt(3);
               switch (this.randomNumber) {
                 case 0 :
                 this.upgrade = new  upgradeHp(this.pos.x, this.pos.y);
-                currentScene.add(upgrade);
+                currentScene.add(this.upgrade);
                 break;
-                case 0 :
+                case 1 :
                 this.upgrade = new  upgradeAmmo(this.pos.x, this.pos.y);
-                currentScene.add(upgrade);
+                currentScene.add(this.upgrade);
                 break;
-                case 0 :
+                case 2 :
                 this.upgrade = new  upgradeSpeed(this.pos.x, this.pos.y);
-                currentScene.add(upgrade);
+                currentScene.add(this.upgrade);
                 break;
               }
             break;
