@@ -31,6 +31,8 @@ export class ghoul extends ghost {
     this.currentWaypoint = 0;
     this.chosenPath = chosenPath;
     this.aggro = false;
+    this.burn = false;
+    this.burnTimer = 0;
   }
 
   getRandomInt(max) {
@@ -38,6 +40,12 @@ export class ghoul extends ghost {
   }
 
   onInitialize() {
+
+    if ( this.burn === true && this.burnTimer <= 0) {
+      this.hp -= 1;
+      this.burnTimer = 100;
+      console.log(this.hp)
+    }
 
     this.on('collisionstart', (event) => {
       const hitSound = new Audio(Resources.hitSound.path);
@@ -205,6 +213,11 @@ export class ghoul extends ghost {
 
   update(engine, delta) {
     this.bounceTimer -= 1
+
+    if ( this.burnTimer > 0 ) {
+      this.burnTimer--
+      console.log(this.burnTimer)
+    }
     if (this.prox) {
       this.moveTowardsTarget(this.target.pos);
     } else {

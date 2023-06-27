@@ -25,6 +25,7 @@ import { upgradeAmmo } from './artifacts/upgradeAmmo.js';
 import { upgradeSpeed } from './artifacts/upgradeSpeed.js';
 import { upgradeDual } from './artifacts/upgradeDual.js';
 import { upgradePierce } from './artifacts/upgradePierce.js';
+import { upgradeFlame } from './artifacts/upgradeFlame.js';
 
 export class mainCharacter extends Actor {
   barrierTarget
@@ -69,7 +70,7 @@ export class mainCharacter extends Actor {
     this.bounceSpeed = 140; 
     this.speedMultiplier = 140;
     this.dualShot = false;
-    this.burnShot = false
+    this.burnShot = true;
     this.pierceShot = false;
   }
 
@@ -118,6 +119,9 @@ export class mainCharacter extends Actor {
       }
       if (event.other instanceof upgradePierce) {
         this.pierceShot = true
+      }
+      if (event.other instanceof upgradeFlame) {
+        this.burnShot = true
       }
       if (event.other instanceof wraith) {
         this.game.playerHp -= 2
@@ -221,11 +225,11 @@ export class mainCharacter extends Actor {
 
           const spawnDelay = 100;
     
-          const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot);
+          const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot, this.burnShot);
           currentScene.add(Bullet);
     
           setTimeout(() => {
-            const Bullet2 = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot);
+            const Bullet2 = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot, this.burnShot);
             currentScene.add(Bullet2);
           }, spawnDelay);
     
@@ -234,7 +238,7 @@ export class mainCharacter extends Actor {
         const mouseX = evt.worldPos.x;
         const mouseY = evt.worldPos.y;
 
-        const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot);
+        const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot, this.burnShot);
         currentScene.add(Bullet);
         this.bullets--
       }

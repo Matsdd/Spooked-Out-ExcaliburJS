@@ -11,21 +11,26 @@ import { flash } from './flash.js'
 import { settingsMenu } from './menu/settingsMenu.js'
 
 export class bullet extends Actor {
-  constructor(x, y, target, pierceShot) {
+  constructor(x, y, target, pierceShot, burnShot) {
     super({ width: Resources.bullet.width / 20, height: Resources.bullet.height / 20 });
     this.pos = new Vector(x, y);
     this.target = target;
     this.speed = 700;
     this.offset = new Vector(40, 0);
     this.pierceShot = pierceShot;
+    this.burnShot = burnShot;
     this.health = 2;
   }
 
   onInitialize(engine) {
     this.engine = engine
-
+    if (this.burnShot === true) {
+      this.graphics.use(Resources.fireBullet.toSprite());
+      this.scale = new Vector(0.2, 0.2);
+    } else {
     this.graphics.use(Resources.bullet.toSprite());
     this.scale = new Vector(0.2, 0.2);
+    }
     const gunShot = new Audio(Resources.gunShot.path);
     gunShot.volume = 0.4;
     gunShot.playbackRate = 2;
@@ -34,6 +39,9 @@ export class bullet extends Actor {
     this.on('collisionstart', (event) => {
       if (event.other instanceof phantom) {
         if (event.other.graphics.opacity == 1) {
+          if ( this.burnShot === true ) {
+            event.other.burn = true
+          }
           if ( this.pierceShot === true && this.health > 0 ) {
             this.health--
             console.log(event.other.hp);
@@ -45,6 +53,9 @@ export class bullet extends Actor {
         }
       } else {
       if (event.other instanceof ghost) {
+        if ( this.burnShot === true ) {
+          event.other.burn = true
+        }
         if (event.other.bouncing) {
           const direction = new Vector(this.target.x, this.target.y).sub(this.pos).normalize();
           this.vel = direction.scale(-this.speed);
