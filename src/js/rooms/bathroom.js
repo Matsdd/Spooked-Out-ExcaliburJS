@@ -1,6 +1,6 @@
 import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { mainCharacter } from '../mainCharacter.js'
-import { ghoul } from '../enemies/ghoul.js'
+import { mare } from '../enemies/mare.js'
 import { wisp } from '../enemies/wisp.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
@@ -50,6 +50,7 @@ export class bathroom extends room {
         this.Sjaak.kill()
         this.Wisp.kill()
         this.Wisp2.kill()
+        this.Mare.kill()
         if (this.zwart != null) {
             this.zwart.kill()
         }
@@ -63,6 +64,9 @@ export class bathroom extends room {
         this.add(this.Wisp)
         this.Wisp2 = new wisp(this.Sjaak, 1150, 750,this.game,true)
         this.add(this.Wisp2)
+
+        this.Mare = new mare(this.Sjaak, 830, 190, 1,this.game)
+        this.add(this.Mare)
         
         const stof = new Stof()
         this.add(stof)
