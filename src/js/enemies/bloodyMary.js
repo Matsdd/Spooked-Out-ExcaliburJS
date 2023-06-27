@@ -7,6 +7,9 @@ import { wisp } from './wisp.js';
 import { fireBall } from '../props/fireball.js';
 import { bossBar } from '../ui/bossBar.js';
 import { upgradeHp } from '../artifacts/upgradeHp.js';
+import { upgradeFlame } from '../artifacts/upgradeFlame.js';
+import { upgradeAmmo } from '../artifacts/upgradeAmmo.js';
+import { upgradeSpeed } from '../artifacts/upgradeSpeed.js';
 
 export class bloodyMary extends ghost {
   bounceTimer = 0
@@ -62,8 +65,31 @@ export class bloodyMary extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
-          const upgrade = new  upgradeHp(this.pos.x, this.pos.y);
-          currentScene.add(upgrade);
+          this.randomNumber
+          this.randomNumber = this.getRandomInt(2);
+          switch (this.randomNumber) {
+            case 0:
+            this.upgrade = new  upgradeFlame(this.pos.x, this.pos.y);
+            currentScene.add(upgrade);
+            break;
+            case 1:
+              this.randomNumber = this.getRandomInt(3);
+              switch (this.randomNumber) {
+                case 0 :
+                this.upgrade = new  upgradeHp(this.pos.x, this.pos.y);
+                currentScene.add(upgrade);
+                break;
+                case 0 :
+                this.upgrade = new  upgradeAmmo(this.pos.x, this.pos.y);
+                currentScene.add(upgrade);
+                break;
+                case 0 :
+                this.upgrade = new  upgradeSpeed(this.pos.x, this.pos.y);
+                currentScene.add(upgrade);
+                break;
+              }
+            break;
+          }
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
