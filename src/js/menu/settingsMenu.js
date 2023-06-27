@@ -127,6 +127,10 @@ export class settingsMenu extends Scene {
         const button2 = new Titlebutton(800, 570)
         button2.on('pointerdown', (event) => {
             engine.goToScene('titleMenu')
+            localStorage.setItem("score", JSON.stringify(this.game.score))
+    
+            const prev = JSON.parse(localStorage.getItem("score"))
+            console.log(prev);
         })
         this.add(button2)
 

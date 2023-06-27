@@ -53,6 +53,9 @@ export class spirit extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          if (this.getscore) {
+            this.game.addScore(1,false)
+          }
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
@@ -161,6 +164,9 @@ export class spirit extends ghost {
       }
       if (this.hp <= 0) {
         this.kill();
+        if (this.getscore) {
+          this.game.addScore(1,false)
+        }
       }
     }
 
@@ -172,8 +178,5 @@ export class spirit extends ghost {
     this.bounceTimer -= 1
   }
   onPostKill() {
-    if (this.getscore) {
-    this.game.addScore(1,false)
-    }
   }
 }

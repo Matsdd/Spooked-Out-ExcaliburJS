@@ -58,6 +58,9 @@ export class wraith extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          if (this.getscore) {
+            this.game.addScore(5,false)
+          }
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
@@ -205,6 +208,9 @@ export class wraith extends ghost {
       }
       if (this.hp <= 0) {
         this.kill();
+        if (this.getscore) {
+          this.game.addScore(5,false)
+        }
       }
     }
 
@@ -227,9 +233,6 @@ export class wraith extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
-    if (this.getscore) {
-      this.game.addScore(5,false)
-    }
   }
 }
 

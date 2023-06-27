@@ -11,7 +11,6 @@ export class treasure extends Actor {
     this.pos = new Vector(posX, posY);
     this.game = game
     this.target = target;
-    this.game = game
   }
 
   onInitialize(Engine) {
@@ -48,7 +47,7 @@ export class treasure extends Actor {
   }
 
   onPostKill() {
-    this.game.getscore(3,false)
+    //this.game.getScore(3,false)
   }
 
 }

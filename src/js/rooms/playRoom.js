@@ -61,7 +61,7 @@ export class playroom extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Treasure = new treasure(this.Sjaak, 960, 300,this.game,true)
+        this.Treasure = new treasure(this.Sjaak, 960, 300,this.game)
         this.add(this.Treasure)
 
         this.Wraith = new wraith(this.Sjaak, 400, 350, 1,this.game,true)

@@ -44,6 +44,9 @@ export class poltergeist extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          if (this.getscore) {
+          this.game.addScore(4,false)
+          }
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
@@ -135,6 +138,9 @@ export class poltergeist extends ghost {
       }
       if (this.hp <= 0) {
         this.kill();
+        if (this.getscore) {
+        this.game.addScore(4,false)
+        }
       }
     }
 
@@ -180,8 +186,5 @@ export class poltergeist extends ghost {
   }
 
   onPostKill() {
-    if (this.getscore) {
-    this.game.addScore(4,false)
-    }
   }
 }

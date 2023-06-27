@@ -58,6 +58,9 @@ export class ghoul extends ghost {
         this.aggro = true;
         if (this.hp <= 0) {
           this.kill();
+          if (this.getscore) {
+          this.game.addScore(2,false)
+          }
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
 
@@ -233,6 +236,9 @@ export class ghoul extends ghost {
       }
       if (this.hp <= 0) {
         this.kill();
+        if (this.getscore) {
+        this.game.addScore(2,false)
+        }
         this.randomNumber
         this.randomNumber = this.getRandomInt(2);
 
@@ -264,8 +270,5 @@ export class ghoul extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
-    if (this.getscore) {
-    this.game.addScore(2,false)
-    }
   }
 }

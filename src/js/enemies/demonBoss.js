@@ -86,6 +86,7 @@ export class demon extends ghost {
         hitSound.play();
         if (this.hp <= 0) {
           this.kill();
+          this.game.addScore(25,false)
           this.randomNumber
           this.randomNumber = this.getRandomInt(2);
           switch (this.randomNumber) {
@@ -286,7 +287,6 @@ export class demon extends ghost {
     }
   }
   onPostKill() {
-    this.game.addScore(25,false)
   }
 
 }

@@ -30,7 +30,14 @@ export class deathMenu extends Scene {
     }
 
     onActivate() {
+        localStorage.setItem("score", JSON.stringify(this.game.score))
+
+        const prev = JSON.parse(localStorage.getItem("score"))
+        console.log(prev);
+
         this.game.score = 0
         this.game.playerHp = 3
+        this.game.previousscene = 13
+
     }
 }
