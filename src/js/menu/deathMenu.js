@@ -31,86 +31,102 @@ export class deathMenu extends Scene {
     }
 
     onActivate() {
+        console.log(JSON.parse(localStorage.getItem("bestscore")));
         if (JSON.parse(localStorage.getItem("bestscore")) != null && this.game.score > JSON.parse(localStorage.getItem("bestscore"))) {
+            const prevscor = JSON.parse(localStorage.getItem("bestscore"))
             localStorage.setItem("bestscore", JSON.stringify(this.game.score))
 
             this.yourscore = new ex.Label({
                 text: 'new High score',
                 z: 99,
-                pos: ex.vec(70, 253),
+                pos: ex.vec(765, 250),
                 font: new ex.Font({
                     size: 36,
                     unit: ex.FontUnit.Px,
-                    //textAlign: TextAlign.Right,
+                    textAlign: TextAlign.Center,
                     color: ex.Color.White
                 })
               });
+              this.yourscore.text = 'New highscore: ' + this.game.score + '!'
               this.add(this.yourscore)
-              
+            
             this.previousscore = new ex.Label({
                 text: 'previous score',
                 z: 99,
-                pos: ex.vec(70, 353),
+                pos: ex.vec(765, 320),
                 font: new ex.Font({
                     size: 36,
                     unit: ex.FontUnit.Px,
-                    //textAlign: TextAlign.Right,
+                    textAlign: TextAlign.Center,
                     color: ex.Color.White
                 })
             });
+            if (JSON.parse(localStorage.getItem("previousscore")) != null || JSON.parse(localStorage.getItem("previousscore")) != 0) {
+                this.previousscore.text = 'Previous score: ' + JSON.parse(localStorage.getItem("previousscore"))
+            }else{
+                this.previousscore.text = 'No previous scores set'
+            }
             this.add(this.previousscore)
 
             
             this.bestscore = new ex.Label({
                 text: 'previous high score:',
                 z: 99,
-                pos: ex.vec(70, 453),
+                pos: ex.vec(765, 390),
                 font: new ex.Font({
                     size: 36,
                     unit: ex.FontUnit.Px,
-                    //textAlign: TextAlign.Right,
+                    textAlign: TextAlign.Center,
                     color: ex.Color.White
                 })
             });
+            this.bestscore.text = 'Old highscore: ' + prevscor
             this.add(this.bestscore)
         }else{
             this.yourscore = new ex.Label({
                 text: 'your score',
                 z: 99,
-                pos: ex.vec(70, 253),
+                pos: ex.vec(765, 250),
                 font: new ex.Font({
                     size: 36,
                     unit: ex.FontUnit.Px,
-                    //textAlign: TextAlign.Right,
+                    textAlign: TextAlign.Center,
                     color: ex.Color.White
                 })
             });
+            this.yourscore.text = 'Your score: ' + this.game.score
             this.add(this.yourscore)
 
             this.previousscore = new ex.Label({
                 text: 'previous score',
                 z: 99,
-                pos: ex.vec(70, 353),
+                pos: ex.vec(765, 320),
                 font: new ex.Font({
                     size: 36,
                     unit: ex.FontUnit.Px,
-                    //textAlign: TextAlign.Right,
+                    textAlign: TextAlign.Center,
                     color: ex.Color.White
                 })
             });
+            if (JSON.parse(localStorage.getItem("previousscore")) != null || JSON.parse(localStorage.getItem("previousscore")) != 0) {
+                this.previousscore.text = 'Previous score: ' + JSON.parse(localStorage.getItem("previousscore"))
+            }else{
+                this.previousscore.text = 'No previous scores set'
+            }
             this.add(this.previousscore)
 
             this.bestscore = new ex.Label({
                 text: 'high score',
                 z: 99,
-                pos: ex.vec(70, 453),
+                pos: ex.vec(765, 390),
                 font: new ex.Font({
                     size: 36,
                     unit: ex.FontUnit.Px,
-                    //textAlign: TextAlign.Right,
+                    textAlign: TextAlign.Center,
                     color: ex.Color.White
                 })
             });
+            this.bestscore.text = 'High score: ' + JSON.parse(localStorage.getItem("bestscore"))
             this.add(this.bestscore)
         }
 
@@ -118,5 +134,12 @@ export class deathMenu extends Scene {
         this.game.score = 0
         this.game.playerHp = 3
         this.game.previousscene = 13
+    }
+
+    onDeactivate() {
+        localStorage.setItem("previousscore", JSON.stringify(this.game.score))
+        this.yourscore.kill()
+        this.previousscore.kill()
+        this.bestscore.kill()
     }
 }
