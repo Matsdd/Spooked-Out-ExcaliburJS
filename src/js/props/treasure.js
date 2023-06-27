@@ -9,6 +9,7 @@ export class treasure extends Actor {
   constructor(target, posX, posY,game) {
     super({ width: Resources.Treasure.width / 1.8, height: Resources.Treasure.height / 3});
     this.pos = new Vector(posX, posY);
+    this.game = game
     this.target = target;
     this.game = game
   }

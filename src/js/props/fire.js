@@ -2,6 +2,7 @@ import { Actor, Vector } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 import { mainCharacter } from '../mainCharacter.js'
+import { Stof } from '../ui/STOOFZUGER.js'
 
 export class Fire extends Actor {
 
@@ -19,6 +20,9 @@ export class Fire extends Actor {
                 this.kill()
                 event.other.game.playerHp--
                 event.other.die(engine)
+            }
+            if (event.other instanceof Stof) {
+                this.kill()
             }
         })
     }

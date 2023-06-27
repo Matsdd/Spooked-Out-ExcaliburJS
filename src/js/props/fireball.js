@@ -3,6 +3,7 @@ import { Resources } from '../resources.js';
 import { ghost } from '../enemies/ghost.js';
 import { phantom } from '../enemies/phantom.js'
 import { Barrier } from '../ui/barrier.js';
+import { Stof } from '../ui/STOOFZUGER.js';
 import { vaas } from './vaas.js'
 import { shelf } from './shelf.js'
 import { mainCharacter } from '../mainCharacter.js'
@@ -25,6 +26,9 @@ export class fireBall extends Actor {
                 this.kill()
                 event.other.game.playerHp--
                 event.other.die(engine)
+            }
+            if (event.other instanceof Stof) {
+              this.kill()
             }
         })
 

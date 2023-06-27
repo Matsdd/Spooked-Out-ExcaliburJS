@@ -7,6 +7,7 @@ import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
 import { Mirror } from '../ui/mirror.js'
+import { Stof } from '../ui/STOOFZUGER.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
@@ -62,5 +63,8 @@ export class bathroom extends room {
         this.add(this.Wisp)
         this.Wisp2 = new wisp(this.Sjaak, 1150, 750,this.game,true)
         this.add(this.Wisp2)
+        
+        const stof = new Stof()
+        this.add(stof)
     }
 }

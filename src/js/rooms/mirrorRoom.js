@@ -7,6 +7,7 @@ import { Barrier } from '../ui/barrier.js'
 import { Tp } from '../ui/tp.js'
 import { Licht } from '../props/licht.js'
 import { bloodyMary } from '../enemies/bloodyMary.js'
+import { Stof } from '../ui/STOOFZUGER.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
@@ -36,6 +37,7 @@ export class mirrorroom extends room {
         this.Maria = new bloodyMary(this.Sjaak,767,300,this.game,true)
         this.add(this.Maria)
         
-        
+        const stof = new Stof()
+        this.add(stof)
     }
 }
