@@ -152,7 +152,7 @@ export class guardian extends ghost {
             break;
 
           case 1:
-            const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game);
+            const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, 1, this.game);
             Ghoul.rotation = this.rotation;
             currentScene.add(Ghoul);
 
