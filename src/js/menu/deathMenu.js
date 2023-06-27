@@ -2,6 +2,7 @@ import { Actor, Engine, Vector, TextAlign, Scene } from "excalibur"
 import { Resources } from '../resources'
 import { Quitbutton } from "./quitButton"
 import { Titlebutton } from "./titleButton"
+import * as ex from 'excalibur'
 
 import { roomBack } from '../rooms/roomBack.js'
 
@@ -30,14 +31,92 @@ export class deathMenu extends Scene {
     }
 
     onActivate() {
-        localStorage.setItem("score", JSON.stringify(this.game.score))
+        if (JSON.parse(localStorage.getItem("bestscore")) != null && this.game.score > JSON.parse(localStorage.getItem("bestscore"))) {
+            localStorage.setItem("bestscore", JSON.stringify(this.game.score))
 
-        const prev = JSON.parse(localStorage.getItem("score"))
-        console.log(prev);
+            this.yourscore = new ex.Label({
+                text: 'new High score',
+                z: 99,
+                pos: ex.vec(70, 253),
+                font: new ex.Font({
+                    size: 36,
+                    unit: ex.FontUnit.Px,
+                    //textAlign: TextAlign.Right,
+                    color: ex.Color.White
+                })
+              });
+              this.add(this.yourscore)
+              
+            this.previousscore = new ex.Label({
+                text: 'previous score',
+                z: 99,
+                pos: ex.vec(70, 353),
+                font: new ex.Font({
+                    size: 36,
+                    unit: ex.FontUnit.Px,
+                    //textAlign: TextAlign.Right,
+                    color: ex.Color.White
+                })
+            });
+            this.add(this.previousscore)
+
+            
+            this.bestscore = new ex.Label({
+                text: 'previous high score:',
+                z: 99,
+                pos: ex.vec(70, 453),
+                font: new ex.Font({
+                    size: 36,
+                    unit: ex.FontUnit.Px,
+                    //textAlign: TextAlign.Right,
+                    color: ex.Color.White
+                })
+            });
+            this.add(this.bestscore)
+        }else{
+            this.yourscore = new ex.Label({
+                text: 'your score',
+                z: 99,
+                pos: ex.vec(70, 253),
+                font: new ex.Font({
+                    size: 36,
+                    unit: ex.FontUnit.Px,
+                    //textAlign: TextAlign.Right,
+                    color: ex.Color.White
+                })
+            });
+            this.add(this.yourscore)
+
+            this.previousscore = new ex.Label({
+                text: 'previous score',
+                z: 99,
+                pos: ex.vec(70, 353),
+                font: new ex.Font({
+                    size: 36,
+                    unit: ex.FontUnit.Px,
+                    //textAlign: TextAlign.Right,
+                    color: ex.Color.White
+                })
+            });
+            this.add(this.previousscore)
+
+            this.bestscore = new ex.Label({
+                text: 'high score',
+                z: 99,
+                pos: ex.vec(70, 453),
+                font: new ex.Font({
+                    size: 36,
+                    unit: ex.FontUnit.Px,
+                    //textAlign: TextAlign.Right,
+                    color: ex.Color.White
+                })
+            });
+            this.add(this.bestscore)
+        }
+
 
         this.game.score = 0
         this.game.playerHp = 3
         this.game.previousscene = 13
-
     }
 }
