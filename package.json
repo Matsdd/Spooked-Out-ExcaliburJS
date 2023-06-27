@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --outDir=docs --base=/spel/"
+    "build": "vite build --outDir=docs --base=/CLE4-debestegameooitgemaakt/"
   },
   "devDependencies": {
     "vite": "^4.2.0"
