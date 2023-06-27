@@ -89,8 +89,8 @@ export class ghoul extends ghost {
         case 0:
           this.maxDistance = 450;
           this.path = [
-            new Vector(460, 170),
-            new Vector(950, 170),
+            new Vector(460, 270),
+            new Vector(950, 270),
           ]
           break;
           case 1:

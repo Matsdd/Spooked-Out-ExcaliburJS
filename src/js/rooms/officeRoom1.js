@@ -9,6 +9,7 @@ import { Licht } from '../props/licht.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
+import { phantom } from "../enemies/phantom.js"
 
 export class officeRoom1 extends room {
     roomBackground = Resources.Office1
@@ -82,9 +83,7 @@ export class officeRoom1 extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
-        this.Spirit.kill()
-        this.Spirit2.kill()
-        this.Spirit3.kill()
+        this.Phantom.kill()
         this.Spirit4.kill()
         this.Spirit5.kill()
         this.Spirit6.kill()
@@ -97,12 +96,8 @@ export class officeRoom1 extends room {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
 
-        this.Spirit = new spirit(this.Sjaak,360,260,this.game,true)
-        this.add(this.Spirit)
-        this.Spirit2 = new spirit(this.Sjaak,450,260,this.game,true)
-        this.add(this.Spirit2)
-        this.Spirit3 = new spirit(this.Sjaak,540,260,this.game,true)
-        this.add(this.Spirit3)
+        this.Phantom = new phantom(this.Sjaak,460,220,this.game)
+        this.add(this.Phantom)
         this.Spirit4 = new spirit(this.Sjaak,450,710,this.game,true)
         this.add(this.Spirit4)
         this.Spirit5 = new spirit(this.Sjaak,450,630,this.game,true)

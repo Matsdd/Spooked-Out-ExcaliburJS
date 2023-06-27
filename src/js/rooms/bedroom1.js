@@ -9,6 +9,7 @@ import { Licht } from '../props/licht.js'
 
 import { roomBack } from './roomBack.js'
 import { room } from './room.js'
+import { ghoul } from "../enemies/ghoul.js"
 
 
 export class Bedroom1 extends room {
@@ -44,7 +45,7 @@ export class Bedroom1 extends room {
     }
     onDeactivate() {
         this.Sjaak.kill()
-        this.Phantom.kill()
+        this.Ghoul.kill()
         this.Mare.kill()
 
         if (this.zwart != null) {
@@ -55,8 +56,8 @@ export class Bedroom1 extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
-        this.Phantom = new phantom(this.Sjaak,1060, 270, this.game,true)
-        this.add(this.Phantom)
+        this.Ghoul = new ghoul(this.Sjaak,950, 270, 0, this.game,true)
+        this.add(this.Ghoul)
         this.Mare = new mare(this.Sjaak,460, 170, 0, this.game,true)
         this.add(this.Mare)
     }
