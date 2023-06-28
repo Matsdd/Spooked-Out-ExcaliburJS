@@ -212,7 +212,7 @@ export class guardian extends ghost {
   }
 
   onPostKill() {
-    
+    this.dead = true;
   }
 }
 

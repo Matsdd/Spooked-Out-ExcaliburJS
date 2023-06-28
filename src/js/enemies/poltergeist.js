@@ -195,5 +195,6 @@ export class poltergeist extends ghost {
   }
 
   onPostKill() {
+    this.dead = true;
   }
 }
