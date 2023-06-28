@@ -188,7 +188,7 @@ export class demon extends ghost {
           this.summonTimer = 0
           break
         case 1:
-          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, this.game,false);
+          const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, 5, this.game,false);
           Ghoul.rotation = this.rotation;
           currentScene.add(Ghoul);
 
