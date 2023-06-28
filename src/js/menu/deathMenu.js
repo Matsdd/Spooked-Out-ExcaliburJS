@@ -32,7 +32,7 @@ export class deathMenu extends Scene {
 
     onActivate() {
         console.log(JSON.parse(localStorage.getItem("bestscore")));
-        if (JSON.parse(localStorage.getItem("bestscore")) != null && this.game.score > JSON.parse(localStorage.getItem("bestscore"))) {
+        if (JSON.parse(localStorage.getItem("bestscore")) == null || this.game.score > JSON.parse(localStorage.getItem("bestscore"))) {
             const prevscor = JSON.parse(localStorage.getItem("bestscore"))
             localStorage.setItem("bestscore", JSON.stringify(this.game.score))
 

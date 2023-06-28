@@ -45,6 +45,7 @@ export class titleMenu extends Scene {
         const button2 = new Settingsbutton(300, 570)
         button2.on('pointerdown', (event) => {
             engine.goToScene('settingsMenu')
+            gameMusic.pause()
         })
         this.add(button2)
 
