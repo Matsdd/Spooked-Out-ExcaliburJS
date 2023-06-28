@@ -9,7 +9,6 @@ export class sprint extends Actor {
         this.graphics.use(Resources.sprint.toSprite())
         this.pos = new Vector(200,220)
         this.scale = new Vector(0.15,0.15)
-        this.graphics.opacity = 0.7
         this.player = player
         this.z = 99
     }
