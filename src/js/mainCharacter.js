@@ -32,6 +32,7 @@ import { upgradeSpeed } from './artifacts/upgradeSpeed.js';
 import { upgradeDual } from './artifacts/upgradeDual.js';
 import { upgradePierce } from './artifacts/upgradePierce.js';
 import { upgradeFlame } from './artifacts/upgradeFlame.js';
+import { sprintbalk } from './ui/sprintBalk.js';
 
 export class mainCharacter extends Actor {
   barrierTarget
@@ -362,6 +363,8 @@ export class mainCharacter extends Actor {
     Engine.currentScene.add(this.ammo)
     this.score = new score()
     Engine.currentScene.add(this.score)
+    this.sprintbalk = new sprintbalk(this)
+    Engine.currentScene.add(this.sprintbalk)
     this.sprint = new sprint(this)
     Engine.currentScene.add(this.sprint)
 

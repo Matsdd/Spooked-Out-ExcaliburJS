@@ -2,13 +2,13 @@ import { Actor, Vector } from "excalibur"
 import * as ex from 'excalibur'
 import {Resources} from "../resources.js"
 
-export class sprint extends Actor {
+export class sprintbalk extends Actor {
 
     constructor() {
-        super({width:Resources.sprint.width, height:Resources.sprint.height})
-        this.graphics.use(Resources.sprint.toSprite())
-        this.pos = new Vector(120,220)
-        this.scale = new Vector(0.3,0.3)
+        super({width:Resources.sprintB.width, height:Resources.sprintB.height})
+        this.graphics.use(Resources.sprintB.toSprite())
+        this.pos = new Vector(124,225)
+        this.scale = new Vector(0.4,0.4)
         this.graphics.opacity = 0.7
         this.z = 98
     }
