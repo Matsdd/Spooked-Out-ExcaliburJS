@@ -20,6 +20,7 @@ game
         this.on('collisionstart', (event) => {
             if (event.other instanceof mainCharacter) {
                 this.game.goToScene('wineCellar')
+                this.game.previousscene = 15
                 }
             })
         }

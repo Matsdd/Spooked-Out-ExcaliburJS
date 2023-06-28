@@ -22,6 +22,7 @@ mirrorActivated = 0
             if (event.other instanceof mainCharacter) {
                 if (this.mirrorActivated >= 3) {
                     this.game.goToScene('mirrorroom')
+                    this.game.previousscene = 16
                 }      
                 if (engine.input.keyboard.wasPressed(Input.Keys.B)) {
                     this.mirrorActivated++

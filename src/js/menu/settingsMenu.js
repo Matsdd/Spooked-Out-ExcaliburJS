@@ -128,6 +128,27 @@ export class settingsMenu extends Scene {
                   this.game.goToScene('lobbyRoom')
                 }
                   break;
+                case 14: 
+                  if(this.scene == 'bossRoom') {
+                    return;
+                } else {
+                  this.game.goToScene('bossRoom')
+                }
+                  break;
+                case 15: 
+                  if(this.scene == 'wineCellar') {
+                    return;
+                } else {
+                  this.game.goToScene('wineCellar')
+                }
+                  break;
+                case 16: 
+                  if(this.scene == 'mirrorroom') {
+                    return;
+                } else {
+                  this.game.goToScene('mirrorroom')
+                }
+                  break;
                   }
         })
         this.add(button)
