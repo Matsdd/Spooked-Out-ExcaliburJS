@@ -125,6 +125,9 @@ export class mainCharacter extends Actor {
       if (event.other instanceof upgradeFlame) {
         this.burnShot = true
       }
+      if (event.other instanceof bril) {
+        this.bril = true
+      }
       if (event.other instanceof wraith) {
         this.game.playerHp -= 2
         playerHit.play(1);
