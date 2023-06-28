@@ -43,6 +43,7 @@ export class mainCharacter extends Actor {
   game
   bounceTimer = 0
   scoreLabel = ''
+  roomCountLabel = ''
   currentscene
 
   constructor(posX, posY, game) {
@@ -381,6 +382,19 @@ export class mainCharacter extends Actor {
     });
     Engine.currentScene.add(this.scoreLabel)
 
+    this.roomCountLabel = new ex.Label({
+      text: 'cash',
+      z: 99,
+      pos: ex.vec(180, 53),
+      font: new ex.Font({
+          size: 36,
+          unit: ex.FontUnit.Px,
+          //textAlign: TextAlign.Right,
+          color: ex.Color.White
+      })
+    });
+    Engine.currentScene.add(this.roomCountLabel)
+
     
   }
   
@@ -544,6 +558,10 @@ export class mainCharacter extends Actor {
     if (this.scoreLabel != '') {
       this.scoreLabel.text = this.game.score + ''
     }
+
+    if (this.roomCountLabel != '') {
+      this.roomCountLabel.text =  'Room nr: ' + this.game.rooms + ''
+    }
     
     if (this.slowtimer > 0) {
       this.slowtimer--
@@ -652,6 +670,7 @@ export class mainCharacter extends Actor {
   onPostKill() {
     this.shootAvailable = false
     this.scoreLabel.text = ''
+    this.roomCountLabel.text = ''
     this.hp.kill()
     this.ammo.kill()
     this.score.kill()
