@@ -105,6 +105,7 @@ import hp9 from '../images/ui/HP/hp9.png'
 //sprint
 import Sprint from '../images/ui/sprint.png'
 import SprintR from '../images/ui/sprintR.png'
+import SprintB from '../images/ui/sprintBalk.png'
 
 // ammo
 import ammo0 from '../images/ui/ammo/ammo0.png'
@@ -284,6 +285,7 @@ const Resources = {
     //sprint
     sprint: new ImageSource(Sprint),
     sprintR: new ImageSource(SprintR),
+    sprintB: new ImageSource(SprintB),
 
     //bosshp
     BossHp1: new ImageSource(bosshp1),

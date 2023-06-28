@@ -108,10 +108,10 @@ export class deathMenu extends Scene {
                     color: ex.Color.White
                 })
             });
-            if (JSON.parse(localStorage.getItem("previousscore")) != null || JSON.parse(localStorage.getItem("previousscore")) != 0) {
-                this.previousscore.text = 'Previous score: ' + JSON.parse(localStorage.getItem("previousscore"))
-            }else{
+            if (JSON.parse(localStorage.getItem("previousscore")) == null || JSON.parse(localStorage.getItem("previousscore")) == 0) {
                 this.previousscore.text = 'No previous scores set'
+            }else{
+                this.previousscore.text = 'Previous score: ' + JSON.parse(localStorage.getItem("previousscore"))
             }
             this.add(this.previousscore)
 
