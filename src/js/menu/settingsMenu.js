@@ -16,11 +16,19 @@ export class settingsMenu extends Scene {
     }
     
     onInitialize(engine) {
+        const gameMusic = new Audio(Resources.gameMusic.path);
+        gameMusic.loop = true;
+        gameMusic.volume = 0.3;
+        gameMusic.addEventListener('canplay', () => {
+            gameMusic.play();
+        });
+
         let settingsbackground = new roomBack(Resources.Settingsback);
         this.add(settingsbackground);
 
         const button = new Continue(800, 420)
         button.on('pointerdown', (event) => {
+            gameMusic.pause();
             switch (this.game.previousscene) {
                 case 0:
                   if(this.scene == 'poolRoom') {

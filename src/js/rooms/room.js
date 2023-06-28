@@ -70,6 +70,9 @@ export class room extends Scene {
             this.teleporterInRoom = true
         }
         this.teleportActive = true
+        if (!this.teleportActive && this.teleporterInRoom) {
+            teleporter.kill()
+        }
     }
 
     volgLicht(zwart) {
