@@ -79,7 +79,7 @@ export class mainCharacter extends Actor {
     this.bounceSpeed = 140; 
     this.speedMultiplier = 140;
     this.dualShot = false;
-    this.burnShot = true;
+    this.burnShot = false;
     this.pierceShot = false;
   }
 
