@@ -48,6 +48,7 @@ export class mainCharacter extends Actor {
     this.isMovingUp = false;
     this.isMovingDown = false;
     this.speed = 140;
+    this.runspeed = 180
     this.rotation = 0;
     this.pos = new Vector(posX, posY);
     this.x = posX
@@ -99,30 +100,51 @@ export class mainCharacter extends Actor {
         this.game.playerHp = this.game.cosmetics[0] * 3 + 3
         this.upgradeTimer = 100;
       }
-      if (event.other instanceof upgradeAmmo && this.ammoArtifact1 === false) {
-        this.game.cosmetics[0] = 1
-        this.bullets = 20
+      if (event.other instanceof upgradeAmmo && this.upgradeTimer == 0) {
+        switch(this.game.cosmetics[1]) {
+          case 0:
+            this.game.cosmetics[1] = 1
+          break
+          case 1:
+            this.game.cosmetics[1] = 2
+          break
+          default:
+            break
+        }
+        
+        this.maxAmmo = this.game.cosmetics[1] * 10 + 10
+        this.bullets = this.game.cosmetics[1] * 10 + 10
         this.upgradeTimer = 100;
-        this.ammoArtifact1 = true;
-      }
-      if (event.other instanceof upgradeAmmo && this.ammoArtifact1 === true && this.upgradeTimer === 0) {
-        this.bullets = 30
-        this.ammoArtifact2 = true;
-        this.ammoArtifact1 = false;
       }
       if (event.other instanceof upgradeSpeed && this.upgradeTimer === 0) {
-        this.game.cosmetics[0] = 1
-        this.speedMultiplier += 10
-        this.speed = this.speedMultiplier
-        this.upgradeTimer = 10
+        switch(this.game.cosmetics[2]) {
+          case 0:
+            this.game.cosmetics[2] = 1
+          break
+          case 1:
+            this.game.cosmetics[2] = 2
+          break
+          case 2:
+            this.game.cosmetics[2] = 3
+          break
+          default:
+            break
+        }
+        
+        this.speed = this.game.cosmetics[2] * 10 + 140
+        this.runspeed = this.game.cosmetics[2] * 10 + 180
+        this.upgradeTimer = 100;
       }
       if (event.other instanceof upgradeDual) {
+        this.game.cosmetics[3] = 1
         this.dualShot = true
       }
       if (event.other instanceof upgradePierce) {
+        this.game.cosmetics[4] = 1
         this.pierceShot = true
       }
       if (event.other instanceof upgradeFlame) {
+        this.game.cosmetics[5] = 1
         this.burnShot = true
       }
       if (event.other instanceof wraith) {
@@ -312,6 +334,11 @@ export class mainCharacter extends Actor {
     pipi.setHp(this.game.playerHp)
 
     this.game.playerHp = (this.game.cosmetics[0] + 3) * 3
+    this.maxAmmo = this.game.cosmetics[1] * 10 + 10
+    this.bullets = this.game.cosmetics[1] * 10 + 10
+    this.speed = this.game.cosmetics[2] * 10 + 140
+    this.runspeed = this.game.cosmetics[2] * 10 + 180
+
   }
 
   goToDeath(game) {
@@ -489,7 +516,7 @@ export class mainCharacter extends Actor {
       }
       if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
         if (this.stamina > 0) {
-          this.speed = 180
+          this.speed = this.runspeed
           this.stamina--
           this.sprintTimer = 40
           this.sprinting = true

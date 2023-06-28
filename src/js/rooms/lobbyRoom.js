@@ -6,6 +6,9 @@ import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Licht } from '../props/licht.js'
 import { upgradeHp } from '../artifacts/upgradeHp.js';
+import { upgradeFlame } from '../artifacts/upgradeFlame.js';
+import { upgradeAmmo } from '../artifacts/upgradeAmmo.js';
+import { upgradeSpeed } from '../artifacts/upgradeSpeed.js';
 
 import { room } from './room.js'
 
@@ -50,5 +53,10 @@ export class lobbyRoom extends room {
 
         this.Frederik = new frederik(this.Sjaak, 495, 315)
         this.add(this.Frederik)
+
+        const art = new upgradeAmmo(800,600)
+        this.add(art)
+        const art2 = new upgradeAmmo(900,600)
+        this.add(art2)
     }
 }
