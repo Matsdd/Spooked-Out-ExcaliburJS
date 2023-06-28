@@ -97,6 +97,11 @@ export class storageRoom extends room {
         this.Poltergeist.kill()
         this.Treasure.kill()
         this.Nietschiet.kill()
+        if (this.teleporten != null) {
+            this.teleporter.kill()
+        }
+        this.teleportActive = false
+        this.teleporterInRoom = false
 
         this.Ton1.kill()
         this.Ton2.kill()

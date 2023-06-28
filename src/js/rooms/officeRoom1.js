@@ -87,6 +87,11 @@ export class officeRoom1 extends room {
         this.Spirit4.kill()
         this.Spirit5.kill()
         this.Spirit6.kill()
+        if (this.teleporten != null) {
+            this.teleporter.kill()
+        }
+        this.teleportActive = false
+        this.teleporterInRoom = false
         if (this.zwart != null) {
             this.zwart.kill()
         }

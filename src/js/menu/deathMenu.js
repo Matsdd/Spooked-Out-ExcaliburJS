@@ -132,6 +132,7 @@ export class deathMenu extends Scene {
 
 
         this.game.score = 0
+        this.game.rooms = 0
         this.game.playerHp = 3
         this.game.previousscene = 13
     }

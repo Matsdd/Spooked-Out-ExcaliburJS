@@ -47,6 +47,11 @@ export class Bedroom1 extends room {
         this.Sjaak.kill()
         this.Ghoul.kill()
         this.Mare.kill()
+        if (this.teleporten != null) {
+            this.teleporter.kill()
+        }
+        this.teleportActive = false
+        this.teleporterInRoom = false
 
         if (this.zwart != null) {
             this.zwart.kill()

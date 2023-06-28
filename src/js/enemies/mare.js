@@ -19,7 +19,7 @@ export class mare extends ghost {
     this.rotation = 0;
     this.hp = 22 + (game.difficulty * 4)
     this.game = game
-    this.regenTimer = 100
+    this.regenTimer = 60
     this.soundInterval = null;
     this.graphics.use(Resources.Mare.toSprite());
     this.scale = new Vector(0.3, 0.3);
@@ -102,7 +102,7 @@ export class mare extends ghost {
             if (this.hp > 0) {
                 this.hp--
                 console.log(this.hp);
-                this.regenTimer = 100
+                this.regenTimer = 60
                 this.aggro = true
             }
         }

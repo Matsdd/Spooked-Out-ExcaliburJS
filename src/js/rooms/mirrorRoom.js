@@ -28,6 +28,11 @@ export class mirrorroom extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.Maria.kill()
+        if (this.teleporten != null) {
+            this.teleporter.kill()
+        }
+        this.teleportActive = false
+        this.teleporterInRoom = false
     }
 
     onActivate() {

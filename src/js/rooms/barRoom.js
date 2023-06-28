@@ -63,6 +63,11 @@ export class barRoom extends room {
         this.Sjaak.kill()
         this.Poltergeist.kill()
         this.Ghoul.kill()
+        if (this.teleporten != null) {
+            this.teleporter.kill()
+        }
+        this.teleportActive = false
+        this.teleporterInRoom = false
         if (this.zwart != null) {
             this.zwart.kill()
         }
