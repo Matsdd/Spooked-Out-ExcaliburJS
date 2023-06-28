@@ -524,7 +524,6 @@ export class mainCharacter extends Actor {
   }
 
   update(engine) {
-    this.game.playerHp = this.game.cosmetics[0] * 3 + 3
     this.maxAmmo = this.game.cosmetics[1] * 10 + 10
     this.speed = this.game.cosmetics[2] * 10 + 140
     this.runspeed = this.game.cosmetics[2] * 10 + 180
