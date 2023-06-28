@@ -49,6 +49,11 @@ export class engineRoom extends room {
         this.Arach.kill()
         this.Shade.kill()
         this.licht.kill()
+        if (this.teleporten != null) {
+            this.teleporter.kill()
+        }
+        this.teleportActive = false
+        this.teleporterInRoom = false
         if (this.zwart != null) {
             this.zwart.kill()
         }

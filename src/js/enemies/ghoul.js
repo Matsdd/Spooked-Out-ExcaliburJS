@@ -123,6 +123,9 @@ export class ghoul extends ghost {
             new Vector(1100, 230),
           ]
           break;
+          case 5:
+            this.maxDistance = 7000;
+            break;
     }
 
 

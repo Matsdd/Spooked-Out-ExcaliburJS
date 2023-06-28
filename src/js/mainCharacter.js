@@ -399,6 +399,8 @@ export class mainCharacter extends Actor {
     //reload sound here
     this.reloadtimer = 10;
     this.reloadCounter = 10
+    const gunReload = new Audio(Resources.gunLoad.path);
+    gunReload.play(); 
   }
 
   die(Engine) {
@@ -532,10 +534,8 @@ export class mainCharacter extends Actor {
         this.moveDown();
       }
 
-      const gunReload = new Audio(Resources.gunLoad.path);
       if (this.reloadtimer <= 0 && engine.input.keyboard.wasPressed(Input.Keys.R)) {
         this.reload();
-        gunReload.play();
       }
     }
 

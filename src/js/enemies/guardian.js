@@ -27,7 +27,7 @@ export class guardian extends ghost {
     this.maxHp = 50 + (game.difficulty * 15);
     this.game = game
     this.timer = 0;
-    this.cooldown = 250;
+    this.cooldown = 300;
     this.game = game
     this.pos = new Vector(posX, posY);
     this.dead = false;
@@ -193,7 +193,7 @@ export class guardian extends ghost {
             break;
 
           case 1:
-            const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, 1, this.game,false);
+            const Ghoul = new ghoul(this.target, this.pos.x, this.pos.y, 5, this.game,false);
             Ghoul.rotation = this.rotation;
             currentScene.add(Ghoul);
 

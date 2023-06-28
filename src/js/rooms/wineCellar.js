@@ -34,6 +34,11 @@ export class wineCellar extends room {
     onDeactivate() {
         this.Sjaak.kill()
         this.Guardian.kill()
+        if (this.teleporten != null) {
+            this.teleporter.kill()
+        }
+        this.teleportActive = false
+        this.teleporterInRoom = false
     }
 
     onActivate() {

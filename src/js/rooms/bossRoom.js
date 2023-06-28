@@ -55,6 +55,11 @@ export class bossRoom extends room {
     onActivate() {
         this.Sjaak = new mainCharacter(767, 800,this.game)
         this.add(this.Sjaak)
+        if (this.teleporten != null) {
+            this.teleporter.kill()
+        }
+        this.teleportActive = false
+        this.teleporterInRoom = false
 
         this.Demon = new demon(this.Sjaak, 767, 150,this.game,true)
         this.add(this.Demon)
