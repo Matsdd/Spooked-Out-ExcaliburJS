@@ -44,15 +44,15 @@ export class spirit extends ghost {
 
   onInitialize() {
     this.on('collisionstart', (event) => {
-      const hitSound = new Audio(Resources.hitSound.path);
+      //const hitSound = new Audio(Resources.hitSound.path);
       const ghostDeath1 = new Audio(Resources.ghostDeath1.path);
       const ghostDeath2 = new Audio(Resources.ghostDeath2.path);
       ghostDeath1.volume = 0.5
       ghostDeath2.volume = 0.5
-      hitSound.volume = 0.3;
+      //hitSound.volume = 0.3;
       if (event.other instanceof bullet) {
         this.hp -= 1;
-        hitSound.play();
+        //hitSound.play();
         if (this.hp <= 0) {
           this.kill();
           this.dead = true
