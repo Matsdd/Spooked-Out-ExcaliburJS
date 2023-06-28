@@ -4,6 +4,7 @@ import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 import { Donker } from '../props/donker.js';
+import { flames } from '../props/flames.js';
 
 export class shade extends ghost {
   bounceTimer = 0
@@ -225,6 +226,10 @@ export class shade extends ghost {
       if (this.burn1 === false ){
       this.hp -= 1;
       }
+      if (this.burn1 === true ){
+        this.Flames = new flames(this)
+        engine.currentScene.add(this.Flames)
+        }
       this.burn1 = false;
       this.burnTimer = 100;
       this.burnCount += 1;
@@ -233,6 +238,7 @@ export class shade extends ghost {
         this.burn = false;
         this.burnCount = 0;
         this.burn1 = true;
+        this.Flames.kill()
       }
       if (this.hp <= 0) {
         this.game.addScore(6,false)
@@ -265,5 +271,6 @@ export class shade extends ghost {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
     this.dead = true;
+    this.Flames.kill()
   }
 }

@@ -208,7 +208,7 @@ export class arach extends ghost {
       if (this.burn1 === false ){
       this.hp -= 1;
       }
-      if (this.burn1 === false ){
+      if (this.burn1 === true ){
         this.Flames = new flames(this)
         engine.currentScene.add(this.Flames)
         }

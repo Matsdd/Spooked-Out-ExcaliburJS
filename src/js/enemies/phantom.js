@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
+import { flames } from '../props/flames.js';
 
 export class phantom extends ghost {
   bounceTimer = 0
@@ -157,6 +158,10 @@ export class phantom extends ghost {
       if (this.burn1 === false ){
       this.hp -= 1;
       }
+      if (this.burn1 === true ){
+        this.Flames = new flames(this)
+        engine.currentScene.add(this.Flames)
+        }
       this.burn1 = false;
       this.burnTimer = 100;
       this.burnCount += 1;
@@ -165,6 +170,7 @@ export class phantom extends ghost {
         this.burn = false;
         this.burnCount = 0;
         this.burn1 = true;
+        this.Flames.kill()
       }
       if (this.hp <= 0) {
         this.kill();
@@ -196,5 +202,6 @@ export class phantom extends ghost {
     clearTimeout(this.soundInterval);
     this.game.addScore(5,false)
     this.dead = true;
+    this.Flames.kill()
   }
 }
