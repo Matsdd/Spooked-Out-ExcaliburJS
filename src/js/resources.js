@@ -161,6 +161,12 @@ import cowboy from '../images/ui/hoeden/cowboy.png'
 import duikbril from '../images/ui/hoeden/duikbril.png'
 import mini from '../images/ui/hoeden/mini.png'
 import plaag from '../images/ui/hoeden/plaag.png'
+import metbril from '../images/ui/hoeden/metbril.png'
+import metduikbril from '../images/ui/hoeden/metduikbril.png'
+import metclown from '../images/ui/hoeden/metclown.png'
+import metcowboy from '../images/ui/hoeden/metcowboy.png'
+import metmini from '../images/ui/hoeden/metmini.png'
+import metplaag from '../images/ui/hoeden/metplaag.png'
 
 //bosshp
 import bosshp1 from '../images/ui/HP/bosshp1.png'
@@ -344,7 +350,12 @@ const Resources = {
     duikbril: new ImageSource(duikbril),
     mini: new ImageSource(mini),
     plaag: new ImageSource(plaag),
-
+    metbril: new ImageSource(metbril),
+    metduikbril: new ImageSource(metduikbril),
+    metclown: new ImageSource(metclown),
+    metcowboy: new ImageSource(metcowboy),
+    metplaag: new ImageSource(metplaag),
+    metmini: new ImageSource(metmini),
 }
 
 // const ResourceLoader = new Loader([
