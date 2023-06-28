@@ -328,9 +328,7 @@ export class mainCharacter extends Actor {
     });
     Engine.currentScene.add(this.scoreLabel)
 
-    if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
-      this.pos = new Vector(this.x,this.y)
-    }
+    
   }
   
   onActivate() {
@@ -347,6 +345,9 @@ export class mainCharacter extends Actor {
     this.dualShot = this.game.cosmetics[3]
     this.pierceShot = this.game.cosmetics[4]
 
+    if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
+      this.pos = new Vector(this.x,this.y)
+    }
   }
 
   goToDeath(game) {
