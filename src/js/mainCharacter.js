@@ -692,8 +692,6 @@ export class mainCharacter extends Actor {
     this.ammo.kill()
     this.score.kill()
     this.sprint.kill()*/
-
-
   }
 
 }

@@ -40,6 +40,15 @@ export class lobbyRoom extends room {
 
     onDeactivate() {
         this.Sjaak.kill()
+        this.Sjaak.shootAvailable = false
+        if (this.Sjaak.scoreLabel != null) {
+          this.Sjaak.scoreLabel.kill()
+        }
+        this.Sjaak.roomCountLabel.text = ''
+        this.Sjaak.hp.kill()
+        this.Sjaak.ammo.kill()
+        this.Sjaak.score.kill()
+        this.Sjaak.sprint.kill()
         this.Frederik.kill()
 
         if (this.zwart != null) {
