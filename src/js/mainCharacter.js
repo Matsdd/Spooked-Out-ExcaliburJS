@@ -307,6 +307,8 @@ export class mainCharacter extends Actor {
     
           const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot, this.burnShot);
           currentScene.add(Bullet);
+          
+
     
           setTimeout(() => {
             const Bullet2 = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot, this.burnShot);
@@ -321,6 +323,9 @@ export class mainCharacter extends Actor {
         const Bullet = new bullet(this.pos.x, this.pos.y, new Vector(mouseX, mouseY), this.pierceShot, this.burnShot);
         currentScene.add(Bullet);
         this.bullets--
+        if (this.bullets <= 0) {
+          this.reload()
+        }
       }
       }
     });
@@ -518,7 +523,6 @@ export class mainCharacter extends Actor {
   }
 
   update(engine) {
-
     if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
       this.pos = new Vector(this.x,this.y)
     }
@@ -665,6 +669,7 @@ export class mainCharacter extends Actor {
     if (direction.distance() > 0) {
       this.rotation = direction.toAngle() + Math.PI / 2;
     }
+
   }
 
   onPostKill() {
