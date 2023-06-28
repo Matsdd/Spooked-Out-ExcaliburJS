@@ -30,6 +30,17 @@ export class treasure extends Actor {
           currentScene.add(Mimic);
           this.kill();
         } else {
+        this.randomNumber = this.getRandomInt(3);
+        switch (this.randomNumber) {
+          case 0:
+            this.Hoed = new mimic(this.target, this.pos.x, this.pos.y, this.game);
+            currentScene.add(this.Mimic);
+            break;
+          case 1:
+            this.Hoed = new mimic(this.target, this.pos.x, this.pos.y, this.game);
+            currentScene.add(this.Mimic);
+            break;
+        }
         this.kill();
         }
       }
