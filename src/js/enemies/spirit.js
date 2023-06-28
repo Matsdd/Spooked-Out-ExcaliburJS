@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js'
 import { bullet } from '../bullet.js'
+import { flames } from '../props/flames.js';
 
 export class spirit extends ghost {
   bounceTimer = 0
