@@ -4,6 +4,7 @@ import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js'
 import { vaas } from '../props/vaas.js'
 import { bullet } from '../bullet.js'
+import { flames } from '../props/flames.js'
 
 export class poltergeist extends ghost {
   constructor(target, posX, posY,game,getscore) {

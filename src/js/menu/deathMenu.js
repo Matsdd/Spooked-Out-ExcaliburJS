@@ -103,5 +103,5 @@ export class deathMenu extends Scene {
         this.yourscore.kill()
         this.previousscore.kill()
         this.bestscore.kill()
-    }
+    }   
 }

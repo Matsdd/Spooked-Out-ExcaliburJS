@@ -239,8 +239,8 @@ export class ghoul extends ghost {
         this.hp -= 1;
         hitSound.play();
         }
-      this.Flames = new flames()
-      this.addChild(this.Flames)
+      this.Flames = new flames(this)
+      engine.currentScene.add(this.Flames)
       this.burn1 = false;
       this.burnTimer = 100;
       this.burnCount += 1;
@@ -286,5 +286,6 @@ export class ghoul extends ghost {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
     this.dead = true;
+    this.Flames.kill()
   }
 }

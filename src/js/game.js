@@ -33,7 +33,7 @@ export class Game extends Engine {
     rooms = 0
     previousscene = 13
     //health,ammo,speed,dualshot,fire,pierce,hoedj
-    cosmetics = [0,0,0,false,false,false,'']
+    cosmetics = [0,0,0,false,true,false,'']
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())
@@ -88,7 +88,7 @@ export class Game extends Engine {
         this.addScene('barRoom', this.Barroom)
         this.addScene('dormRoom', this.Dormroom)
 
-        this.goToScene('lobbyRoom')
+        this.goToScene('barRoom')
 
         console.log("Enjoy!")
     }
