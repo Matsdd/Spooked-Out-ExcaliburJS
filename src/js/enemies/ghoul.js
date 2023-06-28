@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from '../resources.js';
 import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
+import { flames } from '../props/flames.js';
 
 export class ghoul extends ghost {
   bounceTimer = 0
@@ -238,6 +239,8 @@ export class ghoul extends ghost {
         this.hp -= 1;
         hitSound.play();
         }
+      this.Flames = new flames()
+      this.addChild(this.Flames)
       this.burn1 = false;
       this.burnTimer = 100;
       this.burnCount += 1;
