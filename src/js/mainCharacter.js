@@ -407,15 +407,6 @@ export class mainCharacter extends Actor {
     pipi.setAmmo(this.bullets)
     pipi.setHp(this.game.playerHp)
 
-    this.game.playerHp = (this.game.cosmetics[0] + 3) * 3
-    this.maxAmmo = this.game.cosmetics[1] * 10 + 10
-    this.bullets = this.game.cosmetics[1] * 10 + 10
-    this.speed = this.game.cosmetics[2] * 10 + 140
-    this.runspeed = this.game.cosmetics[2] * 10 + 180
-
-    this.burnShot = this.game.cosmetics[5]
-    this.dualShot = this.game.cosmetics[3]
-    this.pierceShot = this.game.cosmetics[4]
 
 
   }
@@ -533,6 +524,15 @@ export class mainCharacter extends Actor {
   }
 
   update(engine) {
+    this.game.playerHp = (this.game.cosmetics[0] + 3) * 3
+    this.maxAmmo = this.game.cosmetics[1] * 10 + 10
+    this.bullets = this.game.cosmetics[1] * 10 + 10
+    this.speed = this.game.cosmetics[2] * 10 + 140
+    this.runspeed = this.game.cosmetics[2] * 10 + 180
+
+    this.burnShot = this.game.cosmetics[5]
+    this.dualShot = this.game.cosmetics[3]
+    this.pierceShot = this.game.cosmetics[4]
     if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
       this.pos = new Vector(this.x,this.y)
     }
