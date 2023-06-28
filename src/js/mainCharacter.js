@@ -19,6 +19,11 @@ import { Ammo } from './ui/ammo.js'
 import { sprint } from './ui/sprint.js'
 import { score } from './ui/score.js'
 import { bril } from './hoeden/bril.js'
+import { duikbril } from './hoeden/duikbril.js'
+import { clown } from './hoeden/clown.js'
+import { cowboy } from './hoeden/cowboy.js'
+import { mini } from './hoeden/mini.js'
+import { plaag } from './hoeden/plaag.js'
 
 import * as ex from 'excalibur'
 import { upgradeHp } from './artifacts/upgradeHp.js';
@@ -79,7 +84,31 @@ export class mainCharacter extends Actor {
   onInitialize(Engine) {
     Engine.add('SettingsMenu', new settingsMenu())
 
+    if (this.game.cosmetics[6] === 'bril') {
+      this.graphics.use(Resources.metbril.toSprite());
+    } else {
+    if (this.game.cosmetics[6] === 'duikbril') {
+      this.graphics.use(Resources.metduikbril.toSprite());
+    } else {
+    if (this.game.cosmetics[6] === 'clown') {
+      this.graphics.use(Resources.metclown.toSprite());
+    } else {
+    if (this.game.cosmetics[6] === 'cowboy') {
+      this.graphics.use(Resources.metcowboy.toSprite());
+    } else {
+    if (this.game.cosmetics[6] === 'mini') {
+      this.graphics.use(Resources.metmini.toSprite());
+    } else {
+    if (this.game.cosmetics[6] === 'plaag') {
+      this.graphics.use(Resources.metplaag.toSprite());
+    } else {
     this.graphics.use(Resources.mainCharacter.toSprite());
+    }
+  }
+}
+    }
+  }
+}
     this.scale = new Vector(0.2, 0.2);
     this.vel.y = 0;
 
@@ -149,7 +178,28 @@ export class mainCharacter extends Actor {
         this.burnShot = true
       }
       if (event.other instanceof bril) {
-        this.bril = true
+        this.game.cosmetics[6] = 'bril'
+        this.graphics.use(Resources.metbril.toSprite());
+      }
+      if (event.other instanceof duikbril) {
+        this.game.cosmetics[6] = 'duikbril'
+        this.graphics.use(Resources.metduikbril.toSprite());
+      }
+      if (event.other instanceof clown) {
+        this.game.cosmetics[6] = 'clown'
+        this.graphics.use(Resources.metclown.toSprite());
+      }
+      if (event.other instanceof cowboy) {
+        this.game.cosmetics[6] = 'cowboy'
+        this.graphics.use(Resources.metcowboy.toSprite());
+      }
+      if (event.other instanceof mini) {
+        this.game.cosmetics[6] = 'mini'
+        this.graphics.use(Resources.metmini.toSprite());
+      }
+      if (event.other instanceof plaag) {
+        this.game.cosmetics[6] = 'plaag'
+        this.graphics.use(Resources.metplaag.toSprite());
       }
       if (event.other instanceof wraith) {
         this.game.playerHp -= 2
@@ -345,9 +395,7 @@ export class mainCharacter extends Actor {
     this.dualShot = this.game.cosmetics[3]
     this.pierceShot = this.game.cosmetics[4]
 
-    if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
-      this.pos = new Vector(this.x,this.y)
-    }
+
   }
 
   goToDeath(game) {
@@ -453,6 +501,11 @@ export class mainCharacter extends Actor {
   }
 
   update(engine) {
+
+    if (this.pos.x > 1600 || this.pos.x < 0 || this.pos.y < 0 || this.pos.y > 1000) {
+      this.pos = new Vector(this.x,this.y)
+    }
+
     this.bounceTimer -= 1
 
     if(this.upgradeTimer > 0) {
