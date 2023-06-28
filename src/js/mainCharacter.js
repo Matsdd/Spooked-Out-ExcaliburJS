@@ -399,6 +399,7 @@ export class mainCharacter extends Actor {
       })
     });
     Engine.currentScene.add(this.roomCountLabel)
+    this.game.playerHp = this.game.cosmetics[0] * 3 + 3
 
     
   }
