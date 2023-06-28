@@ -677,7 +677,7 @@ export class mainCharacter extends Actor {
     if (this.scoreLabel != null) {
       //this.scoreLabel.kill()
     }
-    this.roomCountLabel.text = ''
+    // this.roomCountLabel.text = ''
     this.hp.kill()
     this.ammo.kill()
     this.score.kill()
