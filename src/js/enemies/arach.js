@@ -260,5 +260,6 @@ export class arach extends ghost {
     if (this.getscore) {
     this.game.addScore(3,false)
     }
+    this.dead = true;
   }
 }
