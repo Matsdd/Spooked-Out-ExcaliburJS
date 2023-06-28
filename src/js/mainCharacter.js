@@ -84,17 +84,23 @@ export class mainCharacter extends Actor {
     this.on('collisionstart', (event) => {
       const playerHit = new Audio(Resources.playerHit2.path);
 
-      if (event.other instanceof upgradeHp && this.hpArtifact1 === false) {
-        this.game.playerHp = 6
+      if (event.other instanceof upgradeHp && this.upgradeTimer === 0) {
+        switch(this.game.cosmetics[0]) {
+          case 0:
+            this.game.cosmetics[0] = 1
+          break
+          case 1:
+            this.game.cosmetics[0] = 2
+          break
+          default:
+            break
+        }
+        
+        this.game.playerHp = this.game.cosmetics[0] * 3 + 3
         this.upgradeTimer = 100;
-        this.hpArtifact1 = true;
-      }
-      if (event.other instanceof upgradeHp && this.hpArtifact1 === true && this.upgradeTimer === 0) {
-        this.game.playerHp = 9
-        this.hpArtifact2 = true;
-        this.hpArtifact1 = false;
       }
       if (event.other instanceof upgradeAmmo && this.ammoArtifact1 === false) {
+        this.game.cosmetics[0] = 1
         this.bullets = 20
         this.upgradeTimer = 100;
         this.ammoArtifact1 = true;
@@ -104,12 +110,8 @@ export class mainCharacter extends Actor {
         this.ammoArtifact2 = true;
         this.ammoArtifact1 = false;
       }
-      if (event.other instanceof upgradeAmmo && this.ammoArtifact1 === true && this.upgradeTimer === 0) {
-        this.bullets = 30
-        this.ammoArtifact2 = true;
-        this.ammoArtifact1 = false;
-      }
       if (event.other instanceof upgradeSpeed && this.upgradeTimer === 0) {
+        this.game.cosmetics[0] = 1
         this.speedMultiplier += 10
         this.speed = this.speedMultiplier
         this.upgradeTimer = 10
@@ -308,6 +310,8 @@ export class mainCharacter extends Actor {
   onActivate() {
     pipi.setAmmo(this.bullets)
     pipi.setHp(this.game.playerHp)
+
+    this.game.playerHp = (this.game.cosmetics[0] + 3) * 3
   }
 
   goToDeath(game) {

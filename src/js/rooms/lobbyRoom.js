@@ -5,6 +5,7 @@ import { frederik } from '../frederik.js'
 import { Resources } from '../resources.js'
 import { Barrier } from '../ui/barrier.js'
 import { Licht } from '../props/licht.js'
+import { upgradeHp } from '../artifacts/upgradeHp.js';
 
 import { room } from './room.js'
 
