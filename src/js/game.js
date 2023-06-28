@@ -33,7 +33,7 @@ export class Game extends Engine {
     rooms = 0
     previousscene = 13
     //health,ammo,speed,dualshot,fire,pierce,hoedj
-    cosmetics = [0,0,0,0,0,0,'']
+    cosmetics = [0,0,0,false,false,false,'']
     constructor() {
         super({ width: 1530.01, height: 860.01 })
         this.start(ResourceLoader).then(() => this.startGame())

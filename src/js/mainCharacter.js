@@ -18,6 +18,7 @@ import { HP } from './ui/HPeter.js'
 import { Ammo } from './ui/ammo.js'
 import { sprint } from './ui/sprint.js'
 import { score } from './ui/score.js'
+import { bril } from './hoeden/bril.js'
 
 import * as ex from 'excalibur'
 import { upgradeHp } from './artifacts/upgradeHp.js';
@@ -136,15 +137,15 @@ export class mainCharacter extends Actor {
         this.upgradeTimer = 100;
       }
       if (event.other instanceof upgradeDual) {
-        this.game.cosmetics[3] = 1
+        this.game.cosmetics[3] = true
         this.dualShot = true
       }
       if (event.other instanceof upgradePierce) {
-        this.game.cosmetics[4] = 1
+        this.game.cosmetics[4] = true
         this.pierceShot = true
       }
       if (event.other instanceof upgradeFlame) {
-        this.game.cosmetics[5] = 1
+        this.game.cosmetics[5] = true
         this.burnShot = true
       }
       if (event.other instanceof bril) {
@@ -341,6 +342,10 @@ export class mainCharacter extends Actor {
     this.bullets = this.game.cosmetics[1] * 10 + 10
     this.speed = this.game.cosmetics[2] * 10 + 140
     this.runspeed = this.game.cosmetics[2] * 10 + 180
+
+    this.burnShot = this.game.cosmetics[5]
+    this.dualShot = this.game.cosmetics[3]
+    this.pierceShot = this.game.cosmetics[4]
 
   }
 
