@@ -267,6 +267,8 @@ export class arach extends ghost {
     this.game.addScore(3,false)
     }
     this.dead = true;
-    this.Flames.kill()
+    if (this.Flames != null) {
+      this.Flames.kill()
+    }
   }
 }

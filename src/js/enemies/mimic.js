@@ -194,6 +194,8 @@ export class mimic extends ghost {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
     this.dead = true;
-    this.Flames.kill()
+    if (this.Flames != null) {
+      this.Flames.kill()
+    }
   }
 }

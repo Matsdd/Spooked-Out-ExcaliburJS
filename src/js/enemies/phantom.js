@@ -202,6 +202,8 @@ export class phantom extends ghost {
     clearTimeout(this.soundInterval);
     this.game.addScore(5,false)
     this.dead = true;
-    this.Flames.kill()
+    if (this.Flames != null) {
+      this.Flames.kill()
+    }
   }
 }

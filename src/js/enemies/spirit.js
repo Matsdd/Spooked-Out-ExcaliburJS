@@ -194,6 +194,8 @@ export class spirit extends ghost {
   }
   onPostKill() {
     this.dead = true;
-    this.Flames.kill()
+    if (this.Flames != null) {
+      this.Flames.kill()
+    }
   }
 }
