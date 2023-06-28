@@ -154,6 +154,14 @@ import upgradeAmmo from '../images/ui/artifact/upgradeAmmo.png'
 import upgradeFlame from '../images/ui/artifact/upgradeFlame.png'
 import upgradeDual from '../images/ui/artifact/upgradeDual.png'
 
+//hoeden
+import bril from '../images/ui/hoeden/bril.png'
+import clown from '../images/ui/hoeden/clown.png'
+import cowboy from '../images/ui/hoeden/cowboy.png'
+import duikbril from '../images/ui/hoeden/duikbril.png'
+import mini from '../images/ui/hoeden/mini.png'
+import plaag from '../images/ui/hoeden/plaag.png'
+
 //bosshp
 import bosshp1 from '../images/ui/HP/bosshp1.png'
 import bosshp2 from '../images/ui/HP/bosshp2.png'
@@ -327,7 +335,15 @@ const Resources = {
     upgradeSpeed: new ImageSource(upgradeSpeed),
     upgradeFlame: new ImageSource(upgradeFlame),
     upgradeDual: new ImageSource(upgradeDual),
-    upgradeAmmo: new ImageSource(upgradeAmmo)
+    upgradeAmmo: new ImageSource(upgradeAmmo),
+
+    //hoeden
+    bril: new ImageSource(bril),
+    clown: new ImageSource(clown),
+    cowboy: new ImageSource(cowboy),
+    duikbril: new ImageSource(duikbril),
+    mini: new ImageSource(mini),
+    plaag: new ImageSource(plaag),
 
 }
 
