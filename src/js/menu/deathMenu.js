@@ -25,7 +25,7 @@ export class deathMenu extends Scene {
 
         const button3 = new Quitbutton(800, 680)
         button3.on('pointerdown', (event) => {
-            engine.kill()
+            //engine.kill()
         })
         this.add(button3)
     }

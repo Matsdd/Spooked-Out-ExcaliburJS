@@ -51,7 +51,7 @@ export class titleMenu extends Scene {
 
         const button3 = new Quitbutton(300, 720)
         button3.on('pointerdown', (event) => {
-            engine.kill()
+            //engine.kill()
         })
         this.add(button3)
     }
