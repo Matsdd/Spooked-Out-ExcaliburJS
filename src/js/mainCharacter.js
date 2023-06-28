@@ -436,6 +436,16 @@ export class mainCharacter extends Actor {
 
   onPreUpdate(Engine) {
     if (this.game.playerHp <= 0) {
+      
+    this.shootAvailable = false
+    if (this.scoreLabel != null) {
+      this.scoreLabel.kill()
+    }
+    this.roomCountLabel.text = ''
+    this.hp.kill()
+    this.ammo.kill()
+    this.score.kill()
+    this.sprint.kill()
       this.kill()
     }
   }
@@ -673,15 +683,15 @@ export class mainCharacter extends Actor {
   }
 
   onPostKill() {
-    this.shootAvailable = false
+    /*this.shootAvailable = false
     if (this.scoreLabel != null) {
-      //this.scoreLabel.kill()
+      this.scoreLabel.kill()
     }
-    // this.roomCountLabel.text = ''
+    this.roomCountLabel.text = ''
     this.hp.kill()
     this.ammo.kill()
     this.score.kill()
-    this.sprint.kill()
+    this.sprint.kill()*/
 
 
   }
