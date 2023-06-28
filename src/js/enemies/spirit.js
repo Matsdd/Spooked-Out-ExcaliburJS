@@ -160,16 +160,21 @@ export class spirit extends ghost {
 
     if ( this.burn === true && this.burnTimer <= 0) {
       if (this.burn1 === false ){
-      this.hp -= 1;
-      }
+        this.hp -= 1;
+        hitSound.play();
+        }
+        if (this.burn1 === true ){
+          this.Flames = new flames(this)
+          engine.currentScene.add(this.Flames)
+          }
       this.burn1 = false;
       this.burnTimer = 100;
       this.burnCount += 1;
-      console.log(this.hp)
       if ( this.burnCount === 3 ) {
         this.burn = false;
         this.burnCount = 0;
         this.burn1 = true;
+        this.Flames.kill()
       }
       if (this.hp <= 0) {
         this.kill();
@@ -188,5 +193,6 @@ export class spirit extends ghost {
   }
   onPostKill() {
     this.dead = true;
+    this.Flames.kill()
   }
 }
