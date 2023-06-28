@@ -53,10 +53,5 @@ export class lobbyRoom extends room {
 
         this.Frederik = new frederik(this.Sjaak, 495, 315)
         this.add(this.Frederik)
-
-        const art = new upgradeAmmo(800,600)
-        this.add(art)
-        const art2 = new upgradeAmmo(900,600)
-        this.add(art2)
     }
 }
