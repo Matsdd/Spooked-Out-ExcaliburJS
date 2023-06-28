@@ -4,6 +4,7 @@ import { mainCharacter } from '../mainCharacter.js';
 import { ghost } from '../enemies/ghost.js';
 import { bullet } from '../bullet.js';
 import { spin } from '../props/spin.js';
+import { flames } from '../props/flames.js';
 
 export class arach extends ghost {
   bounceTimer = 0
@@ -207,6 +208,10 @@ export class arach extends ghost {
       if (this.burn1 === false ){
       this.hp -= 1;
       }
+      if (this.burn1 === false ){
+        this.Flames = new flames(this)
+        engine.currentScene.add(this.Flames)
+        }
       this.burn1 = false;
       this.burnTimer = 100;
       this.burnCount += 1;
@@ -214,6 +219,7 @@ export class arach extends ghost {
         this.burn = false;
         this.burnCount = 0;
         this.burn1 = true;
+        this.Flames.kill()
       }
       if (this.hp <= 0) {
         this.kill();
@@ -261,5 +267,6 @@ export class arach extends ghost {
     this.game.addScore(3,false)
     }
     this.dead = true;
+    this.Flames.kill()
   }
 }

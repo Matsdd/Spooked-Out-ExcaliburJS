@@ -137,6 +137,10 @@ export class poltergeist extends ghost {
       if (this.burn1 === false ){
       this.hp -= 1;
       }
+      if (this.burn1 === true ){
+      this.Flames = new flames(this)
+      Engine.currentScene.add(this.Flames)
+        }
       this.burn1 = false;
       this.burnTimer = 100;
       this.burnCount += 1;
@@ -145,6 +149,7 @@ export class poltergeist extends ghost {
         this.burn = false;
         this.burnCount = 0;
         this.burn1 = true;
+        this.Flames.kill()
       }
       if (this.hp <= 0) {
         this.kill();
@@ -197,5 +202,6 @@ export class poltergeist extends ghost {
 
   onPostKill() {
     this.dead = true;
+    this.Flames.kill()
   }
 }
