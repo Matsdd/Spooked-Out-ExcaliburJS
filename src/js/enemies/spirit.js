@@ -187,5 +187,6 @@ export class spirit extends ghost {
     this.bounceTimer -= 1
   }
   onPostKill() {
+    this.dead = true;
   }
 }

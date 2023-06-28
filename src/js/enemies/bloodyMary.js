@@ -292,6 +292,7 @@ export class bloodyMary extends ghost {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
     this.game.addScore(15,false)
+    this.dead = true;
   }
 
   

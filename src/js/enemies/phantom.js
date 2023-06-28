@@ -195,5 +195,6 @@ export class phantom extends ghost {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
     this.game.addScore(5,false)
+    this.dead = true;
   }
 }

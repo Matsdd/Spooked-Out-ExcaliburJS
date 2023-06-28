@@ -179,5 +179,6 @@ export class wisp extends ghost {
   }
 
   onPostKill() {
+    this.dead = true;
   }
 }

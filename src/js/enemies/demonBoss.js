@@ -298,6 +298,7 @@ export class demon extends ghost {
     }
   }
   onPostKill() {
+    this.dead = true;
   }
 
 }

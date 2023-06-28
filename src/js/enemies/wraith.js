@@ -242,6 +242,7 @@ export class wraith extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.dead = true;
   }
 }
 

@@ -187,5 +187,6 @@ export class mimic extends ghost {
   onPostKill() {
     // Clear the sound interval
     clearTimeout(this.soundInterval);
+    this.dead = true;
   }
 }
